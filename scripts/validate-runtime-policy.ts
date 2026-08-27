@@ -61,6 +61,8 @@ for (const workflowName of workflowNames.filter((name) => name.endsWith(".yml"))
   const corepackIndex = workflow.indexOf("corepack enable");
   if (pnpmCacheIndex !== -1 && (corepackIndex === -1 || pnpmCacheIndex < corepackIndex))
     issues.push(`CI_PNPM_CACHE_BEFORE_COREPACK:${workflowName}`);
+  if (workflow.includes("${{ github.workspace }}/.cache/playwright-browsers"))
+    issues.push(`CI_BROWSER_CACHE_INSIDE_REPOSITORY:${workflowName}`);
 }
 const ci = await read(".github/workflows/ci.yml");
 if (!ci.includes("os: [ubuntu-latest, macos-latest]")) issues.push("CI_OS_MATRIX_MISMATCH");

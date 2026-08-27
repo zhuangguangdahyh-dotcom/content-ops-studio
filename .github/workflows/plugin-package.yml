@@ -11,7 +11,7 @@ jobs:
   package-shape:
     runs-on: ubuntu-latest
     env:
-      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.cache/playwright-browsers
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/../playwright-browsers
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
