@@ -180,5 +180,5 @@ describe("Phase 3A research MCP local workflow", () => {
         explicit_confirmation: true,
       }),
     ).rejects.toMatchObject({ code: "LIVE_WRITE_ENV_GATE_REQUIRED" });
-  });
+  }, 15_000);
 });

@@ -122,7 +122,7 @@ describe("content-ops CLI", () => {
   it("provides stable human-readable doctor output", async () => {
     const captured = capture();
     expect(await runCli(["doctor", "--mode", "MOCK"], captured.io)).toBe(0);
-    expect(captured.out[0]).toContain("Current Runtime: node v24.19.0");
+    expect(captured.out[0]).toContain(`Current Runtime: node ${process.version}`);
     expect(captured.out[0]).toContain("Project Supported Runtime: >=24 <25");
     expect(captured.out[0]).toContain("Node 20: EOL / UPSTREAM_EOL / NOT_REQUIRED");
     expect(captured.out[0]).toContain("Production Integration Readiness: BLOCKED");
