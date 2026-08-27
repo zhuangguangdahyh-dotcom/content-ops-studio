@@ -34,6 +34,18 @@
       "message": "CANVAS_MATCH passed."
     },
     {
+      "code": "PNG_PRIVACY_METADATA_REMOVED",
+      "status": "PASS",
+      "blocking": false,
+      "message": "PNG_PRIVACY_METADATA_REMOVED passed."
+    },
+    {
+      "code": "PIXEL_STREAM_PRESERVED",
+      "status": "PASS",
+      "blocking": false,
+      "message": "PIXEL_STREAM_PRESERVED passed."
+    },
+    {
       "code": "NO_MISSING_FILE",
       "status": "PASS",
       "blocking": false,
@@ -82,13 +94,25 @@
       "message": "PREVIEW_MATCH passed."
     },
     {
+      "code": "CONTENT_VERSION_MATCH",
+      "status": "PASS",
+      "blocking": false,
+      "message": "CONTENT_VERSION_MATCH passed."
+    },
+    {
       "code": "APPROVAL_CHAIN_MATCH",
       "status": "PASS",
       "blocking": false,
       "message": "APPROVAL_CHAIN_MATCH passed."
+    },
+    {
+      "code": "FINGERPRINT_MATCH",
+      "status": "PASS",
+      "blocking": false,
+      "message": "FINGERPRINT_MATCH passed."
     }
   ],
-  "passed_count": 14,
+  "passed_count": 18,
   "failed_count": 0,
   "hard_block_count": 0,
   "overall_status": "PASSED",

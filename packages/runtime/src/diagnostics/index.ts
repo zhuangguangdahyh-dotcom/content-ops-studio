@@ -59,7 +59,7 @@ export function buildPolicyRuntimeEvidence(
       support_policy_status: "UPSTREAM_EOL",
       policy_reason_code: "UPSTREAM_EOL",
       execution_status: "NOT_REQUIRED",
-      limitations: ["Node 20 is EOL and outside the V0.1.0 support policy."],
+      limitations: ["Node 20 is EOL and outside the V0.2.0 support policy."],
     },
     ...[22, 26].map((major): RuntimeEvidence => ({
       ...base,

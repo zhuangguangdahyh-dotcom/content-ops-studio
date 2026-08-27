@@ -8,7 +8,7 @@
   "visual_plan_version": "VV-1",
   "style_lock_version": "SLV-1",
   "renderer": "mock-renderer",
-  "renderer_version": "0.1.0",
+  "renderer_version": "0.2.0",
   "render_mode": "MOCK",
   "input_assets": [
     {

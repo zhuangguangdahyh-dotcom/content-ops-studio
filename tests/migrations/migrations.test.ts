@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
 import {
   MigrationRegistry,
@@ -190,6 +191,17 @@ describe("schema migration protocol", () => {
     expect(planMigration(baselineMigrationRegistry, "1.0.0", "1.0.0")).toEqual([
       BASELINE_MIGRATION,
     ]);
+  });
+
+  it("records Blueprint 1.1 display migration and PNG sanitization contract conservatively", async () => {
+    const blueprint = JSON.parse(
+      await readFile("plugins/content-ops-studio/templates/feishu/workspace-v1.json", "utf8"),
+    ) as { blueprint_version: string };
+    const migrationNote = await readFile("docs/migrations/workspace-blueprint-1.1.0.md", "utf8");
+    expect(blueprint.blueprint_version).toBe("1.1.0");
+    expect(migrationNote).toContain("No automatic destructive migration");
+    expect(classifySchemaChange("ADD_INDEPENDENT_SCHEMA")).toBe("MINOR");
+    expect(classifySchemaChange("ADD_REQUIRED_FIELD")).toBe("MAJOR");
   });
 
   it("classifies Phase 4B-R contracts as additive and enum expansion conservatively", () => {

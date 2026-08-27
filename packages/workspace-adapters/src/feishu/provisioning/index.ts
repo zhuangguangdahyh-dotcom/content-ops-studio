@@ -182,6 +182,7 @@ export interface FeishuProvisioningAdapter {
   createTable(name: string, primaryField: FeishuFieldRequest): Promise<FeishuCreatedTable>;
   listFields(tableId: string): Promise<FeishuRemoteField[]>;
   createField(tableId: string, request: FeishuFieldRequest): Promise<FeishuRemoteField>;
+  deleteField(tableId: string, fieldId: string): Promise<void>;
   updateField(
     tableId: string,
     fieldId: string,
@@ -396,6 +397,48 @@ export class FeishuProjectProvisioner {
     tableIds[firstTable.logicalKey] = defaultTable.tableId;
     state.remoteIdentifiers[`table:${firstTable.logicalKey}`] = defaultTable.tableId;
     await save(4, `VERIFY_TABLE:${firstTable.logicalKey}`);
+
+    // A newly created Feishu Base currently seeds three non-primary helper fields.
+    // They are not user data and are removed only from the exact default table
+    // created and persisted by this provisioning Run. Existing workspaces, renamed
+    // fields, type mismatches and every other extra field remain untouched.
+    if (
+      state.remoteIdentifiers.defaultTableId === defaultTable.tableId &&
+      state.completedOperations.includes("CREATE_WORKSPACE:REMOTE_SUCCEEDED_LOCAL_SAVED")
+    ) {
+      const defaultAuxiliaryFields = [
+        { fieldName: "单选", type: 3 },
+        { fieldName: "日期", type: 5 },
+        { fieldName: "附件", type: 17 },
+      ] as const;
+      for (const expected of defaultAuxiliaryFields) {
+        if (
+          state.completedOperations.includes(`DELETE_PLATFORM_DEFAULT_FIELD:${expected.fieldName}`)
+        )
+          continue;
+        const fields = await this.options.adapter.listFields(defaultTable.tableId);
+        const matches = fields.filter(
+          (field) => field.fieldName === expected.fieldName && field.type === expected.type,
+        );
+        if (matches.length > 1)
+          throw feishuError(
+            "FEISHU_SCHEMA_DRIFT",
+            `Multiple platform default fields matched ${expected.fieldName}; cleanup is ambiguous.`,
+            { scope: "provisioning" },
+          );
+        const match = matches[0];
+        if (!match) continue;
+        const primaryFieldId = await this.options.adapter.getPrimaryFieldId?.(defaultTable.tableId);
+        if (primaryFieldId === match.fieldId)
+          throw feishuError(
+            "FEISHU_SCHEMA_DRIFT",
+            `Platform default cleanup refused to delete primary field ${expected.fieldName}.`,
+            { scope: "provisioning" },
+          );
+        await this.options.adapter.deleteField(defaultTable.tableId, match.fieldId);
+        await save(4, `DELETE_PLATFORM_DEFAULT_FIELD:${expected.fieldName}`);
+      }
+    }
 
     for (const table of this.options.blueprint.tables.slice(1)) {
       const existing = (await this.options.adapter.listTables()).find(

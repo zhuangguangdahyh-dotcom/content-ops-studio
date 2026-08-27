@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/png-metadata-sanitization-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "PNG Metadata Sanitization Report",
+  "description": "Evidence that privacy-bearing PNG chunks were removed without re-encoding the compressed pixel stream.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "final_manifest_id",
+    "pages",
+    "page_count",
+    "removed_chunk_count",
+    "pixel_reencoded",
+    "generated_at",
+    "run_id",
+    "schema_version"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^PSR-[A-Z0-9-]+$" },
+    "final_manifest_id": { "type": "string", "pattern": "^FINAL-[A-Z0-9-]+$" },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "page_number",
+          "filename",
+          "source_sha256",
+          "output_sha256",
+          "width",
+          "height",
+          "bit_depth",
+          "color_type",
+          "idat_sha256",
+          "removed_chunk_count",
+          "removed_chunk_types",
+          "pixel_stream_unchanged",
+          "dimensions_unchanged",
+          "bit_depth_unchanged",
+          "color_type_unchanged",
+          "pixel_reencoded"
+        ],
+        "properties": {
+          "page_number": { "type": "integer", "minimum": 1 },
+          "filename": {
+            "type": "string",
+            "pattern": "^[0-9]{2,3}-(?:cover|content|summary)\\.png$"
+          },
+          "source_sha256": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+          "output_sha256": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+          "width": { "type": "integer", "minimum": 1 },
+          "height": { "type": "integer", "minimum": 1 },
+          "bit_depth": { "type": "integer", "enum": [1, 2, 4, 8, 16] },
+          "color_type": { "type": "integer", "enum": [0, 2, 3, 4, 6] },
+          "idat_sha256": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+          "removed_chunk_count": { "type": "integer", "minimum": 0 },
+          "removed_chunk_types": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "enum": ["caBX", "eXIf", "tEXt", "zTXt", "iTXt", "tIME"] }
+          },
+          "pixel_stream_unchanged": { "const": true },
+          "dimensions_unchanged": { "const": true },
+          "bit_depth_unchanged": { "const": true },
+          "color_type_unchanged": { "const": true },
+          "pixel_reencoded": { "const": false }
+        }
+      }
+    },
+    "page_count": { "type": "integer", "minimum": 1 },
+    "removed_chunk_count": { "type": "integer", "minimum": 0 },
+    "pixel_reencoded": { "const": false },
+    "generated_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" }
+  }
+}

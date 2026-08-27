@@ -110,11 +110,209 @@ const RECOMMENDED_PROFILE_FIELDS = [
   "core_content_directions",
 ] as const;
 
+const PROJECT_CONFIRMATION_FIELDS = [
+  "project_id",
+  "project_name",
+  "subject_name",
+  "subject_type",
+  "industry",
+  "core_business_or_products",
+  "audience_profile",
+  "content_objectives",
+  "core_content_directions",
+  "target_platforms",
+  "primary_platform",
+  "industry_pack",
+  "platform_pack",
+] as const;
+
+const PROFILE_FIELD_NAME = /^[a-z][a-z0-9_]*$/;
+const PENDING_MARKERS = new Set([
+  "pending",
+  "pending_confirmation",
+  "tbd",
+  "to_be_confirmed",
+  "unknown",
+  "待定",
+  "待确认",
+  "待operator确认",
+  "未知",
+]);
+
+export interface ProjectProfileGapReport {
+  gap_report_id: string;
+  project_id: string;
+  known_fields: string[];
+  missing_required_fields: string[];
+  missing_recommended_fields: string[];
+  conflicting_fields: Array<{ field: string; reason: string }>;
+  inferred_fields: Array<{
+    field: string;
+    value_summary: string;
+    basis: string;
+    confirmed: boolean;
+  }>;
+  operator_known: { role: "OPERATOR"; known_fields: string[] };
+  subject_known: { role: "SUBJECT"; known_fields: string[] };
+  audience_known: { role: "AUDIENCE"; known_fields: string[] };
+  material_blockers: string[];
+  non_blocking_gaps: string[];
+  recommended_questions: string[];
+  profile_completeness: number;
+  ready_for_project_confirmation: boolean;
+  ready_for_painpoint_research: boolean;
+  created_at: string;
+  run_id: string;
+  schema_version: string;
+  extensions: Record<string, unknown>;
+}
+
 function hasValue(value: unknown): boolean {
   if (value === null || value === undefined || value === "") return false;
   if (Array.isArray(value)) return value.length > 0;
   if (typeof value === "object") return Object.keys(value).length > 0;
   return true;
+}
+
+function isPendingValue(value: unknown): boolean {
+  if (typeof value === "string")
+    return PENDING_MARKERS.has(value.normalize("NFKC").trim().toLowerCase());
+  if (Array.isArray(value)) return value.some(isPendingValue);
+  return false;
+}
+
+function stringList(value: unknown, label: string): string[] {
+  if (value === undefined) return [];
+  if (!Array.isArray(value) || value.some((item) => typeof item !== "string"))
+    throw new Error(`PROJECT_PROFILE_DISCOVERY_${label.toUpperCase()}_INVALID`);
+  const values = [...new Set(value as string[])].sort();
+  if (values.some((field) => !PROFILE_FIELD_NAME.test(field)))
+    throw new Error(`PROJECT_PROFILE_DISCOVERY_${label.toUpperCase()}_INVALID`);
+  return values;
+}
+
+function valueSummary(value: unknown): string {
+  const serialized = typeof value === "string" ? value : JSON.stringify(value);
+  return (serialized || "Value inferred from the current Operator input.").slice(0, 500);
+}
+
+export function assessProjectProfileDiscovery(
+  profile: Record<string, unknown>,
+): ProjectProfileGapReport {
+  const extensions =
+    profile.extensions &&
+    typeof profile.extensions === "object" &&
+    !Array.isArray(profile.extensions)
+      ? (profile.extensions as Record<string, unknown>)
+      : {};
+  const unresolved = stringList(extensions.unresolved_fields, "unresolved_fields");
+  const inferred = stringList(extensions.inferred_fields, "inferred_fields");
+  const explicitMaterial = stringList(extensions.material_blockers, "material_blockers");
+  const conflictFields = stringList(extensions.conflicting_fields, "conflicting_fields");
+  const directPending = Object.keys(profile).filter((field) => isPendingValue(profile[field]));
+  const unresolvedFields = [...new Set([...unresolved, ...directPending])].sort();
+  const missingRequired = PROJECT_CONFIRMATION_FIELDS.filter(
+    (field) => !hasValue(profile[field]) || unresolvedFields.includes(field),
+  );
+  const missingRecommended = RECOMMENDED_PROFILE_FIELDS.filter(
+    (field) => !hasValue(profile[field]) || unresolvedFields.includes(field),
+  );
+  const materialBlockers = [...new Set([...missingRequired, ...explicitMaterial])].sort();
+  const nonBlockingGaps = unresolvedFields
+    .filter((field) => !materialBlockers.includes(field))
+    .sort();
+  const inferredFields = inferred.map((field) => ({
+    field,
+    value_summary: valueSummary(profile[field]),
+    basis: "Inferred from the current Operator input and awaiting confirmation.",
+    confirmed: false,
+  }));
+  const unavailable = new Set([...unresolvedFields, ...inferred]);
+  const knownFields = Object.keys(profile)
+    .filter(
+      (field) =>
+        PROFILE_FIELD_NAME.test(field) &&
+        !["extensions", "created_at", "updated_at"].includes(field) &&
+        hasValue(profile[field]) &&
+        !isPendingValue(profile[field]) &&
+        !unavailable.has(field),
+    )
+    .sort();
+  const subjectFields = new Set([
+    "subject",
+    "subject_name",
+    "subject_type",
+    "public_identity_and_intro",
+    "industry",
+    "industry_subfields",
+    "core_business_or_products",
+    "service_region",
+    "price_band",
+    "professional_advantages",
+    "personality_and_expression_advantages",
+  ]);
+  const audienceFields = new Set(["audience_profile", "audience_decision_characteristics"]);
+  const operatorFields = new Set(["operator_notes"]);
+  const conflicts = conflictFields.map((field) => ({
+    field,
+    reason: "Conflicting values were declared by the discovery caller.",
+  }));
+  const assessedFields = new Set([
+    ...PROJECT_CONFIRMATION_FIELDS,
+    ...RECOMMENDED_PROFILE_FIELDS,
+    ...unresolvedFields,
+    ...inferred,
+  ]);
+  const incomplete = new Set([
+    ...missingRequired,
+    ...missingRecommended,
+    ...nonBlockingGaps,
+    ...inferred,
+    ...conflictFields,
+  ]);
+  const completeness =
+    assessedFields.size === 0
+      ? 1
+      : Math.round(((assessedFields.size - incomplete.size) / assessedFields.size) * 1000) / 1000;
+  const readyForProjectConfirmation = materialBlockers.length === 0 && conflicts.length === 0;
+  const researchReadiness = validateProjectResearchReadiness(profile);
+  return {
+    gap_report_id: `PGR-${String(profile.project_id).replace(/^PRJ-/, "")}`,
+    project_id: String(profile.project_id),
+    known_fields: knownFields,
+    missing_required_fields: [...missingRequired].sort(),
+    missing_recommended_fields: [...missingRecommended].sort(),
+    conflicting_fields: conflicts,
+    inferred_fields: inferredFields,
+    operator_known: {
+      role: "OPERATOR",
+      known_fields: knownFields.filter((field) => operatorFields.has(field)),
+    },
+    subject_known: {
+      role: "SUBJECT",
+      known_fields: knownFields.filter((field) => subjectFields.has(field)),
+    },
+    audience_known: {
+      role: "AUDIENCE",
+      known_fields: knownFields.filter((field) => audienceFields.has(field)),
+    },
+    material_blockers: materialBlockers,
+    non_blocking_gaps: nonBlockingGaps,
+    recommended_questions: unresolvedFields.map(
+      (field) => `Confirm ${field} when it becomes material to the next workflow stage.`,
+    ),
+    profile_completeness: Math.max(0, completeness),
+    ready_for_project_confirmation: readyForProjectConfirmation,
+    ready_for_painpoint_research: readyForProjectConfirmation && researchReadiness.ready,
+    created_at: String(profile.updated_at ?? profile.created_at),
+    run_id: String(profile.last_run_id),
+    schema_version: String(profile.schema_version),
+    extensions: {
+      source: "project_profile.extensions",
+      explicit_unresolved_field_count: unresolved.length,
+      direct_pending_field_count: directPending.length,
+    },
+  };
 }
 
 export function validateProjectResearchReadiness(profile: Record<string, unknown>): {

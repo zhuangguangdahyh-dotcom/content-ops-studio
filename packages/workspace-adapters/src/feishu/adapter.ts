@@ -255,6 +255,19 @@ export class FeishuWorkspaceAdapter {
     };
   }
 
+  async deleteField(tableId: string, fieldId: string): Promise<void> {
+    const token = this.#token();
+    await this.#transport.request({
+      operation: "DELETE_FIELD",
+      method: "DELETE",
+      path: `/open-apis/bitable/v1/apps/${segment(token)}/tables/${segment(tableId)}/fields/${segment(fieldId)}`,
+    });
+    if ((await this.listFields(tableId)).some((field) => field.fieldId === fieldId))
+      throw feishuError("FEISHU_SCHEMA_DRIFT", "Default field deletion was not verified.", {
+        scope: "DELETE_FIELD",
+      });
+  }
+
   async updateField(
     tableId: string,
     fieldId: string,

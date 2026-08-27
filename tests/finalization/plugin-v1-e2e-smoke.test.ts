@@ -36,6 +36,7 @@ describe("PLUGIN_V1_E2E_SMOKE", () => {
       "VERIFY_GROUP_EVIDENCE",
       "BUILD_FINAL_MANIFEST",
       "BUILD_FINAL_SET_FINGERPRINT",
+      "SANITIZE_FINAL_PNG_METADATA",
       "BUILD_DELIVERY_PACKAGE",
       "VERIFY_DELIVERY",
       "WRITE_ARCHIVE_STATE",
@@ -46,6 +47,7 @@ describe("PLUGIN_V1_E2E_SMOKE", () => {
       expect.arrayContaining([
         "content_ops_plan_finalization",
         "content_ops_finalize_delivery",
+        "content_ops_export_sanitized_pngs",
         "content_ops_verify_final_delivery",
       ]),
     );

@@ -21,4 +21,25 @@ describe("Image Production MCP tools", () => {
       expect(tool.inputSchema.safeParse({ unexpected: true }).success).toBe(false);
     }
   });
+
+  it("rejects a Run ID that the image-production evidence schemas cannot retain", () => {
+    const tool = IMAGE_PRODUCTION_TOOL_DEFINITIONS.find(
+      (item) => item.name === "content_ops_get_visual_direction_candidates",
+    );
+    expect(tool).toBeDefined();
+    expect(
+      tool?.inputSchema.safeParse({
+        project_id: "PRJ-20990101-DEMO",
+        content_id: "C-0001",
+        run_id: "RUN-20990101-010203-C001",
+      }).success,
+    ).toBe(true);
+    expect(
+      tool?.inputSchema.safeParse({
+        project_id: "PRJ-20990101-DEMO",
+        content_id: "C-0001",
+        run_id: "RUN-20990101-010203-C001X",
+      }).success,
+    ).toBe(false);
+  });
 });

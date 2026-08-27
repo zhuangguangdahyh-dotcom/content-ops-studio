@@ -18,10 +18,12 @@ The isolated `FINALIZATION_E2E_FIXTURE` is marked `FIXTURE_APPROVAL / TEST_ONLY 
 4. Verify per-page and group evidence.
 5. write-once or reuse `FINAL_MANIFEST_V1`.
 6. build the canonical `FINAL_SET_FINGERPRINT`.
-7. copy only approved formal pages and approved Contact Sheets into `DELIVERY_PACKAGE_V1`.
-8. read-verify 16 delivery integrity checks with zero hard blocks.
-9. archive this Final Set version and mark it current.
-10. stop. Workspace metadata sync is a separate explicit action.
+7. remove privacy-bearing PNG metadata chunks without decoding or re-encoding pixels.
+8. copy only sanitized approved formal pages and approved Contact Sheets into `DELIVERY_PACKAGE_V1`.
+9. read-verify 18 delivery integrity checks with zero hard blocks, including absent privacy chunks and unchanged IDAT bytes.
+10. archive this Final Set version and mark it current.
+11. optionally export sanitized final pages to a marker-owned leaf under an Operator-specified directory.
+12. stop. Workspace metadata sync is a separate explicit action.
 
 Normal Finalization makes zero ImageGen calls, zero Renderer calls, zero implicit Feishu writes and zero attachment uploads.
 
@@ -40,10 +42,13 @@ previews/
   contact-sheet-186.png
 reports/
   finalization-summary.json
+  png-metadata-sanitization-report.json
   delivery-integrity-report.json
 ```
 
 The Delivery Package contains no candidate, rejected, failed, superseded, debug, fixture, blind-regression or temporary asset. Audit History remains separate and append-only.
+
+The original approved asset remains byte-for-byte unchanged and stays bound to G5 and the immutable Final Manifest. Delivery always removes privacy-bearing `caBX`, `eXIf`, and `tIME`, and removes `tEXt`, `zTXt`, or `iTXt` only when its metadata is privacy-bearing. Non-private textual chunks remain intact. Retained PNG chunks are copied verbatim, preserving Canvas, bit depth, color type and every compressed `IDAT` byte. `content_ops_export_sanitized_pngs` requires explicit confirmation and an absolute destination; it never writes inside Plugin Root.
 
 ## Immutable version and recovery behavior
 

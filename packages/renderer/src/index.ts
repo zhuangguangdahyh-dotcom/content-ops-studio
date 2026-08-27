@@ -96,7 +96,7 @@ export class MockRendererAdapter implements RendererAdapter {
       visual_plan_version: plan.visual_plan_version,
       style_lock_version: request.style_lock.style_lock_version,
       renderer: "mock-renderer",
-      renderer_version: "0.1.0",
+      renderer_version: "0.2.0",
       render_mode: "MOCK",
       input_assets: [request.background_asset],
       output_asset: null,

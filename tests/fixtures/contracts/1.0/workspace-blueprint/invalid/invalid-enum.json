@@ -1,6 +1,6 @@
 {
   "blueprint_id": "WBP-CONTENT-OPS-V1",
-  "blueprint_version": "1.0.0",
+  "blueprint_version": "1.1.0",
   "provider": "INVALID_ENUM_VALUE",
   "display_name_pattern": "<project name>｜图文内容工作台",
   "tables": [
@@ -25,6 +25,63 @@
           "defaultValue": null,
           "options": [],
           "description": "项目名称的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigIndustry",
+          "displayName": "所属行业",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "所属行业的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigIndustrySubfields",
+          "displayName": "细分领域",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "MULTI_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "细分领域的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigAudienceProfile",
+          "displayName": "目标客户画像",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "目标客户画像的稳定逻辑字段。",
           "targetTableLogicalKey": "",
           "relationship": "NONE",
           "bidirectional": false
@@ -155,23 +212,23 @@
           "options": [
             {
               "code": "PERSON",
-              "displayName": "PERSON"
+              "displayName": "个人"
             },
             {
               "code": "BRAND",
-              "displayName": "BRAND"
+              "displayName": "品牌"
             },
             {
               "code": "ORGANIZATION",
-              "displayName": "ORGANIZATION"
+              "displayName": "机构"
             },
             {
               "code": "STORE",
-              "displayName": "STORE"
+              "displayName": "门店"
             },
             {
               "code": "PRODUCT",
-              "displayName": "PRODUCT"
+              "displayName": "产品"
             }
           ],
           "description": "主体类型的稳定逻辑字段。",
@@ -194,44 +251,6 @@
           "defaultValue": null,
           "options": [],
           "description": "对外身份与基础介绍的稳定逻辑字段。",
-          "targetTableLogicalKey": "",
-          "relationship": "NONE",
-          "bidirectional": false
-        },
-        {
-          "logicalKey": "projectConfigIndustry",
-          "displayName": "所属行业",
-          "tableLogicalKey": "projectConfig",
-          "fieldType": "TEXT",
-          "required": false,
-          "primary": false,
-          "hiddenByDefault": false,
-          "systemManaged": false,
-          "userManaged": true,
-          "immutableAfterCreate": false,
-          "ownerSkill": "project-initialization",
-          "defaultValue": null,
-          "options": [],
-          "description": "所属行业的稳定逻辑字段。",
-          "targetTableLogicalKey": "",
-          "relationship": "NONE",
-          "bidirectional": false
-        },
-        {
-          "logicalKey": "projectConfigIndustrySubfields",
-          "displayName": "细分领域",
-          "tableLogicalKey": "projectConfig",
-          "fieldType": "MULTI_SELECT",
-          "required": false,
-          "primary": false,
-          "hiddenByDefault": false,
-          "systemManaged": false,
-          "userManaged": true,
-          "immutableAfterCreate": false,
-          "ownerSkill": "project-initialization",
-          "defaultValue": null,
-          "options": [],
-          "description": "细分领域的稳定逻辑字段。",
           "targetTableLogicalKey": "",
           "relationship": "NONE",
           "bidirectional": false
@@ -289,25 +308,6 @@
           "defaultValue": null,
           "options": [],
           "description": "价格带或客单价的稳定逻辑字段。",
-          "targetTableLogicalKey": "",
-          "relationship": "NONE",
-          "bidirectional": false
-        },
-        {
-          "logicalKey": "projectConfigAudienceProfile",
-          "displayName": "目标客户画像",
-          "tableLogicalKey": "projectConfig",
-          "fieldType": "LONG_TEXT",
-          "required": false,
-          "primary": false,
-          "hiddenByDefault": false,
-          "systemManaged": false,
-          "userManaged": true,
-          "immutableAfterCreate": false,
-          "ownerSkill": "project-initialization",
-          "defaultValue": null,
-          "options": [],
-          "description": "目标客户画像的稳定逻辑字段。",
           "targetTableLogicalKey": "",
           "relationship": "NONE",
           "bidirectional": false
@@ -382,7 +382,36 @@
           "immutableAfterCreate": false,
           "ownerSkill": "project-initialization",
           "defaultValue": null,
-          "options": [],
+          "options": [
+            {
+              "code": "AWARENESS",
+              "displayName": "认知建立"
+            },
+            {
+              "code": "TRUST",
+              "displayName": "信任建立"
+            },
+            {
+              "code": "EDUCATION",
+              "displayName": "知识教育"
+            },
+            {
+              "code": "LEAD_GENERATION",
+              "displayName": "线索获取"
+            },
+            {
+              "code": "CONSULTATION",
+              "displayName": "咨询承接"
+            },
+            {
+              "code": "CONVERSION",
+              "displayName": "成交转化"
+            },
+            {
+              "code": "RETENTION",
+              "displayName": "留存复购"
+            }
+          ],
           "description": "内容目标的稳定逻辑字段。",
           "targetTableLogicalKey": "",
           "relationship": "NONE",
@@ -713,7 +742,7 @@
         },
         {
           "logicalKey": "projectConfigSchemaVersion",
-          "displayName": "Schema版本",
+          "displayName": "数据结构版本",
           "tableLogicalKey": "projectConfig",
           "fieldType": "TEXT",
           "required": true,
@@ -803,19 +832,19 @@
           "options": [
             {
               "code": "OPERATOR_INPUT",
-              "displayName": "OPERATOR_INPUT"
+              "displayName": "操作者输入"
             },
             {
               "code": "CUSTOMER_MATERIAL",
-              "displayName": "CUSTOMER_MATERIAL"
+              "displayName": "客户资料"
             },
             {
               "code": "MIGRATED",
-              "displayName": "MIGRATED"
+              "displayName": "历史迁移"
             },
             {
               "code": "MOCK",
-              "displayName": "MOCK"
+              "displayName": "测试数据"
             }
           ],
           "description": "数据来源的稳定逻辑字段。",
@@ -972,31 +1001,31 @@
           "options": [
             {
               "code": "PROBLEM_AWARENESS",
-              "displayName": "PROBLEM_AWARENESS"
+              "displayName": "问题意识"
             },
             {
               "code": "ACTIVE_SEARCH",
-              "displayName": "ACTIVE_SEARCH"
+              "displayName": "主动搜索"
             },
             {
               "code": "SOLUTION_COMPARISON",
-              "displayName": "SOLUTION_COMPARISON"
+              "displayName": "方案比较"
             },
             {
               "code": "RISK_EVALUATION",
-              "displayName": "RISK_EVALUATION"
+              "displayName": "风险评估"
             },
             {
               "code": "PURCHASE_DECISION",
-              "displayName": "PURCHASE_DECISION"
+              "displayName": "购买决策"
             },
             {
               "code": "USAGE_EXPERIENCE",
-              "displayName": "USAGE_EXPERIENCE"
+              "displayName": "使用体验"
             },
             {
               "code": "REPURCHASE_REFERRAL",
-              "displayName": "REPURCHASE_REFERRAL"
+              "displayName": "复购与转介绍"
             }
           ],
           "description": "客户决策阶段的稳定逻辑字段。",
@@ -1172,59 +1201,59 @@
           "options": [
             {
               "code": "OFFICIAL_SOURCE",
-              "displayName": "OFFICIAL_SOURCE"
+              "displayName": "官方来源"
             },
             {
               "code": "FIRST_PARTY_DATA",
-              "displayName": "FIRST_PARTY_DATA"
+              "displayName": "第一方数据"
             },
             {
               "code": "CUSTOMER_MATERIAL",
-              "displayName": "CUSTOMER_MATERIAL"
+              "displayName": "客户资料"
             },
             {
               "code": "CUSTOMER_INTERVIEW",
-              "displayName": "CUSTOMER_INTERVIEW"
+              "displayName": "客户访谈"
             },
             {
               "code": "INDUSTRY_REPORT",
-              "displayName": "INDUSTRY_REPORT"
+              "displayName": "行业报告"
             },
             {
               "code": "PLATFORM_DOCUMENTATION",
-              "displayName": "PLATFORM_DOCUMENTATION"
+              "displayName": "平台文档"
             },
             {
               "code": "SOCIAL_COMMENT",
-              "displayName": "SOCIAL_COMMENT"
+              "displayName": "社交平台评论"
             },
             {
               "code": "PUBLIC_REVIEW",
-              "displayName": "PUBLIC_REVIEW"
+              "displayName": "公开评价"
             },
             {
               "code": "COMPETITOR_CONTENT",
-              "displayName": "COMPETITOR_CONTENT"
+              "displayName": "竞品内容"
             },
             {
               "code": "QUESTION_AND_ANSWER",
-              "displayName": "QUESTION_AND_ANSWER"
+              "displayName": "问答内容"
             },
             {
               "code": "FORUM",
-              "displayName": "FORUM"
+              "displayName": "论坛"
             },
             {
               "code": "NEWS",
-              "displayName": "NEWS"
+              "displayName": "新闻报道"
             },
             {
               "code": "MANUAL_SOURCE",
-              "displayName": "MANUAL_SOURCE"
+              "displayName": "人工提供来源"
             },
             {
               "code": "MODEL_HYPOTHESIS",
-              "displayName": "MODEL_HYPOTHESIS"
+              "displayName": "模型假设"
             }
           ],
           "description": "证据来源类型的稳定逻辑字段。",
@@ -1305,19 +1334,19 @@
           "options": [
             {
               "code": "A_DIRECT_STRONG",
-              "displayName": "A_DIRECT_STRONG"
+              "displayName": "直接强证据"
             },
             {
               "code": "B_MULTI_SOURCE",
-              "displayName": "B_MULTI_SOURCE"
+              "displayName": "多来源交叉证据"
             },
             {
               "code": "C_SINGLE_OR_INDIRECT",
-              "displayName": "C_SINGLE_OR_INDIRECT"
+              "displayName": "单一或间接证据"
             },
             {
               "code": "D_HYPOTHESIS",
-              "displayName": "D_HYPOTHESIS"
+              "displayName": "待验证假设"
             }
           ],
           "description": "证据可信度的稳定逻辑字段。",
@@ -1341,15 +1370,15 @@
           "options": [
             {
               "code": "SUPPLEMENTARY",
-              "displayName": "SUPPLEMENTARY"
+              "displayName": "补充"
             },
             {
               "code": "IMPORTANT",
-              "displayName": "IMPORTANT"
+              "displayName": "重要"
             },
             {
               "code": "CORE",
-              "displayName": "CORE"
+              "displayName": "核心"
             }
           ],
           "description": "痛点优先级的稳定逻辑字段。",
@@ -1373,19 +1402,19 @@
           "options": [
             {
               "code": "LOW",
-              "displayName": "LOW"
+              "displayName": "低"
             },
             {
               "code": "MEDIUM",
-              "displayName": "MEDIUM"
+              "displayName": "中"
             },
             {
               "code": "HIGH",
-              "displayName": "HIGH"
+              "displayName": "高"
             },
             {
               "code": "CRITICAL",
-              "displayName": "CRITICAL"
+              "displayName": "最高"
             }
           ],
           "description": "投流优先级的稳定逻辑字段。",
@@ -1506,15 +1535,15 @@
           "options": [
             {
               "code": "LOW",
-              "displayName": "LOW"
+              "displayName": "低"
             },
             {
               "code": "MEDIUM",
-              "displayName": "MEDIUM"
+              "displayName": "中"
             },
             {
               "code": "HIGH",
-              "displayName": "HIGH"
+              "displayName": "高"
             }
           ],
           "description": "重复风险的稳定逻辑字段。",
@@ -1600,7 +1629,7 @@
         },
         {
           "logicalKey": "painpointsSchemaVersion",
-          "displayName": "Schema版本",
+          "displayName": "数据结构版本",
           "tableLogicalKey": "painpoints",
           "fieldType": "TEXT",
           "required": true,
@@ -1730,6 +1759,44 @@
           "bidirectional": false
         },
         {
+          "logicalKey": "contentsPublishTitle",
+          "displayName": "发布标题",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "发布标题的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsPublishBody",
+          "displayName": "发布正文",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "发布正文的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
           "logicalKey": "contentsPrimaryPainpoint",
           "displayName": "关联痛点",
           "tableLogicalKey": "contents",
@@ -1780,7 +1847,48 @@
           "immutableAfterCreate": false,
           "ownerSkill": "content-creation",
           "defaultValue": null,
-          "options": [],
+          "options": [
+            {
+              "code": "PROBLEM_DECONSTRUCTION",
+              "displayName": "问题拆解"
+            },
+            {
+              "code": "CHECKLIST",
+              "displayName": "检查清单"
+            },
+            {
+              "code": "MISCONCEPTION",
+              "displayName": "误区纠正"
+            },
+            {
+              "code": "CASE",
+              "displayName": "案例解析"
+            },
+            {
+              "code": "STEPS",
+              "displayName": "操作步骤"
+            },
+            {
+              "code": "VIEWPOINT",
+              "displayName": "观点表达"
+            },
+            {
+              "code": "COMPARISON",
+              "displayName": "对比分析"
+            },
+            {
+              "code": "DIAGNOSIS",
+              "displayName": "诊断分析"
+            },
+            {
+              "code": "DECISION_GUIDANCE",
+              "displayName": "决策指导"
+            },
+            {
+              "code": "STORY",
+              "displayName": "故事叙述"
+            }
+          ],
           "description": "内容结构类型的稳定逻辑字段。",
           "targetTableLogicalKey": "",
           "relationship": "NONE",
@@ -1894,7 +2002,36 @@
           "immutableAfterCreate": false,
           "ownerSkill": "content-creation",
           "defaultValue": null,
-          "options": [],
+          "options": [
+            {
+              "code": "AWARENESS",
+              "displayName": "认知建立"
+            },
+            {
+              "code": "TRUST",
+              "displayName": "信任建立"
+            },
+            {
+              "code": "EDUCATION",
+              "displayName": "知识教育"
+            },
+            {
+              "code": "LEAD_GENERATION",
+              "displayName": "线索获取"
+            },
+            {
+              "code": "CONSULTATION",
+              "displayName": "咨询承接"
+            },
+            {
+              "code": "CONVERSION",
+              "displayName": "成交转化"
+            },
+            {
+              "code": "RETENTION",
+              "displayName": "留存复购"
+            }
+          ],
           "description": "内容目标的稳定逻辑字段。",
           "targetTableLogicalKey": "",
           "relationship": "NONE",
@@ -2015,25 +2152,6 @@
           "bidirectional": false
         },
         {
-          "logicalKey": "contentsPublishTitle",
-          "displayName": "发布标题",
-          "tableLogicalKey": "contents",
-          "fieldType": "TEXT",
-          "required": false,
-          "primary": false,
-          "hiddenByDefault": false,
-          "systemManaged": false,
-          "userManaged": true,
-          "immutableAfterCreate": false,
-          "ownerSkill": "content-creation",
-          "defaultValue": null,
-          "options": [],
-          "description": "发布标题的稳定逻辑字段。",
-          "targetTableLogicalKey": "",
-          "relationship": "NONE",
-          "bidirectional": false
-        },
-        {
           "logicalKey": "contentsTitleCharacterCount",
           "displayName": "标题字符数",
           "tableLogicalKey": "contents",
@@ -2053,25 +2171,6 @@
           "bidirectional": false
         },
         {
-          "logicalKey": "contentsPublishBody",
-          "displayName": "发布正文",
-          "tableLogicalKey": "contents",
-          "fieldType": "LONG_TEXT",
-          "required": false,
-          "primary": false,
-          "hiddenByDefault": false,
-          "systemManaged": false,
-          "userManaged": true,
-          "immutableAfterCreate": false,
-          "ownerSkill": "content-creation",
-          "defaultValue": null,
-          "options": [],
-          "description": "发布正文的稳定逻辑字段。",
-          "targetTableLogicalKey": "",
-          "relationship": "NONE",
-          "bidirectional": false
-        },
-        {
           "logicalKey": "contentsPromotionSuitability",
           "displayName": "投流适配度",
           "tableLogicalKey": "contents",
@@ -2084,7 +2183,24 @@
           "immutableAfterCreate": false,
           "ownerSkill": "content-creation",
           "defaultValue": null,
-          "options": [],
+          "options": [
+            {
+              "code": "HIGH",
+              "displayName": "高"
+            },
+            {
+              "code": "MEDIUM",
+              "displayName": "中"
+            },
+            {
+              "code": "LOW",
+              "displayName": "低"
+            },
+            {
+              "code": "NOT_RECOMMENDED",
+              "displayName": "不建议"
+            }
+          ],
           "description": "投流适配度的稳定逻辑字段。",
           "targetTableLogicalKey": "",
           "relationship": "NONE",
@@ -2125,15 +2241,15 @@
           "options": [
             {
               "code": "LOW",
-              "displayName": "LOW"
+              "displayName": "低"
             },
             {
               "code": "MEDIUM",
-              "displayName": "MEDIUM"
+              "displayName": "中"
             },
             {
               "code": "HIGH",
-              "displayName": "HIGH"
+              "displayName": "高"
             }
           ],
           "description": "内容重复风险的稳定逻辑字段。",
@@ -2420,7 +2536,28 @@
           "immutableAfterCreate": false,
           "ownerSkill": "content-creation",
           "defaultValue": null,
-          "options": [],
+          "options": [
+            {
+              "code": "OPERATOR",
+              "displayName": "操作者创建"
+            },
+            {
+              "code": "RESEARCH",
+              "displayName": "研究生成"
+            },
+            {
+              "code": "FEEDBACK",
+              "displayName": "反馈修订"
+            },
+            {
+              "code": "MIGRATION",
+              "displayName": "历史迁移"
+            },
+            {
+              "code": "MOCK",
+              "displayName": "测试数据"
+            }
+          ],
           "description": "创建来源的稳定逻辑字段。",
           "targetTableLogicalKey": "",
           "relationship": "NONE",
@@ -2542,7 +2679,7 @@
         },
         {
           "logicalKey": "contentsStyleLockVersion",
-          "displayName": "Style Lock版本",
+          "displayName": "样式锁定版本",
           "tableLogicalKey": "contents",
           "fieldType": "TEXT",
           "required": true,
@@ -2561,7 +2698,7 @@
         },
         {
           "logicalKey": "contentsSchemaVersion",
-          "displayName": "Schema版本",
+          "displayName": "数据结构版本",
           "tableLogicalKey": "contents",
           "fieldType": "TEXT",
           "required": true,
@@ -2722,7 +2859,32 @@
           "immutableAfterCreate": false,
           "ownerSkill": "project-learning",
           "defaultValue": null,
-          "options": [],
+          "options": [
+            {
+              "code": "USER_FEEDBACK",
+              "displayName": "用户反馈"
+            },
+            {
+              "code": "PROJECT_LONG_TERM_RULE",
+              "displayName": "项目长期规则"
+            },
+            {
+              "code": "PROJECT_PROHIBITION",
+              "displayName": "项目禁用规则"
+            },
+            {
+              "code": "INDUSTRY_RULE_CANDIDATE",
+              "displayName": "行业规则候选"
+            },
+            {
+              "code": "PLATFORM_RULE_CANDIDATE",
+              "displayName": "平台规则候选"
+            },
+            {
+              "code": "PLUGIN_CORE_RULE_CANDIDATE",
+              "displayName": "插件核心规则候选"
+            }
+          ],
           "description": "条目类型的稳定逻辑字段。",
           "targetTableLogicalKey": "",
           "relationship": "NONE",
@@ -2741,7 +2903,28 @@
           "immutableAfterCreate": false,
           "ownerSkill": "project-learning",
           "defaultValue": null,
-          "options": [],
+          "options": [
+            {
+              "code": "PREFERENCE",
+              "displayName": "偏好"
+            },
+            {
+              "code": "HARD_REQUIREMENT",
+              "displayName": "硬性要求"
+            },
+            {
+              "code": "PROHIBITION",
+              "displayName": "禁止项"
+            },
+            {
+              "code": "CORRECTION",
+              "displayName": "纠正规则"
+            },
+            {
+              "code": "WORKFLOW_RULE",
+              "displayName": "工作流规则"
+            }
+          ],
           "description": "规则性质的稳定逻辑字段。",
           "targetTableLogicalKey": "",
           "relationship": "NONE",
@@ -2817,7 +3000,28 @@
           "immutableAfterCreate": false,
           "ownerSkill": "project-learning",
           "defaultValue": null,
-          "options": [],
+          "options": [
+            {
+              "code": "THIS_TASK",
+              "displayName": "当前任务"
+            },
+            {
+              "code": "CURRENT_PROJECT",
+              "displayName": "当前项目"
+            },
+            {
+              "code": "INDUSTRY_PACK_CANDIDATE",
+              "displayName": "行业包候选"
+            },
+            {
+              "code": "PLATFORM_PACK_CANDIDATE",
+              "displayName": "平台包候选"
+            },
+            {
+              "code": "PLUGIN_CORE_CANDIDATE",
+              "displayName": "插件核心候选"
+            }
+          ],
           "description": "生效范围的稳定逻辑字段。",
           "targetTableLogicalKey": "",
           "relationship": "NONE",
@@ -2877,19 +3081,19 @@
           "options": [
             {
               "code": "LOW",
-              "displayName": "LOW"
+              "displayName": "低"
             },
             {
               "code": "MEDIUM",
-              "displayName": "MEDIUM"
+              "displayName": "中"
             },
             {
               "code": "HIGH",
-              "displayName": "HIGH"
+              "displayName": "高"
             },
             {
               "code": "CRITICAL",
-              "displayName": "CRITICAL"
+              "displayName": "最高"
             }
           ],
           "description": "优先级的稳定逻辑字段。",
@@ -3129,7 +3333,7 @@
         },
         {
           "logicalKey": "rulesAndFeedbackSchemaVersion",
-          "displayName": "Schema版本",
+          "displayName": "数据结构版本",
           "tableLogicalKey": "rulesAndFeedback",
           "fieldType": "TEXT",
           "required": true,

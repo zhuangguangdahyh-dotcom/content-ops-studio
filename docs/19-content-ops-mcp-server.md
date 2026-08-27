@@ -1,6 +1,6 @@
 # Content Ops local MCP server
 
-Phase 2C bundles a local STDIO MCP server into the Plugin at `runtime/dist/content-ops-mcp.mjs`. The server is `content-ops-studio` version `0.1.0`, uses the official TypeScript MCP SDK, registers fifteen narrow user-goal tools and composes the existing deterministic Runtime plus the official Lark CLI Workspace Adapter.
+Phase 2C introduced the local STDIO MCP server bundled at `runtime/dist/content-ops-mcp.mjs`. The current server is `content-ops-studio` version `0.2.0`, uses the official TypeScript MCP SDK, registers 72 narrow user-goal tools and composes the deterministic Runtime plus the official Lark CLI Workspace Adapter.
 
 The server performs no login, Base creation or project mutation during import/startup. STDIO stdout is reserved for MCP protocol frames; diagnostics use redacted stderr. Node 24 and a supported official `lark-cli` are the only external runtime dependencies. SDK, Zod and workspace code are bundled into one file.
 

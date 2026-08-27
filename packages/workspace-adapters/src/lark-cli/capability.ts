@@ -8,6 +8,7 @@ export const REQUIRED_LARK_BASE_COMMANDS = [
   "+field-list",
   "+field-get",
   "+field-create",
+  "+field-delete",
   "+record-list",
   "+record-search",
   "+record-get",

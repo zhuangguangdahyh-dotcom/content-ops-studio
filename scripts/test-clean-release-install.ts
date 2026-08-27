@@ -71,7 +71,7 @@ const generatedTypeCount = installedFiles.filter(
       `${path.sep}packages${path.sep}contracts${path.sep}src${path.sep}generated${path.sep}`,
     ) && file.endsWith(".ts"),
 ).length;
-if (skillCount !== 8 || schemaCount !== 158 || generatedTypeCount !== 159)
+if (skillCount !== 8 || schemaCount !== 159 || generatedTypeCount !== 160)
   throw new Error("CLEAN_INSTALL_PACKAGE_CONTENT_INVALID");
 const before = await treeHash(installedPackage);
 const bundle = path.join(pluginRoot, "runtime/dist/content-ops-mcp.mjs");
@@ -97,10 +97,10 @@ const transport = new StdioClientTransport({
   },
   stderr: "pipe",
 });
-const client = new Client({ name: "stage-11-clean-install", version: "0.1.0" });
+const client = new Client({ name: "stage-11-clean-install", version: "0.2.0" });
 await client.connect(transport);
 const catalog = await client.listTools();
-if (catalog.tools.length !== 71) throw new Error("CLEAN_INSTALL_TOOL_COUNT_INVALID");
+if (catalog.tools.length !== 72) throw new Error("CLEAN_INSTALL_TOOL_COUNT_INVALID");
 const rendererStatus = await client.callTool({
   name: "content_ops_get_renderer_status",
   arguments: {},

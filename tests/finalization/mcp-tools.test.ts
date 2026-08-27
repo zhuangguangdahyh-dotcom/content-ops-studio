@@ -22,6 +22,10 @@ describe("Finalization MCP tools", () => {
       readOnlyHint: false,
       openWorldHint: false,
     });
+    expect(tool("content_ops_export_sanitized_pngs").annotations).toMatchObject({
+      readOnlyHint: false,
+      openWorldHint: false,
+    });
     expect(tool("content_ops_get_finalization_status").annotations.readOnlyHint).toBe(true);
     expect(tool("content_ops_verify_final_delivery").annotations.readOnlyHint).toBe(true);
     expect(
@@ -70,6 +74,17 @@ describe("Finalization MCP tools", () => {
     expect(verify).toMatchObject({
       status: "SUCCESS",
       details: { current: true, remote_writes: 0 },
+    });
+    const destination = path.join(home, "operator-export");
+    const exported = await tool("content_ops_export_sanitized_pngs").handler(context, {
+      context: fixture,
+      destination_directory: destination,
+      request_id: "EXPORT-FIXTURE-0001",
+      explicit_confirmation: true,
+    });
+    expect(exported).toMatchObject({
+      status: "SUCCESS",
+      details: { status: "EXPORTED", page_count: 6, pixel_reencoded: false },
     });
   });
 });

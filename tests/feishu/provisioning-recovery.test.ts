@@ -126,6 +126,14 @@ class MemoryProvisioningAdapter implements FeishuProvisioningAdapter {
     fields.push(field);
     return Promise.resolve(structuredClone(field));
   }
+  deleteField(tableId: string, fieldId: string) {
+    const fields = this.fields.get(tableId);
+    if (!fields) return Promise.reject(new Error("Fixture field collection is missing."));
+    const index = fields.findIndex((field) => field.fieldId === fieldId);
+    if (index < 0) return Promise.reject(new Error("Fixture field is missing."));
+    fields.splice(index, 1);
+    return Promise.resolve();
+  }
   updateField(tableId: string, fieldId: string, request: FeishuFieldRequest) {
     const field = this.fields.get(tableId)?.find((item) => item.fieldId === fieldId);
     if (!field) return Promise.reject(new Error("Fixture field is missing."));
@@ -190,7 +198,7 @@ class MemoryProvisioningAdapter implements FeishuProvisioningAdapter {
 }
 
 describe("Feishu provisioning and recovery", () => {
-  it("adopts the explicit primary field while preserving extra platform defaults", async () => {
+  it("adopts the explicit primary field and removes only the three seeded platform defaults", async () => {
     const source = await blueprint();
     const adapter = new MemoryProvisioningAdapter();
     adapter.platformDefaultExtras = true;
@@ -207,13 +215,22 @@ describe("Feishu provisioning and recovery", () => {
     }).provision();
     expect(result.overallStatus).toBe("AWAITING_APPROVAL");
     expect(result.fieldMap).toHaveLength(141);
-    expect([...adapter.fields.values()].flat()).toHaveLength(144);
+    expect([...adapter.fields.values()].flat()).toHaveLength(141);
     expect(adapter.fields.get("table-default")).toEqual(
+      expect.arrayContaining([expect.objectContaining({ fieldName: "项目名称" })]),
+    );
+    expect(adapter.fields.get("table-default")).not.toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ fieldName: "项目名称" }),
         expect.objectContaining({ fieldName: "单选" }),
         expect.objectContaining({ fieldName: "日期" }),
         expect.objectContaining({ fieldName: "附件" }),
+      ]),
+    );
+    expect(store.value?.completedOperations).toEqual(
+      expect.arrayContaining([
+        "DELETE_PLATFORM_DEFAULT_FIELD:单选",
+        "DELETE_PLATFORM_DEFAULT_FIELD:日期",
+        "DELETE_PLATFORM_DEFAULT_FIELD:附件",
       ]),
     );
   });

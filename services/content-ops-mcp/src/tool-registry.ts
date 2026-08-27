@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
 import {
+  assessProjectProfileDiscovery,
   assignPainpointPriority,
   calculatePainpointWeightedScore,
   compilePainpointFeishuFields,
@@ -209,6 +210,10 @@ function arrayLength(value: unknown): number {
   return Array.isArray(value) ? value.length : 0;
 }
 
+function records(value: unknown): Record<string, unknown>[] {
+  return Array.isArray(value) ? value.map(record) : [];
+}
+
 function stateCounts(state: Record<string, unknown>) {
   return {
     tables: Object.keys(record(state.table_states)).length,
@@ -256,6 +261,8 @@ async function buildInitializationPlan(
   profile: Record<string, unknown>,
 ): Promise<{ hash: string; details: Record<string, unknown> }> {
   await context.validateProjectProfile(profile);
+  const gapReport = assessProjectProfileDiscovery(profile);
+  await context.validateSchema("project-profile-gap-report", gapReport);
   const projectId = String(profile.project_id);
   const runId = String(profile.last_run_id);
   const name = String(profile.project_name);
@@ -274,8 +281,15 @@ async function buildInitializationPlan(
   const plan = record(value.plan);
   const expected = record(plan.expected);
   const details = {
-    profile_complete: true,
-    missing_fields: [],
+    profile_complete: gapReport.profile_completeness === 1,
+    profile_completeness: gapReport.profile_completeness,
+    ready_for_project_confirmation: gapReport.ready_for_project_confirmation,
+    ready_for_painpoint_research: gapReport.ready_for_painpoint_research,
+    missing_fields: [...gapReport.missing_required_fields, ...gapReport.missing_recommended_fields],
+    material_blockers: gapReport.material_blockers,
+    non_blocking_gaps: gapReport.non_blocking_gaps,
+    inferred_fields: gapReport.inferred_fields.map((item) => item.field),
+    gap_report: gapReport,
     platform_pack: profile.platform_pack,
     industry_pack: profile.industry_pack,
     tables: Number(expected.tables ?? 0),
@@ -284,7 +298,10 @@ async function buildInitializationPlan(
     views: Number(expected.views ?? 0),
     records: 1,
     conflicts: Array.isArray(plan.conflicts) ? plan.conflicts.length : 0,
-    warnings: [],
+    warnings:
+      gapReport.profile_completeness === 1
+        ? []
+        : ["Project Profile contains explicit gaps or unconfirmed inferences."],
     blueprint_version: plan.blueprintVersion,
   };
   return { hash: context.hash({ profile, details }), details };
@@ -591,13 +608,18 @@ export const TOOL_DEFINITIONS: readonly ToolDefinition[] = [
       const profile = record(input.project_profile);
       const plan = await buildInitializationPlan(context, profile);
       return envelope(
-        "SUCCESS",
-        "Project initialization plan is valid and contains no remote write.",
+        plan.details.ready_for_project_confirmation === true ? "SUCCESS" : "BLOCKED",
+        plan.details.ready_for_project_confirmation === true
+          ? "Project initialization plan is valid and contains no remote write."
+          : "Project Profile has material blockers and is not ready for initialization.",
         {
           project_id: String(profile.project_id),
           run_id: String(profile.last_run_id),
           next_action:
-            "After explicit Operator confirmation, call content_ops_initialize_project with this plan_hash.",
+            plan.details.ready_for_project_confirmation === true
+              ? "Review the gap report; after explicit Operator confirmation, call content_ops_initialize_project with this plan_hash."
+              : "Resolve only the material blockers listed in the gap report, then plan again.",
+          warnings: Array.isArray(plan.details.warnings) ? (plan.details.warnings as string[]) : [],
           details: { ...plan.details, plan_hash: plan.hash },
         },
       );
@@ -621,6 +643,10 @@ export const TOOL_DEFINITIONS: readonly ToolDefinition[] = [
     async handler(context, input) {
       const profile = record(input.project_profile);
       const plan = await buildInitializationPlan(context, profile);
+      if (plan.details.ready_for_project_confirmation !== true)
+        throw Object.assign(new Error("Project Profile has unresolved material blockers."), {
+          code: "PROJECT_PROFILE_NOT_CONFIRMABLE",
+        });
       if (input.plan_hash !== plan.hash)
         throw Object.assign(new Error("Initialization plan hash is stale or mismatched."), {
           code: "PLAN_HASH_MISMATCH",
@@ -692,7 +718,27 @@ export const TOOL_DEFINITIONS: readonly ToolDefinition[] = [
         projectId,
       ]);
       const snapshot = record(value.snapshot);
+      const remoteTables = records(snapshot.tables);
+      const remoteFields = remoteTables.flatMap((table) => records(table.fields));
       const state = await requireState(context, projectId);
+      const mappedFields = records(record(state.extensions).field_map);
+      const mappedRelations = mappedFields.filter(
+        (field) => field.fieldType === 18 || field.fieldType === 21,
+      );
+      const remoteRelations = remoteFields.filter(
+        (field) => field.type === 18 || field.type === 21,
+      );
+      const remoteIdentifiers = record(state.remote_identifiers);
+      const blueprintTableCount = Object.keys(remoteIdentifiers).filter((key) =>
+        key.startsWith("table:"),
+      ).length;
+      const blueprintNamedViewCount = Object.keys(remoteIdentifiers).filter((key) =>
+        key.startsWith("view:"),
+      ).length;
+      const remoteViewCount = remoteTables.reduce(
+        (count, table) => count + arrayLength(table.views),
+        0,
+      );
       return envelope(
         "SUCCESS",
         "Workspace structure was inspected through the official Lark CLI Adapter.",
@@ -700,9 +746,32 @@ export const TOOL_DEFINITIONS: readonly ToolDefinition[] = [
           project_id: projectId,
           ...(typeof state.run_id === "string" ? { run_id: state.run_id } : {}),
           details: {
-            table_count: arrayLength(snapshot.tables),
+            table_count: remoteTables.length,
+            field_count: remoteFields.length,
+            relation_count: remoteRelations.length,
+            view_count: remoteViewCount,
+            blueprint_table_count: blueprintTableCount,
+            blueprint_mapped_field_count: mappedFields.length,
+            blueprint_relation_count: mappedRelations.length,
+            blueprint_named_view_count: blueprintNamedViewCount,
+            platform_generated_or_default_field_count: Math.max(
+              0,
+              remoteFields.length - mappedFields.length,
+            ),
+            platform_generated_relation_count: Math.max(
+              0,
+              remoteRelations.length - mappedRelations.length,
+            ),
+            platform_default_or_extra_view_count: Math.max(
+              0,
+              remoteViewCount - blueprintNamedViewCount,
+            ),
+            project_record_reference_present:
+              typeof remoteIdentifiers["record:projectConfig"] === "string",
+            local_mapping_field_count: mappedFields.length,
+            provisioning_status: state.overall_status,
+            current_phase: state.current_phase,
             remote_snapshot_present: Object.keys(snapshot).length > 0,
-            ...stateCounts(state),
             remote_identifiers_exposed: false,
           },
         },
@@ -727,9 +796,19 @@ export const TOOL_DEFINITIONS: readonly ToolDefinition[] = [
         projectId,
       ]);
       const verification = record(value.verification);
-      const rawStatus = verification.status ?? verification.overallStatus;
-      const status = typeof rawStatus === "string" ? rawStatus : "MATCH";
-      const matched = status === "MATCH" || value.status === "SUCCESS";
+      const verificationPlan = record(verification.plan);
+      const pendingOperations = [
+        ...records(verificationPlan.tableOperations),
+        ...records(verificationPlan.fieldOperations),
+        ...records(verificationPlan.relationOperations),
+        ...records(verificationPlan.viewOperations),
+      ].filter((operation) => {
+        const kind = operation.operation;
+        return kind !== "SKIP_VERIFIED" && kind !== "UPDATE_MAPPING";
+      });
+      const conflicts = records(verificationPlan.conflicts);
+      const matched = verification.verified === true && conflicts.length === 0;
+      const status = matched ? "MATCH" : conflicts.length > 0 ? "CONFLICT" : "REPAIR_AVAILABLE";
       return envelope(
         matched ? "SUCCESS" : status === "CONFLICT" ? "CONFLICT" : "BLOCKED",
         matched
@@ -737,7 +816,13 @@ export const TOOL_DEFINITIONS: readonly ToolDefinition[] = [
           : "Workspace verification found a repair or conflict condition.",
         {
           project_id: projectId,
-          details: { verification_status: status, remote_identifiers_exposed: false },
+          details: {
+            verification_status: status,
+            verified: matched,
+            pending_operation_count: pendingOperations.length,
+            conflict_count: conflicts.length,
+            remote_identifiers_exposed: false,
+          },
         },
       );
     },
@@ -928,6 +1013,7 @@ export const TOOL_DEFINITIONS: readonly ToolDefinition[] = [
         project_name: z.string().min(1).max(120),
         comment: z.string().max(1000),
         expected_version: z.string().min(1).max(128),
+        project_profile_confirmation: projectProfile.optional(),
         painpoint_review_batch: painpointReviewBatchInput.optional(),
         content_copy_review: z.record(z.string(), z.unknown()).optional(),
         ...writeConfirmation,
@@ -963,12 +1049,57 @@ export const TOOL_DEFINITIONS: readonly ToolDefinition[] = [
         deprecated_at: null,
         schema_version: "1.0.0",
       };
+      await context.validateSchema("approval-event", approval);
       const approvalFile = await context.writeControlledJson(
         "approvals",
         String(input.approval_id),
         approval,
       );
-      await context.validateSchema("approval-event", approval);
+      let confirmedProjectProfile: Record<string, unknown> | null = null;
+      if (input.gate === "PROJECT_PROFILE" && input.decision === "APPROVE") {
+        const currentProfile = await context.readProjectProfile(String(input.project_id));
+        const submittedProfile = input.project_profile_confirmation
+          ? record(input.project_profile_confirmation)
+          : currentProfile;
+        if (!submittedProfile)
+          throw Object.assign(new Error("G1 approval requires a canonical Project Profile."), {
+            code: "PROJECT_PROFILE_NOT_FOUND",
+          });
+        const expectedProfileVersion = `PROJECT-PROFILE-V${String(
+          submittedProfile.configuration_version,
+        )}`;
+        if (
+          submittedProfile.project_id !== input.project_id ||
+          submittedProfile.last_run_id !== input.source_run_id ||
+          expectedProfileVersion !== input.target_version
+        )
+          throw Object.assign(
+            new Error("G1 Project Profile target, version or source Run is mismatched."),
+            { code: "APPROVAL_STALE_OR_MISMATCHED" },
+          );
+        const submittedExtensions = record(submittedProfile.extensions);
+        confirmedProjectProfile = {
+          ...submittedProfile,
+          project_status: "PROJECT_ACTIVE",
+          config_confirmation_status: "CONFIG_CONFIRMED",
+          updated_at: new Date().toISOString(),
+          extensions: {
+            ...submittedExtensions,
+            inferred_fields: [],
+          },
+        };
+        await context.validateProjectProfile(confirmedProjectProfile);
+        const readiness = validateProjectResearchReadiness(confirmedProjectProfile);
+        if (!readiness.ready)
+          throw Object.assign(
+            new Error(
+              `Confirmed G1 Project Profile is not research-ready: ${readiness.material_blockers.join(
+                ", ",
+              )}.`,
+            ),
+            { code: "PROJECT_PROFILE_NOT_RESEARCH_READY" },
+          );
+      }
       if (input.gate === "PAINPOINTS") {
         const review = submittedReview;
         if (!review)
@@ -1210,6 +1341,12 @@ export const TOOL_DEFINITIONS: readonly ToolDefinition[] = [
         approvalFile,
         "--confirm-live-write",
       ]);
+      if (confirmedProjectProfile)
+        await context.writeControlledJson(
+          "profiles",
+          String(input.project_id),
+          confirmedProjectProfile,
+        );
       return envelope(
         "SUCCESS",
         "Explicit approval was recorded and the Runtime read-verified its effect.",
@@ -1222,6 +1359,8 @@ export const TOOL_DEFINITIONS: readonly ToolDefinition[] = [
             gate: input.gate,
             decision: input.decision,
             remote_update: value.remote_update ?? "VERIFIED",
+            project_profile_snapshot:
+              confirmedProjectProfile === null ? "UNCHANGED" : "CONFIRMED_AND_READ_VERIFIED",
           },
         },
       );

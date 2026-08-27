@@ -35,6 +35,7 @@ for (const operation of [
   "CREATE_WORKSPACE",
   "LIST_TABLES",
   "CREATE_FIELD",
+  "DELETE_FIELD",
   "CREATE_VIEW",
   "SEARCH_RECORDS",
   "UPDATE_RECORD",

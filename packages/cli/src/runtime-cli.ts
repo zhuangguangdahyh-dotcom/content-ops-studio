@@ -1045,7 +1045,7 @@ export async function runCli(
           status: "NOT_IMPLEMENTED" as const,
           limitations: ["Production Adapter is not implemented."],
           last_verified_at: checkedAt,
-          blocking_reason: "V0.1.0 production integration boundary.",
+          blocking_reason: "V0.2.0 production integration boundary.",
         })),
       ];
       const runtimeEvidence: RuntimeEvidence[] = [];

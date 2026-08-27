@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
+  assessProjectProfileDiscovery,
   assignPainpointPriority,
   calculatePainpointWeightedScore,
   calculateResearchCoverage,
@@ -26,6 +27,44 @@ async function fixture<T>(name: string): Promise<T> {
 }
 
 describe("deterministic painpoint research core", () => {
+  it("keeps explicit pending values and inferred fields out of semantic completeness", async () => {
+    const profile = await fixture<Record<string, unknown>>("project-profile");
+    const gap = assessProjectProfileDiscovery({
+      ...profile,
+      project_status: "PROJECT_PENDING_CONFIRMATION",
+      config_confirmation_status: "CONFIG_PENDING",
+      service_region: ["南京"],
+      price_band: "待确认",
+      extensions: {
+        unresolved_fields: ["price_band", "award_evidence"],
+        inferred_fields: ["content_style"],
+      },
+    });
+    expect(gap).toMatchObject({
+      missing_required_fields: [],
+      missing_recommended_fields: ["price_band"],
+      material_blockers: [],
+      non_blocking_gaps: ["award_evidence", "price_band"],
+      ready_for_project_confirmation: true,
+      ready_for_painpoint_research: false,
+    });
+    expect(gap.inferred_fields).toEqual([
+      expect.objectContaining({ field: "content_style", confirmed: false }),
+    ]);
+    expect(gap.profile_completeness).toBeLessThan(1);
+  });
+
+  it("blocks project confirmation when a required semantic value is unresolved", async () => {
+    const profile = await fixture<Record<string, unknown>>("project-profile");
+    const gap = assessProjectProfileDiscovery({
+      ...profile,
+      audience_profile: { role: "AUDIENCE", description: "待确认", segments: ["待确认"] },
+      extensions: { unresolved_fields: ["audience_profile"] },
+    });
+    expect(gap.ready_for_project_confirmation).toBe(false);
+    expect(gap.material_blockers).toContain("audience_profile");
+  });
+
   it("blocks unconfirmed projects and separates recommended gaps", async () => {
     const profile = await fixture<Record<string, unknown>>("project-profile");
     expect(validateProjectResearchReadiness(profile)).toEqual({

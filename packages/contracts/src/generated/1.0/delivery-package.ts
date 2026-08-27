@@ -38,12 +38,29 @@ export interface DeliveryPackage {
     "contact-sheet-full.png" | "contact-sheet-310.png" | "contact-sheet-186.png",
   ];
   /**
-   * @minItems 2
+   * @minItems 3
    */
   reports: [
-    "finalization-summary.json" | "delivery-integrity-report.json",
-    "finalization-summary.json" | "delivery-integrity-report.json",
-    ...("finalization-summary.json" | "delivery-integrity-report.json")[],
+    (
+      | "finalization-summary.json"
+      | "png-metadata-sanitization-report.json"
+      | "delivery-integrity-report.json"
+    ),
+    (
+      | "finalization-summary.json"
+      | "png-metadata-sanitization-report.json"
+      | "delivery-integrity-report.json"
+    ),
+    (
+      | "finalization-summary.json"
+      | "png-metadata-sanitization-report.json"
+      | "delivery-integrity-report.json"
+    ),
+    ...(
+      | "finalization-summary.json"
+      | "png-metadata-sanitization-report.json"
+      | "delivery-integrity-report.json"
+    )[],
   ];
   created_at: string;
   run_id: string;

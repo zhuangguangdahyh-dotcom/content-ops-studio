@@ -205,6 +205,35 @@ export const FINALIZATION_TOOL_DEFINITIONS: readonly ToolDefinition[] = [
     },
   },
   {
+    name: "content_ops_export_sanitized_pngs",
+    title: "Export Sanitized Final PNGs",
+    description:
+      "Copy the current finalized PNG pages into a managed leaf below an Operator-specified absolute directory after removing privacy metadata without pixel re-encoding.",
+    inputSchema: z
+      .object({
+        context: finalizationContext,
+        destination_directory: z.string().min(1),
+        request_id: z.string().regex(/^[A-Za-z0-9][A-Za-z0-9._-]{7,127}$/),
+        explicit_confirmation: z.literal(true),
+      })
+      .strict(),
+    outputSchema: resultEnvelopeSchema,
+    annotations: writeLocal,
+    async handler(context, input) {
+      const value = input.context as FinalizationContext;
+      const result = await runtimeFor(context, value).exportSanitizedPngs(
+        value,
+        String(input.destination_directory),
+      );
+      return envelope("SUCCESS", "Sanitized final PNGs were exported and read-verified.", {
+        project_id: value.project_id,
+        run_id: value.run_id,
+        artifacts: [result.output_directory],
+        details: { ...result },
+      });
+    },
+  },
+  {
     name: "content_ops_verify_final_delivery",
     title: "Verify Final Delivery Currentness",
     description:

@@ -54,7 +54,7 @@ export const EXPECTED_NODE_MAJOR = 24;
 export const EXPECTED_NODE_RANGE = ">=24 <25";
 export const DEFAULT_RUNTIME_SUPPORT_POLICY: RuntimeSupportPolicy = {
   policyVersion: "1.0.0",
-  pluginVersion: "0.1.0",
+  pluginVersion: "0.2.0",
   decisionDate: "2026-08-24",
   upstreamStatusSnapshotDate: "2026-08-24",
   primaryRuntime: {
@@ -101,7 +101,7 @@ export function parseRuntimeVersion(value: string): ParsedRuntimeVersion {
 export function validateRuntimePolicy(policy: RuntimeSupportPolicy): string[] {
   const issues: string[] = [];
   if (policy.policyVersion !== "1.0.0") issues.push("POLICY_VERSION_MISMATCH");
-  if (policy.pluginVersion !== "0.1.0") issues.push("PLUGIN_VERSION_MISMATCH");
+  if (policy.pluginVersion !== "0.2.0") issues.push("PLUGIN_VERSION_MISMATCH");
   if (policy.primaryRuntime.name !== "node") issues.push("PRIMARY_RUNTIME_INVALID");
   if (policy.primaryRuntime.major !== EXPECTED_NODE_MAJOR) issues.push("PRIMARY_MAJOR_MISMATCH");
   if (policy.primaryRuntime.range !== EXPECTED_NODE_RANGE) issues.push("SUPPORTED_RANGE_MISMATCH");

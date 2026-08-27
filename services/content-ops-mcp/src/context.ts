@@ -131,6 +131,11 @@ function asRecord(value: unknown): Record<string, unknown> {
   return value as Record<string, unknown>;
 }
 
+function collectionCount(value: unknown): number {
+  if (Array.isArray(value)) return value.length;
+  return value && typeof value === "object" ? Object.keys(value).length : 0;
+}
+
 function safeSegment(value: string): string {
   if (!/^[A-Za-z0-9][A-Za-z0-9._-]{2,127}$/.test(value))
     throw Object.assign(new Error("A controlled artifact key is invalid."), {
@@ -202,7 +207,7 @@ export function createMcpContext(options: McpContextOptions = {}): McpContext {
       { stdout: (line) => stdout.push(line), stderr: (line) => stderr.push(line) },
       pluginRoot,
     );
-    const last = stdout.at(-1);
+    const last = stdout.at(-1) ?? stderr.at(-1);
     if (!last)
       throw Object.assign(new Error("CLI produced no structured result."), {
         code: "LARK_CLI_RESPONSE_INVALID",
@@ -234,7 +239,6 @@ export function createMcpContext(options: McpContextOptions = {}): McpContext {
         },
       );
     }
-    void stderr;
     return { exitCode, value };
   };
 
@@ -549,14 +553,12 @@ export function createMcpContext(options: McpContextOptions = {}): McpContext {
         if (!/^PRJ-[A-Z0-9-]+$/.test(projectId)) continue;
         const state = await readProject(projectId);
         if (!state) continue;
-        const fieldStates = state.field_states;
         projects.push({
           project_id: projectId,
           run_id: typeof state.run_id === "string" ? state.run_id : null,
           status: typeof state.overall_status === "string" ? state.overall_status : "UNKNOWN",
           phase: typeof state.current_phase === "number" ? state.current_phase : null,
-          field_count:
-            fieldStates && typeof fieldStates === "object" ? Object.keys(fieldStates).length : 0,
+          field_count: collectionCount(state.field_states) + collectionCount(state.relation_states),
         });
       }
       return projects;

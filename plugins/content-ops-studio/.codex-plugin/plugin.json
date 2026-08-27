@@ -1,6 +1,6 @@
 {
   "name": "content-ops-studio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Manage long-term multi-industry content projects, evidence-backed painpoint libraries, content packages, visual plans, image sets, finalization, and project learning.",
   "skills": "./skills/",
   "mcpServers": "./.mcp.json"

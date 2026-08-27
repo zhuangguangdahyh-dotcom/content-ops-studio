@@ -26,6 +26,7 @@ const BASE = new Set([
   "+field-list",
   "+field-get",
   "+field-create",
+  "+field-delete",
   "+field-update",
   "+record-list",
   "+record-search",
@@ -51,7 +52,12 @@ export function assertLarkCliCommandAllowed(command: LarkCliCommand): void {
   if (!command.argv.length)
     throw new LarkCliError("LARK_CLI_COMMAND_DENIED", "Empty CLI command.", 5);
   const joined = command.argv.slice(0, 3).join(" ");
-  if (FORBIDDEN.test(joined))
+  const controlledFieldDelete =
+    command.argv[0] === "base" &&
+    command.argv[1] === "+field-delete" &&
+    command.argv.includes("--yes") &&
+    command.allowHighRiskUpdate === true;
+  if (FORBIDDEN.test(joined) && !controlledFieldDelete)
     throw new LarkCliError(
       "LARK_CLI_COMMAND_DENIED",
       "Destructive or risk-control commands are forbidden.",

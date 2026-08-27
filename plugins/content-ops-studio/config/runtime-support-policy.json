@@ -1,6 +1,6 @@
 {
   "policyVersion": "1.0.0",
-  "pluginVersion": "0.1.0",
+  "pluginVersion": "0.2.0",
   "decisionDate": "2026-08-24",
   "upstreamStatusSnapshotDate": "2026-08-24",
   "primaryRuntime": {

@@ -15,7 +15,7 @@ export function createContentOpsMcpServer(
 ): ContentOpsMcpServer {
   const context = createMcpContext(contextOptions);
   const server = new McpServer(
-    { name: "content-ops-studio", version: "0.1.0" },
+    { name: "content-ops-studio", version: "0.2.0" },
     { instructions: SERVER_INSTRUCTIONS, capabilities: { logging: {} } },
   );
 
@@ -29,12 +29,32 @@ export function createContentOpsMcpServer(
         outputSchema: definition.outputSchema,
         annotations: definition.annotations,
       },
-      async (rawInput) => {
+      async (rawInput, extra) => {
+        const progressToken = extra._meta?.progressToken;
+        let progress = 0;
+        const heartbeat =
+          progressToken !== undefined && !definition.annotations.readOnlyHint
+            ? setInterval(() => {
+                progress += 1;
+                void extra
+                  .sendNotification({
+                    method: "notifications/progress",
+                    params: {
+                      progressToken,
+                      progress,
+                      message: `${definition.name} is still running; verified state remains recoverable.`,
+                    },
+                  })
+                  .catch(() => undefined);
+              }, 15_000)
+            : null;
         try {
           const input = definition.inputSchema.parse(rawInput);
           return toolResult(await definition.handler(context, input));
         } catch (error) {
           return toolResult(errorEnvelope(error, definition.name), true);
+        } finally {
+          if (heartbeat) clearInterval(heartbeat);
         }
       },
     );

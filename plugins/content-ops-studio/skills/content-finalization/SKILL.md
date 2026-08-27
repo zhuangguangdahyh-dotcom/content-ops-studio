@@ -27,7 +27,7 @@ Task envelope, content and visual versions, image manifest, render/QA reports, a
 
 # Workflow boundary
 
-Run content, visual, file, and data QA; request G5; after version-matched checksum-bound approval execute `LOAD_FINALIZATION_CONTEXT → VERIFY_APPROVAL_CHAIN → VERIFY_FINAL_ASSETS → VERIFY_GROUP_EVIDENCE → BUILD_FINAL_MANIFEST → BUILD_FINAL_SET_FINGERPRINT → BUILD_DELIVERY_PACKAGE → VERIFY_DELIVERY → WRITE_ARCHIVE_STATE`. Workspace metadata synchronization is a separate explicit action. Retry only failed side effects.
+Run content, visual, file, and data QA; request G5; after version-matched checksum-bound approval execute `LOAD_FINALIZATION_CONTEXT → VERIFY_APPROVAL_CHAIN → VERIFY_FINAL_ASSETS → VERIFY_GROUP_EVIDENCE → BUILD_FINAL_MANIFEST → BUILD_FINAL_SET_FINGERPRINT → SANITIZE_FINAL_PNG_METADATA → BUILD_DELIVERY_PACKAGE → VERIFY_DELIVERY → WRITE_ARCHIVE_STATE`. Workspace metadata synchronization and Operator-directory export are separate explicit actions. Retry only failed side effects.
 
 # Human approval boundary
 
@@ -35,7 +35,7 @@ Never finalize before explicit G5. Only the Router writes the approval event.
 
 # Allowed writes
 
-Immutable Final Manifests, Final Set Fingerprints, approved-only Delivery Packages, Delivery Integrity Reports, archive states and synchronization logs through Adapters. Attachment upload remains an independent capability and may be deferred.
+Immutable Final Manifests, Final Set Fingerprints, approved-only sanitized Delivery Packages, PNG Metadata Sanitization Reports, Delivery Integrity Reports, archive states and synchronization logs through Adapters. With explicit confirmation, copy sanitized final pages to a managed leaf below an Operator-specified absolute directory. Attachment upload remains an independent capability and may be deferred.
 
 # Forbidden actions
 

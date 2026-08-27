@@ -9,8 +9,8 @@
 7. Do not copy a complete state machine into multiple Skills.
 8. Do not maintain conflicting Schema sources of truth.
 9. Never automatically modify industry packs, platform packs, or core Skills.
-10. Version 0.1.0 is a bootstrap. If a required Adapter, Schema, or tool is not implemented, return `BLOCKED`; never fabricate completion.
-11. Version 0.1.0 supports Node.js 24 LTS only (`>=24 <25`). Node 20 is EOL/unsupported; Node 22/25/26 are unclaimed until real project evidence exists.
+10. Version 0.2.0 is the current release. If a required Adapter, Schema, or tool is not implemented, return `BLOCKED`; never fabricate completion.
+11. Version 0.2.0 supports Node.js 24 LTS only (`>=24 <25`). Node 20 is EOL/unsupported; Node 22/25/26 are unclaimed until real project evidence exists.
 12. Local Runtime or offline Feishu readiness never implies live Workspace, image, Renderer, attachment, publishing, or MCP production readiness.
 
 Runtime-critical rules also live in each Skill and the shared references because development-scoped instructions are not sufficient after installation.

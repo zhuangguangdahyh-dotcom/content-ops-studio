@@ -10,7 +10,8 @@ Missing G5 returns `G5_APPROVAL_REQUIRED` before a Final Manifest is created. Fi
 
 - `FINAL_MANIFEST_V1` is WRITE_ONCE_OR_REUSE. Same bytes reuse; same Final Manifest Version with a different payload returns `FINAL_MANIFEST_VERSION_CONFLICT`.
 - `FINAL_SET_FINGERPRINT` hashes canonical version, approval, Style Lock, ordered page checksum, Group QA, Continuity and Page Count inputs. It excludes timestamps, absolute paths and environment values.
-- `DELIVERY_PACKAGE_V1` contains only the approved ordered pages, three approved Contact Sheet previews, the Final Manifest and two delivery reports.
+- `DELIVERY_PACKAGE_V1` contains only the sanitized approved ordered pages, three approved Contact Sheet previews, the Final Manifest and three delivery reports.
+- PNG sanitization removes `caBX`, `eXIf`, and `tIME`, plus only privacy-bearing `tEXt`, `zTXt`, or `iTXt`; non-private text is retained. It validates CRC and preserves IHDR properties and every IDAT byte without pixel re-encoding. Original approved bytes remain immutable and G5-bound.
 - Audit history remains append-only outside Delivery. Candidate, rejected, failed, superseded, debug, temporary and blind-regression assets never enter Delivery.
 
 ## Recovery
@@ -27,6 +28,7 @@ Post-finalization Copy, Page Count, Asset checksum, G4, G5 or Style Lock changes
 - `content_ops_plan_finalization` is read-only.
 - `content_ops_finalize_delivery` requires explicit local-write confirmation.
 - `content_ops_get_finalization_status` is read-only.
+- `content_ops_export_sanitized_pngs` requires explicit confirmation and writes only to a managed leaf below an Operator-specified absolute directory.
 - `content_ops_verify_final_delivery` is read-only and reports stale bindings.
 
 Normal Finalization makes zero ImageGen calls, zero Renderer calls, zero implicit Feishu writes and zero attachment uploads.

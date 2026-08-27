@@ -82,6 +82,24 @@ describe("FeishuWorkspaceAdapter", () => {
     ]);
   });
 
+  it("deletes one exact field and verifies it is absent", async () => {
+    const calls: string[] = [];
+    const adapter = new FeishuWorkspaceAdapter({
+      appToken: "app-demo",
+      transport: transport((request) => {
+        calls.push(`${request.method} ${request.path}`);
+        if (request.operation === "DELETE_FIELD") return {};
+        if (request.operation === "LIST_FIELDS") return { items: [], has_more: false };
+        throw new Error(request.operation);
+      }),
+    });
+    await expect(adapter.deleteField("table-1", "field-default-select")).resolves.toBeUndefined();
+    expect(calls).toEqual([
+      "DELETE /open-apis/bitable/v1/apps/app-demo/tables/table-1/fields/field-default-select",
+      "GET /open-apis/bitable/v1/apps/app-demo/tables/table-1/fields",
+    ]);
+  });
+
   it("uses the Search API for unique keys and current field names for record writes", async () => {
     let createdBody: unknown;
     const adapter = new FeishuWorkspaceAdapter({

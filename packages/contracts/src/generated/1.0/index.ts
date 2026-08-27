@@ -160,5 +160,6 @@ export type { ImageSetProductionStrategy } from "./image-set-production-strategy
 export type { ImageSetContinuityReport } from "./image-set-continuity-report.js";
 export type { FinalSetFingerprint } from "./final-set-fingerprint.js";
 export type { DeliveryPackage } from "./delivery-package.js";
+export type { PngMetadataSanitizationReport } from "./png-metadata-sanitization-report.js";
 export type { DeliveryIntegrityReport } from "./delivery-integrity-report.js";
 export type { FinalizationState } from "./finalization-state.js";

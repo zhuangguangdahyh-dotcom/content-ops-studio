@@ -25,7 +25,7 @@ import { envelope, resultEnvelopeSchema } from "./result-envelope.js";
 
 const PROJECT_ID = /^PRJ-[A-Z0-9][A-Z0-9-]{2,63}$/;
 const CONTENT_ID = /^C-[0-9]{4}$/;
-const RUN_ID = /^RUN-[A-Z0-9][A-Z0-9-]{2,95}$/;
+const RUN_ID = /^RUN-[0-9]{8}-[0-9]{6}-[A-Z0-9]{4}$/;
 const HASH = /^[a-f0-9]{64}$/;
 const assetChannel = z.enum(ASSET_CHANNELS);
 const visualMode = z.enum(IMAGE_PRODUCTION_VISUAL_MODES);

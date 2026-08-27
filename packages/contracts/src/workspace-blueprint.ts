@@ -122,6 +122,11 @@ export function validateBlueprintInvariants(blueprint: WorkspaceBlueprintDefinit
       const optionCodes = field.options.map((option) => option.code);
       if (new Set(optionCodes).size !== optionCodes.length)
         errors.push(`${field.logicalKey} contains duplicate option codes.`);
+      for (const option of field.options)
+        if (!/\p{Script=Han}/u.test(option.displayName))
+          errors.push(
+            `${field.logicalKey} option ${option.code} must have a Chinese display name.`,
+          );
     }
   }
   return errors;

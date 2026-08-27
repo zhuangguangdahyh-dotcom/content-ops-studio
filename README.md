@@ -16,7 +16,7 @@ It is not an autonomous publisher, a generic image generator, an approval substi
 - Dynamic Visual Planning, formal Cover production, G4 and Style Lock.
 - Six-page set production, per-page QA, continuity, Group QA and G5.
 - Immutable Final Manifest, deterministic fingerprint, delivery integrity and archive.
-- 158 strict Schemas, 159 generated TypeScript files, 71 bounded MCP tools and 8 Skills.
+- 159 strict Schemas, 160 generated TypeScript files, 72 bounded MCP tools and 8 Skills.
 - Optional official Lark CLI and gated Feishu OpenAPI integration.
 
 ## Workflow
@@ -34,6 +34,8 @@ G1–G5 are human decisions. Scores, QA results and tool success never create ap
 - A Host-installed native ImageGen capability for generated visual assets.
 
 The Plugin does not require an Operator to configure an OpenAI API key. See the [environment contract](ENVIRONMENT.md).
+
+For a complete Chinese Operator guide, see [纯中文版使用说明](使用说明.md).
 
 ## Installation
 
@@ -78,7 +80,7 @@ Official Lark CLI OAuth is the default Feishu path. Use the Plugin setup/Doctor 
 
 ## MCP and Plugin usage
 
-The package exposes 71 closed-schema tools through the bundled STDIO MCP. Read tools plan and inspect; writes require explicit confirmation, pre-write checks, idempotency and readback. The Plugin exposes no arbitrary shell, raw HTTP, credential or delete tool.
+The package exposes 72 closed-schema tools through the bundled STDIO MCP. Read tools plan and inspect; writes require explicit confirmation, pre-write checks, idempotency and readback. The Plugin exposes no arbitrary shell, raw HTTP, credential or general-purpose delete tool.
 
 ## Finalization and Delivery
 
@@ -117,7 +119,7 @@ Run `pnpm check` on Node 24. The complete suite validates formatting, lint, type
 
 ## Release and versioning
 
-`0.1.0` is the repository's first open-source V1 release. The version is synchronized across package and Plugin metadata. Release artifacts must pass clean-install and installed E2E checks. See [release and distribution](docs/11-release-and-distribution.md).
+`0.2.0` is the current open-source release; `0.1.0` remains the preserved first V1 release. Versions are synchronized across package and Plugin metadata. Release artifacts must pass clean-install and installed E2E checks. See [release and distribution](docs/11-release-and-distribution.md).
 
 ## License
 

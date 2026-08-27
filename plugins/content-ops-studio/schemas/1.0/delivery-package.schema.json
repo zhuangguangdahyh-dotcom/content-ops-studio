@@ -51,10 +51,14 @@
     },
     "reports": {
       "type": "array",
-      "minItems": 2,
+      "minItems": 3,
       "items": {
         "type": "string",
-        "enum": ["finalization-summary.json", "delivery-integrity-report.json"]
+        "enum": [
+          "finalization-summary.json",
+          "png-metadata-sanitization-report.json",
+          "delivery-integrity-report.json"
+        ]
       },
       "uniqueItems": true
     },

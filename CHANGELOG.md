@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0 — 2026-08-27
+
+- Reordered the leading Project Config, Painpoint and Content columns; localized every predefined Feishu option label to Chinese while preserving stable internal codes.
+- Added narrowly scoped read-verified removal of Feishu's three seeded default fields during a new Base create Run; existing workspace repair remains add-only.
+- Added CRC-validated byte-preserving PNG metadata sanitization for `caBX`/C2PA and other privacy-bearing chunks, with unchanged IHDR and IDAT evidence.
+- Added explicit Operator-directory export of sanitized final PNGs and marker-scoped cleanup of stale Plugin-owned files.
+- Included the cross-industry bakery regression fixes for research normalization, Content MCP writes and image-production tool routing.
+
 ## 0.1.0 V1 release candidate - 2026-08-27
 
 - Completed the approval-gated Project → Painpoint → Content → Visual → Image Set → Finalization workflow with deterministic recovery and idempotency.

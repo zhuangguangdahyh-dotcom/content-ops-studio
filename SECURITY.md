@@ -22,7 +22,7 @@ Phase 3B Content tools accept only strict identifiers, hashes, bounded copy arti
 
 Phase 4A Visual tools bind exact approved copy/version/hash and expose only one bounded remote update path. Allowed Content fields are background direction, visual summary/version, `VISUAL_PLANNING`, Run and timestamp; copy, Painpoint, image, first-page, final and sync fields are read-verified unchanged. Planned assets cannot be reported as generated, and no image/G4/Style Lock/delete/raw-Feishu tool exists.
 
-Version 0.1.0 remains blocked as a complete production integration because image production, production rendering, attachments and publishing are not implemented.
+Version 0.2.0 includes bounded Host ImageGen handoff and production rendering, but remains blocked as a complete production integration because Feishu attachment upload and automatic publishing are not implemented.
 
 # Renderer security boundary
 

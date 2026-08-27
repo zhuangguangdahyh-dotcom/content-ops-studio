@@ -489,6 +489,32 @@ export class LarkCliWorkspaceAdapter {
     };
   }
 
+  async deleteField(tableId: string, fieldId: string): Promise<void> {
+    await this.#run(
+      "DELETE_FIELD",
+      [
+        "+field-delete",
+        "--base-token",
+        this.#token(),
+        "--table-id",
+        tableId,
+        "--field-id",
+        fieldId,
+        "--as",
+        this.#identity,
+        "--format",
+        "json",
+        "--yes",
+      ],
+      true,
+    );
+    if ((await this.listFields(tableId)).some((field) => field.fieldId === fieldId))
+      throw new LarkCliError(
+        "LARK_CLI_READ_AFTER_WRITE_FAILED",
+        "Default field deletion was not verified.",
+      );
+  }
+
   async updateField(
     tableId: string,
     fieldId: string,

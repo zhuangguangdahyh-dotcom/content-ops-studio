@@ -1,6 +1,6 @@
 export const CONTRACT_VERSION = "1.0.0" as const;
 export const SCHEMA_VERSION = "1.0.0" as const;
-export const PLUGIN_VERSION = "0.1.0" as const;
+export const PLUGIN_VERSION = "0.2.0" as const;
 
 import type {
   Error as GeneratedError,

@@ -12,9 +12,33 @@ export interface DeliveryIntegrityReport {
   delivery_package_id: string;
   final_manifest_id: string;
   /**
-   * @minItems 14
+   * @minItems 18
    */
   checks: [
+    {
+      code: string;
+      status: "PASS" | "FAIL";
+      blocking: boolean;
+      message: string;
+    },
+    {
+      code: string;
+      status: "PASS" | "FAIL";
+      blocking: boolean;
+      message: string;
+    },
+    {
+      code: string;
+      status: "PASS" | "FAIL";
+      blocking: boolean;
+      message: string;
+    },
+    {
+      code: string;
+      status: "PASS" | "FAIL";
+      blocking: boolean;
+      message: string;
+    },
     {
       code: string;
       status: "PASS" | "FAIL";

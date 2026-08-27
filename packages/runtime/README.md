@@ -8,7 +8,7 @@ Explicit, recoverable local orchestration for Content Ops Studio. It owns filesy
 
 Importing the package performs no write. All runtime roots and dependencies are passed explicitly. `PRODUCTION` never falls back to Mock and is blocked until production Adapters exist.
 
-V0.1.0 supports Node.js 24 LTS only (`>=24 <25`). Runtime composition, Runtime Config, and executable Mock references enforce the policy; tests may inject a fake Runtime version explicitly. Generic Runtime Evidence and Diagnostic APIs distinguish current Runtime support, actual local evidence, unverified cross-platform CI, and blocked production integrations.
+V0.2.0 supports Node.js 24 LTS only (`>=24 <25`). Runtime composition, Runtime Config, and executable Mock references enforce the policy; tests may inject a fake Runtime version explicitly. Generic Runtime Evidence and Diagnostic APIs distinguish current Runtime support, actual local evidence, unverified cross-platform CI, and blocked production integrations.
 
 Phase 3A adds Research Runtime composition for idempotent painpoint writes, read-after-write verification, audit/checkpoint evidence and version-bound G2 item decisions. It never creates content records or deletes remote history.
 

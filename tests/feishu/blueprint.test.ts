@@ -24,6 +24,32 @@ function required<T>(value: T | undefined, label: string): T {
 }
 
 describe("Feishu Blueprint compiler", () => {
+  it("keeps requested business columns at the front and exposes Chinese option labels", async () => {
+    const source = await blueprint();
+    const tables = Object.fromEntries(source.tables.map((table) => [table.logicalKey, table]));
+    expect(tables.projectConfig?.fields.slice(0, 4).map((field) => field.logicalKey)).toEqual([
+      "projectConfigProjectName",
+      "projectConfigIndustry",
+      "projectConfigIndustrySubfields",
+      "projectConfigAudienceProfile",
+    ]);
+    expect(tables.painpoints?.fields.slice(0, 2).map((field) => field.logicalKey)).toEqual([
+      "painpointsPainpointName",
+      "painpointsPainpointId",
+    ]);
+    expect(tables.contents?.fields.slice(0, 4).map((field) => field.logicalKey)).toEqual([
+      "contentsContentTopic",
+      "contentsContentId",
+      "contentsPublishTitle",
+      "contentsPublishBody",
+    ]);
+    const optionLabels = source.tables.flatMap((table) =>
+      table.fields.flatMap((field) => field.options.map((option) => option.displayName)),
+    );
+    expect(optionLabels.length).toBeGreaterThan(0);
+    expect(optionLabels.every((label) => /\p{Script=Han}/u.test(label))).toBe(true);
+  });
+
   it("compiles all four tables, 141 fields, five relations and four views", async () => {
     const plan = new FeishuBlueprintCompiler().compile(await blueprint(), null);
     expect(plan.expected).toEqual({

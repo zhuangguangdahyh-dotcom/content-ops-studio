@@ -1876,6 +1876,18 @@
       "description": "Approved-only portable Delivery Package V1 inventory."
     },
     {
+      "logicalName": "png-metadata-sanitization-report",
+      "schemaId": "https://content-ops-studio.local/schemas/1.0/png-metadata-sanitization-report.schema.json",
+      "file": "png-metadata-sanitization-report.schema.json",
+      "contractVersion": "1.0.0",
+      "schemaVersion": "1.0.0",
+      "status": "implemented",
+      "generatedTypeFile": "packages/contracts/src/generated/1.0/png-metadata-sanitization-report.ts",
+      "fixtureDirectory": "tests/fixtures/contracts/1.0/png-metadata-sanitization-report",
+      "ownerDomain": "finalization",
+      "description": "Proof that privacy-bearing PNG chunks were removed without pixel-stream re-encoding."
+    },
+    {
       "logicalName": "delivery-integrity-report",
       "schemaId": "https://content-ops-studio.local/schemas/1.0/delivery-integrity-report.schema.json",
       "file": "delivery-integrity-report.schema.json",

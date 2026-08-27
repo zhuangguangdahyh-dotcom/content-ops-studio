@@ -1,5 +1,14 @@
 import { createHash } from "node:crypto";
-import { copyFile, mkdir, readFile, readdir, rename, stat, writeFile } from "node:fs/promises";
+import {
+  copyFile,
+  mkdir,
+  readFile,
+  readdir,
+  rename,
+  stat,
+  unlink,
+  writeFile,
+} from "node:fs/promises";
 import path from "node:path";
 import { loadSchemaRegistry, type SchemaRegistry } from "@content-ops/contracts";
 import {
@@ -11,6 +20,15 @@ import {
   type FinalizationPageInput,
   type FinalizationPreviewInput,
 } from "@content-ops/core";
+import {
+  isPrivacyBearingPngChunk,
+  parsePngChunks,
+  sanitizePngMetadata,
+  writeSanitizedPng,
+  type PngSanitizationResult,
+} from "./png-sanitization.js";
+
+export * from "./png-sanitization.js";
 
 type FailurePoint = "MANIFEST" | "DELIVERY" | "ARCHIVE";
 
@@ -23,11 +41,23 @@ export interface FinalizationRuntimeResult {
   manifest_path: string;
   delivery_path: string;
   integrity_report_path: string;
+  sanitization_report_path: string;
   archive_state_path: string;
   imagegen_calls: 0;
   renderer_calls: 0;
   feishu_writes: 0;
   attachment_uploads: 0;
+  metadata_chunks_removed: number;
+  pixel_reencoded: false;
+}
+
+export interface SanitizedPngExportResult {
+  status: "EXPORTED";
+  output_directory: string;
+  page_count: number;
+  invalid_files_removed: string[];
+  metadata_chunks_removed: number;
+  pixel_reencoded: false;
 }
 
 interface VerifiedFile {
@@ -456,16 +486,47 @@ export class FinalizationRuntime {
         if (page.page_number === context.page_count) return "summary";
         return "content";
       };
-      const deliveryPages = [];
+      const deliveryPages: Array<{ page_number: number; filename: string; checksum: string }> = [];
+      const sanitizationPages: Array<
+        Omit<PngSanitizationResult, "bytes" | "removed_chunks"> & {
+          page_number: number;
+          filename: string;
+        }
+      > = [];
       for (const page of context.pages) {
         const filename = `${String(page.page_number).padStart(2, "0")}-${roleName(page)}.png`;
-        const reused = await copyVerified(
+        const sanitized = await writeSanitizedPng(
           page.source_path,
           path.join(paths.delivery, "pages", filename),
-          page.checksum,
         );
-        reusedDelivery &&= reused;
-        deliveryPages.push({ page_number: page.page_number, filename, checksum: page.checksum });
+        if (sanitized.result.source_sha256 !== page.checksum)
+          throw Object.assign(new Error("Sanitization source is not the G5-bound asset."), {
+            code: "FINAL_ASSET_INTEGRITY_FAILED",
+          });
+        reusedDelivery &&= sanitized.reused;
+        deliveryPages.push({
+          page_number: page.page_number,
+          filename,
+          checksum: sanitized.result.output_sha256,
+        });
+        sanitizationPages.push({
+          page_number: page.page_number,
+          filename,
+          source_sha256: sanitized.result.source_sha256,
+          output_sha256: sanitized.result.output_sha256,
+          width: sanitized.result.width,
+          height: sanitized.result.height,
+          bit_depth: sanitized.result.bit_depth,
+          color_type: sanitized.result.color_type,
+          idat_sha256: sanitized.result.idat_sha256,
+          removed_chunk_count: sanitized.result.removed_chunk_count,
+          removed_chunk_types: sanitized.result.removed_chunk_types,
+          pixel_stream_unchanged: true,
+          dimensions_unchanged: true,
+          bit_depth_unchanged: true,
+          color_type_unchanged: true,
+          pixel_reencoded: false,
+        });
       }
       const previewNames = {
         FULL: "contact-sheet-full.png",
@@ -496,9 +557,35 @@ export class FinalizationRuntime {
         renderer_calls: 0,
         feishu_writes: 0,
         attachment_uploads: 0,
+        png_privacy_metadata_removed: sanitizationPages.reduce(
+          (total, page) => total + page.removed_chunk_count,
+          0,
+        ),
+        pixel_reencoded: false,
         audit_history_separate: true,
       };
       await atomicJson(path.join(paths.delivery, "reports", "finalization-summary.json"), summary);
+      const sanitizationReport = {
+        report_id: `PSR-${context.content_id.replace("-", "")}-${context.final_manifest_version.replace("-", "")}`,
+        final_manifest_id: context.final_manifest_id,
+        pages: sanitizationPages,
+        page_count: sanitizationPages.length,
+        removed_chunk_count: sanitizationPages.reduce(
+          (total, page) => total + page.removed_chunk_count,
+          0,
+        ),
+        pixel_reencoded: false,
+        generated_at: context.finalized_at,
+        run_id: context.run_id,
+        schema_version: "1.0.0",
+      };
+      await this.assertSchema("png-metadata-sanitization-report", sanitizationReport);
+      const sanitizationReportPath = path.join(
+        paths.delivery,
+        "reports",
+        "png-metadata-sanitization-report.json",
+      );
+      await atomicJson(sanitizationReportPath, sanitizationReport);
       if (testOptions.fail_after === "DELIVERY")
         throw Object.assign(new Error("Injected failure after Delivery."), {
           code: "FINALIZATION_TEST_FAILURE_AFTER_DELIVERY",
@@ -509,6 +596,7 @@ export class FinalizationRuntime {
         deliveryRoot: paths.delivery,
         manifest,
         deliveryPages,
+        sanitizationPages,
         fingerprintHash,
       });
       const failed = checks.filter((check) => check.status === "FAIL");
@@ -542,7 +630,11 @@ export class FinalizationRuntime {
         root_ref: finalOutput,
         pages: deliveryPages,
         previews: ["contact-sheet-full.png", "contact-sheet-310.png", "contact-sheet-186.png"],
-        reports: ["finalization-summary.json", "delivery-integrity-report.json"],
+        reports: [
+          "finalization-summary.json",
+          "png-metadata-sanitization-report.json",
+          "delivery-integrity-report.json",
+        ],
         created_at: context.finalized_at,
         run_id: context.run_id,
         schema_version: "1.0.0",
@@ -576,6 +668,12 @@ export class FinalizationRuntime {
           context.final_manifest_version,
           "delivery/reports/delivery-integrity-report.json",
         ),
+        relativeProjectPath(
+          context.project_id,
+          context.content_id,
+          context.final_manifest_version,
+          "delivery/reports/png-metadata-sanitization-report.json",
+        ),
       ];
       const state = await this.writeState(context, "FINALIZED", {
         fingerprint: fingerprintHash,
@@ -596,11 +694,14 @@ export class FinalizationRuntime {
           "reports",
           "delivery-integrity-report.json",
         ),
+        sanitization_report_path: sanitizationReportPath,
         archive_state_path: paths.archiveState,
         imagegen_calls: 0,
         renderer_calls: 0,
         feishu_writes: 0,
         attachment_uploads: 0,
+        metadata_chunks_removed: sanitizationReport.removed_chunk_count,
+        pixel_reencoded: false,
       };
     } catch (error) {
       const current = await this.inspect();
@@ -617,11 +718,105 @@ export class FinalizationRuntime {
     }
   }
 
+  async exportSanitizedPngs(
+    context: FinalizationContext,
+    destinationDirectory: string,
+  ): Promise<SanitizedPngExportResult> {
+    const destination = path.resolve(destinationDirectory);
+    if (!path.isAbsolute(destinationDirectory) || destination === path.parse(destination).root)
+      throw Object.assign(new Error("Export destination must be a specific absolute directory."), {
+        code: "FINAL_EXPORT_DESTINATION_INVALID",
+      });
+    if (isWithin(this.pluginRoot, destination) || isWithin(destination, this.pluginRoot))
+      throw Object.assign(new Error("Export destination must remain outside Plugin Root."), {
+        code: "FINAL_EXPORT_DESTINATION_INVALID",
+      });
+    const state = await this.inspect(context);
+    if (state?.status !== "FINALIZED" || state.current !== true)
+      throw Object.assign(new Error("Only the current finalized set may be exported."), {
+        code: "FINAL_EXPORT_NOT_ELIGIBLE",
+      });
+    const fingerprint = String(state.final_set_fingerprint);
+    const paths = this.paths(context.final_manifest_version);
+    const output = path.join(
+      destination,
+      `${safeSegment(context.content_id)}-${safeSegment(context.final_manifest_version)}`,
+    );
+    await mkdir(output, { recursive: true, mode: 0o700 });
+    const markerPath = path.join(output, ".content-ops-sanitized-export.json");
+    const marker = {
+      project_id: context.project_id,
+      content_id: context.content_id,
+      final_manifest_version: context.final_manifest_version,
+      final_set_fingerprint: fingerprint,
+      managed_by: "content-ops-studio",
+      schema_version: "1.0.0",
+    };
+    const existingFiles = await readdir(output);
+    if (existingFiles.length > 0 && !existingFiles.includes(path.basename(markerPath)))
+      throw Object.assign(
+        new Error("Export leaf is non-empty and is not managed by this Plugin."),
+        {
+          code: "FINAL_EXPORT_DIRECTORY_CONFLICT",
+        },
+      );
+    if (existingFiles.includes(path.basename(markerPath))) {
+      const existingMarker = JSON.parse(await readFile(markerPath, "utf8")) as Record<
+        string,
+        unknown
+      >;
+      if (existingMarker.final_set_fingerprint !== fingerprint)
+        throw Object.assign(new Error("Export leaf belongs to a different finalized set."), {
+          code: "FINAL_EXPORT_DIRECTORY_CONFLICT",
+        });
+    }
+    const deliveryPackage = JSON.parse(await readFile(paths.deliveryPackage, "utf8")) as {
+      pages: Array<{ page_number: number; filename: string; checksum: string }>;
+    };
+    const expected = new Set(deliveryPackage.pages.map((page) => page.filename));
+    const removed: string[] = [];
+    for (const filename of await readdir(output)) {
+      const managedTemporary = filename.startsWith(".content-ops-tmp-");
+      const staleManagedPage =
+        /^\d{2,3}-(?:cover|content|summary)\.png$/u.test(filename) && !expected.has(filename);
+      if (!managedTemporary && !staleManagedPage) continue;
+      await unlink(path.join(output, filename));
+      removed.push(filename);
+    }
+    for (const page of deliveryPackage.pages)
+      await copyVerified(
+        path.join(paths.delivery, "pages", page.filename),
+        path.join(output, page.filename),
+        page.checksum,
+      );
+    await atomicJson(markerPath, marker);
+    const sanitization = JSON.parse(
+      await readFile(
+        path.join(paths.delivery, "reports", "png-metadata-sanitization-report.json"),
+        "utf8",
+      ),
+    ) as { removed_chunk_count: number };
+    return {
+      status: "EXPORTED",
+      output_directory: output,
+      page_count: deliveryPackage.pages.length,
+      invalid_files_removed: removed.sort(),
+      metadata_chunks_removed: sanitization.removed_chunk_count,
+      pixel_reencoded: false,
+    };
+  }
+
   private async verifyDelivery(input: {
     context: FinalizationContext;
     deliveryRoot: string;
     manifest: Record<string, unknown>;
     deliveryPages: Array<{ page_number: number; filename: string; checksum: string }>;
+    sanitizationPages: Array<
+      Omit<PngSanitizationResult, "bytes" | "removed_chunks"> & {
+        page_number: number;
+        filename: string;
+      }
+    >;
     fingerprintHash: string;
   }): Promise<
     Array<{ code: string; status: "PASS" | "FAIL"; blocking: boolean; message: string }>
@@ -659,18 +854,42 @@ export class FinalizationRuntime {
     );
     let checksumMatch = true;
     let canvasMatch = true;
+    let privacyMetadataRemoved = true;
+    let pixelStreamPreserved = true;
     for (const page of input.deliveryPages) {
       const bytes = await readFile(path.join(pageDirectory, page.filename));
       checksumMatch &&= digest(bytes) === page.checksum;
       const dimensions = pngDimensions(bytes);
       const source = input.context.pages[page.page_number - 1];
+      const sanitization = input.sanitizationPages.find(
+        (candidate) => candidate.page_number === page.page_number,
+      );
       canvasMatch &&=
         source !== undefined &&
         dimensions?.width === source.width &&
         dimensions.height === source.height;
+      privacyMetadataRemoved &&= !parsePngChunks(bytes).some(isPrivacyBearingPngChunk);
+      if (!source || !sanitization) pixelStreamPreserved = false;
+      else {
+        const sourceResult = sanitizePngMetadata(await readFile(source.source_path));
+        pixelStreamPreserved &&=
+          sourceResult.idat_sha256 === sanitization.idat_sha256 &&
+          sourceResult.output_sha256 === page.checksum &&
+          sanitization.pixel_reencoded === false;
+      }
     }
-    check("CHECKSUM_MATCH", checksumMatch, "Every delivered page checksum matches G5-bound bytes.");
+    check("CHECKSUM_MATCH", checksumMatch, "Every delivered page matches its sanitized checksum.");
     check("CANVAS_MATCH", canvasMatch, "Every delivered page Canvas matches approved evidence.");
+    check(
+      "PNG_PRIVACY_METADATA_REMOVED",
+      privacyMetadataRemoved,
+      "Privacy-bearing PNG metadata chunks are absent from every delivered page.",
+    );
+    check(
+      "PIXEL_STREAM_PRESERVED",
+      pixelStreamPreserved,
+      "IHDR properties and the exact compressed IDAT byte stream remain unchanged.",
+    );
     check(
       "NO_MISSING_FILE",
       pageFiles.length === input.deliveryPages.length,

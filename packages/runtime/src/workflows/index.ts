@@ -337,7 +337,7 @@ export const VISUAL_FINALIZATION_FIXTURE_V1: WorkflowDefinition = {
 
 export const FINALIZATION_AND_DELIVERY_V1: WorkflowDefinition = {
   workflow_id: "FINALIZATION_AND_DELIVERY_V1",
-  workflow_version: "1.0.0",
+  workflow_version: "1.1.0",
   display_name: "Finalization and Delivery V1",
   description:
     "Verify an explicitly approved current Final Set, create immutable delivery evidence and archive that version without rendering, ImageGen or implicit Workspace sync.",
@@ -356,6 +356,11 @@ export const FINALIZATION_AND_DELIVERY_V1: WorkflowDefinition = {
     { id: "VERIFY_GROUP_EVIDENCE", owner: "content-finalization" },
     { id: "BUILD_FINAL_MANIFEST", owner: "content-finalization", checkpoint: true },
     { id: "BUILD_FINAL_SET_FINGERPRINT", owner: "content-finalization" },
+    {
+      id: "SANITIZE_FINAL_PNG_METADATA",
+      owner: "content-finalization",
+      capabilities: ["asset-store.read", "asset-store.write"],
+    },
     {
       id: "BUILD_DELIVERY_PACKAGE",
       owner: "content-finalization",

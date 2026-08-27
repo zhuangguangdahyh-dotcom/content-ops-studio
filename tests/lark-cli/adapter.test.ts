@@ -91,6 +91,25 @@ describe("LarkCliWorkspaceAdapter", () => {
     await expect(adapter.getPrimaryFieldId("tbl_default")).resolves.toBe("fld_primary");
   });
 
+  it("uses the confirmed official field-delete command and read-verifies absence", async () => {
+    const calls: string[][] = [];
+    const runner = new LarkCliRunner("lark-cli", (_binary, argv) => {
+      calls.push(argv);
+      return Promise.resolve({
+        exitCode: 0,
+        stdout: JSON.stringify({
+          ok: true,
+          data: argv[1] === "+field-list" ? { fields: [] } : { deleted: true },
+        }),
+        stderr: "",
+      });
+    });
+    const adapter = new LarkCliWorkspaceAdapter({ runner, baseToken: "base_fixture" });
+    await expect(adapter.deleteField("tbl_default", "fld_default_select")).resolves.toBeUndefined();
+    expect(calls.map((call) => call[1])).toEqual(["+field-delete", "+field-list"]);
+    expect(calls[0]).toEqual(expect.arrayContaining(["--field-id", "fld_default_select", "--yes"]));
+  });
+
   it("resolves a created view by exact name when view-create omits its ID", async () => {
     const calls: string[][] = [];
     const runner = new LarkCliRunner("lark-cli", (_binary, argv) => {

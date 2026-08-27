@@ -1,10 +1,15 @@
+import { createHash } from "node:crypto";
 import { mkdtemp, readFile, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { buildFinalApprovalTargetVersion } from "../../packages/core/src/finalization/index.js";
 import { FinalizationRuntime } from "../../packages/runtime/src/finalization/index.js";
-import { createFinalizationE2eFixture, deterministicPng } from "./fixture.js";
+import {
+  appendPngChunkBeforeIend,
+  createFinalizationE2eFixture,
+  deterministicPng,
+} from "./fixture.js";
 
 const pluginRoot = path.resolve("plugins/content-ops-studio");
 
@@ -44,6 +49,42 @@ describe("Finalization Runtime", () => {
       current: true,
       sync_status: "SYNC_NOT_STARTED",
     });
+  });
+
+  it("removes caBX from Delivery without changing the approved PNG pixel stream", async () => {
+    const { runtime, context } = await setup();
+    const firstPage = context.pages[0];
+    if (!firstPage) throw new Error("Fixture page missing.");
+    const withC2pa = appendPngChunkBeforeIend(
+      await readFile(firstPage.source_path),
+      "caBX",
+      Buffer.from("private C2PA fixture"),
+    );
+    await writeFile(firstPage.source_path, withC2pa);
+    firstPage.checksum = createHash("sha256").update(withC2pa).digest("hex");
+    firstPage.file_size = withC2pa.length;
+    if (context.g5) context.g5.target_version = buildFinalApprovalTargetVersion(context);
+    const result = await runtime.finalize(context);
+    const report = JSON.parse(await readFile(result.sanitization_report_path, "utf8")) as {
+      removed_chunk_count: number;
+      pixel_reencoded: boolean;
+    };
+    expect(report).toEqual(
+      expect.objectContaining({ removed_chunk_count: 1, pixel_reencoded: false }),
+    );
+    expect(result.metadata_chunks_removed).toBe(1);
+  });
+
+  it("exports only finalized sanitized PNGs into a managed Operator directory", async () => {
+    const { home, runtime, context } = await setup();
+    await runtime.finalize(context);
+    const destination = path.join(home, "operator-export");
+    const first = await runtime.exportSanitizedPngs(context, destination);
+    expect(first).toMatchObject({ status: "EXPORTED", page_count: 6, pixel_reencoded: false });
+    await writeFile(path.join(first.output_directory, ".content-ops-tmp-stale"), "stale");
+    await writeFile(path.join(first.output_directory, "99-content.png"), "stale");
+    const second = await runtime.exportSanitizedPngs(context, destination);
+    expect(second.invalid_files_removed).toEqual([".content-ops-tmp-stale", "99-content.png"]);
   });
 
   it("replays idempotently without duplicating Manifest, pages or archive", async () => {

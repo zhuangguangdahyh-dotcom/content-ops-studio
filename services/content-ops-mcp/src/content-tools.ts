@@ -25,6 +25,16 @@ const CONTENT_ID = /^C-[0-9]{4}$/;
 const HASH = /^[a-f0-9]{64}$/;
 const SAFE_KEY = /^[A-Za-z0-9][A-Za-z0-9._-]{7,127}$/;
 const recordInput = z.record(z.string(), z.unknown());
+const nearSemanticAssessmentInput = z
+  .object({
+    content_id: z.string().regex(CONTENT_ID),
+    similarities: z.array(z.string().min(1)),
+    differences: z.array(z.string().min(1)),
+    worth_continuing: z.boolean(),
+    rationale: z.string().min(1),
+    alternative_angle: z.string().min(1).nullable(),
+  })
+  .strict();
 
 const readOnly = { readOnlyHint: true, destructiveHint: false, openWorldHint: false } as const;
 const writeLocal = { readOnlyHint: false, destructiveHint: false, openWorldHint: false } as const;
@@ -360,7 +370,7 @@ export const CONTENT_TOOL_DEFINITIONS: readonly ToolDefinition[] = [
         pages: z.array(recordInput).min(4).max(8),
         claim_map: recordInput,
         dimension_scores: recordInput,
-        near_semantic_assessments: z.array(recordInput),
+        near_semantic_assessments: z.array(nearSemanticAssessmentInput),
       })
       .strict(),
     outputSchema: resultEnvelopeSchema,

@@ -108,6 +108,22 @@ describe("LarkCliRunner", () => {
       );
   });
 
+  it("allows only the explicitly confirmed scoped field cleanup", () => {
+    expect(() =>
+      assertLarkCliCommandAllowed({
+        argv: ["base", "+field-delete", "--field-id", "fld-fixture", "--yes"],
+        operation: "DELETE_FIELD",
+        allowHighRiskUpdate: true,
+      }),
+    ).not.toThrow();
+    expect(() =>
+      assertLarkCliCommandAllowed({
+        argv: ["base", "+field-delete", "--field-id", "fld-fixture", "--yes"],
+        operation: "DELETE_FIELD",
+      }),
+    ).toThrow(LarkCliError);
+  });
+
   it("redacts credential-shaped output before returning it", async () => {
     const sensitiveKey = ["access", "token"].join("_");
     const sensitiveValue = ["do", "not", "persist"].join("-");

@@ -65,4 +65,4 @@ After G3, every visual artifact carries current content, copy, visual-plan, Styl
 
 Every Run binds a Workflow Definition, Project Runtime Snapshot, and Pack Resolution before executing. A verified write is journaled and never repeated on recovery. Checkpoints are caches tied to the current Journal hash; an intact Journal may rebuild a damaged checkpoint, while a damaged Journal blocks execution. Project locks are owner-bound and stale locks require an explicit recovery reason.
 
-Before Runtime composition or reference-workflow execution, validate the current Runtime against `runtime-support-policy.json`. V0.1.0 permits Node 24 (`>=24 <25`); unsupported and unclaimed majors return stable blocking errors. Runtime evidence and production capability checks remain separate.
+Before Runtime composition or reference-workflow execution, validate the current Runtime against `runtime-support-policy.json`. V0.2.0 permits Node 24 (`>=24 <25`); unsupported and unclaimed majors return stable blocking errors. Runtime evidence and production capability checks remain separate.

@@ -43,4 +43,4 @@ Phase 4B-R adds 14 narrow tools. Read-only: image-production context, asset rout
 
 Read-only: `content_ops_plan_finalization`, `content_ops_get_finalization_status`, `content_ops_verify_final_delivery`.
 
-Explicit-confirmation local write: `content_ops_finalize_delivery`. It can only create/reuse immutable Manifest, fingerprint, Delivery, integrity and Archive artifacts under external Project Home. It never invokes Renderer/ImageGen, writes Feishu, uploads attachments or accepts fixture approval in Production. The computed catalog is 71 tools.
+Explicit-confirmation local writes: `content_ops_finalize_delivery` and `content_ops_export_sanitized_pngs`. Finalization creates/reuses immutable Manifest, fingerprint, sanitized Delivery, integrity and Archive artifacts under external Project Home. Export copies only sanitized final PNGs into a marker-owned leaf below the Operator's absolute destination. Neither invokes Renderer/ImageGen, writes Feishu or uploads attachments. The computed catalog is 72 tools.

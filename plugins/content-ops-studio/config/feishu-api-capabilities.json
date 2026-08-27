@@ -84,6 +84,15 @@
       "IMPLEMENTED_OFFLINE"
     ],
     [
+      "DELETE_FIELD",
+      "DELETE",
+      "/open-apis/bitable/v1/apps/:app_token/tables/:table_id/fields/:field_id",
+      "bitable.appTableField.delete",
+      null,
+      "NO_AUTOMATIC_RETRY",
+      "IMPLEMENTED_OFFLINE"
+    ],
+    [
       "CREATE_VIEW",
       "POST",
       "/open-apis/bitable/v1/apps/:app_token/tables/:table_id/views",

@@ -25,6 +25,15 @@ function chunk(type: string, data: Buffer): Buffer {
   return Buffer.concat([header, label, data, checksum]);
 }
 
+export function appendPngChunkBeforeIend(source: Buffer, type: string, data: Buffer): Buffer {
+  const iendLength = 12;
+  return Buffer.concat([
+    source.subarray(0, source.length - iendLength),
+    chunk(type, data),
+    source.subarray(source.length - iendLength),
+  ]);
+}
+
 export function deterministicPng(width: number, height: number, seed: number): Buffer {
   const signature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
   const ihdr = Buffer.alloc(13);

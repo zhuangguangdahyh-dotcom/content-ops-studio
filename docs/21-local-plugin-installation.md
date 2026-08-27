@@ -28,4 +28,4 @@ For Visual Planning, run contract, visual-planning, layout, handoff, MCP, Plugin
 
 # Installed Renderer
 
-The installed Plugin Root remains immutable. Put the exact Chromium cache under Plugin Data, keep `CONTENT_OPS_HOME` external and run Renderer Doctor. The installed-copy test launches the bundled MCP from a separate working directory, discovers all 71 tools, renders a fixture Cover, verifies the output and proves the Plugin Root hash is unchanged.
+The installed Plugin Root remains immutable. Put the exact Chromium cache under Plugin Data, keep `CONTENT_OPS_HOME` external and run Renderer Doctor. The installed-copy test launches the bundled MCP from a separate working directory, discovers all 72 tools, renders a fixture Cover, verifies the output and proves the Plugin Root hash is unchanged.
