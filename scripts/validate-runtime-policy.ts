@@ -55,6 +55,8 @@ for (const workflowName of workflowNames.filter((name) => name.endsWith(".yml"))
     issues.push(`CHECKOUT_VERSION_DRIFT:${workflowName}`);
   if (!workflow.includes("actions/setup-node@v7"))
     issues.push(`SETUP_NODE_VERSION_DRIFT:${workflowName}`);
+  if (/\$\{\{\s*runner\.temp\s*\}\}/.test(workflow))
+    issues.push(`CI_UNAVAILABLE_JOB_ENV_CONTEXT:${workflowName}`);
 }
 const ci = await read(".github/workflows/ci.yml");
 if (!ci.includes("os: [ubuntu-latest, macos-latest]")) issues.push("CI_OS_MATRIX_MISMATCH");

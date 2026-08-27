@@ -9,7 +9,7 @@ jobs:
   validate:
     runs-on: ${{ matrix.os }}
     env:
-      PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/playwright-browsers
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.cache/playwright-browsers
     strategy:
       fail-fast: false
       matrix:
