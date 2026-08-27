@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/finalization-state.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Finalization State",
+  "description": "Evidence-backed current Final Set state with independent Workspace synchronization state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project_id",
+    "content_id",
+    "final_manifest_id",
+    "final_set_fingerprint",
+    "status",
+    "current",
+    "evidence_refs",
+    "sync_status",
+    "updated_at",
+    "run_id",
+    "schema_version"
+  ],
+  "properties": {
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "final_manifest_id": {
+      "anyOf": [{ "type": "string", "pattern": "^FINAL-[A-Z0-9-]+$" }, { "type": "null" }]
+    },
+    "final_set_fingerprint": {
+      "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/sha256" }, { "type": "null" }]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "NOT_ELIGIBLE",
+        "ELIGIBLE",
+        "FINALIZING",
+        "FINALIZED",
+        "FINALIZATION_FAILED",
+        "SUPERSEDED"
+      ]
+    },
+    "current": { "type": "boolean" },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+      "uniqueItems": true
+    },
+    "sync_status": {
+      "type": "string",
+      "enum": [
+        "SYNC_NOT_STARTED",
+        "SYNC_IN_PROGRESS",
+        "SYNC_COMPLETED",
+        "SYNC_PARTIAL",
+        "SYNC_FAILED",
+        "PENDING_RETRY"
+      ]
+    },
+    "updated_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" }
+  }
+}

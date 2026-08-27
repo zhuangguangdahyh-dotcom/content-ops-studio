@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/image-quality-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Image quality report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "asset_id",
+    "asset_role",
+    "layers",
+    "dimensions",
+    "total_score",
+    "threshold",
+    "hard_blocks",
+    "core_dimension_floor_met",
+    "operator_approval_required",
+    "result",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^IQR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "asset_id": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+    "asset_role": {
+      "type": "string",
+      "enum": ["DIRECTION_CANDIDATE", "FORMAL_FIRST_PAGE", "FORMAL_INNER_PAGE"]
+    },
+    "layers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authenticity_and_integrity",
+        "mechanical",
+        "visual",
+        "mode_and_project_fit",
+        "operator_aesthetic"
+      ],
+      "properties": {
+        "authenticity_and_integrity": { "$ref": "#/$defs/layer" },
+        "mechanical": { "$ref": "#/$defs/layer" },
+        "visual": { "$ref": "#/$defs/layer" },
+        "mode_and_project_fit": { "$ref": "#/$defs/layer" },
+        "operator_aesthetic": {
+          "type": "string",
+          "enum": ["PENDING", "APPROVED", "REVISE", "REJECTED"]
+        }
+      }
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": { "$ref": "#/$defs/dimension" }
+    },
+    "total_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "threshold": { "type": "integer", "minimum": 75, "maximum": 100 },
+    "hard_blocks": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "core_dimension_floor_met": { "type": "boolean" },
+    "operator_approval_required": { "const": true },
+    "result": { "type": "string", "enum": ["PASS_PENDING_OPERATOR", "FAIL", "BLOCKED"] },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "layer": { "type": "string", "enum": ["PASS", "FAIL", "BLOCKED"] },
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimension", "weight", "rating", "weighted_score"],
+      "properties": {
+        "dimension": {
+          "type": "string",
+          "enum": [
+            "CONTENT_SEMANTIC_FIT",
+            "COMPOSITION_FOCUS",
+            "HIERARCHY_READABILITY",
+            "ASSET_QUALITY_INTEGRITY",
+            "PROJECT_AUDIENCE_FIT",
+            "UNIQUENESS_ANTI_TEMPLATE",
+            "VISUAL_MODE_EXECUTION",
+            "PLATFORM_MOBILE_PERFORMANCE"
+          ]
+        },
+        "weight": { "type": "integer", "minimum": 5, "maximum": 20 },
+        "rating": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "weighted_score": { "type": "number", "minimum": 0, "maximum": 20 }
+      }
+    }
+  }
+}

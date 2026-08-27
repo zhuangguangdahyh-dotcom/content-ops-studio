@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/project-registry.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Project registry",
+  "description": "Local non-secret project registry entry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project_id",
+    "display_name",
+    "subject_name",
+    "project_root",
+    "project_status",
+    "last_active_at",
+    "schema_version",
+    "connection_status",
+    "latest_run_id",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_root": {
+      "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath"
+    },
+    "project_status": {
+      "$ref": "common-definitions.schema.json#/$defs/projectStatus"
+    },
+    "last_active_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    },
+    "connection_status": {
+      "type": "string",
+      "enum": ["NOT_CONFIGURED", "UNVERIFIED", "VERIFIED", "FAILED"]
+    },
+    "latest_run_id": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/runId"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "updated_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    }
+  }
+}

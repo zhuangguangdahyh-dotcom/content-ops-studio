@@ -1,0 +1,26 @@
+{
+  "review_batch_id": "PRB-DEMO-001",
+  "research_batch_id": "RB-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "painpoint_batch_version": 1,
+  "review_version": 1,
+  "items": [
+    {
+      "painpoint_id": "P-0001",
+      "painpoint_version": 1,
+      "decision": "INVALID_ENUM_VALUE",
+      "comment": "Evidence is sufficient for the fixture.",
+      "requested_changes": []
+    }
+  ],
+  "summary_decision": "APPROVE",
+  "approved_count": 1,
+  "revision_required_count": 0,
+  "rejected_count": 0,
+  "paused_count": 0,
+  "reviewer_role": "OPERATOR",
+  "source_run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/lark-cli-result.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Official Lark CLI result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ok",
+    "exit_code",
+    "operation",
+    "duration_ms",
+    "stdout_present",
+    "stderr_present",
+    "error",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "ok": { "type": "boolean" },
+    "exit_code": { "type": "integer", "minimum": 0, "maximum": 255 },
+    "operation": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]+$" },
+    "duration_ms": { "type": "integer", "minimum": 0 },
+    "stdout_present": { "type": "boolean" },
+    "stderr_present": { "type": "boolean" },
+    "error": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["code", "message"],
+          "properties": {
+            "code": { "type": "string", "minLength": 1 },
+            "message": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "ok": { "const": true } } },
+      "then": { "properties": { "exit_code": { "const": 0 }, "error": { "type": "null" } } }
+    },
+    {
+      "if": { "properties": { "ok": { "const": false } } },
+      "then": {
+        "properties": {
+          "exit_code": { "type": "integer", "minimum": 1 },
+          "error": { "type": "object" }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "manifest_id": "CRFPM-CAL-DEMO-001-FPV3",
+  "project_ref": { "project_kind": "CALIBRATION_PROJECT", "project_id": "CAL-DEMO-001" },
+  "content_id": "C-9001",
+  "content_version": "CV-2",
+  "copy_version": "CV-2",
+  "visual_plan_version": "VV-2",
+  "first_page_version": "FPV-3",
+  "asset_id": "AST-CAL-DEMO-001-FPV3",
+  "asset_source_type": "REUSED_VERIFIED_ASSET",
+  "source_asset_id": "AST-CAL-DEMO-001-FPV2",
+  "source_asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-010203-TEST/image-production/cover.png",
+  "source_asset_checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-010203-TEST/image-production/cover.png",
+  "asset_checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "asset_file_size": 1000,
+  "canvas": {
+    "width": 1242,
+    "height": 1660,
+    "aspect_ratio": "3:4",
+    "orientation": "PORTRAIT",
+    "resolution_unit": "PX"
+  },
+  "copy_equivalence": {
+    "copy_byte_equivalence": "PASS",
+    "content_promise_equivalence": "PASS",
+    "page_role_equivalence": "PASS",
+    "page_intent_equivalence": "PASS"
+  },
+  "asset_byte_reuse_eligibility": "PASSED",
+  "image_bytes": "UNCHANGED",
+  "current_version_qa": {
+    "qa_binding_id": "CVQA-CAL-DEMO-001-FPV3",
+    "target_binding": "CV-2:CV-2:VV-2:FPV-3:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "checks": [
+      {
+        "check": "COPY_FIDELITY",
+        "result": "PASS",
+        "binding_basis": "Current copy compared with rendered copy."
+      },
+      {
+        "check": "TYPOGRAPHY_POLICY",
+        "result": "PASS",
+        "binding_basis": "Verified raster evidence."
+      },
+      {
+        "check": "TYPOGRAPHY_SPATIAL_INTEGRITY",
+        "result": "PASS",
+        "binding_basis": "Verified raster evidence."
+      },
+      {
+        "check": "TYPOGRAPHY_BREATHING_ROOM",
+        "result": "PASS",
+        "binding_basis": "Verified raster evidence."
+      },
+      {
+        "check": "RASTER_TEXT_BACKGROUND_CONTRAST_INTEGRITY",
+        "result": "PASS",
+        "binding_basis": "Verified contrast evidence."
+      },
+      {
+        "check": "CONTRAST_STABILITY",
+        "result": "PASS",
+        "binding_basis": "Verified contrast evidence."
+      },
+      {
+        "check": "BACKGROUND_COMPLEXITY",
+        "result": "PASS",
+        "binding_basis": "Verified contrast evidence."
+      },
+      {
+        "check": "THUMBNAIL_QA",
+        "result": "PASS",
+        "binding_basis": "Actual 186 and 310 thumbnails."
+      },
+      {
+        "check": "COVER_CLICK_CLARITY",
+        "result": "PASS",
+        "binding_basis": "Current promise and historical pixel evidence."
+      },
+      {
+        "check": "SEMANTIC_RELEVANCE",
+        "result": "PASS",
+        "binding_basis": "Current painpoint compared with scene."
+      },
+      {
+        "check": "PAINPOINT_SCENE_CONGRUENCE",
+        "result": "PASS",
+        "binding_basis": "Current painpoint compared with scene."
+      },
+      { "check": "EDITORIAL_SPATIAL", "result": "PASS", "binding_basis": "Actual pixel evidence." },
+      {
+        "check": "IMAGE_TEXT_INTEGRATION",
+        "result": "PASS",
+        "binding_basis": "Actual pixel evidence."
+      },
+      {
+        "check": "COVER_ATTENTION",
+        "result": "PASS",
+        "binding_basis": "Actual thumbnail evidence."
+      },
+      { "check": "VISUAL_MASS", "result": "PASS", "binding_basis": "Actual grayscale evidence." },
+      {
+        "check": "GREYSCALE_HIERARCHY",
+        "result": "PASS",
+        "binding_basis": "Actual grayscale evidence."
+      },
+      {
+        "check": "COLOR_INTELLIGENCE",
+        "result": "PASS",
+        "binding_basis": "Actual pixel evidence."
+      },
+      {
+        "check": "TYPOGRAPHY_AS_FORM",
+        "result": "PASS",
+        "binding_basis": "Actual pixel evidence."
+      },
+      { "check": "IMAGE_QUALITY", "result": "PASS", "binding_basis": "PNG file evidence." },
+      {
+        "check": "ACTUAL_PIXEL_QA",
+        "result": "PASS",
+        "binding_basis": "Full and thumbnail pixel evidence."
+      },
+      {
+        "check": "DETERMINISTIC_ASSET_VERIFICATION",
+        "result": "PASS",
+        "binding_basis": "Source and replay bytes match."
+      }
+    ],
+    "evidence_refs": [
+      {
+        "artifact_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-010203-TEST/image-production/formal-cover.json",
+        "checksum": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      {
+        "artifact_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-010203-TEST/image-production/contrast.json",
+        "checksum": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      },
+      {
+        "artifact_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-010203-TEST/image-production/cover.png",
+        "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      {
+        "artifact_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-010203-TEST/image-production/cover-186.png",
+        "checksum": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      },
+      {
+        "artifact_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-010203-TEST/image-production/cover-310.png",
+        "checksum": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    ],
+    "hard_blocks": [],
+    "status": "PASSED"
+  },
+  "historical_manifest_modified": false,
+  "operator_approved": false,
+  "g4_eligible": true,
+  "imagegen_calls": 0,
+  "renderer_calls": 0,
+  "feishu_writes": 0,
+  "production_workspace_write_eligible": false,
+  "run_id": "RUN-20990101-020304-G3B1",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T02:03:04.000Z"
+}

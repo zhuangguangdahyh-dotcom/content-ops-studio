@@ -1,0 +1,12 @@
+interface:
+  display_name: "Visual Planning"
+  short_description: "Plan approved copy and hand off the Cover"
+  default_prompt: "Use $visual-planning to preserve my approved copy, build and verify the formal multi-page Visual Plan, update only allowed visual fields, and stop at the first-page production handoff."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "content-ops"
+      description: "Bundled local Content Ops MCP server for visual context, plans, bounded Feishu updates, verification and handoff"
+      transport: "stdio"
+policy:
+  allow_implicit_invocation: true

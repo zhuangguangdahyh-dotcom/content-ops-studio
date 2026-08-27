@@ -1,0 +1,17 @@
+{
+  "migration_id": "MIG-1.0.0-TO-1.0.0",
+  "from_version": "1.0.0",
+  "to_version": "1.0.0",
+  "status": "INVALID_ENUM_VALUE",
+  "dry_run": true,
+  "changes": [],
+  "warnings": [],
+  "conflicts": [],
+  "unmigrated_items": [],
+  "input_unchanged": true,
+  "idempotent": true,
+  "started_at": "2099-01-01T01:02:03.000Z",
+  "completed_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0"
+}

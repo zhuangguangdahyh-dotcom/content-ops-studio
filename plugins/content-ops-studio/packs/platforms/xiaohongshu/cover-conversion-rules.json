@@ -1,0 +1,38 @@
+{
+  "policyId": "XHS-COVER-CONVERSION-1.1.0",
+  "accountGoals": [
+    "LEAD_GENERATION",
+    "BRAND_BUILDING",
+    "KNOWLEDGE_EDUCATION",
+    "PRODUCT_SALES",
+    "COMMUNITY",
+    "PORTFOLIO_SHOWCASE"
+  ],
+  "leadGeneration": {
+    "requiresSpecificSubject": true,
+    "requiresAudience": true,
+    "requiresPainpointOrValue": true,
+    "coverStrategies": [
+      "TARGET_AUDIENCE_FIRST",
+      "PAINPOINT_FIRST",
+      "VALUE_FIRST",
+      "RISK_FIRST",
+      "DECISION_FIRST",
+      "QUESTION_FIRST"
+    ],
+    "primaryHook": {
+      "recommendedVisibleCharacters": [6, 16],
+      "hardMaximumVisibleCharacters": 20,
+      "maximumLines": 3
+    },
+    "secondaryLine": {
+      "hardMaximumVisibleCharacters": 20,
+      "maximumLines": 2
+    },
+    "trueSizeThumbnailTargets": ["310x414", "186x248"],
+    "clickClarityThreshold": 85,
+    "semanticRelevanceThreshold": 80,
+    "decorativeOnlyBackgroundAllowed": false,
+    "operatorApprovalAlwaysRequired": true
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "package_id": "CCP-CAL-DEMO-001-V2",
+  "project_ref": {
+    "project_kind": "CALIBRATION_PROJECT",
+    "project_id": "CAL-DEMO-001"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "overlay_id": "SPACE_IDENTITY",
+  "overlay_version": "1.0.0",
+  "display_name": "Space identity",
+  "hard_blocks": ["Spatial structure mismatch"],
+  "quality_checks": ["Zoning, circulation, scale and material continuity"],
+  "schema_version": "1.0.0"
+}

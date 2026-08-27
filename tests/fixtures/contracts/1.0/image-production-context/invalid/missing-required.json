@@ -1,0 +1,25 @@
+{
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "visual_plan_version": "VV-1",
+  "page_count": 6,
+  "project_visual_profile_maturity": "UNMATURE",
+  "direction_selection_status": "AWAITING_USER_SELECTION",
+  "host_imagegen_capability": "READY",
+  "industry_pack_binding": {
+    "pack_id": "PROFESSIONAL_SERVICES",
+    "pack_version": "1.0.0"
+  },
+  "overlay_bindings": [
+    {
+      "overlay_id": "BRAND_ASSET_INTEGRITY",
+      "overlay_version": "1.0.0"
+    }
+  ],
+  "rejected_directions": ["GENERIC_CARD_TEMPLATE"],
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z"
+}

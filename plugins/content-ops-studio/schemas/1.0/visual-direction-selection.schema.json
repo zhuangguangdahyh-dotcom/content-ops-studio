@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-direction-selection.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual direction selection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "selection_id",
+    "candidate_set_id",
+    "candidate_id",
+    "project_id",
+    "content_id",
+    "selected_by",
+    "selection_comment",
+    "creates_g4",
+    "creates_style_lock",
+    "next_visual_plan_version",
+    "run_id",
+    "schema_version",
+    "selected_at"
+  ],
+  "properties": {
+    "selection_id": { "type": "string", "pattern": "^VDS-[A-Z0-9-]+$" },
+    "candidate_set_id": { "type": "string", "pattern": "^VDCS-[A-Z0-9-]+$" },
+    "candidate_id": { "type": "string", "pattern": "^VDC-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "selected_by": { "const": "OPERATOR" },
+    "selection_comment": { "anyOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }] },
+    "creates_g4": { "const": false },
+    "creates_style_lock": { "const": false },
+    "next_visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "selected_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  }
+}

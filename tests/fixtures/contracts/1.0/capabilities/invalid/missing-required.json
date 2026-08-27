@@ -1,0 +1,8 @@
+{
+  "implementation_status": "NOT_IMPLEMENTED",
+  "required": false,
+  "provider": "FEISHU",
+  "operations": ["write-record"],
+  "limitations": ["No production connection in Phase 1A."],
+  "last_verified_at": "2099-01-01T01:02:03.000Z"
+}

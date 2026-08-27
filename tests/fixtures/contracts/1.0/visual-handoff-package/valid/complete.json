@@ -1,0 +1,1479 @@
+{
+  "visual_handoff_package_id": "VHP-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "visual_plan_version": "VV-1",
+  "visual_context_ref": "VCTX-DEMO-001",
+  "visual_direction_decision": {
+    "visual_direction_decision_id": "VDD-DEMO-001",
+    "visual_context_id": "VCTX-DEMO-001",
+    "candidates": [
+      {
+        "candidate_id": "VDC-A-001",
+        "visual_mode": "EDITORIAL_SERIES",
+        "direction_name": "Restrained editorial series",
+        "direction_summary": "Restrained editorial series for a fictional decision guide.",
+        "content_fit": "Fits the page task.",
+        "industry_fit": "Fits professional services.",
+        "platform_fit": "Fits 3:4 image posts.",
+        "project_fit": "Matches restrained project rules.",
+        "asset_feasibility": "Executable without unavailable assets.",
+        "text_density_fit": "Supports readable hierarchy.",
+        "background_strategy": "Warm white with blue-gray structure.",
+        "typography_strategy": "System Chinese sans-serif stack.",
+        "color_strategy": "Warm white, charcoal and muted blue-gray.",
+        "layout_strategy": "Generous spacing and page-specific cards.",
+        "evidence_strategy": "Do not fabricate evidence.",
+        "strengths": ["Deterministic"],
+        "limitations": ["Planning evidence only"],
+        "blocking_risks": [],
+        "score": 92
+      },
+      {
+        "candidate_id": "VDC-B-001",
+        "visual_mode": "EVIDENCE_LED",
+        "direction_name": "Evidence card series",
+        "direction_summary": "Evidence card series for a fictional decision guide.",
+        "content_fit": "Fits the page task.",
+        "industry_fit": "Fits professional services.",
+        "platform_fit": "Fits 3:4 image posts.",
+        "project_fit": "Matches restrained project rules.",
+        "asset_feasibility": "Executable without unavailable assets.",
+        "text_density_fit": "Supports readable hierarchy.",
+        "background_strategy": "Warm white with blue-gray structure.",
+        "typography_strategy": "System Chinese sans-serif stack.",
+        "color_strategy": "Warm white, charcoal and muted blue-gray.",
+        "layout_strategy": "Generous spacing and page-specific cards.",
+        "evidence_strategy": "Do not fabricate evidence.",
+        "strengths": ["Deterministic"],
+        "limitations": ["Planning evidence only"],
+        "blocking_risks": [],
+        "score": 70
+      },
+      {
+        "candidate_id": "VDC-C-001",
+        "visual_mode": "MIXED",
+        "direction_name": "Editorial and evidence mix",
+        "direction_summary": "Editorial and evidence mix for a fictional decision guide.",
+        "content_fit": "Fits the page task.",
+        "industry_fit": "Fits professional services.",
+        "platform_fit": "Fits 3:4 image posts.",
+        "project_fit": "Matches restrained project rules.",
+        "asset_feasibility": "Executable without unavailable assets.",
+        "text_density_fit": "Supports readable hierarchy.",
+        "background_strategy": "Warm white with blue-gray structure.",
+        "typography_strategy": "System Chinese sans-serif stack.",
+        "color_strategy": "Warm white, charcoal and muted blue-gray.",
+        "layout_strategy": "Generous spacing and page-specific cards.",
+        "evidence_strategy": "Do not fabricate evidence.",
+        "strengths": ["Deterministic"],
+        "limitations": ["Planning evidence only"],
+        "blocking_risks": [],
+        "score": 78
+      }
+    ],
+    "selected_candidate_id": "VDC-A-001",
+    "selection_rationale": "Best fidelity and feasibility.",
+    "user_fixed_mode": null,
+    "user_fixed_direction": null,
+    "user_rejected_modes": [],
+    "user_rejected_directions": ["fake certification"],
+    "industry_mode_preferences": ["EDITORIAL_SERIES"],
+    "platform_constraints": ["3:4 portrait"],
+    "asset_feasibility": ["Programmatic graphics available"],
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "extensions": {}
+  },
+  "visual_reference_manifest": {
+    "visual_reference_manifest_id": "VRM-DEMO-001",
+    "project_id": "PRJ-20990101-DEMO",
+    "content_id": "C-0001",
+    "references": [],
+    "reference_count": 0,
+    "reference_type_counts": {},
+    "approved_count": 0,
+    "rejected_count": 0,
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "extensions": {}
+  },
+  "visual_system": {
+    "visual_system_id": "VS-DEMO-001",
+    "project_id": "PRJ-20990101-DEMO",
+    "content_id": "C-0001",
+    "content_version": "CV-1",
+    "copy_version": "CV-1",
+    "visual_plan_version": "VV-1",
+    "visual_mode": "EDITORIAL_SERIES",
+    "visual_status": "VISUAL_VALIDATED",
+    "canvas": {
+      "width": 1242,
+      "height": 1660,
+      "aspect_ratio": "3:4",
+      "orientation": "PORTRAIT",
+      "resolution_unit": "PX"
+    },
+    "safe_area": {
+      "top": 80,
+      "right": 72,
+      "bottom": 80,
+      "left": 72,
+      "unit": "PX"
+    },
+    "grid_system": {
+      "rules": ["12-column flexible grid"]
+    },
+    "typography_tokens": [
+      {
+        "token_id": "TYPO-TITLE",
+        "role": "TITLE",
+        "font_family": "Fictional Sans",
+        "font_weight": 700,
+        "font_size": 72,
+        "line_height": 1.15,
+        "letter_spacing": 0,
+        "alignment": "LEFT",
+        "max_lines": 3,
+        "overflow_strategy": "REFLOW"
+      },
+      {
+        "token_id": "TYPO-BODY",
+        "role": "BODY",
+        "font_family": "Fictional Sans",
+        "font_weight": 400,
+        "font_size": 40,
+        "line_height": 1.4,
+        "letter_spacing": 0,
+        "alignment": "LEFT",
+        "max_lines": 8,
+        "overflow_strategy": "BLOCK_AND_RETURN"
+      }
+    ],
+    "color_tokens": [
+      {
+        "token_id": "COLOR-TEXT",
+        "role": "PRIMARY_TEXT",
+        "value": "#2A241F",
+        "color_space": "HEX",
+        "opacity": 1
+      },
+      {
+        "token_id": "COLOR-BACKGROUND",
+        "role": "BACKGROUND",
+        "value": "#F4EEE6",
+        "color_space": "HEX",
+        "opacity": 1
+      }
+    ],
+    "global_image_treatment": {
+      "brightness": 0,
+      "contrast": 0.05,
+      "saturation": -0.1,
+      "blur": 0,
+      "overlay": "warm-neutral-10",
+      "gradient": "bottom-soft",
+      "mask": "none",
+      "crop_strategy": "COVER"
+    },
+    "global_layout_rules": {
+      "rules": ["Keep one reading anchor"]
+    },
+    "brand_mark_rules": {
+      "rules": ["No unapproved logo"]
+    },
+    "page_number_rules": {
+      "rules": ["Two-digit page number"]
+    },
+    "global_visual_direction": "Calm fictional editorial system.",
+    "global_background_strategy": "Text-free geometry with page-specific variation.",
+    "global_negative_constraints": ["No real customer material"],
+    "project_rule_snapshot_id": "RULE-SNAPSHOT-DEMO",
+    "platform_pack_id": "platform-demo",
+    "platform_pack_version": "1.0.0",
+    "industry_pack_id": "industry-demo",
+    "industry_pack_version": "1.0.0",
+    "pages": [
+      {
+        "page_visual_plan_id": "PVP-DEMO-01",
+        "project_id": "PRJ-20990101-DEMO",
+        "content_id": "C-0001",
+        "page_number": 1,
+        "page_role": "COVER",
+        "content_version": "CV-1",
+        "copy_version": "CV-1",
+        "visual_plan_version": "VV-1",
+        "visual_mode": "EDITORIAL_SERIES",
+        "visual_purpose": "Establish the decision promise.",
+        "copy_snapshot": {
+          "copy_version": "CV-1",
+          "headline": "A fictional decision guide",
+          "body": "Use evidence before choosing.",
+          "supporting_text": "Sanitized fixture copy."
+        },
+        "background_direction": "Text-free editorial geometry with clear negative space.",
+        "visual_evidence_requirement": "No factual photo claim.",
+        "asset_requirements": ["text-free-background"],
+        "composition": "Stable left reading anchor with one visual counterweight.",
+        "camera_and_lens_direction": null,
+        "lighting_direction": null,
+        "material_and_texture_direction": "Subtle paper texture.",
+        "character_or_subject_direction": null,
+        "layout_regions": [
+          {
+            "region_id": "REGION-TEXT",
+            "role": "TEXT",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "z_index": 2
+          }
+        ],
+        "text_layers": [
+          {
+            "layer_id": "LAYER-TITLE-1",
+            "role": "TITLE",
+            "content_source": "copy_snapshot.headline",
+            "content_snapshot": "A fictional decision guide",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "typography_token_id": "TYPO-TITLE",
+            "color_token_id": "COLOR-TEXT",
+            "z_index": 3,
+            "required": true
+          }
+        ],
+        "image_treatment": {
+          "brightness": 0,
+          "contrast": 0.05,
+          "saturation": -0.1,
+          "blur": 0,
+          "overlay": "warm-neutral-10",
+          "gradient": "bottom-soft",
+          "mask": "none",
+          "crop_strategy": "COVER"
+        },
+        "safe_area": {
+          "top": 80,
+          "right": 72,
+          "bottom": 80,
+          "left": 72,
+          "unit": "PX"
+        },
+        "estimated_text_density": 0.25,
+        "max_text_density": 0.45,
+        "overflow_strategy": "REFLOW",
+        "negative_constraints": ["No generated informational Chinese text"],
+        "allowed_variations": ["Change local supporting geometry"],
+        "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+        "approval_dependency": "COPY_APPROVED",
+        "run_id": "RUN-20990101-010203-DEMO",
+        "schema_version": "1.0.0",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "updated_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      {
+        "page_visual_plan_id": "PVP-DEMO-02",
+        "project_id": "PRJ-20990101-DEMO",
+        "content_id": "C-0001",
+        "page_number": 2,
+        "page_role": "ANALYSIS",
+        "content_version": "CV-1",
+        "copy_version": "CV-1",
+        "visual_plan_version": "VV-1",
+        "visual_mode": "EDITORIAL_SERIES",
+        "visual_purpose": "Explain one fictional decision step.",
+        "copy_snapshot": {
+          "copy_version": "CV-1",
+          "headline": "Fictional step 2",
+          "body": "Compare one criterion at a time.",
+          "supporting_text": "Sanitized fixture copy."
+        },
+        "background_direction": "Text-free editorial geometry with clear negative space.",
+        "visual_evidence_requirement": "No factual photo claim.",
+        "asset_requirements": ["text-free-background"],
+        "composition": "Stable left reading anchor with one visual counterweight.",
+        "camera_and_lens_direction": null,
+        "lighting_direction": null,
+        "material_and_texture_direction": "Subtle paper texture.",
+        "character_or_subject_direction": null,
+        "layout_regions": [
+          {
+            "region_id": "REGION-TEXT",
+            "role": "TEXT",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "z_index": 2
+          }
+        ],
+        "text_layers": [
+          {
+            "layer_id": "LAYER-TITLE-2",
+            "role": "TITLE",
+            "content_source": "copy_snapshot.headline",
+            "content_snapshot": "Fictional step 2",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "typography_token_id": "TYPO-TITLE",
+            "color_token_id": "COLOR-TEXT",
+            "z_index": 3,
+            "required": true
+          }
+        ],
+        "image_treatment": {
+          "brightness": 0,
+          "contrast": 0.05,
+          "saturation": -0.1,
+          "blur": 0,
+          "overlay": "warm-neutral-10",
+          "gradient": "bottom-soft",
+          "mask": "none",
+          "crop_strategy": "COVER"
+        },
+        "safe_area": {
+          "top": 80,
+          "right": 72,
+          "bottom": 80,
+          "left": 72,
+          "unit": "PX"
+        },
+        "estimated_text_density": 0.25,
+        "max_text_density": 0.45,
+        "overflow_strategy": "REFLOW",
+        "negative_constraints": ["No generated informational Chinese text"],
+        "allowed_variations": ["Change local supporting geometry"],
+        "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+        "approval_dependency": "FIRST_PAGE_APPROVED",
+        "run_id": "RUN-20990101-010203-DEMO",
+        "schema_version": "1.0.0",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "updated_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      {
+        "page_visual_plan_id": "PVP-DEMO-03",
+        "project_id": "PRJ-20990101-DEMO",
+        "content_id": "C-0001",
+        "page_number": 3,
+        "page_role": "ANALYSIS",
+        "content_version": "CV-1",
+        "copy_version": "CV-1",
+        "visual_plan_version": "VV-1",
+        "visual_mode": "EDITORIAL_SERIES",
+        "visual_purpose": "Explain one fictional decision step.",
+        "copy_snapshot": {
+          "copy_version": "CV-1",
+          "headline": "Fictional step 3",
+          "body": "Compare one criterion at a time.",
+          "supporting_text": "Sanitized fixture copy."
+        },
+        "background_direction": "Text-free editorial geometry with clear negative space.",
+        "visual_evidence_requirement": "No factual photo claim.",
+        "asset_requirements": ["text-free-background"],
+        "composition": "Stable left reading anchor with one visual counterweight.",
+        "camera_and_lens_direction": null,
+        "lighting_direction": null,
+        "material_and_texture_direction": "Subtle paper texture.",
+        "character_or_subject_direction": null,
+        "layout_regions": [
+          {
+            "region_id": "REGION-TEXT",
+            "role": "TEXT",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "z_index": 2
+          }
+        ],
+        "text_layers": [
+          {
+            "layer_id": "LAYER-TITLE-3",
+            "role": "TITLE",
+            "content_source": "copy_snapshot.headline",
+            "content_snapshot": "Fictional step 3",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "typography_token_id": "TYPO-TITLE",
+            "color_token_id": "COLOR-TEXT",
+            "z_index": 3,
+            "required": true
+          }
+        ],
+        "image_treatment": {
+          "brightness": 0,
+          "contrast": 0.05,
+          "saturation": -0.1,
+          "blur": 0,
+          "overlay": "warm-neutral-10",
+          "gradient": "bottom-soft",
+          "mask": "none",
+          "crop_strategy": "COVER"
+        },
+        "safe_area": {
+          "top": 80,
+          "right": 72,
+          "bottom": 80,
+          "left": 72,
+          "unit": "PX"
+        },
+        "estimated_text_density": 0.25,
+        "max_text_density": 0.45,
+        "overflow_strategy": "REFLOW",
+        "negative_constraints": ["No generated informational Chinese text"],
+        "allowed_variations": ["Change local supporting geometry"],
+        "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+        "approval_dependency": "FIRST_PAGE_APPROVED",
+        "run_id": "RUN-20990101-010203-DEMO",
+        "schema_version": "1.0.0",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "updated_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      {
+        "page_visual_plan_id": "PVP-DEMO-04",
+        "project_id": "PRJ-20990101-DEMO",
+        "content_id": "C-0001",
+        "page_number": 4,
+        "page_role": "CTA",
+        "content_version": "CV-1",
+        "copy_version": "CV-1",
+        "visual_plan_version": "VV-1",
+        "visual_mode": "EDITORIAL_SERIES",
+        "visual_purpose": "Explain one fictional decision step.",
+        "copy_snapshot": {
+          "copy_version": "CV-1",
+          "headline": "Fictional step 4",
+          "body": "Compare one criterion at a time.",
+          "supporting_text": "Sanitized fixture copy."
+        },
+        "background_direction": "Text-free editorial geometry with clear negative space.",
+        "visual_evidence_requirement": "No factual photo claim.",
+        "asset_requirements": ["text-free-background"],
+        "composition": "Stable left reading anchor with one visual counterweight.",
+        "camera_and_lens_direction": null,
+        "lighting_direction": null,
+        "material_and_texture_direction": "Subtle paper texture.",
+        "character_or_subject_direction": null,
+        "layout_regions": [
+          {
+            "region_id": "REGION-TEXT",
+            "role": "TEXT",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "z_index": 2
+          }
+        ],
+        "text_layers": [
+          {
+            "layer_id": "LAYER-TITLE-4",
+            "role": "TITLE",
+            "content_source": "copy_snapshot.headline",
+            "content_snapshot": "Fictional step 4",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "typography_token_id": "TYPO-TITLE",
+            "color_token_id": "COLOR-TEXT",
+            "z_index": 3,
+            "required": true
+          }
+        ],
+        "image_treatment": {
+          "brightness": 0,
+          "contrast": 0.05,
+          "saturation": -0.1,
+          "blur": 0,
+          "overlay": "warm-neutral-10",
+          "gradient": "bottom-soft",
+          "mask": "none",
+          "crop_strategy": "COVER"
+        },
+        "safe_area": {
+          "top": 80,
+          "right": 72,
+          "bottom": 80,
+          "left": 72,
+          "unit": "PX"
+        },
+        "estimated_text_density": 0.25,
+        "max_text_density": 0.45,
+        "overflow_strategy": "REFLOW",
+        "negative_constraints": ["No generated informational Chinese text"],
+        "allowed_variations": ["Change local supporting geometry"],
+        "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+        "approval_dependency": "FIRST_PAGE_APPROVED",
+        "run_id": "RUN-20990101-010203-DEMO",
+        "schema_version": "1.0.0",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "updated_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      }
+    ],
+    "created_by_skill": "visual-planning",
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "updated_at": "2099-01-01T01:02:03.000Z",
+    "extensions": {}
+  },
+  "page_visual_plans": [
+    {
+      "page_visual_plan_id": "PVP-DEMO-01",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 1,
+      "page_role": "COVER",
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "visual_mode": "EDITORIAL_SERIES",
+      "visual_purpose": "Establish the decision promise.",
+      "copy_snapshot": {
+        "copy_version": "CV-1",
+        "headline": "A fictional decision guide",
+        "body": "Use evidence before choosing.",
+        "supporting_text": "Sanitized fixture copy."
+      },
+      "background_direction": "Text-free editorial geometry with clear negative space.",
+      "visual_evidence_requirement": "No factual photo claim.",
+      "asset_requirements": ["text-free-background"],
+      "composition": "Stable left reading anchor with one visual counterweight.",
+      "camera_and_lens_direction": null,
+      "lighting_direction": null,
+      "material_and_texture_direction": "Subtle paper texture.",
+      "character_or_subject_direction": null,
+      "layout_regions": [
+        {
+          "region_id": "REGION-TEXT",
+          "role": "TEXT",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "z_index": 2
+        }
+      ],
+      "text_layers": [
+        {
+          "layer_id": "LAYER-TITLE-1",
+          "role": "TITLE",
+          "content_source": "copy_snapshot.headline",
+          "content_snapshot": "A fictional decision guide",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "typography_token_id": "TYPO-TITLE",
+          "color_token_id": "COLOR-TEXT",
+          "z_index": 3,
+          "required": true
+        }
+      ],
+      "image_treatment": {
+        "brightness": 0,
+        "contrast": 0.05,
+        "saturation": -0.1,
+        "blur": 0,
+        "overlay": "warm-neutral-10",
+        "gradient": "bottom-soft",
+        "mask": "none",
+        "crop_strategy": "COVER"
+      },
+      "safe_area": {
+        "top": 80,
+        "right": 72,
+        "bottom": 80,
+        "left": 72,
+        "unit": "PX"
+      },
+      "estimated_text_density": 0.25,
+      "max_text_density": 0.45,
+      "overflow_strategy": "REFLOW",
+      "negative_constraints": ["No generated informational Chinese text"],
+      "allowed_variations": ["Change local supporting geometry"],
+      "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+      "approval_dependency": "COPY_APPROVED",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "updated_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    {
+      "page_visual_plan_id": "PVP-DEMO-02",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 2,
+      "page_role": "ANALYSIS",
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "visual_mode": "EDITORIAL_SERIES",
+      "visual_purpose": "Explain one fictional decision step.",
+      "copy_snapshot": {
+        "copy_version": "CV-1",
+        "headline": "Fictional step 2",
+        "body": "Compare one criterion at a time.",
+        "supporting_text": "Sanitized fixture copy."
+      },
+      "background_direction": "Text-free editorial geometry with clear negative space.",
+      "visual_evidence_requirement": "No factual photo claim.",
+      "asset_requirements": ["text-free-background"],
+      "composition": "Stable left reading anchor with one visual counterweight.",
+      "camera_and_lens_direction": null,
+      "lighting_direction": null,
+      "material_and_texture_direction": "Subtle paper texture.",
+      "character_or_subject_direction": null,
+      "layout_regions": [
+        {
+          "region_id": "REGION-TEXT",
+          "role": "TEXT",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "z_index": 2
+        }
+      ],
+      "text_layers": [
+        {
+          "layer_id": "LAYER-TITLE-2",
+          "role": "TITLE",
+          "content_source": "copy_snapshot.headline",
+          "content_snapshot": "Fictional step 2",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "typography_token_id": "TYPO-TITLE",
+          "color_token_id": "COLOR-TEXT",
+          "z_index": 3,
+          "required": true
+        }
+      ],
+      "image_treatment": {
+        "brightness": 0,
+        "contrast": 0.05,
+        "saturation": -0.1,
+        "blur": 0,
+        "overlay": "warm-neutral-10",
+        "gradient": "bottom-soft",
+        "mask": "none",
+        "crop_strategy": "COVER"
+      },
+      "safe_area": {
+        "top": 80,
+        "right": 72,
+        "bottom": 80,
+        "left": 72,
+        "unit": "PX"
+      },
+      "estimated_text_density": 0.25,
+      "max_text_density": 0.45,
+      "overflow_strategy": "REFLOW",
+      "negative_constraints": ["No generated informational Chinese text"],
+      "allowed_variations": ["Change local supporting geometry"],
+      "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+      "approval_dependency": "FIRST_PAGE_APPROVED",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "updated_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    {
+      "page_visual_plan_id": "PVP-DEMO-03",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 3,
+      "page_role": "ANALYSIS",
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "visual_mode": "EDITORIAL_SERIES",
+      "visual_purpose": "Explain one fictional decision step.",
+      "copy_snapshot": {
+        "copy_version": "CV-1",
+        "headline": "Fictional step 3",
+        "body": "Compare one criterion at a time.",
+        "supporting_text": "Sanitized fixture copy."
+      },
+      "background_direction": "Text-free editorial geometry with clear negative space.",
+      "visual_evidence_requirement": "No factual photo claim.",
+      "asset_requirements": ["text-free-background"],
+      "composition": "Stable left reading anchor with one visual counterweight.",
+      "camera_and_lens_direction": null,
+      "lighting_direction": null,
+      "material_and_texture_direction": "Subtle paper texture.",
+      "character_or_subject_direction": null,
+      "layout_regions": [
+        {
+          "region_id": "REGION-TEXT",
+          "role": "TEXT",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "z_index": 2
+        }
+      ],
+      "text_layers": [
+        {
+          "layer_id": "LAYER-TITLE-3",
+          "role": "TITLE",
+          "content_source": "copy_snapshot.headline",
+          "content_snapshot": "Fictional step 3",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "typography_token_id": "TYPO-TITLE",
+          "color_token_id": "COLOR-TEXT",
+          "z_index": 3,
+          "required": true
+        }
+      ],
+      "image_treatment": {
+        "brightness": 0,
+        "contrast": 0.05,
+        "saturation": -0.1,
+        "blur": 0,
+        "overlay": "warm-neutral-10",
+        "gradient": "bottom-soft",
+        "mask": "none",
+        "crop_strategy": "COVER"
+      },
+      "safe_area": {
+        "top": 80,
+        "right": 72,
+        "bottom": 80,
+        "left": 72,
+        "unit": "PX"
+      },
+      "estimated_text_density": 0.25,
+      "max_text_density": 0.45,
+      "overflow_strategy": "REFLOW",
+      "negative_constraints": ["No generated informational Chinese text"],
+      "allowed_variations": ["Change local supporting geometry"],
+      "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+      "approval_dependency": "FIRST_PAGE_APPROVED",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "updated_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    {
+      "page_visual_plan_id": "PVP-DEMO-04",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 4,
+      "page_role": "CTA",
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "visual_mode": "EDITORIAL_SERIES",
+      "visual_purpose": "Explain one fictional decision step.",
+      "copy_snapshot": {
+        "copy_version": "CV-1",
+        "headline": "Fictional step 4",
+        "body": "Compare one criterion at a time.",
+        "supporting_text": "Sanitized fixture copy."
+      },
+      "background_direction": "Text-free editorial geometry with clear negative space.",
+      "visual_evidence_requirement": "No factual photo claim.",
+      "asset_requirements": ["text-free-background"],
+      "composition": "Stable left reading anchor with one visual counterweight.",
+      "camera_and_lens_direction": null,
+      "lighting_direction": null,
+      "material_and_texture_direction": "Subtle paper texture.",
+      "character_or_subject_direction": null,
+      "layout_regions": [
+        {
+          "region_id": "REGION-TEXT",
+          "role": "TEXT",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "z_index": 2
+        }
+      ],
+      "text_layers": [
+        {
+          "layer_id": "LAYER-TITLE-4",
+          "role": "TITLE",
+          "content_source": "copy_snapshot.headline",
+          "content_snapshot": "Fictional step 4",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "typography_token_id": "TYPO-TITLE",
+          "color_token_id": "COLOR-TEXT",
+          "z_index": 3,
+          "required": true
+        }
+      ],
+      "image_treatment": {
+        "brightness": 0,
+        "contrast": 0.05,
+        "saturation": -0.1,
+        "blur": 0,
+        "overlay": "warm-neutral-10",
+        "gradient": "bottom-soft",
+        "mask": "none",
+        "crop_strategy": "COVER"
+      },
+      "safe_area": {
+        "top": 80,
+        "right": 72,
+        "bottom": 80,
+        "left": 72,
+        "unit": "PX"
+      },
+      "estimated_text_density": 0.25,
+      "max_text_density": 0.45,
+      "overflow_strategy": "REFLOW",
+      "negative_constraints": ["No generated informational Chinese text"],
+      "allowed_variations": ["Change local supporting geometry"],
+      "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+      "approval_dependency": "FIRST_PAGE_APPROVED",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "updated_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    }
+  ],
+  "asset_requirements_plan": {
+    "asset_requirements_plan_id": "ARP-DEMO-001",
+    "project_id": "PRJ-20990101-DEMO",
+    "content_id": "C-0001",
+    "content_version": "CV-1",
+    "copy_version": "CV-1",
+    "visual_plan_version": "VV-1",
+    "pages": [
+      {
+        "page_number": 1,
+        "page_role": "COVER",
+        "asset_source_strategy": "PROGRAMMATIC_GRAPHIC",
+        "asset_purpose": "Support the approved page task.",
+        "asset_description": "Abstract editorial structure only.",
+        "required_assets": ["Renderer-built vector structure"],
+        "optional_assets": [],
+        "reference_asset_ids": [],
+        "generation_required": false,
+        "programmatic_render_required": true,
+        "evidence_asset_required": false,
+        "aspect_ratio": "3:4",
+        "composition": "Stable left reading anchor with one visual counterweight.",
+        "subject": null,
+        "environment": null,
+        "camera_direction": null,
+        "lighting_direction": null,
+        "material_direction": null,
+        "prohibited_content": [
+          "people",
+          "fake certificates",
+          "logos",
+          "Chinese text in generated background"
+        ],
+        "informational_text_in_background_allowed": false,
+        "fallback_strategy": "Use typography and simple geometry only."
+      },
+      {
+        "page_number": 2,
+        "page_role": "ANALYSIS",
+        "asset_source_strategy": "PROGRAMMATIC_GRAPHIC",
+        "asset_purpose": "Support the approved page task.",
+        "asset_description": "Abstract editorial structure only.",
+        "required_assets": ["Renderer-built vector structure"],
+        "optional_assets": [],
+        "reference_asset_ids": [],
+        "generation_required": false,
+        "programmatic_render_required": true,
+        "evidence_asset_required": false,
+        "aspect_ratio": "3:4",
+        "composition": "Stable left reading anchor with one visual counterweight.",
+        "subject": null,
+        "environment": null,
+        "camera_direction": null,
+        "lighting_direction": null,
+        "material_direction": null,
+        "prohibited_content": [
+          "people",
+          "fake certificates",
+          "logos",
+          "Chinese text in generated background"
+        ],
+        "informational_text_in_background_allowed": false,
+        "fallback_strategy": "Use typography and simple geometry only."
+      },
+      {
+        "page_number": 3,
+        "page_role": "ANALYSIS",
+        "asset_source_strategy": "PROGRAMMATIC_GRAPHIC",
+        "asset_purpose": "Support the approved page task.",
+        "asset_description": "Abstract editorial structure only.",
+        "required_assets": ["Renderer-built vector structure"],
+        "optional_assets": [],
+        "reference_asset_ids": [],
+        "generation_required": false,
+        "programmatic_render_required": true,
+        "evidence_asset_required": false,
+        "aspect_ratio": "3:4",
+        "composition": "Stable left reading anchor with one visual counterweight.",
+        "subject": null,
+        "environment": null,
+        "camera_direction": null,
+        "lighting_direction": null,
+        "material_direction": null,
+        "prohibited_content": [
+          "people",
+          "fake certificates",
+          "logos",
+          "Chinese text in generated background"
+        ],
+        "informational_text_in_background_allowed": false,
+        "fallback_strategy": "Use typography and simple geometry only."
+      },
+      {
+        "page_number": 4,
+        "page_role": "CTA",
+        "asset_source_strategy": "PROGRAMMATIC_GRAPHIC",
+        "asset_purpose": "Support the approved page task.",
+        "asset_description": "Abstract editorial structure only.",
+        "required_assets": ["Renderer-built vector structure"],
+        "optional_assets": [],
+        "reference_asset_ids": [],
+        "generation_required": false,
+        "programmatic_render_required": true,
+        "evidence_asset_required": false,
+        "aspect_ratio": "3:4",
+        "composition": "Stable left reading anchor with one visual counterweight.",
+        "subject": null,
+        "environment": null,
+        "camera_direction": null,
+        "lighting_direction": null,
+        "material_direction": null,
+        "prohibited_content": [
+          "people",
+          "fake certificates",
+          "logos",
+          "Chinese text in generated background"
+        ],
+        "informational_text_in_background_allowed": false,
+        "fallback_strategy": "Use typography and simple geometry only."
+      }
+    ],
+    "global_asset_rules": ["Renderer owns final Chinese copy"],
+    "shared_assets": ["Design tokens"],
+    "unresolved_assets": [],
+    "generation_required_count": 0,
+    "programmatic_graphic_count": 4,
+    "project_asset_count": 0,
+    "evidence_asset_count": 0,
+    "no_asset_count": 0,
+    "ready_for_first_page": true,
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "extensions": {}
+  },
+  "layout_feasibility_report": {
+    "layout_feasibility_report_id": "LFR-DEMO-001",
+    "project_id": "PRJ-20990101-DEMO",
+    "content_id": "C-0001",
+    "content_version": "CV-1",
+    "copy_version": "CV-1",
+    "visual_plan_version": "VV-1",
+    "page_results": [
+      {
+        "page_number": 1,
+        "page_role": "COVER",
+        "headline_codepoints": 26,
+        "body_codepoints": 29,
+        "supporting_codepoints": 23,
+        "total_codepoints": 78,
+        "estimated_density": "LOW",
+        "estimated_line_count": 4,
+        "available_text_regions": 1,
+        "typography_token_refs": ["TYPO-TITLE"],
+        "safe_area_fit": true,
+        "max_lines_fit": true,
+        "hierarchy_fit": true,
+        "contrast_feasibility": true,
+        "overflow_strategy": "REFLOW",
+        "status": "PASS",
+        "warnings": [],
+        "blocking_reason": null
+      },
+      {
+        "page_number": 2,
+        "page_role": "ANALYSIS",
+        "headline_codepoints": 16,
+        "body_codepoints": 32,
+        "supporting_codepoints": 23,
+        "total_codepoints": 71,
+        "estimated_density": "LOW",
+        "estimated_line_count": 4,
+        "available_text_regions": 1,
+        "typography_token_refs": ["TYPO-TITLE"],
+        "safe_area_fit": true,
+        "max_lines_fit": true,
+        "hierarchy_fit": true,
+        "contrast_feasibility": true,
+        "overflow_strategy": "REFLOW",
+        "status": "PASS",
+        "warnings": [],
+        "blocking_reason": null
+      },
+      {
+        "page_number": 3,
+        "page_role": "ANALYSIS",
+        "headline_codepoints": 16,
+        "body_codepoints": 32,
+        "supporting_codepoints": 23,
+        "total_codepoints": 71,
+        "estimated_density": "LOW",
+        "estimated_line_count": 4,
+        "available_text_regions": 1,
+        "typography_token_refs": ["TYPO-TITLE"],
+        "safe_area_fit": true,
+        "max_lines_fit": true,
+        "hierarchy_fit": true,
+        "contrast_feasibility": true,
+        "overflow_strategy": "REFLOW",
+        "status": "PASS",
+        "warnings": [],
+        "blocking_reason": null
+      },
+      {
+        "page_number": 4,
+        "page_role": "CTA",
+        "headline_codepoints": 16,
+        "body_codepoints": 32,
+        "supporting_codepoints": 23,
+        "total_codepoints": 71,
+        "estimated_density": "LOW",
+        "estimated_line_count": 4,
+        "available_text_regions": 1,
+        "typography_token_refs": ["TYPO-TITLE"],
+        "safe_area_fit": true,
+        "max_lines_fit": true,
+        "hierarchy_fit": true,
+        "contrast_feasibility": true,
+        "overflow_strategy": "REFLOW",
+        "status": "PASS",
+        "warnings": [],
+        "blocking_reason": null
+      }
+    ],
+    "total_pages": 4,
+    "pass_count": 4,
+    "warning_count": 0,
+    "blocked_count": 0,
+    "overall_status": "PASS",
+    "copy_revision_required": false,
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "extensions": {}
+  },
+  "visual_quality_report": {
+    "visual_quality_report_id": "VQR-DEMO-001",
+    "project_id": "PRJ-20990101-DEMO",
+    "content_id": "C-0001",
+    "content_version": "CV-1",
+    "copy_version": "CV-1",
+    "visual_plan_version": "VV-1",
+    "hard_checks": [
+      {
+        "check_code": "CONTENT_COPY_APPROVED",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "G3_VERSION_VALID",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "COPY_SNAPSHOT_IDENTICAL",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "PAGE_COUNT_MATCH",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "PAGE_SEQUENCE",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "P1_COVER",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "TYPOGRAPHY_TOKEN_UNIQUE",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "COLOR_TOKEN_UNIQUE",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "TOKEN_REFS_RESOLVE",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "PAGE_VISUAL_TASK",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "PAGE_ASSET_STRATEGY",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "SAFE_AREA_VALID",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "TEXT_DENSITY_HANDLED",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "NO_CONTENT_REVISION_REQUIRED",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "NO_REJECTED_DIRECTION",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "ASSET_PERMISSION",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "NO_FAKE_EVIDENCE",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "BACKGROUND_HAS_NO_FORMAL_COPY",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      },
+      {
+        "check_code": "FIRST_PAGE_HANDOFF_COMPLETE",
+        "status": "PASS",
+        "blocking": true,
+        "details": "Verified by deterministic fixture."
+      }
+    ],
+    "dimension_scores": [
+      {
+        "dimension": "CONTENT_FIDELITY",
+        "score": 4.5,
+        "weight": 20,
+        "rationale": "Fictional ready fixture."
+      },
+      {
+        "dimension": "VISUAL_MODE_FIT",
+        "score": 4.5,
+        "weight": 15,
+        "rationale": "Fictional ready fixture."
+      },
+      {
+        "dimension": "GROUP_CONSISTENCY",
+        "score": 4.5,
+        "weight": 15,
+        "rationale": "Fictional ready fixture."
+      },
+      {
+        "dimension": "PAGE_SPECIFIC_RELEVANCE",
+        "score": 4.5,
+        "weight": 15,
+        "rationale": "Fictional ready fixture."
+      },
+      {
+        "dimension": "READABILITY_FEASIBILITY",
+        "score": 4.5,
+        "weight": 15,
+        "rationale": "Fictional ready fixture."
+      },
+      {
+        "dimension": "ASSET_FEASIBILITY",
+        "score": 4.5,
+        "weight": 10,
+        "rationale": "Fictional ready fixture."
+      },
+      {
+        "dimension": "PROJECT_FIT",
+        "score": 4.5,
+        "weight": 5,
+        "rationale": "Fictional ready fixture."
+      },
+      {
+        "dimension": "PLATFORM_FIT",
+        "score": 4.5,
+        "weight": 5,
+        "rationale": "Fictional ready fixture."
+      }
+    ],
+    "weighted_score": 90,
+    "blocking_failure_count": 0,
+    "warning_count": 0,
+    "passed_count": 19,
+    "ready_for_first_page": true,
+    "limitations": ["Planning estimate, not a Renderer measurement"],
+    "recommended_changes": [],
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "extensions": {}
+  },
+  "first_page_handoff": {
+    "page_number": 1,
+    "page_role": "COVER",
+    "page_visual_plan_id": "PVP-DEMO-01",
+    "content_version": "CV-1",
+    "copy_version": "CV-1",
+    "visual_plan_version": "VV-1",
+    "copy_snapshot": {
+      "headline": "A fictional decision guide",
+      "body": "Use evidence before choosing.",
+      "supporting_text": "Sanitized fixture copy."
+    },
+    "copy_snapshot_hash": "7d0b9891a01b63290388de76bd177b3fcd597e755e0ec56a2a1004cb7c2e1b64",
+    "canvas": {
+      "width": 1242,
+      "height": 1660,
+      "aspect_ratio": "3:4",
+      "orientation": "PORTRAIT",
+      "resolution_unit": "PX"
+    },
+    "safe_area": {
+      "top": 80,
+      "right": 72,
+      "bottom": 80,
+      "left": 72,
+      "unit": "PX"
+    },
+    "typography_tokens": [
+      {
+        "token_id": "TYPO-TITLE",
+        "role": "TITLE",
+        "font_family": "Fictional Sans",
+        "font_weight": 700,
+        "font_size": 72,
+        "line_height": 1.15,
+        "letter_spacing": 0,
+        "alignment": "LEFT",
+        "max_lines": 3,
+        "overflow_strategy": "REFLOW"
+      },
+      {
+        "token_id": "TYPO-BODY",
+        "role": "BODY",
+        "font_family": "Fictional Sans",
+        "font_weight": 400,
+        "font_size": 40,
+        "line_height": 1.4,
+        "letter_spacing": 0,
+        "alignment": "LEFT",
+        "max_lines": 8,
+        "overflow_strategy": "BLOCK_AND_RETURN"
+      }
+    ],
+    "color_tokens": [
+      {
+        "token_id": "COLOR-TEXT",
+        "role": "PRIMARY_TEXT",
+        "value": "#2A241F",
+        "color_space": "HEX",
+        "opacity": 1
+      },
+      {
+        "token_id": "COLOR-BACKGROUND",
+        "role": "BACKGROUND",
+        "value": "#F4EEE6",
+        "color_space": "HEX",
+        "opacity": 1
+      }
+    ],
+    "grid_system": {
+      "rules": ["12-column flexible grid"]
+    },
+    "asset_requirement": {
+      "page_number": 1,
+      "page_role": "COVER",
+      "asset_source_strategy": "PROGRAMMATIC_GRAPHIC",
+      "asset_purpose": "Support the approved page task.",
+      "asset_description": "Abstract editorial structure only.",
+      "required_assets": ["Renderer-built vector structure"],
+      "optional_assets": [],
+      "reference_asset_ids": [],
+      "generation_required": false,
+      "programmatic_render_required": true,
+      "evidence_asset_required": false,
+      "aspect_ratio": "3:4",
+      "composition": "Stable left reading anchor with one visual counterweight.",
+      "subject": null,
+      "environment": null,
+      "camera_direction": null,
+      "lighting_direction": null,
+      "material_direction": null,
+      "prohibited_content": [
+        "people",
+        "fake certificates",
+        "logos",
+        "Chinese text in generated background"
+      ],
+      "informational_text_in_background_allowed": false,
+      "fallback_strategy": "Use typography and simple geometry only."
+    },
+    "background_strategy": "Text-free editorial geometry with clear negative space.",
+    "text_layers": [
+      {
+        "layer_id": "LAYER-TITLE-1",
+        "role": "TITLE",
+        "content_source": "copy_snapshot.headline",
+        "content_snapshot": "A fictional decision guide",
+        "bbox": {
+          "x": 8,
+          "y": 8,
+          "width": 84,
+          "height": 30,
+          "unit": "PERCENT"
+        },
+        "typography_token_id": "TYPO-TITLE",
+        "color_token_id": "COLOR-TEXT",
+        "z_index": 3,
+        "required": true
+      }
+    ],
+    "image_treatment": {
+      "brightness": 0,
+      "contrast": 0.05,
+      "saturation": -0.1,
+      "blur": 0,
+      "overlay": "warm-neutral-10",
+      "gradient": "bottom-soft",
+      "mask": "none",
+      "crop_strategy": "COVER"
+    },
+    "negative_constraints": ["No generated informational Chinese text"],
+    "required_capabilities": ["PROGRAMMATIC_RENDERER"],
+    "generation_required": false,
+    "programmatic_render_required": true,
+    "ready": true,
+    "blocking_reasons": []
+  },
+  "platform_pack_version": "1.0.0",
+  "industry_pack_version": "1.0.0",
+  "project_rule_snapshot": "APRS-DEMO-001",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

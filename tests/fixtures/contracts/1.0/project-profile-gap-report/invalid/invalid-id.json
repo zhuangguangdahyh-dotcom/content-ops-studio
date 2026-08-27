@@ -1,0 +1,38 @@
+{
+  "gap_report_id": "INVALID-ID",
+  "project_id": "PRJ-20990101-DEMO",
+  "known_fields": ["subject_name", "audience_profile", "industry"],
+  "missing_required_fields": [],
+  "missing_recommended_fields": ["price_band"],
+  "conflicting_fields": [],
+  "inferred_fields": [
+    {
+      "field": "primary_platform",
+      "value_summary": "Xiaohongshu",
+      "basis": "Confirmed platform pack",
+      "confirmed": true
+    }
+  ],
+  "operator_known": {
+    "role": "OPERATOR",
+    "known_fields": []
+  },
+  "subject_known": {
+    "role": "SUBJECT",
+    "known_fields": ["subject_name", "industry"]
+  },
+  "audience_known": {
+    "role": "AUDIENCE",
+    "known_fields": ["audience_profile"]
+  },
+  "material_blockers": [],
+  "non_blocking_gaps": ["price_band"],
+  "recommended_questions": ["What price band should the research use?"],
+  "profile_completeness": 0.9,
+  "ready_for_project_confirmation": true,
+  "ready_for_painpoint_research": true,
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

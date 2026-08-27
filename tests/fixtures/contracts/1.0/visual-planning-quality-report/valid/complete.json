@@ -1,0 +1,185 @@
+{
+  "visual_quality_report_id": "VQR-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "visual_plan_version": "VV-1",
+  "hard_checks": [
+    {
+      "check_code": "CONTENT_COPY_APPROVED",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "G3_VERSION_VALID",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "COPY_SNAPSHOT_IDENTICAL",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "PAGE_COUNT_MATCH",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "PAGE_SEQUENCE",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "P1_COVER",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "TYPOGRAPHY_TOKEN_UNIQUE",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "COLOR_TOKEN_UNIQUE",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "TOKEN_REFS_RESOLVE",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "PAGE_VISUAL_TASK",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "PAGE_ASSET_STRATEGY",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "SAFE_AREA_VALID",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "TEXT_DENSITY_HANDLED",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "NO_CONTENT_REVISION_REQUIRED",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "NO_REJECTED_DIRECTION",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "ASSET_PERMISSION",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "NO_FAKE_EVIDENCE",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "BACKGROUND_HAS_NO_FORMAL_COPY",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    },
+    {
+      "check_code": "FIRST_PAGE_HANDOFF_COMPLETE",
+      "status": "PASS",
+      "blocking": true,
+      "details": "Verified by deterministic fixture."
+    }
+  ],
+  "dimension_scores": [
+    {
+      "dimension": "CONTENT_FIDELITY",
+      "score": 4.5,
+      "weight": 20,
+      "rationale": "Fictional ready fixture."
+    },
+    {
+      "dimension": "VISUAL_MODE_FIT",
+      "score": 4.5,
+      "weight": 15,
+      "rationale": "Fictional ready fixture."
+    },
+    {
+      "dimension": "GROUP_CONSISTENCY",
+      "score": 4.5,
+      "weight": 15,
+      "rationale": "Fictional ready fixture."
+    },
+    {
+      "dimension": "PAGE_SPECIFIC_RELEVANCE",
+      "score": 4.5,
+      "weight": 15,
+      "rationale": "Fictional ready fixture."
+    },
+    {
+      "dimension": "READABILITY_FEASIBILITY",
+      "score": 4.5,
+      "weight": 15,
+      "rationale": "Fictional ready fixture."
+    },
+    {
+      "dimension": "ASSET_FEASIBILITY",
+      "score": 4.5,
+      "weight": 10,
+      "rationale": "Fictional ready fixture."
+    },
+    {
+      "dimension": "PROJECT_FIT",
+      "score": 4.5,
+      "weight": 5,
+      "rationale": "Fictional ready fixture."
+    },
+    {
+      "dimension": "PLATFORM_FIT",
+      "score": 4.5,
+      "weight": 5,
+      "rationale": "Fictional ready fixture."
+    }
+  ],
+  "weighted_score": 90,
+  "blocking_failure_count": 0,
+  "warning_count": 0,
+  "passed_count": 19,
+  "ready_for_first_page": true,
+  "limitations": ["Planning estimate, not a Renderer measurement"],
+  "recommended_changes": [],
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/page-visual-plan.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Page visual plan",
+  "description": "Executable version-bound visual direction for one content page.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "page_visual_plan_id",
+    "project_id",
+    "content_id",
+    "page_number",
+    "page_role",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "visual_mode",
+    "visual_purpose",
+    "copy_snapshot",
+    "background_direction",
+    "visual_evidence_requirement",
+    "asset_requirements",
+    "composition",
+    "camera_and_lens_direction",
+    "lighting_direction",
+    "material_and_texture_direction",
+    "character_or_subject_direction",
+    "layout_regions",
+    "text_layers",
+    "image_treatment",
+    "safe_area",
+    "estimated_text_density",
+    "max_text_density",
+    "overflow_strategy",
+    "negative_constraints",
+    "allowed_variations",
+    "fallback_strategy",
+    "approval_dependency",
+    "run_id",
+    "schema_version",
+    "created_at",
+    "updated_at",
+    "extensions"
+  ],
+  "properties": {
+    "page_visual_plan_id": { "type": "string", "pattern": "^PVP-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "page_number": { "type": "integer", "minimum": 1 },
+    "page_role": { "$ref": "common-definitions.schema.json#/$defs/pageRole" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "visual_mode": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+    "visual_purpose": { "type": "string", "minLength": 1 },
+    "copy_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["copy_version", "headline", "body", "supporting_text"],
+      "properties": {
+        "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+        "headline": { "type": "string" },
+        "body": { "type": "string" },
+        "supporting_text": { "type": "string" }
+      }
+    },
+    "background_direction": { "type": "string", "minLength": 1 },
+    "visual_evidence_requirement": { "type": "string" },
+    "asset_requirements": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "composition": { "type": "string", "minLength": 1 },
+    "camera_and_lens_direction": { "anyOf": [{ "type": "string" }, { "type": "null" }] },
+    "lighting_direction": { "anyOf": [{ "type": "string" }, { "type": "null" }] },
+    "material_and_texture_direction": { "anyOf": [{ "type": "string" }, { "type": "null" }] },
+    "character_or_subject_direction": { "anyOf": [{ "type": "string" }, { "type": "null" }] },
+    "layout_regions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["region_id", "role", "bbox", "z_index"],
+        "properties": {
+          "region_id": { "type": "string", "pattern": "^REGION-[A-Z0-9-]+$" },
+          "role": {
+            "type": "string",
+            "enum": ["BACKGROUND", "TEXT", "IMAGE", "BRAND", "PAGE_NUMBER"]
+          },
+          "bbox": { "$ref": "common-definitions.schema.json#/$defs/boundingBox" },
+          "z_index": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "text_layers": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/textLayer" }
+    },
+    "image_treatment": { "$ref": "common-definitions.schema.json#/$defs/imageTreatment" },
+    "safe_area": { "$ref": "common-definitions.schema.json#/$defs/safeArea" },
+    "estimated_text_density": { "type": "number", "minimum": 0, "maximum": 1 },
+    "max_text_density": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+    "overflow_strategy": {
+      "type": "string",
+      "enum": ["REFLOW", "MOVE_TO_NEXT_PAGE", "REVISE_COPY", "CHANGE_LAYOUT", "BLOCK_AND_RETURN"]
+    },
+    "negative_constraints": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "allowed_variations": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "fallback_strategy": { "type": "string", "minLength": 1 },
+    "approval_dependency": { "type": "string", "enum": ["COPY_APPROVED", "FIRST_PAGE_APPROVED"] },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "updated_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

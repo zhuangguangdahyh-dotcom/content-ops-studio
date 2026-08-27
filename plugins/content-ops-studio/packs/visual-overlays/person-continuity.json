@@ -1,0 +1,8 @@
+{
+  "overlay_id": "PERSON_CONTINUITY",
+  "overlay_version": "1.0.0",
+  "display_name": "Person continuity",
+  "hard_blocks": ["Identity mismatch"],
+  "quality_checks": ["Face, body, age and signature-trait continuity"],
+  "schema_version": "1.0.0"
+}

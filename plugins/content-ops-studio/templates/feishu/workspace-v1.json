@@ -1,0 +1,3472 @@
+{
+  "blueprint_id": "WBP-CONTENT-OPS-V1",
+  "blueprint_version": "1.0.0",
+  "provider": "FEISHU",
+  "display_name_pattern": "<project name>｜图文内容工作台",
+  "tables": [
+    {
+      "logicalKey": "projectConfig",
+      "displayName": "01 项目配置",
+      "description": "项目主体、受众、平台、内容与视觉配置。",
+      "primaryFieldLogicalKey": "projectConfigProjectName",
+      "fields": [
+        {
+          "logicalKey": "projectConfigProjectName",
+          "displayName": "项目名称",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": true,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "项目名称的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigProjectId",
+          "displayName": "项目ID",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": true,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "项目ID的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigProjectStatus",
+          "displayName": "项目状态",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "PROJECT_INITIALIZING",
+              "displayName": "初始化中"
+            },
+            {
+              "code": "PROJECT_PENDING_CONFIRMATION",
+              "displayName": "待资料确认"
+            },
+            {
+              "code": "PROJECT_ACTIVE",
+              "displayName": "已启用"
+            },
+            {
+              "code": "PROJECT_PAUSED",
+              "displayName": "暂停"
+            },
+            {
+              "code": "PROJECT_ARCHIVED",
+              "displayName": "已归档"
+            }
+          ],
+          "description": "项目状态的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigConfigConfirmationStatus",
+          "displayName": "配置确认状态",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "CONFIG_PENDING",
+              "displayName": "待确认"
+            },
+            {
+              "code": "CONFIG_CONFIRMED",
+              "displayName": "已确认"
+            },
+            {
+              "code": "CONFIG_UPDATE_REQUIRED",
+              "displayName": "需更新"
+            }
+          ],
+          "description": "配置确认状态的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigSubjectName",
+          "displayName": "项目主体名称",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "项目主体名称的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigSubjectType",
+          "displayName": "主体类型",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "PERSON",
+              "displayName": "PERSON"
+            },
+            {
+              "code": "BRAND",
+              "displayName": "BRAND"
+            },
+            {
+              "code": "ORGANIZATION",
+              "displayName": "ORGANIZATION"
+            },
+            {
+              "code": "STORE",
+              "displayName": "STORE"
+            },
+            {
+              "code": "PRODUCT",
+              "displayName": "PRODUCT"
+            }
+          ],
+          "description": "主体类型的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigPublicIdentityAndIntro",
+          "displayName": "对外身份与基础介绍",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "对外身份与基础介绍的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigIndustry",
+          "displayName": "所属行业",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "所属行业的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigIndustrySubfields",
+          "displayName": "细分领域",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "MULTI_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "细分领域的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigCoreBusinessOrProducts",
+          "displayName": "主营业务或核心产品",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "主营业务或核心产品的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigServiceRegion",
+          "displayName": "服务地域",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "MULTI_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "服务地域的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigPriceBand",
+          "displayName": "价格带或客单价",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "价格带或客单价的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigAudienceProfile",
+          "displayName": "目标客户画像",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "目标客户画像的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigAudienceDecisionCharacteristics",
+          "displayName": "目标客户决策特征",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "目标客户决策特征的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigProfessionalAdvantages",
+          "displayName": "核心专业优势",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "核心专业优势的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigPersonalityExpressionAdvantages",
+          "displayName": "人格与表达优势",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "人格与表达优势的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigContentObjectives",
+          "displayName": "内容目标",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "MULTI_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "内容目标的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigCoreContentDirections",
+          "displayName": "核心内容方向",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "核心内容方向的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigContentStyle",
+          "displayName": "内容风格",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "MULTI_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "内容风格的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigExpressionTone",
+          "displayName": "表达语气",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "MULTI_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "表达语气的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigTargetPlatforms",
+          "displayName": "目标平台",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "MULTI_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "目标平台的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigPrimaryPlatform",
+          "displayName": "当前主平台",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "当前主平台的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigDefaultPageCount",
+          "displayName": "默认图片数量",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "NUMBER",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "默认图片数量的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigDefaultAspectRatio",
+          "displayName": "默认画幅比例",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "默认画幅比例的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigVisualPreferences",
+          "displayName": "视觉偏好",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "视觉偏好的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigDirectMessageHookRules",
+          "displayName": "私信钩子规则",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "私信钩子规则的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigTitleRules",
+          "displayName": "标题规则",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "标题规则的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigProhibitedExpressions",
+          "displayName": "禁用表达",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "禁用表达的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigProhibitedVisuals",
+          "displayName": "禁用视觉",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "禁用视觉的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigIndustryPack",
+          "displayName": "当前行业包",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "当前行业包的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigPlatformPack",
+          "displayName": "当前平台包",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "当前平台包的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigOperatorNotes",
+          "displayName": "操作者备注",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "操作者备注的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigRecordUniqueKey",
+          "displayName": "记录唯一键",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": true,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "记录唯一键的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigConfigurationVersion",
+          "displayName": "配置版本",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "NUMBER",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "配置版本的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigSchemaVersion",
+          "displayName": "Schema版本",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "Schema版本的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigLastRunId",
+          "displayName": "最后运行ID",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "最后运行ID的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigCreatedAt",
+          "displayName": "创建时间",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "DATETIME",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": true,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "创建时间的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigUpdatedAt",
+          "displayName": "最后更新时间",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "DATETIME",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [],
+          "description": "最后更新时间的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "projectConfigDataSource",
+          "displayName": "数据来源",
+          "tableLogicalKey": "projectConfig",
+          "fieldType": "SINGLE_SELECT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-initialization",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "OPERATOR_INPUT",
+              "displayName": "OPERATOR_INPUT"
+            },
+            {
+              "code": "CUSTOMER_MATERIAL",
+              "displayName": "CUSTOMER_MATERIAL"
+            },
+            {
+              "code": "MIGRATED",
+              "displayName": "MIGRATED"
+            },
+            {
+              "code": "MOCK",
+              "displayName": "MOCK"
+            }
+          ],
+          "description": "数据来源的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        }
+      ],
+      "views": [
+        {
+          "logicalKey": "projectConfigActive",
+          "displayName": "当前项目配置",
+          "tableLogicalKey": "projectConfig",
+          "filterDescription": "项目状态不是已归档",
+          "sortDescription": "最后更新时间降序"
+        }
+      ]
+    },
+    {
+      "logicalKey": "painpoints",
+      "displayName": "02 痛点库",
+      "description": "一行一个经证据支持的客户痛点。",
+      "primaryFieldLogicalKey": "painpointsPainpointName",
+      "fields": [
+        {
+          "logicalKey": "painpointsPainpointName",
+          "displayName": "痛点名称",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": true,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "痛点名称的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsPainpointId",
+          "displayName": "痛点ID",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": true,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "痛点ID的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsReviewStatus",
+          "displayName": "痛点审核状态",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "PAINPOINT_PENDING",
+              "displayName": "待确认"
+            },
+            {
+              "code": "PAINPOINT_CONFIRMED",
+              "displayName": "已确认"
+            },
+            {
+              "code": "PAINPOINT_REVISION_REQUIRED",
+              "displayName": "需修改"
+            },
+            {
+              "code": "PAINPOINT_REJECTED",
+              "displayName": "已否定"
+            },
+            {
+              "code": "PAINPOINT_PAUSED",
+              "displayName": "已暂停"
+            }
+          ],
+          "description": "痛点审核状态的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsBusinessScenario",
+          "displayName": "业务场景",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "业务场景的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsAudienceType",
+          "displayName": "客户类型",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "客户类型的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsDecisionStage",
+          "displayName": "客户决策阶段",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "PROBLEM_AWARENESS",
+              "displayName": "PROBLEM_AWARENESS"
+            },
+            {
+              "code": "ACTIVE_SEARCH",
+              "displayName": "ACTIVE_SEARCH"
+            },
+            {
+              "code": "SOLUTION_COMPARISON",
+              "displayName": "SOLUTION_COMPARISON"
+            },
+            {
+              "code": "RISK_EVALUATION",
+              "displayName": "RISK_EVALUATION"
+            },
+            {
+              "code": "PURCHASE_DECISION",
+              "displayName": "PURCHASE_DECISION"
+            },
+            {
+              "code": "USAGE_EXPERIENCE",
+              "displayName": "USAGE_EXPERIENCE"
+            },
+            {
+              "code": "REPURCHASE_REFERRAL",
+              "displayName": "REPURCHASE_REFERRAL"
+            }
+          ],
+          "description": "客户决策阶段的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsExplicitNeed",
+          "displayName": "精准痛点需求",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "精准痛点需求的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsDeepAnxiety",
+          "displayName": "深层焦虑",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "深层焦虑的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsTriggerEvents",
+          "displayName": "触发事件",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "触发事件的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsPrimaryBarriers",
+          "displayName": "主要阻碍或反对理由",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "主要阻碍或反对理由的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsAnalysisReason",
+          "displayName": "分析理由",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "分析理由的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsCommercialLoss",
+          "displayName": "商业损失或现实代价",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "商业损失或现实代价的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsContentEntryAngles",
+          "displayName": "内容切入角度",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "内容切入角度的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsSubjectAdvantages",
+          "displayName": "可表达我方优势",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "可表达我方优势的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsEvidenceSourceType",
+          "displayName": "证据来源类型",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "MULTI_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [
+            { "code": "OFFICIAL_SOURCE", "displayName": "OFFICIAL_SOURCE" },
+            { "code": "FIRST_PARTY_DATA", "displayName": "FIRST_PARTY_DATA" },
+            { "code": "CUSTOMER_MATERIAL", "displayName": "CUSTOMER_MATERIAL" },
+            { "code": "CUSTOMER_INTERVIEW", "displayName": "CUSTOMER_INTERVIEW" },
+            { "code": "INDUSTRY_REPORT", "displayName": "INDUSTRY_REPORT" },
+            { "code": "PLATFORM_DOCUMENTATION", "displayName": "PLATFORM_DOCUMENTATION" },
+            { "code": "SOCIAL_COMMENT", "displayName": "SOCIAL_COMMENT" },
+            { "code": "PUBLIC_REVIEW", "displayName": "PUBLIC_REVIEW" },
+            { "code": "COMPETITOR_CONTENT", "displayName": "COMPETITOR_CONTENT" },
+            { "code": "QUESTION_AND_ANSWER", "displayName": "QUESTION_AND_ANSWER" },
+            { "code": "FORUM", "displayName": "FORUM" },
+            { "code": "NEWS", "displayName": "NEWS" },
+            { "code": "MANUAL_SOURCE", "displayName": "MANUAL_SOURCE" },
+            { "code": "MODEL_HYPOTHESIS", "displayName": "MODEL_HYPOTHESIS" }
+          ],
+          "description": "证据来源类型的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsEvidenceSource",
+          "displayName": "证据来源",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "证据来源的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsEvidenceSummary",
+          "displayName": "证据摘要",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "证据摘要的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsEvidenceDate",
+          "displayName": "证据日期",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "DATE",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "证据日期的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsEvidenceConfidence",
+          "displayName": "证据可信度",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "A_DIRECT_STRONG",
+              "displayName": "A_DIRECT_STRONG"
+            },
+            {
+              "code": "B_MULTI_SOURCE",
+              "displayName": "B_MULTI_SOURCE"
+            },
+            {
+              "code": "C_SINGLE_OR_INDIRECT",
+              "displayName": "C_SINGLE_OR_INDIRECT"
+            },
+            {
+              "code": "D_HYPOTHESIS",
+              "displayName": "D_HYPOTHESIS"
+            }
+          ],
+          "description": "证据可信度的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsPainpointPriority",
+          "displayName": "痛点优先级",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "SUPPLEMENTARY",
+              "displayName": "SUPPLEMENTARY"
+            },
+            {
+              "code": "IMPORTANT",
+              "displayName": "IMPORTANT"
+            },
+            {
+              "code": "CORE",
+              "displayName": "CORE"
+            }
+          ],
+          "description": "痛点优先级的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsPromotionPriority",
+          "displayName": "投流优先级",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "LOW",
+              "displayName": "LOW"
+            },
+            {
+              "code": "MEDIUM",
+              "displayName": "MEDIUM"
+            },
+            {
+              "code": "HIGH",
+              "displayName": "HIGH"
+            },
+            {
+              "code": "CRITICAL",
+              "displayName": "CRITICAL"
+            }
+          ],
+          "description": "投流优先级的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsContentizationStatus",
+          "displayName": "后续图文状态",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "PAINPOINT_NOT_CONTENTIZED",
+              "displayName": "待内容化"
+            },
+            {
+              "code": "PAINPOINT_CONTENT_IN_PROGRESS",
+              "displayName": "内容创作中"
+            },
+            {
+              "code": "PAINPOINT_CONTENT_AVAILABLE",
+              "displayName": "已有内容可继续"
+            },
+            {
+              "code": "PAINPOINT_COVERED",
+              "displayName": "已充分覆盖"
+            },
+            {
+              "code": "PAINPOINT_PAUSED",
+              "displayName": "暂停"
+            }
+          ],
+          "description": "后续图文状态的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsRelatedContent",
+          "displayName": "关联内容",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "RELATION",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "关联内容的稳定逻辑字段。",
+          "targetTableLogicalKey": "contents",
+          "relationship": "ONE_TO_MANY",
+          "bidirectional": true
+        },
+        {
+          "logicalKey": "painpointsFinalizedContentCount",
+          "displayName": "已产出内容数",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "NUMBER",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "已产出内容数的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsLatestContentDate",
+          "displayName": "最近内容日期",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "DATE",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "最近内容日期的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsDuplicationRisk",
+          "displayName": "重复风险",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "LOW",
+              "displayName": "LOW"
+            },
+            {
+              "code": "MEDIUM",
+              "displayName": "MEDIUM"
+            },
+            {
+              "code": "HIGH",
+              "displayName": "HIGH"
+            }
+          ],
+          "description": "重复风险的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsNotes",
+          "displayName": "备注",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "备注的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsProjectId",
+          "displayName": "项目ID",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "项目ID的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsRecordUniqueKey",
+          "displayName": "记录唯一键",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": true,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "记录唯一键的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsResearchBatchId",
+          "displayName": "研究批次ID",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "研究批次ID的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsSchemaVersion",
+          "displayName": "Schema版本",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "Schema版本的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsLastRunId",
+          "displayName": "最后运行ID",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "最后运行ID的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsCreatedAt",
+          "displayName": "创建时间",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "DATETIME",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": true,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "创建时间的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "painpointsUpdatedAt",
+          "displayName": "最后更新时间",
+          "tableLogicalKey": "painpoints",
+          "fieldType": "DATETIME",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "painpoint-research",
+          "defaultValue": null,
+          "options": [],
+          "description": "最后更新时间的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        }
+      ],
+      "views": [
+        {
+          "logicalKey": "painpointsReviewQueue",
+          "displayName": "待审核痛点",
+          "tableLogicalKey": "painpoints",
+          "filterDescription": "痛点审核状态为待确认或需修改",
+          "sortDescription": "痛点优先级降序"
+        }
+      ]
+    },
+    {
+      "logicalKey": "contents",
+      "displayName": "03 内容库",
+      "description": "一行一个内容项目，且只有一个主痛点。",
+      "primaryFieldLogicalKey": "contentsContentTopic",
+      "fields": [
+        {
+          "logicalKey": "contentsContentTopic",
+          "displayName": "内容主题",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": true,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "内容主题的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsContentId",
+          "displayName": "内容ID",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": true,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "内容ID的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsPrimaryPainpoint",
+          "displayName": "关联痛点",
+          "tableLogicalKey": "contents",
+          "fieldType": "RELATION",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "关联痛点的稳定逻辑字段。",
+          "targetTableLogicalKey": "painpoints",
+          "relationship": "MANY_TO_MANY",
+          "bidirectional": true
+        },
+        {
+          "logicalKey": "contentsContentAngle",
+          "displayName": "内容角度",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "内容角度的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsContentStructureType",
+          "displayName": "内容结构类型",
+          "tableLogicalKey": "contents",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "内容结构类型的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsAudienceExplicitNeed",
+          "displayName": "目标客户显性需求",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "目标客户显性需求的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsAudienceDeepAnxiety",
+          "displayName": "客户真实焦虑",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "客户真实焦虑的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsSingleCoreProblem",
+          "displayName": "本篇解决什么问题",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "本篇解决什么问题的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsCoreViewpoint",
+          "displayName": "核心观点",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "核心观点的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsSolutionLogic",
+          "displayName": "可提供的解决逻辑",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "可提供的解决逻辑的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsContentObjective",
+          "displayName": "内容目标",
+          "tableLogicalKey": "contents",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "内容目标的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsPageCount",
+          "displayName": "图片数量",
+          "tableLogicalKey": "contents",
+          "fieldType": "NUMBER",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "图片数量的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsPageCopy",
+          "displayName": "每张图文案",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "每张图文案的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsPageStructureSummary",
+          "displayName": "页面结构摘要",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "页面结构摘要的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsBackgroundDirection",
+          "displayName": "底图方向",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "底图方向的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsVisualPlanSummary",
+          "displayName": "视觉方案摘要",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "视觉方案摘要的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsDirectMessageHook",
+          "displayName": "私信钩子",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "私信钩子的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsPublishTitle",
+          "displayName": "发布标题",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "发布标题的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsTitleCharacterCount",
+          "displayName": "标题字符数",
+          "tableLogicalKey": "contents",
+          "fieldType": "NUMBER",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "标题字符数的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsPublishBody",
+          "displayName": "发布正文",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "发布正文的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsPromotionSuitability",
+          "displayName": "投流适配度",
+          "tableLogicalKey": "contents",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "投流适配度的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsPromotionReason",
+          "displayName": "投流判断理由",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "投流判断理由的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsDuplicationRisk",
+          "displayName": "内容重复风险",
+          "tableLogicalKey": "contents",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "LOW",
+              "displayName": "LOW"
+            },
+            {
+              "code": "MEDIUM",
+              "displayName": "MEDIUM"
+            },
+            {
+              "code": "HIGH",
+              "displayName": "HIGH"
+            }
+          ],
+          "description": "内容重复风险的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsContentStatus",
+          "displayName": "内容状态",
+          "tableLogicalKey": "contents",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "CONTENT_ANALYSIS_PENDING",
+              "displayName": "待分析"
+            },
+            {
+              "code": "CONTENT_PLANNING",
+              "displayName": "策划中"
+            },
+            {
+              "code": "COPY_PENDING_APPROVAL",
+              "displayName": "待文案确认"
+            },
+            {
+              "code": "COPY_REVISION_REQUIRED",
+              "displayName": "文案需修改"
+            },
+            {
+              "code": "COPY_APPROVED",
+              "displayName": "文案已确认"
+            },
+            {
+              "code": "VISUAL_PLANNING",
+              "displayName": "视觉策划中"
+            },
+            {
+              "code": "FINAL_REVIEW_PENDING",
+              "displayName": "待最终确认"
+            },
+            {
+              "code": "CONTENT_FINALIZED",
+              "displayName": "已定稿"
+            },
+            {
+              "code": "CONTENT_PUBLISHED",
+              "displayName": "已发布"
+            },
+            {
+              "code": "CONTENT_PAUSED",
+              "displayName": "暂停"
+            },
+            {
+              "code": "CONTENT_DISCARDED",
+              "displayName": "废弃"
+            }
+          ],
+          "description": "内容状态的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsImageStatus",
+          "displayName": "图片生成状态",
+          "tableLogicalKey": "contents",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "IMAGE_NOT_GENERATED",
+              "displayName": "未生成"
+            },
+            {
+              "code": "FIRST_PAGE_GENERATING",
+              "displayName": "首图生成中"
+            },
+            {
+              "code": "FIRST_PAGE_PENDING_APPROVAL",
+              "displayName": "首图待确认"
+            },
+            {
+              "code": "FIRST_PAGE_APPROVED",
+              "displayName": "首图已确认"
+            },
+            {
+              "code": "IMAGE_SET_GENERATING",
+              "displayName": "整组生成中"
+            },
+            {
+              "code": "IMAGE_SET_GENERATED",
+              "displayName": "已生成"
+            },
+            {
+              "code": "IMAGE_GENERATION_FAILED",
+              "displayName": "生成失败"
+            }
+          ],
+          "description": "图片生成状态的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsFirstPageApprovalStatus",
+          "displayName": "首图确认状态",
+          "tableLogicalKey": "contents",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "FIRST_PAGE_NOT_SUBMITTED",
+              "displayName": "未提交"
+            },
+            {
+              "code": "FIRST_PAGE_APPROVAL_PENDING",
+              "displayName": "待确认"
+            },
+            {
+              "code": "FIRST_PAGE_REVISION_REQUIRED",
+              "displayName": "需修改"
+            },
+            {
+              "code": "FIRST_PAGE_APPROVAL_APPROVED",
+              "displayName": "已通过"
+            },
+            {
+              "code": "FIRST_PAGE_APPROVAL_REJECTED",
+              "displayName": "已否决"
+            }
+          ],
+          "description": "首图确认状态的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsFinalApprovalStatus",
+          "displayName": "最终确认状态",
+          "tableLogicalKey": "contents",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "FINAL_NOT_SUBMITTED",
+              "displayName": "未提交"
+            },
+            {
+              "code": "FINAL_APPROVAL_PENDING",
+              "displayName": "待确认"
+            },
+            {
+              "code": "FINAL_REVISION_REQUIRED",
+              "displayName": "需修改"
+            },
+            {
+              "code": "FINAL_APPROVAL_APPROVED",
+              "displayName": "已通过"
+            }
+          ],
+          "description": "最终确认状态的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsSyncStatus",
+          "displayName": "同步状态",
+          "tableLogicalKey": "contents",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "SYNC_NOT_STARTED",
+              "displayName": "未同步"
+            },
+            {
+              "code": "SYNC_IN_PROGRESS",
+              "displayName": "同步中"
+            },
+            {
+              "code": "SYNC_COMPLETED",
+              "displayName": "已同步"
+            },
+            {
+              "code": "SYNC_PARTIAL",
+              "displayName": "部分成功"
+            },
+            {
+              "code": "SYNC_FAILED",
+              "displayName": "同步失败"
+            }
+          ],
+          "description": "同步状态的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsOutputRelativePath",
+          "displayName": "输出相对路径",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "输出相对路径的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsFinalImages",
+          "displayName": "最终图片",
+          "tableLogicalKey": "contents",
+          "fieldType": "ATTACHMENT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "最终图片的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsCreationSource",
+          "displayName": "创建来源",
+          "tableLogicalKey": "contents",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "创建来源的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsNotes",
+          "displayName": "备注",
+          "tableLogicalKey": "contents",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "备注的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsProjectId",
+          "displayName": "项目ID",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "项目ID的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsRecordUniqueKey",
+          "displayName": "记录唯一键",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": true,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "记录唯一键的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsContentFingerprint",
+          "displayName": "内容指纹",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "内容指纹的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsContentVersion",
+          "displayName": "内容版本",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "内容版本的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsVisualPlanVersion",
+          "displayName": "视觉方案版本",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "视觉方案版本的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsStyleLockVersion",
+          "displayName": "Style Lock版本",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "Style Lock版本的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsSchemaVersion",
+          "displayName": "Schema版本",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "Schema版本的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsLastRunId",
+          "displayName": "最后运行ID",
+          "tableLogicalKey": "contents",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "最后运行ID的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsFinalizedAt",
+          "displayName": "最终定稿时间",
+          "tableLogicalKey": "contents",
+          "fieldType": "DATETIME",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "最终定稿时间的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsCreatedAt",
+          "displayName": "创建时间",
+          "tableLogicalKey": "contents",
+          "fieldType": "DATETIME",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": true,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "创建时间的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "contentsUpdatedAt",
+          "displayName": "最后更新时间",
+          "tableLogicalKey": "contents",
+          "fieldType": "DATETIME",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "content-creation",
+          "defaultValue": null,
+          "options": [],
+          "description": "最后更新时间的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        }
+      ],
+      "views": [
+        {
+          "logicalKey": "contentsProductionQueue",
+          "displayName": "内容生产队列",
+          "tableLogicalKey": "contents",
+          "filterDescription": "内容状态不是已发布或废弃",
+          "sortDescription": "最后更新时间降序"
+        }
+      ]
+    },
+    {
+      "logicalKey": "rulesAndFeedback",
+      "displayName": "04 规则与反馈",
+      "description": "一行一条原子规则或反馈。",
+      "primaryFieldLogicalKey": "rulesAndFeedbackEntryTitle",
+      "fields": [
+        {
+          "logicalKey": "rulesAndFeedbackEntryTitle",
+          "displayName": "条目标题",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": true,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "条目标题的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackRuleId",
+          "displayName": "规则反馈ID",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": true,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "规则反馈ID的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackEntryType",
+          "displayName": "条目类型",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "条目类型的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackRuleNature",
+          "displayName": "规则性质",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "规则性质的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackOriginalUserWording",
+          "displayName": "用户原话或原始来源",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "用户原话或原始来源的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackStructuredAtomicRule",
+          "displayName": "结构化规则",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "结构化规则的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackApplicableModules",
+          "displayName": "适用模块",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "MULTI_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "适用模块的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackEffectiveScope",
+          "displayName": "生效范围",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "生效范围的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackRelatedPainpoints",
+          "displayName": "关联痛点",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "RELATION",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "关联痛点的稳定逻辑字段。",
+          "targetTableLogicalKey": "painpoints",
+          "relationship": "MANY_TO_MANY",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackRelatedContents",
+          "displayName": "关联内容",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "RELATION",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "关联内容的稳定逻辑字段。",
+          "targetTableLogicalKey": "contents",
+          "relationship": "MANY_TO_MANY",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackPriority",
+          "displayName": "优先级",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "LOW",
+              "displayName": "LOW"
+            },
+            {
+              "code": "MEDIUM",
+              "displayName": "MEDIUM"
+            },
+            {
+              "code": "HIGH",
+              "displayName": "HIGH"
+            },
+            {
+              "code": "CRITICAL",
+              "displayName": "CRITICAL"
+            }
+          ],
+          "description": "优先级的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackConfirmationStatus",
+          "displayName": "确认状态",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "SINGLE_SELECT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [
+            {
+              "code": "RULE_UNCLASSIFIED",
+              "displayName": "待分类"
+            },
+            {
+              "code": "RULE_PENDING_APPROVAL",
+              "displayName": "待确认"
+            },
+            {
+              "code": "RULE_ACTIVE",
+              "displayName": "已确认生效"
+            },
+            {
+              "code": "RULE_REJECTED",
+              "displayName": "已拒绝"
+            },
+            {
+              "code": "RULE_DEPRECATED",
+              "displayName": "已废弃"
+            }
+          ],
+          "description": "确认状态的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackLongTermEffective",
+          "displayName": "是否长期有效",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "BOOLEAN",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "是否长期有效的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackEffectiveVersion",
+          "displayName": "生效版本",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "生效版本的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackEffectiveDate",
+          "displayName": "生效日期",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "DATE",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "生效日期的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackExpiryDate",
+          "displayName": "失效日期",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "DATE",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "失效日期的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackReplacesRules",
+          "displayName": "替代关系",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "RELATION",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "替代关系的稳定逻辑字段。",
+          "targetTableLogicalKey": "rulesAndFeedback",
+          "relationship": "MANY_TO_MANY",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackHandlingNotes",
+          "displayName": "处理说明",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "处理说明的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackNotes",
+          "displayName": "备注",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "LONG_TEXT",
+          "required": false,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": false,
+          "userManaged": true,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "备注的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackProjectId",
+          "displayName": "项目ID",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "项目ID的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackRecordUniqueKey",
+          "displayName": "记录唯一键",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": true,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "记录唯一键的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackSourceRunId",
+          "displayName": "来源运行ID",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "来源运行ID的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackSchemaVersion",
+          "displayName": "Schema版本",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "TEXT",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "Schema版本的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackCreatedAt",
+          "displayName": "创建时间",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "DATETIME",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": true,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "创建时间的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        },
+        {
+          "logicalKey": "rulesAndFeedbackUpdatedAt",
+          "displayName": "最后更新时间",
+          "tableLogicalKey": "rulesAndFeedback",
+          "fieldType": "DATETIME",
+          "required": true,
+          "primary": false,
+          "hiddenByDefault": false,
+          "systemManaged": true,
+          "userManaged": false,
+          "immutableAfterCreate": false,
+          "ownerSkill": "project-learning",
+          "defaultValue": null,
+          "options": [],
+          "description": "最后更新时间的稳定逻辑字段。",
+          "targetTableLogicalKey": "",
+          "relationship": "NONE",
+          "bidirectional": false
+        }
+      ],
+      "views": [
+        {
+          "logicalKey": "rulesAndFeedbackActiveRules",
+          "displayName": "有效规则",
+          "tableLogicalKey": "rulesAndFeedback",
+          "filterDescription": "确认状态为已确认生效",
+          "sortDescription": "优先级降序"
+        }
+      ]
+    }
+  ],
+  "views": [
+    {
+      "logicalKey": "projectConfigActive",
+      "displayName": "当前项目配置",
+      "tableLogicalKey": "projectConfig",
+      "filterDescription": "项目状态不是已归档",
+      "sortDescription": "最后更新时间降序"
+    },
+    {
+      "logicalKey": "painpointsReviewQueue",
+      "displayName": "待审核痛点",
+      "tableLogicalKey": "painpoints",
+      "filterDescription": "痛点审核状态为待确认或需修改",
+      "sortDescription": "痛点优先级降序"
+    },
+    {
+      "logicalKey": "contentsProductionQueue",
+      "displayName": "内容生产队列",
+      "tableLogicalKey": "contents",
+      "filterDescription": "内容状态不是已发布或废弃",
+      "sortDescription": "最后更新时间降序"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackActiveRules",
+      "displayName": "有效规则",
+      "tableLogicalKey": "rulesAndFeedback",
+      "filterDescription": "确认状态为已确认生效",
+      "sortDescription": "优先级降序"
+    }
+  ],
+  "status_options": {
+    "project": [
+      {
+        "code": "PROJECT_INITIALIZING",
+        "displayName": "初始化中"
+      },
+      {
+        "code": "PROJECT_PENDING_CONFIRMATION",
+        "displayName": "待资料确认"
+      },
+      {
+        "code": "PROJECT_ACTIVE",
+        "displayName": "已启用"
+      },
+      {
+        "code": "PROJECT_PAUSED",
+        "displayName": "暂停"
+      },
+      {
+        "code": "PROJECT_ARCHIVED",
+        "displayName": "已归档"
+      }
+    ],
+    "configuration": [
+      {
+        "code": "CONFIG_PENDING",
+        "displayName": "待确认"
+      },
+      {
+        "code": "CONFIG_CONFIRMED",
+        "displayName": "已确认"
+      },
+      {
+        "code": "CONFIG_UPDATE_REQUIRED",
+        "displayName": "需更新"
+      }
+    ],
+    "painpointReview": [
+      {
+        "code": "PAINPOINT_PENDING",
+        "displayName": "待确认"
+      },
+      {
+        "code": "PAINPOINT_CONFIRMED",
+        "displayName": "已确认"
+      },
+      {
+        "code": "PAINPOINT_REVISION_REQUIRED",
+        "displayName": "需修改"
+      },
+      {
+        "code": "PAINPOINT_REJECTED",
+        "displayName": "已否定"
+      }
+    ],
+    "painpointContentization": [
+      {
+        "code": "PAINPOINT_NOT_CONTENTIZED",
+        "displayName": "待内容化"
+      },
+      {
+        "code": "PAINPOINT_CONTENT_IN_PROGRESS",
+        "displayName": "内容创作中"
+      },
+      {
+        "code": "PAINPOINT_CONTENT_AVAILABLE",
+        "displayName": "已有内容可继续"
+      },
+      {
+        "code": "PAINPOINT_COVERED",
+        "displayName": "已充分覆盖"
+      },
+      {
+        "code": "PAINPOINT_PAUSED",
+        "displayName": "暂停"
+      }
+    ],
+    "content": [
+      {
+        "code": "CONTENT_ANALYSIS_PENDING",
+        "displayName": "待分析"
+      },
+      {
+        "code": "CONTENT_PLANNING",
+        "displayName": "策划中"
+      },
+      {
+        "code": "COPY_PENDING_APPROVAL",
+        "displayName": "待文案确认"
+      },
+      {
+        "code": "COPY_REVISION_REQUIRED",
+        "displayName": "文案需修改"
+      },
+      {
+        "code": "COPY_APPROVED",
+        "displayName": "文案已确认"
+      },
+      {
+        "code": "VISUAL_PLANNING",
+        "displayName": "视觉策划中"
+      },
+      {
+        "code": "FINAL_REVIEW_PENDING",
+        "displayName": "待最终确认"
+      },
+      {
+        "code": "CONTENT_FINALIZED",
+        "displayName": "已定稿"
+      },
+      {
+        "code": "CONTENT_PUBLISHED",
+        "displayName": "已发布"
+      },
+      {
+        "code": "CONTENT_PAUSED",
+        "displayName": "暂停"
+      },
+      {
+        "code": "CONTENT_DISCARDED",
+        "displayName": "废弃"
+      }
+    ],
+    "image": [
+      {
+        "code": "IMAGE_NOT_GENERATED",
+        "displayName": "未生成"
+      },
+      {
+        "code": "FIRST_PAGE_GENERATING",
+        "displayName": "首图生成中"
+      },
+      {
+        "code": "FIRST_PAGE_PENDING_APPROVAL",
+        "displayName": "首图待确认"
+      },
+      {
+        "code": "FIRST_PAGE_APPROVED",
+        "displayName": "首图已确认"
+      },
+      {
+        "code": "IMAGE_SET_GENERATING",
+        "displayName": "整组生成中"
+      },
+      {
+        "code": "IMAGE_SET_GENERATED",
+        "displayName": "已生成"
+      },
+      {
+        "code": "IMAGE_GENERATION_FAILED",
+        "displayName": "生成失败"
+      }
+    ],
+    "firstPageApproval": [
+      {
+        "code": "FIRST_PAGE_NOT_SUBMITTED",
+        "displayName": "未提交"
+      },
+      {
+        "code": "FIRST_PAGE_APPROVAL_PENDING",
+        "displayName": "待确认"
+      },
+      {
+        "code": "FIRST_PAGE_REVISION_REQUIRED",
+        "displayName": "需修改"
+      },
+      {
+        "code": "FIRST_PAGE_APPROVAL_APPROVED",
+        "displayName": "已通过"
+      },
+      {
+        "code": "FIRST_PAGE_APPROVAL_REJECTED",
+        "displayName": "已否决"
+      }
+    ],
+    "finalApproval": [
+      {
+        "code": "FINAL_NOT_SUBMITTED",
+        "displayName": "未提交"
+      },
+      {
+        "code": "FINAL_APPROVAL_PENDING",
+        "displayName": "待确认"
+      },
+      {
+        "code": "FINAL_REVISION_REQUIRED",
+        "displayName": "需修改"
+      },
+      {
+        "code": "FINAL_APPROVAL_APPROVED",
+        "displayName": "已通过"
+      }
+    ],
+    "synchronization": [
+      {
+        "code": "SYNC_NOT_STARTED",
+        "displayName": "未同步"
+      },
+      {
+        "code": "SYNC_IN_PROGRESS",
+        "displayName": "同步中"
+      },
+      {
+        "code": "SYNC_COMPLETED",
+        "displayName": "已同步"
+      },
+      {
+        "code": "SYNC_PARTIAL",
+        "displayName": "部分成功"
+      },
+      {
+        "code": "SYNC_FAILED",
+        "displayName": "同步失败"
+      }
+    ],
+    "rule": [
+      {
+        "code": "RULE_UNCLASSIFIED",
+        "displayName": "待分类"
+      },
+      {
+        "code": "RULE_PENDING_APPROVAL",
+        "displayName": "待确认"
+      },
+      {
+        "code": "RULE_ACTIVE",
+        "displayName": "已确认生效"
+      },
+      {
+        "code": "RULE_REJECTED",
+        "displayName": "已拒绝"
+      },
+      {
+        "code": "RULE_DEPRECATED",
+        "displayName": "已废弃"
+      }
+    ],
+    "run": [
+      {
+        "code": "RUN_CREATED",
+        "displayName": "已创建"
+      },
+      {
+        "code": "RUN_PREFLIGHT",
+        "displayName": "预检中"
+      },
+      {
+        "code": "RUNNING",
+        "displayName": "运行中"
+      },
+      {
+        "code": "AWAITING_APPROVAL",
+        "displayName": "等待确认"
+      },
+      {
+        "code": "RUN_PARTIAL",
+        "displayName": "部分成功"
+      },
+      {
+        "code": "RUN_BLOCKED",
+        "displayName": "已阻塞"
+      },
+      {
+        "code": "RUN_CONFLICT",
+        "displayName": "冲突"
+      },
+      {
+        "code": "RUN_FAILED",
+        "displayName": "失败"
+      },
+      {
+        "code": "RUN_CANCELLED",
+        "displayName": "已取消"
+      },
+      {
+        "code": "RUN_SUCCEEDED",
+        "displayName": "成功"
+      },
+      {
+        "code": "RUN_RESUMING",
+        "displayName": "恢复中"
+      }
+    ]
+  },
+  "schema_version": "1.0.0"
+}

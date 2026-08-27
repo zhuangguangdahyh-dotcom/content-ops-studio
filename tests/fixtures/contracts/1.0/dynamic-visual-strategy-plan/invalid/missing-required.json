@@ -1,0 +1,103 @@
+{
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "project_profile_version": "PVPFV-1",
+  "profile_maturity_status": "COLD_START",
+  "synthesis_status": "PLANNED",
+  "strategy_summary": "A fictional per-content editorial verification strategy.",
+  "decision_precedence": [
+    "SAFETY_AUTHENTICITY_AUTHORIZATION",
+    "OPERATOR_CURRENT_REQUEST",
+    "CONFIRMED_PROJECT_RULES_AND_PROFILE",
+    "PER_CONTENT_SEMANTIC_NEED",
+    "INDUSTRY_PACK_PRIOR"
+  ],
+  "page_strategies": [
+    {
+      "page_number": 1,
+      "page_role": "COVER",
+      "asset_channel": "PROGRAMMATIC_GRAPHIC",
+      "visual_mode": "EDITORIAL_SERIES",
+      "background_direction": "Warm neutral field derived from the fictional content.",
+      "image_subject": "A precise relationship structure.",
+      "composition_direction": "Asymmetric title field and relational visual focus.",
+      "image_realism": "Diagrammatic and non-evidentiary.",
+      "color_strategy": "Low-saturation neutral with one restrained accent.",
+      "typography": {
+        "font_character": "Editorial sans",
+        "title_size_strategy": "Mobile-recognizable primary title",
+        "body_size_strategy": "Readable secondary explanation",
+        "font_weight": "Strong title and regular body",
+        "line_height": "Comfortable editorial rhythm",
+        "letter_spacing": "Language-appropriate restrained tracking",
+        "alignment": "Left aligned",
+        "text_region": "Left safe-area field",
+        "text_image_ratio": "45:55"
+      },
+      "effects": {
+        "effects": ["Restrained boundary line"],
+        "mask": "None",
+        "shadow": "None",
+        "gradient": "None",
+        "border": "Content-derived boundary",
+        "texture": "Subtle paper grain"
+      },
+      "selection_reason": "The content explains a relationship rather than claiming visual evidence."
+    }
+  ],
+  "candidate_directions": [
+    {
+      "candidate_key": "DIRECTION-C-0001-1",
+      "asset_channel": "PROGRAMMATIC_GRAPHIC",
+      "visual_mode": "EDITORIAL_SERIES",
+      "subject_direction": "Relationship structure",
+      "composition_direction": "Asymmetric editorial diagram",
+      "palette_direction": "Warm low-saturation neutral",
+      "material_difference_basis": "Precise structural explanation"
+    },
+    {
+      "candidate_key": "DIRECTION-C-0001-2",
+      "asset_channel": "AI_GENERATED_VISUAL",
+      "visual_mode": "EDITORIAL_SERIES",
+      "subject_direction": "Text-free verification metaphor",
+      "composition_direction": "Single-object visual metaphor",
+      "palette_direction": "Warm low-saturation neutral",
+      "material_difference_basis": "Semantic metaphor rather than diagram"
+    }
+  ],
+  "image_count": 1,
+  "candidate_count": 2,
+  "production_batches": [
+    {
+      "batch_number": 1,
+      "page_numbers": [1],
+      "gate": "DIRECTION_SELECTION"
+    }
+  ],
+  "quality_thresholds": {
+    "direction_candidate": 75,
+    "formal_asset": 85,
+    "group": 85,
+    "core_dimension_floor": 3
+  },
+  "consistency_risks": ["Do not fabricate evidence."],
+  "confidence_report_id": "VSCR-C-0001-DEMO",
+  "ambiguity_report_id": "VAR-C-0001-DEMO",
+  "selection_reasons": ["Per-content semantics outrank Pack defaults."],
+  "current_override_applied": false,
+  "cover_visual_strategy": "PAINPOINT_FIRST",
+  "cover_text_prominence": "Primary hook is the first visual focus.",
+  "cover_text_to_image_ratio": "42:58",
+  "cover_background_semantic_role": "DIRECT_PAINPOINT_SCENE",
+  "cover_thumbnail_targets": ["310x414", "186x248"],
+  "cover_click_clarity_target": 85,
+  "semantic_relevance_target": 80,
+  "cover_candidate_count": 2,
+  "cover_candidate_diversity_reason": "Candidates differ in semantic role and composition.",
+  "long_term_profile_mutated": false,
+  "industry_pack_mutated": false,
+  "global_preference_mutated": false,
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z"
+}

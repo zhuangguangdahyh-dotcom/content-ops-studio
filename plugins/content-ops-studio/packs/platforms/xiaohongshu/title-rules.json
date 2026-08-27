@@ -1,0 +1,9 @@
+{
+  "visibleCharacterLimit": 20,
+  "countingMode": "unicode-code-points",
+  "mustMatchContent": true,
+  "mustNotRelyOnUnsupportedClaims": true,
+  "coverCopySeparateFromPublishTitle": true,
+  "coverPrimaryHookHardLimit": 20,
+  "coverPrimaryHookRecommendedRange": [6, 16]
+}

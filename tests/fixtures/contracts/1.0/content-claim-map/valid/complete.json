@@ -1,0 +1,29 @@
+{
+  "claim_map_id": "CLM-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "claims": [
+    {
+      "claim_id": "CL-0001",
+      "page_number": 1,
+      "claim_type": "FACTUAL_EXTERNAL",
+      "claim_text": "A fictional source supports this fixture claim.",
+      "evidence_refs": ["E-0001"],
+      "support_status": "SUPPORTED_WITH_LIMITATIONS",
+      "support_rationale": "The retained fictional source directly supports it.",
+      "limitations": ["Fixture evidence only"],
+      "rewrite_requirement": null
+    }
+  ],
+  "supported_claim_count": 1,
+  "unsupported_claim_count": 0,
+  "judgment_claim_count": 0,
+  "opinion_claim_count": 0,
+  "ready_for_copy_review": true,
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

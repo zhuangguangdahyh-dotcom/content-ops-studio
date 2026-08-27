@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-rule-candidate.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual rule candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidate_id",
+    "project_id",
+    "source_event_id",
+    "rule_statement",
+    "rationale",
+    "scope",
+    "rule_type",
+    "positive_examples",
+    "negative_examples",
+    "allowed_exceptions",
+    "confirmed_by_user",
+    "status",
+    "version",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "candidate_id": { "type": "string", "pattern": "^VRC-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "source_event_id": { "type": "string", "pattern": "^VFE-[A-Z0-9-]+$" },
+    "rule_statement": { "type": "string", "minLength": 1 },
+    "rationale": { "type": "string", "minLength": 1 },
+    "scope": { "$ref": "visual-feedback-event.schema.json#/$defs/scope" },
+    "rule_type": { "$ref": "#/$defs/ruleType" },
+    "positive_examples": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "negative_examples": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "allowed_exceptions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "confirmed_by_user": { "const": false },
+    "status": { "type": "string", "enum": ["CANDIDATE", "STALE_CANDIDATE", "REJECTED"] },
+    "version": { "const": 1 },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "ruleType": {
+      "type": "string",
+      "enum": ["MUST", "MUST_NOT", "PREFER", "AVOID", "REFERENCE_POSITIVE", "REFERENCE_NEGATIVE"]
+    }
+  }
+}

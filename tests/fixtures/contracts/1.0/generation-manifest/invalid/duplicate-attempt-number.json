@@ -1,0 +1,120 @@
+{
+  "generation_id": "GEN-DEMO-02",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "page_number": 2,
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "visual_plan_version": "VV-1",
+  "style_lock_version": "SLV-1",
+  "generation_type": "PAGE_BACKGROUND",
+  "adapter": "mock-image-generation",
+  "provider": {
+    "provider_name": "MOCK",
+    "request_identifier": "MOCK-REQ-2"
+  },
+  "model_descriptor": {
+    "model_name": "fixture-model",
+    "model_version": "mock-only"
+  },
+  "input_assets": [],
+  "reference_assets": [
+    {
+      "asset_id": "AST-BACKGROUND-01",
+      "asset_role": "BACKGROUND",
+      "asset_type": "IMAGE",
+      "mime_type": "image/png",
+      "relative_path": "projects/demo/assets/backgrounds/01_v001.png",
+      "source_type": "MOCK",
+      "source_adapter": "mock-image-generation",
+      "source_run_id": "RUN-20990101-010203-DEMO",
+      "source_generation_id": "GEN-DEMO-01",
+      "version": 1,
+      "width": 1242,
+      "height": 1660,
+      "file_size": 4096,
+      "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    }
+  ],
+  "prompt_snapshot": "Fictional text-free editorial background for page 2.",
+  "negative_constraints": ["No informational text"],
+  "requested_output": {
+    "asset_role": "BACKGROUND",
+    "mime_type": "image/png",
+    "canvas": {
+      "width": 1242,
+      "height": 1660,
+      "aspect_ratio": "3:4",
+      "orientation": "PORTRAIT",
+      "resolution_unit": "PX"
+    },
+    "relative_path": "projects/demo/assets/backgrounds/02_v001.png"
+  },
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "status": "FAILED",
+      "version_binding": {
+        "content_version": "CV-1",
+        "copy_version": "CV-1",
+        "visual_plan_version": "VV-1",
+        "style_lock_version": "SLV-1",
+        "asset_version": 1
+      },
+      "request_summary": "Fictional first attempt.",
+      "output_asset_refs": [],
+      "failure_code": "MOCK_RETRY",
+      "failure_message": "Injected fictional retry.",
+      "started_at": "2099-01-01T01:02:03.000Z",
+      "completed_at": "2099-01-01T01:02:03.000Z"
+    },
+    {
+      "attempt_number": 1,
+      "status": "SUCCESS",
+      "version_binding": {
+        "content_version": "CV-1",
+        "copy_version": "CV-1",
+        "visual_plan_version": "VV-1",
+        "style_lock_version": "SLV-1",
+        "asset_version": 1
+      },
+      "request_summary": "Fictional second attempt.",
+      "output_asset_refs": ["AST-BACKGROUND-02"],
+      "failure_code": null,
+      "failure_message": null,
+      "started_at": "2099-01-01T01:02:03.000Z",
+      "completed_at": "2099-01-01T01:02:03.000Z"
+    }
+  ],
+  "output_assets": [
+    {
+      "asset_id": "AST-BACKGROUND-02",
+      "asset_role": "BACKGROUND",
+      "asset_type": "IMAGE",
+      "mime_type": "image/png",
+      "relative_path": "projects/demo/assets/backgrounds/02_v001.png",
+      "source_type": "MOCK",
+      "source_adapter": "mock-image-generation",
+      "source_run_id": "RUN-20990101-010203-DEMO",
+      "source_generation_id": "GEN-DEMO-01",
+      "version": 1,
+      "width": 1242,
+      "height": 1660,
+      "file_size": 4096,
+      "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    }
+  ],
+  "generation_status": "GENERATION_SUCCESS",
+  "failure_summary": null,
+  "warnings": [],
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "started_at": "2099-01-01T01:02:03.000Z",
+  "completed_at": "2099-01-01T01:02:03.000Z",
+  "extensions": {},
+  "__invalid_fixture__": true
+}

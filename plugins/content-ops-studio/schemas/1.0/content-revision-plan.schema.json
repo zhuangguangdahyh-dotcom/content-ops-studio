@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/content-revision-plan.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Content revision plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "revision_plan_id",
+    "project_id",
+    "content_id",
+    "from_content_version",
+    "from_copy_version",
+    "to_content_version",
+    "to_copy_version",
+    "revision_scope",
+    "title_changes",
+    "body_changes",
+    "cta_changes",
+    "page_changes",
+    "claim_changes",
+    "preserved_elements",
+    "invalidated_artifacts",
+    "requires_new_duplication_check",
+    "requires_new_claim_validation",
+    "requires_new_g3",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "revision_plan_id": { "type": "string", "pattern": "^CRP-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "from_content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "from_copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "to_content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "to_copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "revision_scope": {
+      "enum": [
+        "TITLE_ONLY",
+        "BODY_ONLY",
+        "CTA_ONLY",
+        "PAGE_COPY",
+        "STRUCTURE",
+        "CORE_VIEWPOINT",
+        "FULL_REWRITE"
+      ]
+    },
+    "title_changes": { "$ref": "#/$defs/changes" },
+    "body_changes": { "$ref": "#/$defs/changes" },
+    "cta_changes": { "$ref": "#/$defs/changes" },
+    "page_changes": { "$ref": "#/$defs/changes" },
+    "claim_changes": { "$ref": "#/$defs/changes" },
+    "preserved_elements": { "$ref": "#/$defs/changes" },
+    "invalidated_artifacts": { "$ref": "#/$defs/changes" },
+    "requires_new_duplication_check": { "const": true },
+    "requires_new_claim_validation": { "const": true },
+    "requires_new_g3": { "const": true },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "changes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 1000 },
+      "uniqueItems": true
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "submission_id": "HGAS-C-0001-A",
+  "generation_id": "GEN-CANDIDATE-A",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "candidate_id": "VDC-C-0001-A",
+  "source_kind": "LOCAL_FILE",
+  "source_path": "/private/tmp/host-output.png",
+  "temporary_url": null,
+  "declared_mime_type": "image/png",
+  "expected_role": "DIRECTION_CANDIDATE",
+  "host_provider": "CODEX_HOST_IMAGEGEN",
+  "host_model": null,
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "submitted_at": "2099-01-01T01:02:03.000Z",
+  "unexpected": true
+}

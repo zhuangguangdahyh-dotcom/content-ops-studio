@@ -1,0 +1,1002 @@
+{
+  "provider": "INVALID_ENUM_VALUE",
+  "project_id": "PRJ-20990101-DEMO",
+  "blueprint_version": "1.0.0",
+  "projectConfig": [
+    {
+      "logicalKey": "projectConfigProjectName",
+      "externalFieldId": "projectConfigProjectName__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "项目名称",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigProjectId",
+      "externalFieldId": "projectConfigProjectId__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "项目ID",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigProjectStatus",
+      "externalFieldId": "projectConfigProjectStatus__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "项目状态",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigConfigConfirmationStatus",
+      "externalFieldId": "projectConfigConfigConfirmationStatus__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "配置确认状态",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigSubjectName",
+      "externalFieldId": "projectConfigSubjectName__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "项目主体名称",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigSubjectType",
+      "externalFieldId": "projectConfigSubjectType__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "主体类型",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigPublicIdentityAndIntro",
+      "externalFieldId": "projectConfigPublicIdentityAndIntro__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "对外身份与基础介绍",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigIndustry",
+      "externalFieldId": "projectConfigIndustry__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "所属行业",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigIndustrySubfields",
+      "externalFieldId": "projectConfigIndustrySubfields__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "细分领域",
+      "fieldTypeSnapshot": "MULTI_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigCoreBusinessOrProducts",
+      "externalFieldId": "projectConfigCoreBusinessOrProducts__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "主营业务或核心产品",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigServiceRegion",
+      "externalFieldId": "projectConfigServiceRegion__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "服务地域",
+      "fieldTypeSnapshot": "MULTI_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigPriceBand",
+      "externalFieldId": "projectConfigPriceBand__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "价格带或客单价",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigAudienceProfile",
+      "externalFieldId": "projectConfigAudienceProfile__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "目标客户画像",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigAudienceDecisionCharacteristics",
+      "externalFieldId": "projectConfigAudienceDecisionCharacteristics__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "目标客户决策特征",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigProfessionalAdvantages",
+      "externalFieldId": "projectConfigProfessionalAdvantages__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "核心专业优势",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigPersonalityExpressionAdvantages",
+      "externalFieldId": "projectConfigPersonalityExpressionAdvantages__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "人格与表达优势",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigContentObjectives",
+      "externalFieldId": "projectConfigContentObjectives__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "内容目标",
+      "fieldTypeSnapshot": "MULTI_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigCoreContentDirections",
+      "externalFieldId": "projectConfigCoreContentDirections__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "核心内容方向",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigContentStyle",
+      "externalFieldId": "projectConfigContentStyle__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "内容风格",
+      "fieldTypeSnapshot": "MULTI_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigExpressionTone",
+      "externalFieldId": "projectConfigExpressionTone__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "表达语气",
+      "fieldTypeSnapshot": "MULTI_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigTargetPlatforms",
+      "externalFieldId": "projectConfigTargetPlatforms__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "目标平台",
+      "fieldTypeSnapshot": "MULTI_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigPrimaryPlatform",
+      "externalFieldId": "projectConfigPrimaryPlatform__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "当前主平台",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigDefaultPageCount",
+      "externalFieldId": "projectConfigDefaultPageCount__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "默认图片数量",
+      "fieldTypeSnapshot": "NUMBER",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigDefaultAspectRatio",
+      "externalFieldId": "projectConfigDefaultAspectRatio__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "默认画幅比例",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigVisualPreferences",
+      "externalFieldId": "projectConfigVisualPreferences__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "视觉偏好",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigDirectMessageHookRules",
+      "externalFieldId": "projectConfigDirectMessageHookRules__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "私信钩子规则",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigTitleRules",
+      "externalFieldId": "projectConfigTitleRules__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "标题规则",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigProhibitedExpressions",
+      "externalFieldId": "projectConfigProhibitedExpressions__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "禁用表达",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigProhibitedVisuals",
+      "externalFieldId": "projectConfigProhibitedVisuals__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "禁用视觉",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigIndustryPack",
+      "externalFieldId": "projectConfigIndustryPack__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "当前行业包",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigPlatformPack",
+      "externalFieldId": "projectConfigPlatformPack__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "当前平台包",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigOperatorNotes",
+      "externalFieldId": "projectConfigOperatorNotes__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "操作者备注",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigRecordUniqueKey",
+      "externalFieldId": "projectConfigRecordUniqueKey__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "记录唯一键",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigConfigurationVersion",
+      "externalFieldId": "projectConfigConfigurationVersion__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "配置版本",
+      "fieldTypeSnapshot": "NUMBER",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigSchemaVersion",
+      "externalFieldId": "projectConfigSchemaVersion__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "Schema版本",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigLastRunId",
+      "externalFieldId": "projectConfigLastRunId__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "最后运行ID",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigCreatedAt",
+      "externalFieldId": "projectConfigCreatedAt__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "创建时间",
+      "fieldTypeSnapshot": "DATETIME",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigUpdatedAt",
+      "externalFieldId": "projectConfigUpdatedAt__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "最后更新时间",
+      "fieldTypeSnapshot": "DATETIME",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "projectConfigDataSource",
+      "externalFieldId": "projectConfigDataSource__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "数据来源",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    }
+  ],
+  "painpoints": [
+    {
+      "logicalKey": "painpointsPainpointName",
+      "externalFieldId": "painpointsPainpointName__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "痛点名称",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsPainpointId",
+      "externalFieldId": "painpointsPainpointId__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "痛点ID",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsReviewStatus",
+      "externalFieldId": "painpointsReviewStatus__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "痛点审核状态",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsBusinessScenario",
+      "externalFieldId": "painpointsBusinessScenario__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "业务场景",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsAudienceType",
+      "externalFieldId": "painpointsAudienceType__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "客户类型",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsDecisionStage",
+      "externalFieldId": "painpointsDecisionStage__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "客户决策阶段",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsExplicitNeed",
+      "externalFieldId": "painpointsExplicitNeed__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "精准痛点需求",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsDeepAnxiety",
+      "externalFieldId": "painpointsDeepAnxiety__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "深层焦虑",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsTriggerEvents",
+      "externalFieldId": "painpointsTriggerEvents__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "触发事件",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsPrimaryBarriers",
+      "externalFieldId": "painpointsPrimaryBarriers__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "主要阻碍或反对理由",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsAnalysisReason",
+      "externalFieldId": "painpointsAnalysisReason__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "分析理由",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsCommercialLoss",
+      "externalFieldId": "painpointsCommercialLoss__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "商业损失或现实代价",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsContentEntryAngles",
+      "externalFieldId": "painpointsContentEntryAngles__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "内容切入角度",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsSubjectAdvantages",
+      "externalFieldId": "painpointsSubjectAdvantages__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "可表达我方优势",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsEvidenceSourceType",
+      "externalFieldId": "painpointsEvidenceSourceType__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "证据来源类型",
+      "fieldTypeSnapshot": "MULTI_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsEvidenceSource",
+      "externalFieldId": "painpointsEvidenceSource__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "证据来源",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsEvidenceSummary",
+      "externalFieldId": "painpointsEvidenceSummary__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "证据摘要",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsEvidenceDate",
+      "externalFieldId": "painpointsEvidenceDate__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "证据日期",
+      "fieldTypeSnapshot": "DATE",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsEvidenceConfidence",
+      "externalFieldId": "painpointsEvidenceConfidence__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "证据可信度",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsPainpointPriority",
+      "externalFieldId": "painpointsPainpointPriority__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "痛点优先级",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsPromotionPriority",
+      "externalFieldId": "painpointsPromotionPriority__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "投流优先级",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsContentizationStatus",
+      "externalFieldId": "painpointsContentizationStatus__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "后续图文状态",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsRelatedContent",
+      "externalFieldId": "painpointsRelatedContent__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "关联内容",
+      "fieldTypeSnapshot": "RELATION",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsFinalizedContentCount",
+      "externalFieldId": "painpointsFinalizedContentCount__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "已产出内容数",
+      "fieldTypeSnapshot": "NUMBER",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsLatestContentDate",
+      "externalFieldId": "painpointsLatestContentDate__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "最近内容日期",
+      "fieldTypeSnapshot": "DATE",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsDuplicationRisk",
+      "externalFieldId": "painpointsDuplicationRisk__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "重复风险",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsNotes",
+      "externalFieldId": "painpointsNotes__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "备注",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsProjectId",
+      "externalFieldId": "painpointsProjectId__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "项目ID",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsRecordUniqueKey",
+      "externalFieldId": "painpointsRecordUniqueKey__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "记录唯一键",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsResearchBatchId",
+      "externalFieldId": "painpointsResearchBatchId__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "研究批次ID",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsSchemaVersion",
+      "externalFieldId": "painpointsSchemaVersion__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "Schema版本",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsLastRunId",
+      "externalFieldId": "painpointsLastRunId__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "最后运行ID",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsCreatedAt",
+      "externalFieldId": "painpointsCreatedAt__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "创建时间",
+      "fieldTypeSnapshot": "DATETIME",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "painpointsUpdatedAt",
+      "externalFieldId": "painpointsUpdatedAt__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "最后更新时间",
+      "fieldTypeSnapshot": "DATETIME",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    }
+  ],
+  "contents": [
+    {
+      "logicalKey": "contentsContentTopic",
+      "externalFieldId": "contentsContentTopic__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "内容主题",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsContentId",
+      "externalFieldId": "contentsContentId__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "内容ID",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsPrimaryPainpoint",
+      "externalFieldId": "contentsPrimaryPainpoint__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "关联痛点",
+      "fieldTypeSnapshot": "RELATION",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsContentAngle",
+      "externalFieldId": "contentsContentAngle__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "内容角度",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsContentStructureType",
+      "externalFieldId": "contentsContentStructureType__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "内容结构类型",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsAudienceExplicitNeed",
+      "externalFieldId": "contentsAudienceExplicitNeed__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "目标客户显性需求",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsAudienceDeepAnxiety",
+      "externalFieldId": "contentsAudienceDeepAnxiety__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "客户真实焦虑",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsSingleCoreProblem",
+      "externalFieldId": "contentsSingleCoreProblem__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "本篇解决什么问题",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsCoreViewpoint",
+      "externalFieldId": "contentsCoreViewpoint__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "核心观点",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsSolutionLogic",
+      "externalFieldId": "contentsSolutionLogic__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "可提供的解决逻辑",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsContentObjective",
+      "externalFieldId": "contentsContentObjective__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "内容目标",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsPageCount",
+      "externalFieldId": "contentsPageCount__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "图片数量",
+      "fieldTypeSnapshot": "NUMBER",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsPageCopy",
+      "externalFieldId": "contentsPageCopy__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "每张图文案",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsPageStructureSummary",
+      "externalFieldId": "contentsPageStructureSummary__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "页面结构摘要",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsBackgroundDirection",
+      "externalFieldId": "contentsBackgroundDirection__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "底图方向",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsVisualPlanSummary",
+      "externalFieldId": "contentsVisualPlanSummary__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "视觉方案摘要",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsDirectMessageHook",
+      "externalFieldId": "contentsDirectMessageHook__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "私信钩子",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsPublishTitle",
+      "externalFieldId": "contentsPublishTitle__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "发布标题",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsTitleCharacterCount",
+      "externalFieldId": "contentsTitleCharacterCount__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "标题字符数",
+      "fieldTypeSnapshot": "NUMBER",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsPublishBody",
+      "externalFieldId": "contentsPublishBody__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "发布正文",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsPromotionSuitability",
+      "externalFieldId": "contentsPromotionSuitability__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "投流适配度",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsPromotionReason",
+      "externalFieldId": "contentsPromotionReason__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "投流判断理由",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsDuplicationRisk",
+      "externalFieldId": "contentsDuplicationRisk__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "内容重复风险",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsContentStatus",
+      "externalFieldId": "contentsContentStatus__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "内容状态",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsImageStatus",
+      "externalFieldId": "contentsImageStatus__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "图片生成状态",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsFirstPageApprovalStatus",
+      "externalFieldId": "contentsFirstPageApprovalStatus__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "首图确认状态",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsFinalApprovalStatus",
+      "externalFieldId": "contentsFinalApprovalStatus__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "最终确认状态",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsSyncStatus",
+      "externalFieldId": "contentsSyncStatus__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "同步状态",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsOutputRelativePath",
+      "externalFieldId": "contentsOutputRelativePath__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "输出相对路径",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsFinalImages",
+      "externalFieldId": "contentsFinalImages__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "最终图片",
+      "fieldTypeSnapshot": "ATTACHMENT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsCreationSource",
+      "externalFieldId": "contentsCreationSource__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "创建来源",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsNotes",
+      "externalFieldId": "contentsNotes__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "备注",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsProjectId",
+      "externalFieldId": "contentsProjectId__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "项目ID",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsRecordUniqueKey",
+      "externalFieldId": "contentsRecordUniqueKey__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "记录唯一键",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsContentFingerprint",
+      "externalFieldId": "contentsContentFingerprint__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "内容指纹",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsContentVersion",
+      "externalFieldId": "contentsContentVersion__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "内容版本",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsVisualPlanVersion",
+      "externalFieldId": "contentsVisualPlanVersion__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "视觉方案版本",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsStyleLockVersion",
+      "externalFieldId": "contentsStyleLockVersion__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "Style Lock版本",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsSchemaVersion",
+      "externalFieldId": "contentsSchemaVersion__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "Schema版本",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsLastRunId",
+      "externalFieldId": "contentsLastRunId__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "最后运行ID",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsFinalizedAt",
+      "externalFieldId": "contentsFinalizedAt__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "最终定稿时间",
+      "fieldTypeSnapshot": "DATETIME",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsCreatedAt",
+      "externalFieldId": "contentsCreatedAt__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "创建时间",
+      "fieldTypeSnapshot": "DATETIME",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "contentsUpdatedAt",
+      "externalFieldId": "contentsUpdatedAt__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "最后更新时间",
+      "fieldTypeSnapshot": "DATETIME",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    }
+  ],
+  "rulesAndFeedback": [
+    {
+      "logicalKey": "rulesAndFeedbackEntryTitle",
+      "externalFieldId": "rulesAndFeedbackEntryTitle__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "条目标题",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackRuleId",
+      "externalFieldId": "rulesAndFeedbackRuleId__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "规则反馈ID",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackEntryType",
+      "externalFieldId": "rulesAndFeedbackEntryType__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "条目类型",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackRuleNature",
+      "externalFieldId": "rulesAndFeedbackRuleNature__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "规则性质",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackOriginalUserWording",
+      "externalFieldId": "rulesAndFeedbackOriginalUserWording__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "用户原话或原始来源",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackStructuredAtomicRule",
+      "externalFieldId": "rulesAndFeedbackStructuredAtomicRule__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "结构化规则",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackApplicableModules",
+      "externalFieldId": "rulesAndFeedbackApplicableModules__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "适用模块",
+      "fieldTypeSnapshot": "MULTI_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackEffectiveScope",
+      "externalFieldId": "rulesAndFeedbackEffectiveScope__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "生效范围",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackRelatedPainpoints",
+      "externalFieldId": "rulesAndFeedbackRelatedPainpoints__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "关联痛点",
+      "fieldTypeSnapshot": "RELATION",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackRelatedContents",
+      "externalFieldId": "rulesAndFeedbackRelatedContents__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "关联内容",
+      "fieldTypeSnapshot": "RELATION",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackPriority",
+      "externalFieldId": "rulesAndFeedbackPriority__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "优先级",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackConfirmationStatus",
+      "externalFieldId": "rulesAndFeedbackConfirmationStatus__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "确认状态",
+      "fieldTypeSnapshot": "SINGLE_SELECT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackLongTermEffective",
+      "externalFieldId": "rulesAndFeedbackLongTermEffective__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "是否长期有效",
+      "fieldTypeSnapshot": "BOOLEAN",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackEffectiveVersion",
+      "externalFieldId": "rulesAndFeedbackEffectiveVersion__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "生效版本",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackEffectiveDate",
+      "externalFieldId": "rulesAndFeedbackEffectiveDate__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "生效日期",
+      "fieldTypeSnapshot": "DATE",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackExpiryDate",
+      "externalFieldId": "rulesAndFeedbackExpiryDate__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "失效日期",
+      "fieldTypeSnapshot": "DATE",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackReplacesRules",
+      "externalFieldId": "rulesAndFeedbackReplacesRules__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "替代关系",
+      "fieldTypeSnapshot": "RELATION",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackHandlingNotes",
+      "externalFieldId": "rulesAndFeedbackHandlingNotes__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "处理说明",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackNotes",
+      "externalFieldId": "rulesAndFeedbackNotes__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "备注",
+      "fieldTypeSnapshot": "LONG_TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackProjectId",
+      "externalFieldId": "rulesAndFeedbackProjectId__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "项目ID",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackRecordUniqueKey",
+      "externalFieldId": "rulesAndFeedbackRecordUniqueKey__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "记录唯一键",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackSourceRunId",
+      "externalFieldId": "rulesAndFeedbackSourceRunId__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "来源运行ID",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackSchemaVersion",
+      "externalFieldId": "rulesAndFeedbackSchemaVersion__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "Schema版本",
+      "fieldTypeSnapshot": "TEXT",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackCreatedAt",
+      "externalFieldId": "rulesAndFeedbackCreatedAt__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "创建时间",
+      "fieldTypeSnapshot": "DATETIME",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "logicalKey": "rulesAndFeedbackUpdatedAt",
+      "externalFieldId": "rulesAndFeedbackUpdatedAt__EXTERNAL_FIELD_ID",
+      "displayNameSnapshot": "最后更新时间",
+      "fieldTypeSnapshot": "DATETIME",
+      "lastVerifiedAt": "1970-01-01T00:00:00.000Z"
+    }
+  ],
+  "generated_at": "1970-01-01T00:00:00.000Z",
+  "schema_version": "1.0.0"
+}

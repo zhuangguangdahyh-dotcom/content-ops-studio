@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/painpoint-research-plan.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Painpoint research plan",
+  "description": "Run-bound plan for evidence-backed painpoint research.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "research_plan_id",
+    "project_id",
+    "run_id",
+    "project_profile_version",
+    "platform_pack",
+    "industry_pack",
+    "requested_count",
+    "minimum_acceptable_count",
+    "allow_hypothesis_candidates",
+    "research_objective",
+    "audience_segments",
+    "decision_stages",
+    "business_scenarios",
+    "region_scope",
+    "date_scope",
+    "language_scope",
+    "source_strategy",
+    "query_plan",
+    "user_material_refs",
+    "required_source_mix",
+    "evidence_requirements",
+    "deduplication_policy",
+    "scoring_policy",
+    "expected_artifacts",
+    "capability_requirements",
+    "plan_hash",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "research_plan_id": { "type": "string", "pattern": "^RPL-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "project_profile_version": { "$ref": "common-definitions.schema.json#/$defs/revisionNumber" },
+    "platform_pack": { "$ref": "#/$defs/versionedPack" },
+    "industry_pack": { "$ref": "#/$defs/versionedPack" },
+    "requested_count": { "type": "integer", "minimum": 1, "default": 30 },
+    "minimum_acceptable_count": { "type": "integer", "minimum": 1 },
+    "allow_hypothesis_candidates": { "type": "boolean", "default": false },
+    "research_objective": { "type": "string", "minLength": 1, "maxLength": 1000 },
+    "audience_segments": { "$ref": "#/$defs/nonEmptyStrings" },
+    "decision_stages": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "PROBLEM_AWARENESS",
+          "ACTIVE_SEARCH",
+          "SOLUTION_COMPARISON",
+          "RISK_EVALUATION",
+          "PURCHASE_DECISION",
+          "USAGE_EXPERIENCE",
+          "REPURCHASE_REFERRAL"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "business_scenarios": { "$ref": "#/$defs/nonEmptyStrings" },
+    "region_scope": { "$ref": "#/$defs/nonEmptyStrings" },
+    "date_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to"],
+      "properties": {
+        "from": {
+          "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/date" }, { "type": "null" }]
+        },
+        "to": {
+          "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/date" }, { "type": "null" }]
+        }
+      }
+    },
+    "language_scope": { "$ref": "#/$defs/nonEmptyStrings" },
+    "source_strategy": { "$ref": "#/$defs/nonEmptyStrings" },
+    "query_plan": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["query_id", "query", "purpose", "source_types"],
+        "properties": {
+          "query_id": { "type": "string", "pattern": "^Q-[A-Z0-9-]+$" },
+          "query": { "type": "string", "minLength": 1, "maxLength": 500 },
+          "purpose": { "type": "string", "minLength": 1, "maxLength": 500 },
+          "source_types": { "$ref": "#/$defs/nonEmptyStrings" }
+        }
+      },
+      "minItems": 1
+    },
+    "user_material_refs": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+      "uniqueItems": true
+    },
+    "required_source_mix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum_sources", "minimum_source_types", "require_official_or_first_party"],
+      "properties": {
+        "minimum_sources": { "type": "integer", "minimum": 1 },
+        "minimum_source_types": { "type": "integer", "minimum": 1 },
+        "require_official_or_first_party": { "type": "boolean" }
+      }
+    },
+    "evidence_requirements": { "$ref": "#/$defs/nonEmptyStrings" },
+    "deduplication_policy": { "$ref": "#/$defs/nonEmptyStrings" },
+    "scoring_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_id", "policy_version", "core_threshold", "important_threshold"],
+      "properties": {
+        "policy_id": { "type": "string", "minLength": 1 },
+        "policy_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "core_threshold": { "type": "number", "minimum": 0, "maximum": 100 },
+        "important_threshold": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "expected_artifacts": { "$ref": "#/$defs/nonEmptyStrings" },
+    "capability_requirements": { "$ref": "#/$defs/nonEmptyStrings" },
+    "plan_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "nonEmptyStrings": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 500 },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "versionedPack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" }
+      }
+    }
+  }
+}

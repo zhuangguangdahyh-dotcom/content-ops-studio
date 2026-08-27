@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/renderer-config.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Renderer config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "renderer_config_id",
+    "renderer_id",
+    "renderer_version",
+    "runtime_package",
+    "runtime_package_version",
+    "browser_family",
+    "browser_channel",
+    "browser_path_reference",
+    "headless",
+    "viewport",
+    "device_scale_factor",
+    "locale",
+    "timezone",
+    "color_scheme",
+    "reduced_motion",
+    "screenshot_options",
+    "network_policy",
+    "font_policy",
+    "animation_policy",
+    "time_policy",
+    "random_policy",
+    "timeout_ms",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "renderer_config_id": { "type": "string", "pattern": "^RCFG-[A-Z0-9-]+$" },
+    "renderer_id": { "const": "PLAYWRIGHT_HTML_CSS" },
+    "renderer_version": { "const": "1.0.0" },
+    "runtime_package": { "const": "playwright-core" },
+    "runtime_package_version": { "const": "1.62.1" },
+    "browser_family": { "const": "CHROMIUM" },
+    "browser_channel": { "const": "PLAYWRIGHT_MANAGED" },
+    "browser_path_reference": {
+      "enum": ["PLUGIN_DATA_PLAYWRIGHT_BROWSERS", "EXTERNAL_RENDERER_CACHE"]
+    },
+    "headless": { "const": true },
+    "viewport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height"],
+      "properties": { "width": { "const": 1242 }, "height": { "const": 1660 } }
+    },
+    "device_scale_factor": { "const": 1 },
+    "locale": { "const": "zh-CN" },
+    "timezone": { "const": "Asia/Shanghai" },
+    "color_scheme": { "const": "light" },
+    "reduced_motion": { "const": "reduce" },
+    "screenshot_options": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "animations", "caret", "scale", "omit_background"],
+      "properties": {
+        "type": { "const": "png" },
+        "animations": { "const": "disabled" },
+        "caret": { "const": "hide" },
+        "scale": { "const": "css" },
+        "omit_background": { "const": false }
+      }
+    },
+    "network_policy": { "const": "BLOCK_ALL" },
+    "font_policy": { "const": "SYSTEM_CJK_STACK" },
+    "animation_policy": { "const": "DISABLED" },
+    "time_policy": { "const": "NO_DYNAMIC_TIME" },
+    "random_policy": { "const": "NO_RANDOM_VALUES" },
+    "timeout_ms": { "type": "integer", "minimum": 1000, "maximum": 120000 },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

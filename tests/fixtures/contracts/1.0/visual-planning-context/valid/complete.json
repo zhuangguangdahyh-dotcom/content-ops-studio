@@ -1,0 +1,62 @@
+{
+  "visual_context_id": "VCTX-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "content_status": "COPY_APPROVED",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "g3_approval_id": "APR-G3-DEMO-001",
+  "g3_target_version": "CV-1:CV-1",
+  "content_package_ref": "projects/demo/content/C-0001/content-package.json",
+  "content_package_hash": "7bdb760af364fbff161114e35426d71b0e35ebd42b562ffd82f0612805bf6933",
+  "page_copy_hashes": [
+    {
+      "page_number": 1,
+      "copy_hash": "7d0b9891a01b63290388de76bd177b3fcd597e755e0ec56a2a1004cb7c2e1b64"
+    },
+    {
+      "page_number": 2,
+      "copy_hash": "638af3d56bb64d6a5e26fb3e1b92739a066d1e75f4196ce40433e1816604aa14"
+    },
+    {
+      "page_number": 3,
+      "copy_hash": "1ff8f44b51de0eb21e81d469c9896fa44e190bdadb66da24f2ce755191f2327b"
+    },
+    {
+      "page_number": 4,
+      "copy_hash": "d5d6724cd6539686583a2c6bcca1c5cd390fc98a7cc577e21b591fb072590c33"
+    }
+  ],
+  "project_profile_version": 1,
+  "project_visual_preferences": ["restrained editorial"],
+  "project_content_style": ["decision guide"],
+  "project_expression_tone": ["professional"],
+  "active_project_rules": ["Use approved copy only"],
+  "rejected_directions": ["fake certification"],
+  "platform_pack": {
+    "id": "xiaohongshu-image-post",
+    "version": "1.0.0"
+  },
+  "industry_pack": {
+    "id": "generic-professional-services",
+    "version": "1.0.0"
+  },
+  "historical_visual_plans": [],
+  "approved_style_refs": [],
+  "available_project_assets": [],
+  "available_evidence_assets": [],
+  "visual_constraints": ["No generated Chinese body copy"],
+  "user_overrides": [],
+  "capability_snapshot": {
+    "programmatic_graphics": true,
+    "image_generation": false,
+    "renderer": false,
+    "attachment_upload": false
+  },
+  "ready_for_visual_planning": true,
+  "blocking_reasons": [],
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/cover-copy-package.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Cover copy package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "cover_copy_package_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "cover_copy_version",
+    "publish_title",
+    "cover_primary_hook",
+    "cover_secondary_line",
+    "cover_supporting_copy",
+    "page_1_content_copy",
+    "cover_objective",
+    "conversion_strategy",
+    "target_customer_signal",
+    "painpoint_signal",
+    "value_signal",
+    "risk_signal",
+    "decision_signal",
+    "character_counts",
+    "line_limits",
+    "claim_refs",
+    "content_alignment",
+    "misleading_risk",
+    "ready_for_g3",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "cover_copy_package_id": { "type": "string", "pattern": "^CCPK-[A-Z0-9-]+$" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "cover_copy_version": { "type": "string", "pattern": "^CCV-[1-9][0-9]*$" },
+    "publish_title": { "type": "string", "minLength": 1 },
+    "cover_primary_hook": { "type": "string", "minLength": 1 },
+    "cover_secondary_line": { "type": "string" },
+    "cover_supporting_copy": { "type": "string" },
+    "page_1_content_copy": { "type": "string", "minLength": 1 },
+    "cover_objective": { "$ref": "cover-conversion-plan.schema.json#/$defs/coverObjective" },
+    "conversion_strategy": {
+      "$ref": "cover-conversion-plan.schema.json#/$defs/conversionStrategy"
+    },
+    "target_customer_signal": { "$ref": "#/$defs/signal" },
+    "painpoint_signal": { "$ref": "#/$defs/signal" },
+    "value_signal": { "$ref": "#/$defs/signal" },
+    "risk_signal": { "$ref": "#/$defs/signal" },
+    "decision_signal": { "$ref": "#/$defs/signal" },
+    "character_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "publish_title",
+        "cover_primary_hook",
+        "cover_secondary_line",
+        "cover_supporting_copy"
+      ],
+      "properties": {
+        "publish_title": { "type": "integer", "minimum": 0 },
+        "cover_primary_hook": { "type": "integer", "minimum": 1 },
+        "cover_secondary_line": { "type": "integer", "minimum": 0 },
+        "cover_supporting_copy": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "line_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "secondary", "supporting"],
+      "properties": {
+        "primary": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "secondary": { "type": "integer", "minimum": 0, "maximum": 2 },
+        "supporting": { "type": "integer", "minimum": 0, "maximum": 3 }
+      }
+    },
+    "claim_refs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "content_alignment": { "type": "string", "enum": ["ALIGNED", "MISALIGNED"] },
+    "misleading_risk": { "type": "string", "enum": ["NONE", "LOW", "MEDIUM", "HIGH", "BLOCKED"] },
+    "ready_for_g3": { "type": "boolean" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "signal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["present", "text"],
+      "properties": { "present": { "type": "boolean" }, "text": { "type": "string" } }
+    }
+  }
+}

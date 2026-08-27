@@ -1,0 +1,74 @@
+{
+  "evidence_id": "RTE-NODE24-LOCAL-20260824",
+  "runtime_name": "node",
+  "runtime_version": "v24.19.0",
+  "runtime_major": 24,
+  "runtime_range": ">=24 <25",
+  "support_policy_status": "SUPPORTED",
+  "policy_reason_code": "PROJECT_SUPPORTED_RUNTIME",
+  "execution_status": "PASSED",
+  "commands": [
+    "pnpm contracts:check-generated",
+    "pnpm contracts:validate",
+    "pnpm runtime-policy:validate",
+    "pnpm state:validate",
+    "pnpm runtime:test",
+    "pnpm recovery:test",
+    "pnpm scan:secrets"
+  ],
+  "command_results": [
+    {
+      "command": "pnpm contracts:check-generated",
+      "status": "PASSED",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm contracts:validate",
+      "status": "PASSED",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm runtime-policy:validate",
+      "status": "PASSED",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm state:validate",
+      "status": "PASSED",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm runtime:test",
+      "status": "PASSED",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm recovery:test",
+      "status": "PASSED",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm scan:secrets",
+      "status": "PASSED",
+      "exit_code": 0
+    }
+  ],
+  "environment": {
+    "package_manager": "pnpm",
+    "package_manager_version": "11.19.0",
+    "ci": false
+  },
+  "platform": "darwin",
+  "architecture": "arm64",
+  "started_at": "2026-08-23T17:26:33.475Z",
+  "completed_at": "2026-08-23T17:26:37.193Z",
+  "evidence_source": "LOCAL",
+  "report_path": "reports/verification/runtime-evidence-node24.json",
+  "limitations": [
+    "Local execution evidence only.",
+    "No remote or cross-platform CI execution is claimed.",
+    "Production integrations are outside Runtime compatibility evidence."
+  ],
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

@@ -1,0 +1,29 @@
+{
+  "report_id": "FRR-FIXTURE-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "expected_blueprint": {
+    "version": "1.0.0"
+  },
+  "remote_snapshot": {},
+  "matching_tables": [],
+  "missing_tables": ["projectConfig"],
+  "extra_tables": [],
+  "conflicting_tables": [],
+  "matching_fields": [],
+  "missing_fields": [],
+  "renamed_fields": [],
+  "type_conflicts": [],
+  "extra_fields": [],
+  "matching_views": [],
+  "missing_views": [],
+  "view_conflicts": [],
+  "relation_conflicts": [],
+  "record_conflicts": [],
+  "orphan_candidates": [],
+  "safe_repairs": ["CREATE_TABLE:projectConfig"],
+  "manual_decisions_required": [],
+  "overall_status": "REPAIR_AVAILABLE",
+  "checked_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "9.9.9",
+  "extensions": {}
+}

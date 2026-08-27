@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ${{ matrix.os }}
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/playwright-browsers
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node-version: [24]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm renderer:doctor
+      - run: pnpm renderer:test
+      - run: pnpm renderer:installed-copy-test
+      - run: pnpm runtime-policy:validate
+      - run: pnpm contracts:check-generated
+      - run: pnpm contracts:validate
+      - run: pnpm runtime:validate
+      - run: pnpm runtime:test
+      - run: pnpm recovery:test
+      - run: pnpm feishu:docs-validate
+      - run: pnpm feishu:permissions-validate
+      - run: pnpm feishu:capabilities-validate
+      - run: pnpm feishu:adapter-test
+      - run: pnpm feishu:blueprint-test
+      - run: pnpm feishu:provisioning-test
+      - run: pnpm feishu:recovery-test
+      - run: pnpm feishu:security-test
+      - run: pnpm check

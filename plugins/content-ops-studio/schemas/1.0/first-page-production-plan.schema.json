@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/first-page-production-plan.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "First-page production plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "first_page_production_plan_id",
+    "project_id",
+    "content_id",
+    "page_number",
+    "page_role",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "first_page_version",
+    "copy_snapshot_hash",
+    "visual_handoff_ref",
+    "visual_handoff_hash",
+    "page_visual_plan_id",
+    "renderer_config",
+    "renderer_environment_requirement",
+    "template_id",
+    "template_version",
+    "asset_strategy",
+    "programmatic_graphic_plan",
+    "text_layer_plan",
+    "font_resolution_plan",
+    "layout_measurement_plan",
+    "expected_outputs",
+    "qa_requirements",
+    "live_write_required",
+    "explicit_confirmation",
+    "idempotency_key",
+    "plan_hash",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "first_page_production_plan_id": { "type": "string", "pattern": "^FPPP-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "page_number": { "const": 1 },
+    "page_role": { "const": "COVER" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "first_page_version": { "type": "string", "pattern": "^FPV-[1-9][0-9]*$" },
+    "copy_snapshot_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "visual_handoff_ref": { "type": "string", "pattern": "^projects/[A-Za-z0-9._/-]+\\.json$" },
+    "visual_handoff_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "page_visual_plan_id": { "type": "string", "pattern": "^PVP-[A-Z0-9-]+$" },
+    "renderer_config": { "$ref": "renderer-config.schema.json" },
+    "renderer_environment_requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "platform",
+        "architecture",
+        "browser_family",
+        "browser_required",
+        "font_profile_required"
+      ],
+      "properties": {
+        "platform": { "enum": ["darwin", "linux", "win32"] },
+        "architecture": { "enum": ["arm64", "x64"] },
+        "browser_family": { "const": "CHROMIUM" },
+        "browser_required": { "const": true },
+        "font_profile_required": { "const": true }
+      }
+    },
+    "template_id": { "const": "TPL-EDITORIAL-COVER" },
+    "template_version": { "const": "1.0.0" },
+    "asset_strategy": { "enum": ["PROGRAMMATIC_GRAPHIC", "AI_GENERATED_VISUAL"] },
+    "programmatic_graphic_plan": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "graphic_id",
+            "primitives",
+            "contains_formal_copy",
+            "contains_remote_assets"
+          ],
+          "properties": {
+            "graphic_id": { "type": "string", "pattern": "^PG-[A-Z0-9-]+$" },
+            "primitives": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "enum": [
+                  "RECTANGLE",
+                  "ROUNDED_CARD",
+                  "LINE",
+                  "DIVIDER",
+                  "CIRCLE",
+                  "NUMBER_MARKER",
+                  "BRACKET",
+                  "CONNECTOR",
+                  "GRID",
+                  "FRAME",
+                  "ACCENT_BLOCK"
+                ]
+              }
+            },
+            "contains_formal_copy": { "const": false },
+            "contains_remote_assets": { "const": false }
+          }
+        },
+        { "type": "null" }
+      ]
+    },
+    "host_generated_asset_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generation_id",
+        "asset_id",
+        "relative_path",
+        "checksum",
+        "mime_type",
+        "width",
+        "height",
+        "source_type",
+        "contains_formal_copy",
+        "contains_remote_url"
+      ],
+      "properties": {
+        "generation_id": { "type": "string", "pattern": "^GEN-[A-Z0-9-]+$" },
+        "asset_id": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+        "relative_path": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+        "checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+        "mime_type": { "enum": ["image/png", "image/jpeg", "image/webp"] },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "source_type": { "const": "HOST_NATIVE_IMAGEGEN" },
+        "contains_formal_copy": { "const": false },
+        "contains_remote_url": { "const": false }
+      }
+    },
+    "text_layer_plan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["layer_id", "role", "exact_text", "source_hash"],
+        "properties": {
+          "layer_id": { "type": "string", "minLength": 1 },
+          "role": { "enum": ["TITLE", "BODY", "PAGE_NUMBER"] },
+          "exact_text": { "type": "string", "minLength": 1 },
+          "source_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" }
+        }
+      }
+    },
+    "font_resolution_plan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "font_stack"],
+        "properties": {
+          "role": { "enum": ["TITLE", "BODY", "PAGE_NUMBER"] },
+          "font_stack": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "layout_measurement_plan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "BOUNDING_CLIENT_RECT",
+          "SCROLL_SIZE",
+          "CLIENT_SIZE",
+          "COMPUTED_FONT",
+          "LINE_COUNT",
+          "Z_INDEX",
+          "VISIBILITY",
+          "OVERLAP",
+          "SAFE_AREA",
+          "CANVAS_SCROLL"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "expected_outputs": {
+      "type": "array",
+      "minItems": 7,
+      "items": {
+        "enum": [
+          "BACKGROUND_SVG",
+          "BACKGROUND_RASTER",
+          "COMPILED_HTML",
+          "FIRST_PAGE_PNG",
+          "GENERATION_MANIFEST",
+          "RENDER_REPORT",
+          "QA_REPORT",
+          "PRODUCTION_REPORT",
+          "ENVIRONMENT_EVIDENCE"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "qa_requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "live_write_required": { "const": true },
+    "explicit_confirmation": { "const": true },
+    "idempotency_key": { "type": "string", "minLength": 8, "maxLength": 128 },
+    "plan_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "asset_strategy": { "const": "PROGRAMMATIC_GRAPHIC" } } },
+      "then": { "properties": { "programmatic_graphic_plan": { "type": "object" } } }
+    },
+    {
+      "if": { "properties": { "asset_strategy": { "const": "AI_GENERATED_VISUAL" } } },
+      "then": {
+        "required": ["host_generated_asset_plan"],
+        "properties": {
+          "programmatic_graphic_plan": { "type": "null" },
+          "host_generated_asset_plan": {}
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-planning-context.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual planning context",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "visual_context_id",
+    "project_id",
+    "content_id",
+    "content_status",
+    "content_version",
+    "copy_version",
+    "g3_approval_id",
+    "g3_target_version",
+    "content_package_ref",
+    "content_package_hash",
+    "page_copy_hashes",
+    "project_profile_version",
+    "project_visual_preferences",
+    "project_content_style",
+    "project_expression_tone",
+    "active_project_rules",
+    "rejected_directions",
+    "platform_pack",
+    "industry_pack",
+    "historical_visual_plans",
+    "approved_style_refs",
+    "available_project_assets",
+    "available_evidence_assets",
+    "visual_constraints",
+    "user_overrides",
+    "capability_snapshot",
+    "ready_for_visual_planning",
+    "blocking_reasons",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "visual_context_id": { "type": "string", "pattern": "^VCTX-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_status": { "const": "COPY_APPROVED" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "g3_approval_id": { "type": "string", "pattern": "^APR-[A-Z0-9-]+$" },
+    "g3_target_version": { "type": "string", "pattern": "^CV-[1-9][0-9]*:CV-[1-9][0-9]*$" },
+    "content_package_ref": { "$ref": "#/$defs/safeRef" },
+    "content_package_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "page_copy_hashes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/pageHash" } },
+    "project_profile_version": { "$ref": "common-definitions.schema.json#/$defs/revisionNumber" },
+    "project_visual_preferences": { "$ref": "#/$defs/textList" },
+    "project_content_style": { "$ref": "#/$defs/textList" },
+    "project_expression_tone": { "$ref": "#/$defs/textList" },
+    "active_project_rules": { "$ref": "#/$defs/textList" },
+    "rejected_directions": { "$ref": "#/$defs/textList" },
+    "platform_pack": { "$ref": "#/$defs/pack" },
+    "industry_pack": { "$ref": "#/$defs/pack" },
+    "historical_visual_plans": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/safeRef" },
+      "uniqueItems": true
+    },
+    "approved_style_refs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/safeRef" },
+      "uniqueItems": true
+    },
+    "available_project_assets": { "type": "array", "items": { "$ref": "#/$defs/assetRef" } },
+    "available_evidence_assets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidenceAssetRef" }
+    },
+    "visual_constraints": { "$ref": "#/$defs/textList" },
+    "user_overrides": { "$ref": "#/$defs/textList" },
+    "capability_snapshot": { "$ref": "#/$defs/capabilities" },
+    "ready_for_visual_planning": { "type": "boolean" },
+    "blocking_reasons": { "$ref": "#/$defs/textList" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "safeRef": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "not": { "pattern": "^(?:/|[A-Za-z]:[\\\\/])" }
+    },
+    "textList": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 1000 },
+      "uniqueItems": true
+    },
+    "pageHash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["page_number", "copy_hash"],
+      "properties": {
+        "page_number": { "type": "integer", "minimum": 1, "maximum": 20 },
+        "copy_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" }
+      }
+    },
+    "pack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "version": { "$ref": "common-definitions.schema.json#/$defs/semanticVersion" }
+      }
+    },
+    "assetRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["asset_id", "asset_type", "storage_ref", "permission_status"],
+      "properties": {
+        "asset_id": { "type": "string", "minLength": 1 },
+        "asset_type": { "type": "string", "minLength": 1 },
+        "storage_ref": { "$ref": "#/$defs/safeRef" },
+        "permission_status": { "enum": ["AUTHORIZED", "RESTRICTED", "UNKNOWN"] }
+      }
+    },
+    "evidenceAssetRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["asset_id", "evidence_id", "storage_ref", "permission_status"],
+      "properties": {
+        "asset_id": { "type": "string", "minLength": 1 },
+        "evidence_id": { "type": "string", "minLength": 1 },
+        "storage_ref": { "$ref": "#/$defs/safeRef" },
+        "permission_status": { "enum": ["AUTHORIZED", "RESTRICTED", "UNKNOWN"] }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["programmatic_graphics", "image_generation", "renderer", "attachment_upload"],
+      "properties": {
+        "programmatic_graphics": { "type": "boolean" },
+        "image_generation": { "type": "boolean" },
+        "renderer": { "type": "boolean" },
+        "attachment_upload": { "type": "boolean" }
+      }
+    }
+  }
+}

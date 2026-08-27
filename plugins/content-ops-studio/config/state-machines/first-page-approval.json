@@ -1,0 +1,65 @@
+{
+  "machine": "first-page-approval",
+  "version": "1.0.0",
+  "states": [
+    "FIRST_PAGE_NOT_SUBMITTED",
+    "FIRST_PAGE_APPROVAL_PENDING",
+    "FIRST_PAGE_REVISION_REQUIRED",
+    "FIRST_PAGE_APPROVAL_APPROVED",
+    "FIRST_PAGE_APPROVAL_REJECTED"
+  ],
+  "initialStates": ["FIRST_PAGE_NOT_SUBMITTED"],
+  "terminalStates": ["FIRST_PAGE_APPROVAL_APPROVED", "FIRST_PAGE_APPROVAL_REJECTED"],
+  "transitions": [
+    {
+      "from": "FIRST_PAGE_NOT_SUBMITTED",
+      "to": "FIRST_PAGE_APPROVAL_PENDING",
+      "trigger": "SUBMIT_FIRST_PAGE_FOR_APPROVAL",
+      "ownerSkill": "image-set-production",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "FIRST_PAGE_NOT_SUBMITTED to FIRST_PAGE_APPROVAL_PENDING"
+    },
+    {
+      "from": "FIRST_PAGE_APPROVAL_PENDING",
+      "to": "FIRST_PAGE_APPROVAL_APPROVED",
+      "trigger": "APPROVE_FIRST_PAGE",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": "FIRST_PAGE",
+      "requiredContext": ["visual_plan_version"],
+      "invalidates": [],
+      "description": "FIRST_PAGE_APPROVAL_PENDING to FIRST_PAGE_APPROVAL_APPROVED"
+    },
+    {
+      "from": "FIRST_PAGE_APPROVAL_PENDING",
+      "to": "FIRST_PAGE_REVISION_REQUIRED",
+      "trigger": "REQUEST_FIRST_PAGE_REVISION",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "FIRST_PAGE_APPROVAL_PENDING to FIRST_PAGE_REVISION_REQUIRED"
+    },
+    {
+      "from": "FIRST_PAGE_APPROVAL_PENDING",
+      "to": "FIRST_PAGE_APPROVAL_REJECTED",
+      "trigger": "REJECT_FIRST_PAGE",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "FIRST_PAGE_APPROVAL_PENDING to FIRST_PAGE_APPROVAL_REJECTED"
+    },
+    {
+      "from": "FIRST_PAGE_REVISION_REQUIRED",
+      "to": "FIRST_PAGE_APPROVAL_PENDING",
+      "trigger": "RESUBMIT_FIRST_PAGE",
+      "ownerSkill": "image-set-production",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "FIRST_PAGE_REVISION_REQUIRED to FIRST_PAGE_APPROVAL_PENDING"
+    }
+  ]
+}

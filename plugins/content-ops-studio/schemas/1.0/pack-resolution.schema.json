@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/pack-resolution.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Pack resolution",
+  "description": "Immutable per-run Pack/version/rule resolution with conflicts and warnings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "resolution_id",
+    "project_id",
+    "platform_pack",
+    "industry_pack",
+    "plugin_defaults",
+    "project_rule_snapshot",
+    "run_overrides",
+    "priority_order",
+    "resolved_values",
+    "conflicts",
+    "warnings",
+    "resolved_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "resolution_id": { "type": "string", "pattern": "^PRES-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "platform_pack": { "$ref": "#/$defs/packBinding" },
+    "industry_pack": { "$ref": "#/$defs/packBinding" },
+    "plugin_defaults": { "$ref": "#/$defs/nonEmptyMap" },
+    "project_rule_snapshot": { "$ref": "#/$defs/nonEmptyMap" },
+    "run_overrides": { "type": "object", "additionalProperties": true },
+    "priority_order": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "prefixItems": [
+        { "const": "SAFETY_COMPLIANCE_FACTS_PERMISSIONS" },
+        { "const": "CURRENT_OPERATOR_REQUEST" },
+        { "const": "CONFIRMED_PROJECT_RULES" },
+        { "const": "PLATFORM_PACK" },
+        { "const": "INDUSTRY_PACK" },
+        { "const": "PLUGIN_DEFAULTS" }
+      ],
+      "items": false
+    },
+    "resolved_values": { "$ref": "#/$defs/nonEmptyMap" },
+    "conflicts": { "type": "array", "items": { "$ref": "#/$defs/resolutionNotice" } },
+    "warnings": { "type": "array", "items": { "$ref": "#/$defs/resolutionNotice" } },
+    "resolved_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "packBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "status", "snapshot_sha256"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "version": { "$ref": "common-definitions.schema.json#/$defs/semanticVersion" },
+        "status": { "type": "string", "enum": ["SCAFFOLD", "ACTIVE", "DEPRECATED"] },
+        "snapshot_sha256": { "$ref": "common-definitions.schema.json#/$defs/sha256" }
+      }
+    },
+    "nonEmptyMap": { "type": "object", "minProperties": 1, "additionalProperties": true },
+    "resolutionNotice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message", "source"],
+      "properties": {
+        "code": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" },
+        "message": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

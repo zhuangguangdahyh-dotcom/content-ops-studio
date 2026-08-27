@@ -1,0 +1,37 @@
+{
+  "manifest_id": "INVALID-ID",
+  "research_plan_id": "RPL-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "sources": [
+    {
+      "source_id": "SRC-DEMO-001",
+      "source_type": "OFFICIAL_SOURCE",
+      "title": "Fictional official platform guidance",
+      "publisher_or_owner": "Fictional Platform",
+      "source_location": "https://example.com/official-guidance",
+      "source_date": "2099-01-01",
+      "retrieved_at": "2099-01-01T01:02:03.000Z",
+      "language": "zh-CN",
+      "summary": "The official fictional guidance emphasizes truthful identity and useful content.",
+      "supported_claims": ["Trust content needs clear professional identity."],
+      "limitations": "Fixture source; not production evidence.",
+      "credibility_notes": "Marked as official only inside this fictional contract fixture.",
+      "is_first_party": true,
+      "is_user_provided": false,
+      "is_current": true,
+      "duplicate_of": null,
+      "content_hash": "e39b98e08837010a852dc98c47d0152768d26edf9ffccd36d231c41d1b6eda70",
+      "extensions": {}
+    }
+  ],
+  "source_count": 1,
+  "source_type_counts": {
+    "OFFICIAL_SOURCE": 1
+  },
+  "duplicate_source_count": 0,
+  "rejected_source_count": 0,
+  "retrieved_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

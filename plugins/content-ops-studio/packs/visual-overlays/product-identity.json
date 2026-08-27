@@ -1,0 +1,8 @@
+{
+  "overlay_id": "PRODUCT_IDENTITY",
+  "overlay_version": "1.0.0",
+  "display_name": "Product identity",
+  "hard_blocks": ["Product form mismatch"],
+  "quality_checks": ["Shape, pack, color and functional-detail fidelity"],
+  "schema_version": "1.0.0"
+}

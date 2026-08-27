@@ -1,0 +1,10 @@
+{
+  "status": "READY",
+  "required_commands": ["+base-get"],
+  "available_commands": ["+base-get"],
+  "missing_commands": [],
+  "raw_api_fallback": "ANY",
+  "probed_at": "2026-08-24T00:00:00.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

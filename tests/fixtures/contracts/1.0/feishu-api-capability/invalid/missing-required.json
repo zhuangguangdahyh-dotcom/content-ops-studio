@@ -1,0 +1,18 @@
+{
+  "operation": "CREATE_WORKSPACE",
+  "endpoint": "/open-apis/bitable/v1/apps",
+  "http_method": "POST",
+  "sdk_method": "bitable.app.create",
+  "transport_strategy": "NODE24_NATIVE_FETCH",
+  "required_permissions": ["base:app:create"],
+  "pagination": "NONE",
+  "batch_limit": null,
+  "rate_limit": "UNKNOWN_REQUIRES_RUNTIME_CONFIRMATION",
+  "retry_classification": "RECONCILE_BEFORE_RETRY",
+  "implementation_status": "IMPLEMENTED_OFFLINE",
+  "live_verified": false,
+  "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app/create",
+  "snapshot_date": "2099-01-01",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

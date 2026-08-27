@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/text-background-contrast-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Text background contrast report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "calibration_cover_version",
+    "asset_id",
+    "asset_checksum",
+    "canvas",
+    "heuristic_scope",
+    "gate_after",
+    "gate_before",
+    "text_layers",
+    "primary_hook_contrast",
+    "supporting_signal_contrast",
+    "contrast_stability",
+    "background_complexity",
+    "actual_pixel_visual_qa",
+    "hard_blocks",
+    "result",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^TBCR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "calibration_cover_version": { "type": "string", "pattern": "^FPV-[1-9][0-9]*$" },
+    "asset_id": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+    "asset_checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "canvas": { "$ref": "common-definitions.schema.json#/$defs/canvas" },
+    "heuristic_scope": {
+      "const": "CONTENT_OPS_INTERNAL_RELATIVE_LUMINANCE_HEURISTIC_NOT_WCAG_CERTIFICATION"
+    },
+    "gate_after": { "const": "TYPOGRAPHY_SPATIAL_INTEGRITY" },
+    "gate_before": { "const": "COVER_ATTENTION_DOMINANCE" },
+    "text_layers": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/textLayer" } },
+    "primary_hook_contrast": { "$ref": "#/$defs/gateResult" },
+    "supporting_signal_contrast": { "$ref": "#/$defs/gateResult" },
+    "contrast_stability": { "$ref": "#/$defs/gateResult" },
+    "background_complexity": { "$ref": "#/$defs/gateResult" },
+    "actual_pixel_visual_qa": { "$ref": "#/$defs/gateResult" },
+    "hard_blocks": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/errorCode" }
+    },
+    "result": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "gateResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result", "observation"],
+      "properties": {
+        "result": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "observation": { "type": "string", "minLength": 1, "maxLength": 2000 }
+      }
+    },
+    "distribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum", "percentile_10", "median", "percentile_90", "maximum"],
+      "properties": {
+        "minimum": { "type": "number", "minimum": 0 },
+        "percentile_10": { "type": "number", "minimum": 0 },
+        "median": { "type": "number", "minimum": 0 },
+        "percentile_90": { "type": "number", "minimum": 0 },
+        "maximum": { "type": "number", "minimum": 0 }
+      }
+    },
+    "region": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "width", "height"],
+      "properties": {
+        "x": { "type": "number", "minimum": 0 },
+        "y": { "type": "number", "minimum": 0 },
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "worstRegion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "width", "height", "median_contrast"],
+      "properties": {
+        "x": { "type": "number", "minimum": 0 },
+        "y": { "type": "number", "minimum": 0 },
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 },
+        "median_contrast": { "type": "number", "minimum": 1, "maximum": 21 }
+      }
+    },
+    "textLayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text_layer_id",
+        "role",
+        "foreground_color",
+        "foreground_opacity",
+        "text_bbox",
+        "resolved_font",
+        "resolved_weight",
+        "background_region",
+        "background_luminance_distribution",
+        "local_contrast_distribution",
+        "minimum_local_contrast",
+        "low_percentile_local_contrast",
+        "median_local_contrast",
+        "low_contrast_area_ratio",
+        "contrast_variance",
+        "background_complexity",
+        "foreground_background_edge_conflict",
+        "worst_local_region",
+        "actual_pixel_result",
+        "errors"
+      ],
+      "properties": {
+        "text_layer_id": { "type": "string", "minLength": 1 },
+        "role": {
+          "type": "string",
+          "enum": [
+            "PRIMARY_HOOK",
+            "SECONDARY_SIGNAL",
+            "BODY",
+            "LABEL",
+            "CAPTION",
+            "BRAND",
+            "PAGE_NUMBER"
+          ]
+        },
+        "foreground_color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "foreground_opacity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "text_bbox": { "$ref": "#/$defs/region" },
+        "resolved_font": { "type": "string", "minLength": 1 },
+        "resolved_weight": { "type": "integer", "minimum": 100, "maximum": 900 },
+        "background_region": { "$ref": "#/$defs/region" },
+        "background_luminance_distribution": { "$ref": "#/$defs/distribution" },
+        "local_contrast_distribution": { "$ref": "#/$defs/distribution" },
+        "minimum_local_contrast": { "type": "number", "minimum": 1, "maximum": 21 },
+        "low_percentile_local_contrast": { "type": "number", "minimum": 1, "maximum": 21 },
+        "median_local_contrast": { "type": "number", "minimum": 1, "maximum": 21 },
+        "low_contrast_area_ratio": { "type": "number", "minimum": 0, "maximum": 1 },
+        "contrast_variance": { "type": "number", "minimum": 0 },
+        "background_complexity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "foreground_background_edge_conflict": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "worst_local_region": { "$ref": "#/$defs/worstRegion" },
+        "actual_pixel_result": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "errors": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/errorCode" }
+        }
+      }
+    },
+    "errorCode": {
+      "type": "string",
+      "enum": [
+        "TEXT_BACKGROUND_CONTRAST_INTEGRITY_BLOCKED",
+        "TEXT_BACKGROUND_CONTRAST_UNSTABLE",
+        "TEXT_BACKGROUND_COMPLEXITY_BLOCKED",
+        "SECONDARY_TEXT_CONTRAST_TOO_LOW",
+        "PRIMARY_TEXT_LOCAL_CONTRAST_FAILURE",
+        "LOW_CONTRAST_AREA_EXCESSIVE",
+        "COLOR_HIERARCHY_REDUCES_LEGIBILITY"
+      ]
+    }
+  }
+}

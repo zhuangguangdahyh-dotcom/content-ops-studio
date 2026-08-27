@@ -1,0 +1,41 @@
+{
+  "pack_id": "PRODUCT_CONSUMER",
+  "pack_version": "1.0.0",
+  "display_name": "Product and Consumer",
+  "supported_industries": ["Consumer products", "Retail products", "E-commerce"],
+  "default_visual_mode_ranking": ["PRODUCT_LIFESTYLE", "EDITORIAL_SERIES", "MIXED"],
+  "asset_source_priority": [
+    "PROJECT_ASSET",
+    "AI_GENERATED_VISUAL",
+    "EVIDENCE_ASSET",
+    "MIXED_ASSET"
+  ],
+  "identity_invariants": [
+    "Preserve product shape, packaging, color, marks, and functional details."
+  ],
+  "specialized_hard_blocks": [
+    "Wrong product identity",
+    "Fabricated packshot",
+    "Changed product function"
+  ],
+  "specialized_quality_checks": [
+    "Product fidelity",
+    "Material rendering",
+    "Use-context credibility"
+  ],
+  "consistency_requirements": ["Stable product identity across scenes"],
+  "fallback_strategies": ["Use authorized packshots with programmatic feature annotation."],
+  "recommended_questions": ["Which approved product asset is authoritative?"],
+  "prohibited_claims_or_representations": [
+    "Feature or outcome not supported by the product record"
+  ],
+  "allowed_overlays": [
+    "PRODUCT_IDENTITY",
+    "EVIDENCE_AUTHENTICITY",
+    "BRAND_ASSET_INTEGRITY",
+    "REGULATED_CLAIMS"
+  ],
+  "known_limitations": ["Generated product scenes are not official packshots."],
+  "contains_customer_assets": false,
+  "schema_version": "1.0.0"
+}

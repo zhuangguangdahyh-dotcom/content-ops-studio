@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/typography-as-form-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Typography as form report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "candidate_id",
+    "line_break_shape",
+    "text_block_shape",
+    "edge_relation",
+    "scale_relation",
+    "vertical_rhythm",
+    "mass_distribution",
+    "total_score",
+    "threshold",
+    "spatial_integrity_bypass",
+    "result",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^TAFR-[A-Z0-9-]+$" },
+    "candidate_id": { "type": "string", "minLength": 1 },
+    "line_break_shape": { "$ref": "#/$defs/score" },
+    "text_block_shape": { "$ref": "#/$defs/score" },
+    "edge_relation": { "$ref": "#/$defs/score" },
+    "scale_relation": { "$ref": "#/$defs/score" },
+    "vertical_rhythm": { "$ref": "#/$defs/score" },
+    "mass_distribution": { "$ref": "#/$defs/score" },
+    "total_score": { "$ref": "#/$defs/score" },
+    "threshold": { "const": 85 },
+    "spatial_integrity_bypass": { "const": false },
+    "result": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": { "score": { "type": "integer", "minimum": 0, "maximum": 100 } }
+}

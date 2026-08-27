@@ -1,0 +1,23 @@
+{
+  "duplication_report_id": "DUP-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "painpoint_id": "P-0001",
+  "candidate_content_id": "C-0001",
+  "exact_fingerprint": "70aa4e7fec4b5a8a6908a2de4a097592c0e040e82bf33653a6daa05df055d0b6",
+  "exact_matches": [],
+  "same_painpoint_matches": [],
+  "recent_project_matches": [],
+  "near_semantic_assessments": [],
+  "title_overlap": 0,
+  "hook_overlap": 0,
+  "structure_overlap": 0,
+  "viewpoint_overlap": 0,
+  "conclusion_overlap": 0,
+  "overall_risk": "LOW",
+  "blocking": false,
+  "recommended_alternatives": [],
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

@@ -1,0 +1,7 @@
+# Industry Visual Packs
+
+Seven read-only versioned Packs ship: Generic; Commercial Space/Hospitality; Professional Services; Personal IP/Creator; Medical Aesthetics/Health; Product/Consumer; Food/Beverage/Lifestyle. Seven overlays cover person, product, space, evidence, regulated claims, before/after and brand-asset integrity.
+
+Packs rank modes/channels and define invariants, hard blocks, specialized checks, consistency, fallbacks, questions, prohibited representations and limitations. They contain no customer assets, logos, copyrighted images, fixed final templates or permanent prompts. Plans bind exact versions; project feedback never silently mutates a Pack.
+
+Packs are priors and risk boundaries. Per-content strategy remains responsible for final channel, mode, palette, typography and composition. `COMMERCIAL_SPACE_HOSPITALITY` 1.1.0 with `SPACE_IDENTITY` 1.1.0 is the first mature specialized baseline: preserve one spatial DNA, architecture, zoning, doors/windows, materials, furniture, circulation and design authorization while varying areas, viewpoints and shot scales. It requires credible perspective/light/shadow/reflection and blocks unrelated-project mixing, over-HDR/CG drift and unauthorized design changes. These constraints do not impose space backgrounds, photography, palettes, compositions or type layouts on other industries; the previous 1.0.0 definitions remain retained under `versions/`.

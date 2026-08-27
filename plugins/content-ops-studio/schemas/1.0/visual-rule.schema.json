@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-rule.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual rule",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "rule_id",
+    "project_id",
+    "source_event_id",
+    "source_candidate_id",
+    "rule_statement",
+    "rationale",
+    "scope",
+    "rule_type",
+    "positive_examples",
+    "negative_examples",
+    "allowed_exceptions",
+    "confirmed_by_user",
+    "status",
+    "version",
+    "supersedes_version",
+    "run_id",
+    "schema_version",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "rule_id": { "type": "string", "pattern": "^VR-[A-Z0-9-]+$" },
+    "project_id": {
+      "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/projectId" }, { "type": "null" }]
+    },
+    "source_event_id": { "type": "string", "pattern": "^VFE-[A-Z0-9-]+$" },
+    "source_candidate_id": {
+      "anyOf": [{ "type": "string", "pattern": "^VRC-[A-Z0-9-]+$" }, { "type": "null" }]
+    },
+    "global_preference_version": {
+      "anyOf": [{ "type": "string", "pattern": "^GUVPV-[1-9][0-9]*$" }, { "type": "null" }]
+    },
+    "rule_statement": { "type": "string", "minLength": 1 },
+    "rationale": { "type": "string", "minLength": 1 },
+    "scope": { "$ref": "visual-feedback-event.schema.json#/$defs/scope" },
+    "rule_type": { "$ref": "visual-rule-candidate.schema.json#/$defs/ruleType" },
+    "positive_examples": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "negative_examples": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "allowed_exceptions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "confirmed_by_user": { "const": true },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "SUPERSEDED", "DISABLED", "FORGOTTEN"]
+    },
+    "version": { "type": "integer", "minimum": 1 },
+    "supersedes_version": { "anyOf": [{ "type": "integer", "minimum": 1 }, { "type": "null" }] },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "updated_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  }
+}

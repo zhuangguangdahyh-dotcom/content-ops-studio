@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-semantic-relevance-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual semantic relevance report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "candidate_id",
+    "semantic_role",
+    "direct_relation_statement",
+    "dimensions",
+    "total_score",
+    "threshold",
+    "hard_blocks",
+    "result",
+    "operator_approval_required",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^VSRR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "candidate_id": { "type": "string", "pattern": "^CCC-[A-Z0-9-]+$" },
+    "semantic_role": { "$ref": "#/$defs/semanticRole" },
+    "direct_relation_statement": { "type": "string", "minLength": 1 },
+    "dimensions": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": { "$ref": "#/$defs/dimension" }
+    },
+    "total_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "threshold": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "hard_blocks": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "result": { "type": "string", "enum": ["PASS_PENDING_OPERATOR", "FAIL", "BLOCKED"] },
+    "operator_approval_required": { "const": true },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "semanticRole": {
+      "type": "string",
+      "enum": [
+        "DIRECT_INDUSTRY_SCENE",
+        "DIRECT_BUSINESS_SCENE",
+        "DIRECT_CUSTOMER_SCENE",
+        "DIRECT_PAINPOINT_SCENE",
+        "DIRECT_VALUE_SCENE",
+        "PROJECT_ASSET",
+        "SUBJECT_PERSON",
+        "PRODUCT_SUBJECT",
+        "SPACE_SUBJECT",
+        "EVIDENCE_ASSET",
+        "ABSTRACT_SEMANTIC",
+        "DECORATIVE_ONLY"
+      ]
+    },
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimension", "weight", "score", "reason"],
+      "properties": {
+        "dimension": {
+          "type": "string",
+          "enum": [
+            "INDUSTRY_RELEVANCE",
+            "BUSINESS_SCENE_RELEVANCE",
+            "PAINPOINT_RELEVANCE",
+            "CONTENT_VALUE_RELEVANCE",
+            "PROJECT_OR_SUBJECT_RELEVANCE",
+            "AUDIENCE_RECOGNITION"
+          ]
+        },
+        "weight": { "type": "integer", "enum": [10, 15, 20] },
+        "score": { "type": "integer", "minimum": 0, "maximum": 20 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

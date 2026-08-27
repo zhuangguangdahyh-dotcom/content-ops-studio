@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/painpoint-review-batch.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Painpoint review batch",
+  "description": "Version-bound item decisions for G2 PAINPOINTS review.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "review_batch_id",
+    "research_batch_id",
+    "project_id",
+    "painpoint_batch_version",
+    "review_version",
+    "items",
+    "summary_decision",
+    "approved_count",
+    "revision_required_count",
+    "rejected_count",
+    "paused_count",
+    "reviewer_role",
+    "source_run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "review_batch_id": { "type": "string", "pattern": "^PRB-[A-Z0-9-]+$" },
+    "research_batch_id": { "type": "string", "pattern": "^RB-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "painpoint_batch_version": { "$ref": "common-definitions.schema.json#/$defs/revisionNumber" },
+    "review_version": { "$ref": "common-definitions.schema.json#/$defs/revisionNumber" },
+    "items": { "type": "array", "items": { "$ref": "#/$defs/item" }, "minItems": 1 },
+    "summary_decision": { "enum": ["APPROVE", "REVISE", "REJECT", "PAUSE", "MIXED"] },
+    "approved_count": { "type": "integer", "minimum": 0 },
+    "revision_required_count": { "type": "integer", "minimum": 0 },
+    "rejected_count": { "type": "integer", "minimum": 0 },
+    "paused_count": { "type": "integer", "minimum": 0 },
+    "reviewer_role": { "const": "OPERATOR" },
+    "source_run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["painpoint_id", "painpoint_version", "decision", "comment", "requested_changes"],
+      "properties": {
+        "painpoint_id": { "$ref": "common-definitions.schema.json#/$defs/painpointId" },
+        "painpoint_version": { "$ref": "common-definitions.schema.json#/$defs/revisionNumber" },
+        "decision": { "enum": ["APPROVE", "REVISE", "REJECT", "PAUSE"] },
+        "comment": { "type": "string", "maxLength": 1000 },
+        "requested_changes": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 500 }
+        }
+      }
+    }
+  }
+}

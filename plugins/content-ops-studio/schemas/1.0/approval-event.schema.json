@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/approval-event.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Approval event",
+  "description": "A single explicit human decision bound to one target version.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "approval_id",
+    "gate",
+    "target_type",
+    "target_id",
+    "target_version",
+    "decision",
+    "comment",
+    "source_run_id",
+    "created_at",
+    "schema_version"
+  ],
+  "properties": {
+    "approval_id": {
+      "$ref": "common-definitions.schema.json#/$defs/approvalId"
+    },
+    "gate": {
+      "$ref": "common-definitions.schema.json#/$defs/approvalGate"
+    },
+    "target_type": {
+      "type": "string",
+      "enum": [
+        "PROJECT",
+        "PAINPOINT_BATCH",
+        "CONTENT",
+        "CONTENT_PACKAGE",
+        "FIRST_PAGE_ASSET",
+        "IMAGE_SET"
+      ]
+    },
+    "target_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision": {
+      "$ref": "common-definitions.schema.json#/$defs/approvalDecision"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "source_run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "created_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "deprecated_at": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "pack_version": "1.0.0",
+  "display_name": "Professional Services",
+  "supported_industries": ["Fictional advisory services"],
+  "default_visual_mode_ranking": ["EDITORIAL_SERIES", "EVIDENCE_LED", "PURE_TYPOGRAPHY"],
+  "asset_source_priority": [
+    "PROJECT_ASSET",
+    "EVIDENCE_ASSET",
+    "AI_GENERATED_VISUAL",
+    "PURE_TYPOGRAPHY"
+  ],
+  "identity_invariants": ["Do not fabricate a client case."],
+  "specialized_hard_blocks": ["Fake credentials"],
+  "specialized_quality_checks": ["Trust signal clarity"],
+  "consistency_requirements": ["Stable professional tone"],
+  "fallback_strategies": ["Use pure typography when no lawful image is available."],
+  "recommended_questions": ["Which trust signal is supported?"],
+  "prohibited_claims_or_representations": ["Guaranteed outcome"],
+  "allowed_overlays": ["EVIDENCE_AUTHENTICITY", "BRAND_ASSET_INTEGRITY"],
+  "known_limitations": ["Does not supply customer assets."],
+  "contains_customer_assets": false,
+  "schema_version": "1.0.0"
+}

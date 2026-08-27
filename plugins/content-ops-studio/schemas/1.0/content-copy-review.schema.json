@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/content-copy-review.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Content copy review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "copy_review_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "decision",
+    "overall_comment",
+    "title_feedback",
+    "body_feedback",
+    "cta_feedback",
+    "page_feedback",
+    "requested_changes",
+    "reviewer_role",
+    "source_run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "copy_review_id": { "type": "string", "pattern": "^CCR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "decision": { "enum": ["APPROVE", "REVISE", "REJECT", "PAUSE"] },
+    "overall_comment": { "type": "string", "maxLength": 1500 },
+    "title_feedback": { "type": "string", "maxLength": 1000 },
+    "body_feedback": { "type": "string", "maxLength": 1000 },
+    "cta_feedback": { "type": "string", "maxLength": 1000 },
+    "page_feedback": { "type": "array", "items": { "$ref": "#/$defs/pageFeedback" } },
+    "requested_changes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 1000 }
+    },
+    "reviewer_role": { "const": "OPERATOR" },
+    "source_run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "decision": { "const": "REVISE" } }, "required": ["decision"] },
+      "then": {
+        "anyOf": [
+          { "properties": { "requested_changes": { "type": "array", "minItems": 1 } } },
+          { "properties": { "page_feedback": { "type": "array", "minItems": 1 } } }
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "pageFeedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["page_number", "comment", "requested_change"],
+      "properties": {
+        "page_number": { "type": "integer", "minimum": 1 },
+        "comment": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "requested_change": { "type": "string", "minLength": 1, "maxLength": 1000 }
+      }
+    }
+  }
+}

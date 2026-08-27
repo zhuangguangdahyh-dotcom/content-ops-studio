@@ -1,0 +1,18 @@
+{
+  "report_id": "TAFR-DEMO-I",
+  "candidate_id": "CCC-DEMO-I",
+  "line_break_shape": 91,
+  "text_block_shape": 90,
+  "edge_relation": 89,
+  "scale_relation": 92,
+  "vertical_rhythm": 88,
+  "mass_distribution": 91,
+  "total_score": 90,
+  "threshold": 85,
+  "spatial_integrity_bypass": false,
+  "result": "PASS",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "unknown_property": true
+}

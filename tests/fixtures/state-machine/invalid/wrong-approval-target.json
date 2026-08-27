@@ -1,0 +1,30 @@
+{
+  "expected_error": "APPROVAL_MISMATCH",
+  "request": {
+    "machine": "content-status",
+    "from_state": "COPY_PENDING_APPROVAL",
+    "to_state": "COPY_APPROVED",
+    "trigger": "APPROVE_COPY",
+    "actor_skill": "content-studio-router",
+    "project_id": "PRJ-20990101-DEMO",
+    "target_type": "CONTENT",
+    "target_id": "C-0001",
+    "target_version": "CV-1",
+    "current_context": {
+      "content_version": "CV-1"
+    },
+    "available_artifacts": [],
+    "requested_at": "2099-01-01T01:02:03.000Z",
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "approval_event": {
+      "approval_id": "APR-20990101-DEMO",
+      "gate": "CONTENT_COPY",
+      "target_type": "CONTENT",
+      "target_id": "C-0002",
+      "target_version": "CV-1",
+      "decision": "APPROVE",
+      "deprecated_at": null
+    }
+  }
+}

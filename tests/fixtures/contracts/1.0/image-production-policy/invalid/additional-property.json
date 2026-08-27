@@ -1,0 +1,36 @@
+{
+  "policy_id": "IMAGE-PRODUCTION-SPEC-V1",
+  "policy_version": "1.0.0",
+  "asset_channels": [
+    "PROJECT_ASSET",
+    "AI_GENERATED_VISUAL",
+    "PROGRAMMATIC_GRAPHIC",
+    "EVIDENCE_ASSET",
+    "PURE_TYPOGRAPHY",
+    "MIXED_ASSET"
+  ],
+  "visual_modes": [
+    "SCENE_SERIES",
+    "EDITORIAL_SERIES",
+    "PRODUCT_LIFESTYLE",
+    "EVIDENCE_LED",
+    "MIXED",
+    "CHARACTER_SERIES",
+    "PURE_TYPOGRAPHY"
+  ],
+  "candidate_count": {
+    "minimum": 2,
+    "maximum": 3
+  },
+  "final_page_count_range": {
+    "minimum": 4,
+    "maximum": 8
+  },
+  "candidate_quality_threshold": 75,
+  "formal_quality_threshold": 85,
+  "hard_blocks": ["FAKE_EVIDENCE", "UNREADABLE_TEXT", "IDENTITY_MISMATCH"],
+  "formal_text_renderer_only": true,
+  "production_mock_fallback": false,
+  "schema_version": "1.0.0",
+  "unexpected": true
+}

@@ -1,0 +1,19 @@
+{
+  "overlay_id": "SPACE_IDENTITY",
+  "overlay_version": "1.1.0",
+  "display_name": "Space identity",
+  "hard_blocks": [
+    "Spatial structure mismatch",
+    "Door, window, furniture or circulation identity drift",
+    "Unrelated project mixed into one set",
+    "Unauthorized design change"
+  ],
+  "quality_checks": [
+    "Zoning, circulation, scale and material continuity",
+    "Different areas, viewpoints and shot scales retain one project DNA",
+    "Material, light, shadow and reflection remain physically credible",
+    "Real-photography feel without over-HDR or CGI drift",
+    "Design-upgrade mode is explicit when the source design changes"
+  ],
+  "schema_version": "1.0.0"
+}

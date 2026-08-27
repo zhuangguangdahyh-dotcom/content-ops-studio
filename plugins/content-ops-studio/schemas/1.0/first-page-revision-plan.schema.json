@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/first-page-revision-plan.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "First-page revision plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "first_page_revision_plan_id",
+    "project_id",
+    "content_id",
+    "from_first_page_version",
+    "to_first_page_version",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "revision_classification",
+    "layout_changes",
+    "typography_changes",
+    "color_changes",
+    "graphic_changes",
+    "copy_change_requested",
+    "visual_plan_change_required",
+    "content_revision_required",
+    "preserved_elements",
+    "invalidated_artifacts",
+    "requires_rerender",
+    "requires_new_g4",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "first_page_revision_plan_id": { "type": "string", "pattern": "^FPRP-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "from_first_page_version": { "type": "string", "pattern": "^FPV-[1-9][0-9]*$" },
+    "to_first_page_version": { "type": "string", "pattern": "^FPV-[1-9][0-9]*$" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "revision_classification": {
+      "enum": ["RENDER_ONLY", "PAGE_VISUAL_PLAN", "GLOBAL_VISUAL_PLAN", "CONTENT_COPY"]
+    },
+    "layout_changes": { "$ref": "#/$defs/changeList" },
+    "typography_changes": { "$ref": "#/$defs/changeList" },
+    "color_changes": { "$ref": "#/$defs/changeList" },
+    "graphic_changes": { "$ref": "#/$defs/changeList" },
+    "copy_change_requested": { "type": "boolean" },
+    "visual_plan_change_required": { "type": "boolean" },
+    "content_revision_required": { "type": "boolean" },
+    "preserved_elements": { "$ref": "#/$defs/changeList" },
+    "invalidated_artifacts": { "$ref": "#/$defs/changeList" },
+    "requires_rerender": { "type": "boolean" },
+    "requires_new_g4": { "const": true },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "changeList": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 500 },
+      "maxItems": 20
+    }
+  }
+}

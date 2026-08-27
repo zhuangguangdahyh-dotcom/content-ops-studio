@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/capabilities.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Capability declaration",
+  "description": "Honest Skill or runtime capability status.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "capability_id",
+    "implementation_status",
+    "required",
+    "provider",
+    "operations",
+    "limitations",
+    "last_verified_at"
+  ],
+  "properties": {
+    "capability_id": {
+      "type": "string",
+      "pattern": "^CAP-[A-Z0-9-]+$"
+    },
+    "implementation_status": {
+      "type": "string",
+      "enum": ["SCAFFOLD", "NOT_IMPLEMENTED", "MOCK_ONLY"]
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "provider": {
+      "type": "string",
+      "enum": ["LOCAL", "FEISHU", "RESEARCH", "IMAGE_GENERATION", "RENDERER", "PUBLISHING", "MOCK"]
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "last_verified_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    }
+  }
+}

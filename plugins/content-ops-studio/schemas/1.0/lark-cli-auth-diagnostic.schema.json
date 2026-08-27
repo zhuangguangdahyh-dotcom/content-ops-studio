@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/lark-cli-auth-diagnostic.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Official Lark CLI auth diagnostic",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "diagnostic_id",
+    "state",
+    "identity",
+    "configured",
+    "authenticated",
+    "required_scope_count",
+    "granted_scope_count",
+    "missing_scopes",
+    "authorization_url_present",
+    "token_exposed",
+    "checked_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "diagnostic_id": { "type": "string", "pattern": "^LCD-[A-Z0-9-]+$" },
+    "state": {
+      "enum": [
+        "NOT_CONFIGURED",
+        "AWAITING_USER_AUTHORIZATION",
+        "AWAITING_ADMIN_APPROVAL",
+        "AUTHENTICATED",
+        "BLOCKED"
+      ]
+    },
+    "identity": { "enum": ["user", "bot"] },
+    "configured": { "type": "boolean" },
+    "authenticated": { "type": "boolean" },
+    "required_scope_count": { "type": "integer", "minimum": 0 },
+    "granted_scope_count": { "type": "integer", "minimum": 0 },
+    "missing_scopes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "authorization_url_present": { "type": "boolean" },
+    "token_exposed": { "const": false },
+    "checked_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

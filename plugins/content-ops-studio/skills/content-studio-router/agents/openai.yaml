@@ -1,0 +1,12 @@
+interface:
+  display_name: "Content Studio Router"
+  short_description: "Route gated Content Ops project and production work"
+  default_prompt: "Use $content-studio-router to resolve the project, preserve versions and approvals, route approved copy through visual planning and image-production direction selection, and stop at the next explicit Operator gate."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "content-ops"
+      description: "Bundled local Content Ops MCP server for deterministic project, Run, approval and Workspace operations"
+      transport: "stdio"
+policy:
+  allow_implicit_invocation: true

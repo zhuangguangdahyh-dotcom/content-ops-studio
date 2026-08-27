@@ -1,0 +1,108 @@
+{
+  "visual_plan_id": "CVP-CAL-DEMO-001-VV2",
+  "project_ref": { "project_kind": "CALIBRATION_PROJECT", "project_id": "CAL-DEMO-001" },
+  "content_id": "C-9001",
+  "content_version": "CV-2",
+  "copy_version": "CV-2",
+  "visual_plan_version": "VV-2",
+  "page_count": 6,
+  "content_package_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-010203-TEST/content/content-package.json",
+  "content_package_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "g3_approval_id": "APR-20990101-G3B1",
+  "g3_approval_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-020304-G3B1/content/calibration-g3-approval.json",
+  "g3_approval_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "audience": "Fictional store operators",
+  "painpoint": "First-impression storefront recognition.",
+  "content_value": "Three-part storefront self-diagnosis.",
+  "narrative": ["Entry", "Reframe", "Category", "Positioning", "Entrance", "Summary"],
+  "calibration_systems": [
+    "UNIVERSAL_VISUAL_CALIBRATION_V1",
+    "EDITORIAL_DESIGN_KNOWLEDGE_V1",
+    "COVER_ATTENTION_INTELLIGENCE_V1",
+    "TYPOGRAPHY_SPATIAL_INTEGRITY_V1",
+    "TYPOGRAPHY_BREATHING_ROOM_V1",
+    "RASTER_TEXT_BACKGROUND_CONTRAST_INTEGRITY_V1"
+  ],
+  "historical_style_reference": {
+    "style_lock_version": "SLV-1",
+    "usage": "HISTORICAL_CALIBRATION_STYLE_REFERENCE"
+  },
+  "active_style_lock_for_current_version": null,
+  "pages": [
+    {
+      "page_number": 1,
+      "page_role": "COVER",
+      "page_intent": "COVER_ENTRY",
+      "copy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+      "visual_purpose": "Cover entry",
+      "composition_family": "ASYMMETRIC_NEGATIVE_SPACE",
+      "asset_strategy": "REUSED_VERIFIED_ASSET",
+      "typography_role": "TYPE_DOMINANT",
+      "production_status": "PENDING_G4_REVIEW"
+    },
+    {
+      "page_number": 2,
+      "page_role": "PROBLEM",
+      "page_intent": "CONTENT_EDITORIAL",
+      "copy_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+      "visual_purpose": "Reframe",
+      "composition_family": "EDITORIAL_SPLIT",
+      "asset_strategy": "PLANNED_NOT_PRODUCED",
+      "typography_role": "CONTENT_READING",
+      "production_status": "NOT_CREATED"
+    },
+    {
+      "page_number": 3,
+      "page_role": "ANALYSIS",
+      "page_intent": "DIAGNOSTIC_PAGE",
+      "copy_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+      "visual_purpose": "Category diagnosis",
+      "composition_family": "DIAGNOSTIC_COMPOSITION",
+      "asset_strategy": "PLANNED_NOT_PRODUCED",
+      "typography_role": "CONTENT_READING",
+      "production_status": "NOT_CREATED"
+    },
+    {
+      "page_number": 4,
+      "page_role": "ANALYSIS",
+      "page_intent": "DIAGNOSTIC_PAGE",
+      "copy_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+      "visual_purpose": "Positioning diagnosis",
+      "composition_family": "EVIDENCE_DOMINANT",
+      "asset_strategy": "PLANNED_NOT_PRODUCED",
+      "typography_role": "CONTENT_READING",
+      "production_status": "NOT_CREATED"
+    },
+    {
+      "page_number": 5,
+      "page_role": "ANALYSIS",
+      "page_intent": "DIAGNOSTIC_PAGE",
+      "copy_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+      "visual_purpose": "Entrance diagnosis",
+      "composition_family": "IMAGE_DOMINANT",
+      "asset_strategy": "PLANNED_NOT_PRODUCED",
+      "typography_role": "CONTENT_READING",
+      "production_status": "NOT_CREATED"
+    },
+    {
+      "page_number": 6,
+      "page_role": "SUMMARY",
+      "page_intent": "SUMMARY_PAGE",
+      "copy_hash": "6666666666666666666666666666666666666666666666666666666666666666",
+      "visual_purpose": "Summary",
+      "composition_family": "MULTI_EVIDENCE_EDITORIAL",
+      "asset_strategy": "PLANNED_NOT_PRODUCED",
+      "typography_role": "SUMMARY_HIERARCHY",
+      "production_status": "NOT_CREATED"
+    }
+  ],
+  "status": "CREATED",
+  "remaining_pages_created": 0,
+  "imagegen_calls": 0,
+  "renderer_calls": 0,
+  "feishu_writes": 0,
+  "production_workspace_write_eligible": false,
+  "run_id": "RUN-20990101-020304-G3B1",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T02:03:04.000Z"
+}

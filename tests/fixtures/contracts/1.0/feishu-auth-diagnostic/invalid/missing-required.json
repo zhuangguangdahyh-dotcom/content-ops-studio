@@ -1,0 +1,25 @@
+{
+  "provider": "FEISHU",
+  "region": "CHINA",
+  "auth_mode": "SELF_BUILT_TENANT_APP",
+  "credential_presence": {
+    "app_id": false,
+    "app_secret": false,
+    "parent_folder": false,
+    "test_parent_folder": false
+  },
+  "secret_redaction_verified": true,
+  "token_request_status": "NOT_CONFIGURED",
+  "token_expiry_metadata": null,
+  "application_identity_status": "NOT_CHECKED",
+  "workspace_access_status": "NOT_CHECKED",
+  "permission_status": "NOT_CHECKED",
+  "missing_permissions": [],
+  "live_write_gate_status": "DISABLED",
+  "warnings": ["Fictional offline fixture."],
+  "blocking_errors": [],
+  "overall_status": "NOT_CONFIGURED",
+  "checked_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

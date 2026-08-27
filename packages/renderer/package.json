@@ -1,0 +1,12 @@
+{
+  "name": "@content-ops/renderer",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@content-ops/contracts": "workspace:*",
+    "playwright-core": "1.62.1"
+  }
+}

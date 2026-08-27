@@ -1,0 +1,73 @@
+{
+  "strategy_id": "ISPS-C-0001-V1",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "visual_plan_version": "VV-1",
+  "style_lock_version": "SLV-1",
+  "visual_mode": "EDITORIAL_SERIES",
+  "visual_motif": "One fictional subject world shown through distinct editorial views",
+  "continuity_anchors": ["SUBJECT-WORLD", "PALETTE-A", "TYPE-SYSTEM-A"],
+  "pages": [
+    {
+      "page_number": 1,
+      "page_role": "COVER",
+      "page_duty": "COVER_CLICK",
+      "semantic_responsibility": "Create one truthful click reason",
+      "visual_system_key": "SYSTEM-A",
+      "background_asset_policy": "DISTINCT_BACKGROUND_REQUIRED",
+      "planned_background_key": "BG-01",
+      "shot_signature": "ESTABLISHING-WIDE-FRONTAL",
+      "composition_family": "TYPE_DOMINANT_COVER",
+      "continuity_anchor_refs": ["SUBJECT-WORLD", "PALETTE-A", "TYPE-SYSTEM-A"],
+      "difference_from_previous": "Opening page establishes the visual world."
+    },
+    {
+      "page_number": 2,
+      "page_role": "PROBLEM",
+      "page_duty": "VALUE_DELIVERY",
+      "semantic_responsibility": "Name the audience problem",
+      "visual_system_key": "SYSTEM-A",
+      "background_asset_policy": "DISTINCT_BACKGROUND_REQUIRED",
+      "planned_background_key": "BG-02",
+      "shot_signature": "TRANSITION-MEDIUM-LEFT",
+      "composition_family": "EDITORIAL_SPLIT",
+      "continuity_anchor_refs": ["SUBJECT-WORLD", "PALETTE-A"],
+      "difference_from_previous": "Moves from hook to a concrete problem scene."
+    },
+    {
+      "page_number": 3,
+      "page_role": "ANALYSIS",
+      "page_duty": "VALUE_DELIVERY",
+      "semantic_responsibility": "Explain the decision mechanism",
+      "visual_system_key": "SYSTEM-A",
+      "background_asset_policy": "DISTINCT_BACKGROUND_REQUIRED",
+      "planned_background_key": "BG-03",
+      "shot_signature": "DETAIL-CLOSE-RIGHT",
+      "composition_family": "EVIDENCE_DOMINANT",
+      "continuity_anchor_refs": ["SUBJECT-WORLD", "TYPE-SYSTEM-A"],
+      "difference_from_previous": "Changes scale and evidence focus."
+    },
+    {
+      "page_number": 4,
+      "page_role": "SUMMARY",
+      "page_duty": "SUMMARY_CONVERSION",
+      "semantic_responsibility": "Summarize the decision path and next action",
+      "visual_system_key": "SYSTEM-A",
+      "background_asset_policy": "DISTINCT_BACKGROUND_REQUIRED",
+      "planned_background_key": "BG-04",
+      "shot_signature": "RELATIONSHIP-WIDE-REVERSE",
+      "composition_family": "SUMMARY_EDITORIAL",
+      "continuity_anchor_refs": ["SUBJECT-WORLD", "PALETTE-A", "TYPE-SYSTEM-A"],
+      "difference_from_previous": "Resolves the set with a wider relationship view."
+    }
+  ],
+  "distinct_backgrounds_required": 4,
+  "planned_distinct_backgrounds": 4,
+  "composition_family_count": 4,
+  "result": "PLANNED",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z"
+}

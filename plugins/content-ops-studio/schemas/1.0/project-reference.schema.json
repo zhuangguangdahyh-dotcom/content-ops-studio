@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/project-reference.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Discriminated project reference",
+  "description": "Distinguishes canonical Production projects from isolated fictional Calibration projects without widening Production project identifiers.",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project_kind", "project_id"],
+      "properties": {
+        "project_kind": { "const": "PRODUCTION_PROJECT" },
+        "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project_kind", "project_id"],
+      "properties": {
+        "project_kind": { "const": "CALIBRATION_PROJECT" },
+        "project_id": { "type": "string", "pattern": "^CAL-[A-Z0-9-]+$" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "package_id": "CCP-CAL-DEMO-001-V2",
+  "project_ref": {
+    "project_kind": "CALIBRATION_PROJECT",
+    "project_id": "CAL-DEMO-001"
+  },
+  "content_id": "C-9001",
+  "content_version": "CV-2",
+  "copy_version": "CV-2",
+  "page_count": 1,
+  "pages": [
+    {
+      "page_number": 1,
+      "page_role": "COVER",
+      "page_intent": "COVER_ENTRY",
+      "section": null,
+      "primary_judgment": "Fictional cover",
+      "supporting_copy": "Fictional supporting copy.",
+      "core_structure": [],
+      "content_function": "Create a clear entry.",
+      "primary_information_task": "Explain why to continue.",
+      "negative_constraints": ["No unsupported claims"],
+      "copy_snapshot": "Fictional cover\nFictional supporting copy."
+    }
+  ],
+  "audience": "Fictional store operators.",
+  "painpoint": "Store information is hard to recognize.",
+  "content_promise": "Provide one bounded diagnostic.",
+  "content_value": {
+    "statement": "Help fictional store operators inspect one decision.",
+    "value_types": ["DECISION_VALUE"]
+  },
+  "narrative_structure": [
+    {
+      "page_number": 1,
+      "purpose": "Entry"
+    }
+  ],
+  "content_fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "quality_report_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-010203-C4R1/content/content-quality-report.json",
+  "source_run_id": "RUN-20990101-010203-C4R1",
+  "version_binding": {
+    "current": "CV-2:CV-2",
+    "legacy": "CV-1 / CV-1 / VV-1 / FPV-2 / APR-20260826-G4A1 / SLV-1",
+    "legacy_status": "HISTORICAL_VALID_NOT_CURRENT_FOR_CV2"
+  },
+  "status": "G3_PENDING",
+  "production_workspace_write_eligible": false,
+  "imagegen_calls": 0,
+  "renderer_calls": 0,
+  "feishu_writes": 0,
+  "generated_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

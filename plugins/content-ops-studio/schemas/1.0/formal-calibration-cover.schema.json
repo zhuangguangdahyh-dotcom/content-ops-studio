@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/formal-calibration-cover.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Formal calibration cover",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "formal_cover_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "calibration_cover_version",
+    "selection_id",
+    "selected_candidate_id",
+    "selected_candidate_checksum",
+    "asset_id",
+    "asset_ref",
+    "asset_checksum",
+    "asset_file_size",
+    "canvas",
+    "thumbnail_310",
+    "thumbnail_186",
+    "attention_mode",
+    "composition_family",
+    "asset_channel",
+    "visual_mode",
+    "primary_hook",
+    "supporting_signal",
+    "font_resolution",
+    "scores",
+    "quality_gates",
+    "hard_blocks",
+    "same_as_candidate_asset",
+    "deterministic_replay",
+    "g4_eligible",
+    "operator_approved",
+    "run_id",
+    "schema_version",
+    "created_at",
+    "extensions"
+  ],
+  "properties": {
+    "formal_cover_id": { "type": "string", "pattern": "^FCC-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "calibration_cover_version": { "type": "string", "pattern": "^FPV-[1-9][0-9]*$" },
+    "selection_id": { "type": "string", "pattern": "^CVDS-[A-Z0-9-]+$" },
+    "selected_candidate_id": { "type": "string", "pattern": "^CCC-[A-Z0-9-]+$" },
+    "selected_candidate_checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "asset_id": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+    "asset_ref": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+    "asset_checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "asset_file_size": { "type": "integer", "minimum": 1 },
+    "canvas": { "$ref": "common-definitions.schema.json#/$defs/canvas" },
+    "thumbnail_310": { "$ref": "#/$defs/thumbnail" },
+    "thumbnail_186": { "$ref": "#/$defs/thumbnail" },
+    "attention_mode": { "const": "TYPE_DOMINANT" },
+    "composition_family": {
+      "$ref": "universal-visual-default-policy.schema.json#/$defs/compositionFamily"
+    },
+    "asset_channel": { "const": "AI_GENERATED_VISUAL" },
+    "visual_mode": { "const": "EDITORIAL_SERIES" },
+    "primary_hook": { "type": "string", "minLength": 1 },
+    "supporting_signal": { "type": "string", "minLength": 1 },
+    "font_resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requested_font_family",
+        "resolved_font_family",
+        "title_weight",
+        "supporting_weight",
+        "synthetic_bold",
+        "font_downloaded",
+        "silent_pingfang_fallback"
+      ],
+      "properties": {
+        "requested_font_family": { "const": "MODERN_CHINESE_SERIF" },
+        "resolved_font_family": { "type": "string", "minLength": 1 },
+        "title_weight": { "type": "integer", "minimum": 600, "maximum": 900 },
+        "supporting_weight": { "type": "integer", "minimum": 300, "maximum": 500 },
+        "synthetic_bold": { "const": false },
+        "font_downloaded": { "const": false },
+        "silent_pingfang_fallback": { "const": false }
+      }
+    },
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cover_attention",
+        "click_clarity",
+        "semantic_relevance",
+        "painpoint_scene",
+        "editorial_spatial",
+        "image_text_integration",
+        "image_quality"
+      ],
+      "properties": {
+        "cover_attention": { "type": "integer", "minimum": 90, "maximum": 100 },
+        "click_clarity": { "type": "integer", "minimum": 90, "maximum": 100 },
+        "semantic_relevance": { "type": "integer", "minimum": 85, "maximum": 100 },
+        "painpoint_scene": { "type": "integer", "minimum": 85, "maximum": 100 },
+        "editorial_spatial": { "type": "integer", "minimum": 85, "maximum": 100 },
+        "image_text_integration": { "type": "integer", "minimum": 85, "maximum": 100 },
+        "image_quality": { "type": "integer", "minimum": 85, "maximum": 100 }
+      }
+    },
+    "quality_gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authenticity_integrity",
+        "mechanical",
+        "copy_fidelity",
+        "typography_policy",
+        "typography_spatial_integrity",
+        "typography_breathing_room",
+        "thumbnail",
+        "locale_fit",
+        "visual_mass",
+        "greyscale_hierarchy",
+        "color_intelligence",
+        "typography_as_form",
+        "actual_pixel_inspection"
+      ],
+      "properties": {
+        "authenticity_integrity": { "const": "PASS" },
+        "mechanical": { "const": "PASS" },
+        "copy_fidelity": { "const": "PASS" },
+        "typography_policy": { "const": "PASS" },
+        "typography_spatial_integrity": { "const": "PASS" },
+        "typography_breathing_room": { "const": "PASS" },
+        "thumbnail": { "const": "PASS" },
+        "locale_fit": { "const": "PASS" },
+        "visual_mass": { "const": "PASS" },
+        "greyscale_hierarchy": { "const": "PASS" },
+        "color_intelligence": { "const": "PASS" },
+        "typography_as_form": { "const": "PASS" },
+        "actual_pixel_inspection": { "const": "PASS" }
+      }
+    },
+    "hard_blocks": { "type": "array", "maxItems": 0 },
+    "same_as_candidate_asset": { "const": false },
+    "deterministic_replay": { "const": true },
+    "g4_eligible": { "const": true },
+    "operator_approved": { "const": false },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "thumbnail": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["asset_ref", "checksum", "width", "height", "actual_pixel_inspection"],
+      "properties": {
+        "asset_ref": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+        "checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "actual_pixel_inspection": { "const": "PASS" }
+      }
+    }
+  }
+}

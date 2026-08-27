@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/image-set-continuity-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Image set continuity report",
+  "description": "Actual-asset proof that one formal set is stylistically continuous while its page duties, backgrounds, shots and narrative remain materially different.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "strategy_id",
+    "project_id",
+    "content_id",
+    "continuity_anchors",
+    "pages",
+    "visual_style_continuity",
+    "page_duty_fulfillment",
+    "background_asset_diversity",
+    "shot_and_composition_diversity",
+    "narrative_progression",
+    "mobile_readability",
+    "duplicate_background_pairs",
+    "duplicate_shot_pairs",
+    "hard_blocks",
+    "operator_approval_required",
+    "result",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^ISCR-[A-Z0-9-]+$" },
+    "strategy_id": { "type": "string", "pattern": "^ISPS-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "continuity_anchors": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 8,
+      "items": { "$ref": "#/$defs/pageEvidence" }
+    },
+    "visual_style_continuity": { "$ref": "#/$defs/checkResult" },
+    "page_duty_fulfillment": { "$ref": "#/$defs/checkResult" },
+    "background_asset_diversity": { "$ref": "#/$defs/checkResult" },
+    "shot_and_composition_diversity": { "$ref": "#/$defs/checkResult" },
+    "narrative_progression": { "$ref": "#/$defs/checkResult" },
+    "mobile_readability": { "$ref": "#/$defs/checkResult" },
+    "duplicate_background_pairs": { "$ref": "#/$defs/pagePairs" },
+    "duplicate_shot_pairs": { "$ref": "#/$defs/pagePairs" },
+    "hard_blocks": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "operator_approval_required": { "const": true },
+    "result": { "type": "string", "enum": ["PASS_PENDING_OPERATOR", "FAIL"] },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "checkResult": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "pagePairs": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": { "type": "integer", "minimum": 1, "maximum": 8 }
+      }
+    },
+    "pageEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "page_number",
+        "page_role",
+        "page_duty",
+        "semantic_responsibility",
+        "visual_system_key",
+        "background_asset_policy",
+        "background_source_checksum",
+        "rendered_asset_checksum",
+        "shot_signature",
+        "composition_family",
+        "continuity_anchors_present",
+        "page_role_fulfilled",
+        "mobile_readable",
+        "difference_from_previous_verified"
+      ],
+      "properties": {
+        "page_number": { "type": "integer", "minimum": 1, "maximum": 8 },
+        "page_role": { "$ref": "common-definitions.schema.json#/$defs/pageRole" },
+        "page_duty": {
+          "type": "string",
+          "enum": ["COVER_CLICK", "VALUE_DELIVERY", "SUMMARY_CONVERSION"]
+        },
+        "semantic_responsibility": { "type": "string", "minLength": 1 },
+        "visual_system_key": { "type": "string", "minLength": 1 },
+        "background_asset_policy": {
+          "type": "string",
+          "enum": [
+            "DISTINCT_BACKGROUND_REQUIRED",
+            "REUSE_WITH_MATERIAL_TRANSFORMATION",
+            "NO_RASTER_BACKGROUND"
+          ]
+        },
+        "background_source_checksum": {
+          "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/sha256" }, { "type": "null" }]
+        },
+        "rendered_asset_checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+        "shot_signature": {
+          "anyOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
+        },
+        "composition_family": { "type": "string", "minLength": 1 },
+        "continuity_anchors_present": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "page_role_fulfilled": { "type": "boolean" },
+        "mobile_readable": { "type": "boolean" },
+        "difference_from_previous_verified": { "type": "boolean" }
+      }
+    }
+  }
+}

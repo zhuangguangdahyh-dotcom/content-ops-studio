@@ -1,0 +1,35 @@
+{
+  "pack_id": "FOOD_BEVERAGE_LIFESTYLE",
+  "pack_version": "1.0.0",
+  "display_name": "Food Beverage and Lifestyle",
+  "supported_industries": ["Food", "Beverage", "Lifestyle service"],
+  "default_visual_mode_ranking": ["PRODUCT_LIFESTYLE", "SCENE_SERIES", "EDITORIAL_SERIES", "MIXED"],
+  "asset_source_priority": [
+    "PROJECT_ASSET",
+    "AI_GENERATED_VISUAL",
+    "MIXED_ASSET",
+    "PURE_TYPOGRAPHY"
+  ],
+  "identity_invariants": ["Preserve dish, product, venue, and brand identity where claimed."],
+  "specialized_hard_blocks": ["Inedible or malformed food", "False venue representation"],
+  "specialized_quality_checks": [
+    "Food texture and freshness",
+    "Service-scene credibility",
+    "Atmosphere fit"
+  ],
+  "consistency_requirements": ["Cohesive palette with varied food and scene framing"],
+  "fallback_strategies": [
+    "Use editorial ingredient or menu structure without fabricated product evidence."
+  ],
+  "recommended_questions": ["Is the depicted item an actual offering or a concept?"],
+  "prohibited_claims_or_representations": ["Generated dish presented as the exact sold item"],
+  "allowed_overlays": [
+    "PRODUCT_IDENTITY",
+    "SPACE_IDENTITY",
+    "EVIDENCE_AUTHENTICITY",
+    "BRAND_ASSET_INTEGRITY"
+  ],
+  "known_limitations": ["Generated food is not menu evidence."],
+  "contains_customer_assets": false,
+  "schema_version": "1.0.0"
+}

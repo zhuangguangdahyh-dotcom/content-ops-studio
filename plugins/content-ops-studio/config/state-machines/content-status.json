@@ -1,0 +1,201 @@
+{
+  "machine": "content-status",
+  "version": "1.0.0",
+  "states": [
+    "CONTENT_ANALYSIS_PENDING",
+    "CONTENT_PLANNING",
+    "COPY_PENDING_APPROVAL",
+    "COPY_REVISION_REQUIRED",
+    "COPY_APPROVED",
+    "VISUAL_PLANNING",
+    "FINAL_REVIEW_PENDING",
+    "CONTENT_FINALIZED",
+    "CONTENT_PUBLISHED",
+    "CONTENT_PAUSED",
+    "CONTENT_DISCARDED"
+  ],
+  "initialStates": ["CONTENT_ANALYSIS_PENDING"],
+  "terminalStates": ["CONTENT_PUBLISHED", "CONTENT_DISCARDED"],
+  "transitions": [
+    {
+      "from": "CONTENT_ANALYSIS_PENDING",
+      "to": "CONTENT_PLANNING",
+      "trigger": "START_CONTENT_PLANNING",
+      "ownerSkill": "content-creation",
+      "requiresApprovalGate": null,
+      "requiredContext": ["painpoint_review_status"],
+      "invalidates": [],
+      "description": "CONTENT_ANALYSIS_PENDING to CONTENT_PLANNING"
+    },
+    {
+      "from": "CONTENT_PLANNING",
+      "to": "COPY_PENDING_APPROVAL",
+      "trigger": "SUBMIT_COPY_FOR_APPROVAL",
+      "ownerSkill": "content-creation",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "CONTENT_PLANNING to COPY_PENDING_APPROVAL"
+    },
+    {
+      "from": "COPY_PENDING_APPROVAL",
+      "to": "COPY_APPROVED",
+      "trigger": "APPROVE_COPY",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": "CONTENT_COPY",
+      "requiredContext": ["content_version"],
+      "invalidates": [],
+      "description": "COPY_PENDING_APPROVAL to COPY_APPROVED"
+    },
+    {
+      "from": "COPY_PENDING_APPROVAL",
+      "to": "COPY_REVISION_REQUIRED",
+      "trigger": "REQUEST_COPY_REVISION",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "COPY_PENDING_APPROVAL to COPY_REVISION_REQUIRED"
+    },
+    {
+      "from": "COPY_REVISION_REQUIRED",
+      "to": "COPY_PENDING_APPROVAL",
+      "trigger": "RESUBMIT_COPY",
+      "ownerSkill": "content-creation",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": ["VISUAL_PLAN", "FIRST_PAGE_APPROVAL", "FINAL_APPROVAL"],
+      "description": "COPY_REVISION_REQUIRED to COPY_PENDING_APPROVAL"
+    },
+    {
+      "from": "COPY_APPROVED",
+      "to": "VISUAL_PLANNING",
+      "trigger": "START_VISUAL_PLANNING",
+      "ownerSkill": "visual-planning",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "COPY_APPROVED to VISUAL_PLANNING"
+    },
+    {
+      "from": "VISUAL_PLANNING",
+      "to": "FINAL_REVIEW_PENDING",
+      "trigger": "SUBMIT_FINAL_REVIEW",
+      "ownerSkill": "content-finalization",
+      "requiresApprovalGate": null,
+      "requiredContext": ["image_status", "generated_page_count", "expected_page_count"],
+      "invalidates": [],
+      "description": "VISUAL_PLANNING to FINAL_REVIEW_PENDING"
+    },
+    {
+      "from": "FINAL_REVIEW_PENDING",
+      "to": "CONTENT_FINALIZED",
+      "trigger": "FINALIZE_CONTENT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": "FINAL_SET",
+      "requiredContext": ["auto_qa_passed", "content_version"],
+      "invalidates": [],
+      "description": "FINAL_REVIEW_PENDING to CONTENT_FINALIZED"
+    },
+    {
+      "from": "CONTENT_FINALIZED",
+      "to": "CONTENT_PUBLISHED",
+      "trigger": "MARK_CONTENT_PUBLISHED",
+      "ownerSkill": "content-finalization",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "CONTENT_FINALIZED to CONTENT_PUBLISHED"
+    },
+    {
+      "from": "CONTENT_ANALYSIS_PENDING",
+      "to": "CONTENT_PAUSED",
+      "trigger": "PAUSE_CONTENT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "CONTENT_ANALYSIS_PENDING to CONTENT_PAUSED"
+    },
+    {
+      "from": "CONTENT_PLANNING",
+      "to": "CONTENT_PAUSED",
+      "trigger": "PAUSE_CONTENT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "CONTENT_PLANNING to CONTENT_PAUSED"
+    },
+    {
+      "from": "COPY_PENDING_APPROVAL",
+      "to": "CONTENT_PAUSED",
+      "trigger": "PAUSE_CONTENT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "COPY_PENDING_APPROVAL to CONTENT_PAUSED"
+    },
+    {
+      "from": "COPY_REVISION_REQUIRED",
+      "to": "CONTENT_PAUSED",
+      "trigger": "PAUSE_CONTENT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "COPY_REVISION_REQUIRED to CONTENT_PAUSED"
+    },
+    {
+      "from": "COPY_APPROVED",
+      "to": "CONTENT_PAUSED",
+      "trigger": "PAUSE_CONTENT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "COPY_APPROVED to CONTENT_PAUSED"
+    },
+    {
+      "from": "VISUAL_PLANNING",
+      "to": "CONTENT_PAUSED",
+      "trigger": "PAUSE_CONTENT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "VISUAL_PLANNING to CONTENT_PAUSED"
+    },
+    {
+      "from": "FINAL_REVIEW_PENDING",
+      "to": "CONTENT_PAUSED",
+      "trigger": "PAUSE_CONTENT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "FINAL_REVIEW_PENDING to CONTENT_PAUSED"
+    },
+    {
+      "from": "CONTENT_PAUSED",
+      "to": "CONTENT_PLANNING",
+      "trigger": "RESUME_CONTENT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "CONTENT_PAUSED to CONTENT_PLANNING"
+    },
+    {
+      "from": "CONTENT_PAUSED",
+      "to": "CONTENT_DISCARDED",
+      "trigger": "DISCARD_CONTENT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "CONTENT_PAUSED to CONTENT_DISCARDED"
+    }
+  ]
+}

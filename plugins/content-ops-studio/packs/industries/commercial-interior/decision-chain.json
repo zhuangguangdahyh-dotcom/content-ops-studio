@@ -1,0 +1,12 @@
+{
+  "status": "scaffold",
+  "stages": [
+    "problem-awareness",
+    "active-search",
+    "solution-comparison",
+    "risk-assessment",
+    "purchase-decision",
+    "usage-experience",
+    "repeat-and-referral"
+  ]
+}

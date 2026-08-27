@@ -1,0 +1,30 @@
+{
+  "fingerprint_id": "FSF-DEMO-001",
+  "final_manifest_id": "FINAL-DEMO-001",
+  "algorithm": "SHA-256",
+  "canonical_version": "1.0.0",
+  "hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "inputs": {
+    "versions": {
+      "content": "CV-1",
+      "copy": "CV-1",
+      "visual_plan": "VV-1",
+      "first_page": "FPV-1"
+    },
+    "approval_ids": ["APR-20990101-DEMO", "APR-20990101-G4AA", "APR-20990101-G5AA"],
+    "style_lock": {
+      "id": "SL-DEMO-001",
+      "version": "SLV-1"
+    },
+    "ordered_page_checksums": [
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    ],
+    "group_qa_ref": "RPT-GROUP-QA-DEMO-001",
+    "continuity_report_ref": "RPT-CONTINUITY-DEMO-001",
+    "page_count": 4
+  },
+  "schema_version": "1.0.0"
+}

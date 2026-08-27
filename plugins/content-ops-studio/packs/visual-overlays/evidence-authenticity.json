@@ -1,0 +1,8 @@
+{
+  "overlay_id": "EVIDENCE_AUTHENTICITY",
+  "overlay_version": "1.0.0",
+  "display_name": "Evidence authenticity",
+  "hard_blocks": ["Fake or misleading evidence"],
+  "quality_checks": ["Source, context, authorization and crop integrity"],
+  "schema_version": "1.0.0"
+}

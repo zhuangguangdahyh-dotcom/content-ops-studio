@@ -1,0 +1,34 @@
+{
+  "pack_id": "PROFESSIONAL_SERVICES",
+  "pack_version": "1.0.0",
+  "display_name": "Professional Services",
+  "supported_industries": ["Consulting", "Legal", "Design", "Expert services"],
+  "default_visual_mode_ranking": ["EDITORIAL_SERIES", "EVIDENCE_LED", "PURE_TYPOGRAPHY"],
+  "asset_source_priority": [
+    "PROJECT_ASSET",
+    "EVIDENCE_ASSET",
+    "AI_GENERATED_VISUAL",
+    "PURE_TYPOGRAPHY",
+    "PROGRAMMATIC_GRAPHIC"
+  ],
+  "identity_invariants": ["Preserve professional identity and evidence boundaries."],
+  "specialized_hard_blocks": ["Fake credential", "Fabricated client outcome"],
+  "specialized_quality_checks": [
+    "Trust signal clarity",
+    "Professional restraint",
+    "Specific relevance"
+  ],
+  "consistency_requirements": ["Stable expert tone without generic corporate template drift"],
+  "fallback_strategies": ["Use editorial typography with verified evidence annotations."],
+  "recommended_questions": ["Which trust signal has retained evidence?"],
+  "prohibited_claims_or_representations": ["Guaranteed professional result"],
+  "allowed_overlays": [
+    "PERSON_CONTINUITY",
+    "EVIDENCE_AUTHENTICITY",
+    "REGULATED_CLAIMS",
+    "BRAND_ASSET_INTEGRITY"
+  ],
+  "known_limitations": ["Professional tone does not establish credentials."],
+  "contains_customer_assets": false,
+  "schema_version": "1.0.0"
+}

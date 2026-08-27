@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/research-source-manifest.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Research source manifest",
+  "description": "Deduplicated source metadata and bounded summaries; full page bodies are forbidden.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_id",
+    "research_plan_id",
+    "project_id",
+    "run_id",
+    "sources",
+    "source_count",
+    "source_type_counts",
+    "duplicate_source_count",
+    "rejected_source_count",
+    "retrieved_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "manifest_id": { "type": "string", "pattern": "^RSM-[A-Z0-9-]+$" },
+    "research_plan_id": { "type": "string", "pattern": "^RPL-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "sources": { "type": "array", "items": { "$ref": "#/$defs/source" }, "minItems": 1 },
+    "source_count": { "type": "integer", "minimum": 0 },
+    "source_type_counts": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[A-Z][A-Z_]+$" },
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "duplicate_source_count": { "type": "integer", "minimum": 0 },
+    "rejected_source_count": { "type": "integer", "minimum": 0 },
+    "retrieved_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "source_type",
+        "title",
+        "publisher_or_owner",
+        "source_location",
+        "source_date",
+        "retrieved_at",
+        "language",
+        "summary",
+        "supported_claims",
+        "limitations",
+        "credibility_notes",
+        "is_first_party",
+        "is_user_provided",
+        "is_current",
+        "duplicate_of",
+        "content_hash",
+        "extensions"
+      ],
+      "properties": {
+        "source_id": { "type": "string", "pattern": "^SRC-[A-Z0-9-]+$" },
+        "source_type": {
+          "enum": [
+            "OFFICIAL_SOURCE",
+            "FIRST_PARTY_DATA",
+            "CUSTOMER_MATERIAL",
+            "CUSTOMER_INTERVIEW",
+            "INDUSTRY_REPORT",
+            "PLATFORM_DOCUMENTATION",
+            "SOCIAL_COMMENT",
+            "PUBLIC_REVIEW",
+            "COMPETITOR_CONTENT",
+            "QUESTION_AND_ANSWER",
+            "FORUM",
+            "NEWS",
+            "MANUAL_SOURCE"
+          ]
+        },
+        "title": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "publisher_or_owner": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "source_location": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?:https://[^\\u0000]+|(?![A-Za-z][A-Za-z0-9+.-]*:)(?!/)(?![A-Za-z]:[\\\\/])(?!.*(?:^|[\\\\/])\\.\\.(?:[\\\\/]|$))[^\\u0000]+)$"
+        },
+        "source_date": {
+          "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/date" }, { "type": "null" }]
+        },
+        "retrieved_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+        "language": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+        "summary": { "type": "string", "minLength": 1, "maxLength": 1200 },
+        "supported_claims": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 500 },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "limitations": { "type": "string", "maxLength": 1000 },
+        "credibility_notes": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "is_first_party": { "type": "boolean" },
+        "is_user_provided": { "type": "boolean" },
+        "is_current": { "type": "boolean" },
+        "duplicate_of": {
+          "anyOf": [{ "type": "string", "pattern": "^SRC-[A-Z0-9-]+$" }, { "type": "null" }]
+        },
+        "content_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+        "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+      }
+    }
+  }
+}

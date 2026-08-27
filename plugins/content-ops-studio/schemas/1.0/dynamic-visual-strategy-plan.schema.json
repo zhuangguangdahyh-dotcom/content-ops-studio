@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/dynamic-visual-strategy-plan.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Dynamic visual strategy plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "strategy_plan_id",
+    "project_id",
+    "content_id",
+    "project_profile_version",
+    "profile_maturity_status",
+    "synthesis_status",
+    "strategy_summary",
+    "decision_precedence",
+    "page_strategies",
+    "candidate_directions",
+    "image_count",
+    "candidate_count",
+    "production_batches",
+    "quality_thresholds",
+    "consistency_risks",
+    "confidence_report_id",
+    "ambiguity_report_id",
+    "selection_reasons",
+    "current_override_applied",
+    "long_term_profile_mutated",
+    "industry_pack_mutated",
+    "global_preference_mutated",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "strategy_plan_id": { "type": "string", "pattern": "^DVSP-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "project_profile_version": { "type": "string", "pattern": "^PVPFV-[1-9][0-9]*$" },
+    "profile_maturity_status": { "$ref": "#/$defs/maturity" },
+    "synthesis_status": { "type": "string", "enum": ["PLANNED", "BLOCKED_REVIEW_REQUIRED"] },
+    "strategy_summary": { "type": "string", "minLength": 1 },
+    "decision_precedence": { "$ref": "#/$defs/stringList" },
+    "page_strategies": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/pageStrategy" }
+    },
+    "candidate_directions": {
+      "type": "array",
+      "maxItems": 3,
+      "items": { "$ref": "#/$defs/candidateDirection" }
+    },
+    "image_count": { "type": "integer", "minimum": 1, "maximum": 20 },
+    "candidate_count": { "type": "integer", "minimum": 0, "maximum": 3 },
+    "production_batches": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["batch_number", "page_numbers", "gate"],
+        "properties": {
+          "batch_number": { "type": "integer", "minimum": 1 },
+          "page_numbers": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "integer", "minimum": 1, "maximum": 20 }
+          },
+          "gate": { "type": "string", "enum": ["DIRECTION_SELECTION", "G4", "STYLE_LOCK"] }
+        }
+      }
+    },
+    "quality_thresholds": { "$ref": "project-visual-profile.schema.json#/$defs/qualityThresholds" },
+    "consistency_risks": { "$ref": "#/$defs/stringList" },
+    "confidence_report_id": { "type": "string", "pattern": "^VSCR-[A-Z0-9-]+$" },
+    "ambiguity_report_id": { "type": "string", "pattern": "^VAR-[A-Z0-9-]+$" },
+    "selection_reasons": { "$ref": "#/$defs/stringList" },
+    "current_override_applied": { "type": "boolean" },
+    "long_term_profile_mutated": { "const": false },
+    "industry_pack_mutated": { "const": false },
+    "global_preference_mutated": { "const": false },
+    "cover_visual_strategy": { "type": "string", "minLength": 1 },
+    "cover_text_prominence": { "type": "string", "minLength": 1 },
+    "cover_text_to_image_ratio": { "type": "string", "pattern": "^[0-9]{1,3}:[0-9]{1,3}$" },
+    "cover_background_semantic_role": {
+      "$ref": "visual-semantic-relevance-report.schema.json#/$defs/semanticRole"
+    },
+    "cover_thumbnail_targets": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": { "type": "string", "enum": ["310x414", "186x248"] }
+    },
+    "cover_click_clarity_target": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "semantic_relevance_target": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "cover_candidate_count": { "type": "integer", "minimum": 0, "maximum": 3 },
+    "cover_candidate_diversity_reason": { "type": "string", "minLength": 1 },
+    "universal_visual_default_version": { "type": "string", "pattern": "^UVDPV-[1-9][0-9]*$" },
+    "typography_default_policy_version": { "type": "string", "pattern": "^TDPV-[1-9][0-9]*$" },
+    "editorial_spatial_policy_version": { "type": "string", "pattern": "^ESCPV-[1-9][0-9]*$" },
+    "resolved_typography_strategy": { "type": "string", "minLength": 1 },
+    "resolved_composition_family": {
+      "$ref": "universal-visual-default-policy.schema.json#/$defs/compositionFamily"
+    },
+    "image_text_integration_strategy": { "type": "string", "minLength": 1 },
+    "candidate_diversity_strategy": { "type": "string", "minLength": 1 },
+    "painpoint_scene_strategy": { "type": "string", "minLength": 1 },
+    "editorial_design_knowledge_version": { "const": "1.0.0" },
+    "cover_attention_plan_ref": { "type": "string", "pattern": "^CAP-[A-Z0-9-]+$" },
+    "cover_attention_mode": { "$ref": "cover-attention-plan.schema.json#/$defs/mode" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "maturity": {
+      "type": "string",
+      "enum": ["COLD_START", "LEARNING", "MATURE", "REVIEW_REQUIRED"]
+    },
+    "stringList": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "font_character",
+        "title_size_strategy",
+        "body_size_strategy",
+        "font_weight",
+        "line_height",
+        "letter_spacing",
+        "alignment",
+        "text_region",
+        "text_image_ratio"
+      ],
+      "properties": {
+        "font_character": { "type": "string", "minLength": 1 },
+        "title_size_strategy": { "type": "string", "minLength": 1 },
+        "body_size_strategy": { "type": "string", "minLength": 1 },
+        "font_weight": { "type": "string", "minLength": 1 },
+        "line_height": { "type": "string", "minLength": 1 },
+        "letter_spacing": { "type": "string", "minLength": 1 },
+        "alignment": { "type": "string", "minLength": 1 },
+        "text_region": { "type": "string", "minLength": 1 },
+        "text_image_ratio": { "type": "string", "minLength": 1 }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["effects", "mask", "shadow", "gradient", "border", "texture"],
+      "properties": {
+        "effects": { "$ref": "#/$defs/stringList" },
+        "mask": { "type": "string", "minLength": 1 },
+        "shadow": { "type": "string", "minLength": 1 },
+        "gradient": { "type": "string", "minLength": 1 },
+        "border": { "type": "string", "minLength": 1 },
+        "texture": { "type": "string", "minLength": 1 }
+      }
+    },
+    "pageStrategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "page_number",
+        "page_role",
+        "asset_channel",
+        "visual_mode",
+        "background_direction",
+        "image_subject",
+        "composition_direction",
+        "image_realism",
+        "color_strategy",
+        "typography",
+        "effects",
+        "selection_reason"
+      ],
+      "properties": {
+        "page_number": { "type": "integer", "minimum": 1, "maximum": 20 },
+        "page_role": { "type": "string", "minLength": 1 },
+        "page_design_intent": {
+          "$ref": "editorial-design-knowledge-layer.schema.json#/$defs/pageDesignIntent"
+        },
+        "asset_channel": { "$ref": "industry-visual-pack.schema.json#/$defs/assetChannel" },
+        "visual_mode": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+        "background_direction": { "type": "string", "minLength": 1 },
+        "image_subject": { "type": "string", "minLength": 1 },
+        "composition_direction": { "type": "string", "minLength": 1 },
+        "image_realism": { "type": "string", "minLength": 1 },
+        "color_strategy": { "type": "string", "minLength": 1 },
+        "typography": { "$ref": "#/$defs/typography" },
+        "effects": { "$ref": "#/$defs/effects" },
+        "selection_reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "candidateDirection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_key",
+        "asset_channel",
+        "visual_mode",
+        "subject_direction",
+        "composition_direction",
+        "palette_direction",
+        "material_difference_basis"
+      ],
+      "properties": {
+        "candidate_key": { "type": "string", "pattern": "^DIRECTION-[A-Z0-9-]+$" },
+        "asset_channel": { "$ref": "industry-visual-pack.schema.json#/$defs/assetChannel" },
+        "visual_mode": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+        "subject_direction": { "type": "string", "minLength": 1 },
+        "composition_direction": { "type": "string", "minLength": 1 },
+        "palette_direction": { "type": "string", "minLength": 1 },
+        "material_difference_basis": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

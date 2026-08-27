@@ -1,0 +1,49 @@
+{
+  "resolution_id": "PRES-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "platform_pack": {
+    "id": "xiaohongshu",
+    "version": "1.0.0",
+    "status": "INVALID_ENUM_VALUE",
+    "snapshot_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "industry_pack": {
+    "id": "generic",
+    "version": "1.0.0",
+    "status": "SCAFFOLD",
+    "snapshot_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "plugin_defaults": {
+    "default_page_count": 6
+  },
+  "project_rule_snapshot": {
+    "fictional_only": true
+  },
+  "run_overrides": {
+    "default_page_count": 4
+  },
+  "priority_order": [
+    "SAFETY_COMPLIANCE_FACTS_PERMISSIONS",
+    "CURRENT_OPERATOR_REQUEST",
+    "CONFIRMED_PROJECT_RULES",
+    "PLATFORM_PACK",
+    "INDUSTRY_PACK",
+    "PLUGIN_DEFAULTS"
+  ],
+  "resolved_values": {
+    "default_page_count": 4,
+    "allow_external_network": false
+  },
+  "conflicts": [],
+  "warnings": [
+    {
+      "code": "SCAFFOLD_PACK",
+      "message": "The selected Pack is a scaffold.",
+      "source": "generic"
+    }
+  ],
+  "resolved_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

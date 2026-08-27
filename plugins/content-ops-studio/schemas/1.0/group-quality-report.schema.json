@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/group-quality-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Group quality report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "visual_mode",
+    "asset_ids",
+    "system_consistency",
+    "subject_consistency",
+    "page_difference",
+    "near_duplicate_pairs",
+    "source_reuse_findings",
+    "contact_sheet_ref",
+    "hard_blocks",
+    "operator_approval_required",
+    "result",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^GQR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "visual_mode": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+    "asset_ids": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": { "$ref": "common-definitions.schema.json#/$defs/assetId" }
+    },
+    "system_consistency": { "$ref": "#/$defs/check" },
+    "subject_consistency": { "$ref": "#/$defs/check" },
+    "page_difference": { "$ref": "#/$defs/check" },
+    "near_duplicate_pairs": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": { "$ref": "common-definitions.schema.json#/$defs/assetId" }
+      }
+    },
+    "source_reuse_findings": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "contact_sheet_ref": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+    "hard_blocks": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "operator_approval_required": { "const": true },
+    "result": { "type": "string", "enum": ["PASS_PENDING_OPERATOR", "FAIL", "BLOCKED"] },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "notes"],
+      "properties": {
+        "status": { "type": "string", "enum": ["PASS", "FAIL", "BLOCKED"] },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

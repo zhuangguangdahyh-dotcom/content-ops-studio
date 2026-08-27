@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-strategy-confidence-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual strategy confidence report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "strategy_plan_id",
+    "overall_confidence",
+    "confidence_level",
+    "dimensions",
+    "source_coverage",
+    "review_required",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^VSCR-[A-Z0-9-]+$" },
+    "strategy_plan_id": { "type": "string", "pattern": "^DVSP-[A-Z0-9-]+$" },
+    "overall_confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "confidence_level": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH"] },
+    "dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["dimension", "score", "reason"],
+        "properties": {
+          "dimension": { "type": "string", "minLength": 1 },
+          "score": { "type": "number", "minimum": 0, "maximum": 1 },
+          "reason": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "source_coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_source_count", "available_source_count", "missing_sources"],
+      "properties": {
+        "required_source_count": { "type": "integer", "minimum": 1 },
+        "available_source_count": { "type": "integer", "minimum": 0 },
+        "missing_sources": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+    "review_required": { "type": "boolean" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  }
+}

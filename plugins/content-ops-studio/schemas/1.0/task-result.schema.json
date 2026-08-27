@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/task-result.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Task result",
+  "description": "Unified deterministic Skill result contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "skill",
+    "run_id",
+    "project_id",
+    "state_before",
+    "state_after",
+    "created_records",
+    "updated_records",
+    "artifacts",
+    "approval_request",
+    "warnings",
+    "errors",
+    "next_route"
+  ],
+  "properties": {
+    "status": {
+      "$ref": "common-definitions.schema.json#/$defs/resultStatus"
+    },
+    "skill": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "state_before": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    },
+    "state_after": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    },
+    "created_records": {
+      "type": "array",
+      "items": {
+        "$ref": "common-definitions.schema.json#/$defs/extensions"
+      }
+    },
+    "updated_records": {
+      "type": "array",
+      "items": {
+        "$ref": "common-definitions.schema.json#/$defs/extensions"
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "common-definitions.schema.json#/$defs/extensions"
+      }
+    },
+    "approval_request": {
+      "anyOf": [
+        {
+          "$ref": "approval-event.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "error.schema.json"
+      }
+    },
+    "next_route": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

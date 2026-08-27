@@ -1,0 +1,56 @@
+{
+  "validation_id": "UVCV-CAL-SPACE-001-V1",
+  "status": "CALIBRATION_VALIDATED_V1",
+  "validation_scope": "RULES_KNOWLEDGE_QA_AND_DECISION_SYSTEMS_ONLY",
+  "project_id": "CAL-COMMERCIAL-SPACE-001",
+  "content_id": "C-9001",
+  "source_approval_id": "APR-20990101-CG42",
+  "source_style_lock_id": "CSL-CAL-SPACE-001-V1",
+  "validated_systems": [
+    {
+      "system": "UNIVERSAL_DEFAULT_VISUAL_BASELINE_V1",
+      "status": "CALIBRATION_VALIDATED_V1"
+    },
+    {
+      "system": "EDITORIAL_DESIGN_KNOWLEDGE_V1",
+      "status": "CALIBRATION_VALIDATED_V1"
+    },
+    {
+      "system": "COVER_ATTENTION_INTELLIGENCE_V1",
+      "status": "CALIBRATION_VALIDATED_V1"
+    },
+    {
+      "system": "TYPOGRAPHY_SPATIAL_INTEGRITY_V1",
+      "status": "CALIBRATION_VALIDATED_V1"
+    },
+    {
+      "system": "TYPOGRAPHY_BREATHING_ROOM_V1",
+      "status": "CALIBRATION_VALIDATED_V1"
+    },
+    {
+      "system": "RASTER_TEXT_BACKGROUND_CONTRAST_INTEGRITY_V1",
+      "status": "CALIBRATION_VALIDATED_V1"
+    }
+  ],
+  "universal_template_created": false,
+  "universal_template_exclusions": [
+    "LAYOUT",
+    "COLOR",
+    "STOREFRONT",
+    "TITLE_POSITION",
+    "CROP",
+    "TYPE_DOMINANT"
+  ],
+  "project_profile_mutated": false,
+  "industry_pack_mutated": false,
+  "universal_default_mutated": false,
+  "c0001_unchanged": true,
+  "historical_assets_preserved": true,
+  "remaining_page_production_eligibility": "ELIGIBLE",
+  "remaining_pages_created": 0,
+  "image_generation_calls": 0,
+  "feishu_writes": 0,
+  "idempotency_key": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z"
+}

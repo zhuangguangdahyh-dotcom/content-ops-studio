@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/delivery-integrity-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Delivery Integrity Report",
+  "description": "Read-after-write verification of an approved-only Delivery Package.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "delivery_package_id",
+    "final_manifest_id",
+    "checks",
+    "passed_count",
+    "failed_count",
+    "hard_block_count",
+    "overall_status",
+    "verified_at",
+    "run_id",
+    "schema_version"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^DIR-[A-Z0-9-]+$" },
+    "delivery_package_id": { "type": "string", "pattern": "^DP-[A-Z0-9-]+$" },
+    "final_manifest_id": { "type": "string", "pattern": "^FINAL-[A-Z0-9-]+$" },
+    "checks": {
+      "type": "array",
+      "minItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "status", "blocking", "message"],
+        "properties": {
+          "code": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
+          "status": { "type": "string", "enum": ["PASS", "FAIL"] },
+          "blocking": { "type": "boolean" },
+          "message": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "passed_count": { "type": "integer", "minimum": 0 },
+    "failed_count": { "type": "integer", "minimum": 0 },
+    "hard_block_count": { "type": "integer", "minimum": 0 },
+    "overall_status": { "type": "string", "enum": ["PASSED", "FAILED"] },
+    "verified_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" }
+  }
+}

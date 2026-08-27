@@ -1,0 +1,16 @@
+{
+  "allowed": true,
+  "machine": "content-status",
+  "from_state": "COPY_PENDING_APPROVAL",
+  "to_state": "COPY_APPROVED",
+  "next_state": "COPY_APPROVED",
+  "error_code": null,
+  "reasons": [],
+  "required_gate": "CONTENT_COPY",
+  "invalidated_approvals": [],
+  "invalidated_artifacts": [],
+  "required_actions": [],
+  "evaluated_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0"
+}

@@ -1,0 +1,160 @@
+{
+  "quality_report_id": "CQR-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "hard_checks": [
+    {
+      "check_code": "ONE_PRIMARY_PAINPOINT",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "ONE_CORE_PROBLEM",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "ONE_CORE_VIEWPOINT",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "PAGE_COUNT_VALID",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "PAGE_NUMBERS_CONTIGUOUS",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "FIRST_PAGE_COVER",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "TITLE_LENGTH_VALID",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "CLAIMS_SUPPORTED",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "CTA_RELEVANT",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "NO_PROHIBITED_EXPRESSION",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "NO_HIGH_DUPLICATION",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "NO_FABRICATED_DATA_OR_CASE",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "PAGE_PURPOSES_CLEAR",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    },
+    {
+      "check_code": "NO_VISUAL_PRODUCTION_CLAIM",
+      "passed": true,
+      "blocking": false,
+      "message": "Passed."
+    }
+  ],
+  "dimension_scores": [
+    {
+      "dimension": "FOCUS",
+      "score": 4,
+      "weight": 15,
+      "rationale": "Passing fixture score."
+    },
+    {
+      "dimension": "AUDIENCE_RELEVANCE",
+      "score": 4,
+      "weight": 15,
+      "rationale": "Passing fixture score."
+    },
+    {
+      "dimension": "VALUE_DELIVERY",
+      "score": 4,
+      "weight": 15,
+      "rationale": "Passing fixture score."
+    },
+    {
+      "dimension": "EVIDENCE_SUPPORT",
+      "score": 4,
+      "weight": 15,
+      "rationale": "Passing fixture score."
+    },
+    {
+      "dimension": "SUBJECT_FIT",
+      "score": 4,
+      "weight": 10,
+      "rationale": "Passing fixture score."
+    },
+    {
+      "dimension": "PLATFORM_FIT",
+      "score": 4,
+      "weight": 10,
+      "rationale": "Passing fixture score."
+    },
+    {
+      "dimension": "READABILITY",
+      "score": 4,
+      "weight": 10,
+      "rationale": "Passing fixture score."
+    },
+    {
+      "dimension": "ORIGINALITY",
+      "score": 4,
+      "weight": 5,
+      "rationale": "Passing fixture score."
+    },
+    {
+      "dimension": "CTA_RELEVANCE",
+      "score": 4,
+      "weight": 5,
+      "rationale": "Passing fixture score."
+    }
+  ],
+  "weighted_score": 80,
+  "blocking_failure_count": 0,
+  "warning_count": 0,
+  "passed_count": 14,
+  "ready_for_g3": true,
+  "limitations": [],
+  "recommended_changes": [],
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

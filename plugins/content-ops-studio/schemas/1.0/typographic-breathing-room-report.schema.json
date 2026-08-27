@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/typographic-breathing-room-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Typographic breathing room report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "candidate_id",
+    "title_to_secondary_distance_px",
+    "title_to_secondary_ratio",
+    "reference_soft_range",
+    "minimum_container_padding_px",
+    "minimum_text_to_image_distance_px",
+    "text_to_image_distance_ratio",
+    "information_groups_visually_distinct",
+    "visual_pressure_detected",
+    "score",
+    "hard_blocks",
+    "result",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^TBRR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "candidate_id": { "type": "string", "pattern": "^CCC-[A-Z0-9-]+$" },
+    "title_to_secondary_distance_px": { "type": "number", "minimum": 0 },
+    "title_to_secondary_ratio": { "type": "number", "minimum": 0 },
+    "reference_soft_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum", "maximum", "fixed_pixel_rule"],
+      "properties": {
+        "minimum": { "const": 0.5 },
+        "maximum": { "const": 1 },
+        "fixed_pixel_rule": { "const": false }
+      }
+    },
+    "minimum_container_padding_px": { "type": ["number", "null"], "minimum": 0 },
+    "minimum_text_to_image_distance_px": { "type": "number", "minimum": 0 },
+    "text_to_image_distance_ratio": { "type": "number", "minimum": 0 },
+    "information_groups_visually_distinct": { "type": "boolean" },
+    "visual_pressure_detected": { "type": "boolean" },
+    "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "hard_blocks": {
+      "type": "array",
+      "items": { "const": "TYPOGRAPHIC_BREATHING_ROOM_WEAK" },
+      "uniqueItems": true
+    },
+    "result": { "enum": ["PASS", "BLOCKED"] },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

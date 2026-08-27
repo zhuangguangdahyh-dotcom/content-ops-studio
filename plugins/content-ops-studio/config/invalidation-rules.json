@@ -1,0 +1,143 @@
+{
+  "version": "1.0.0",
+  "rules": [
+    {
+      "ruleId": "INV-001",
+      "changeType": "MAJOR_PROJECT_CONFIGURATION",
+      "changedFields": [
+        "industry",
+        "industry_subfields",
+        "core_business_or_products",
+        "audience_profile",
+        "audience_decision_characteristics",
+        "primary_platform"
+      ],
+      "invalidatedApprovals": ["PROJECT_PROFILE"],
+      "invalidatedArtifacts": ["PAINPOINT_RESEARCH_VALIDITY", "UNFINALIZED_CONTENT_REVIEW"],
+      "stateUpdates": {
+        "config_confirmation_status": "CONFIG_UPDATE_REQUIRED"
+      },
+      "preserveHistory": true,
+      "description": "Material project configuration changes require renewed confirmation and review."
+    },
+    {
+      "ruleId": "INV-002",
+      "changeType": "CONFIRMED_PAINPOINT_CHANGE",
+      "changedFields": [
+        "explicit_need",
+        "deep_anxiety",
+        "business_scenario",
+        "decision_stage",
+        "commercial_loss_or_real_cost"
+      ],
+      "invalidatedApprovals": ["PAINPOINTS"],
+      "invalidatedArtifacts": ["UNFINALIZED_CONTENT_REVIEW"],
+      "stateUpdates": {},
+      "preserveHistory": true,
+      "description": "Changed confirmed painpoint invalidates only unfinished dependent content."
+    },
+    {
+      "ruleId": "INV-003",
+      "changeType": "PAGE_COPY_CHANGE",
+      "changedFields": ["headline", "body", "supporting_text"],
+      "invalidatedApprovals": ["FIRST_PAGE", "FINAL_SET"],
+      "invalidatedArtifacts": [
+        "PAGE_VISUAL_PLAN",
+        "VISUAL_SYSTEM",
+        "STYLE_LOCK",
+        "RENDER_REPORT",
+        "QA_REPORT",
+        "FINAL_MANIFEST"
+      ],
+      "stateUpdates": {},
+      "preserveHistory": true,
+      "description": "Page copy changes invalidate visual and downstream approvals."
+    },
+    {
+      "ruleId": "INV-004",
+      "changeType": "PAGE_COUNT_CHANGE",
+      "changedFields": ["page_count"],
+      "invalidatedApprovals": ["FIRST_PAGE", "FINAL_SET"],
+      "invalidatedArtifacts": [
+        "PAGE_VISUAL_PLAN",
+        "VISUAL_SYSTEM",
+        "STYLE_LOCK",
+        "GENERATION_MANIFEST",
+        "QA_REPORT",
+        "FINAL_MANIFEST"
+      ],
+      "stateUpdates": {},
+      "preserveHistory": true,
+      "description": "Page-count changes invalidate visual planning and approvals."
+    },
+    {
+      "ruleId": "INV-005",
+      "changeType": "GLOBAL_VISUAL_DIRECTION_CHANGE",
+      "changedFields": [
+        "color_system",
+        "font_system",
+        "visual_mode",
+        "layout_system",
+        "media_mode"
+      ],
+      "invalidatedApprovals": ["FIRST_PAGE", "FINAL_SET"],
+      "invalidatedArtifacts": [
+        "STYLE_LOCK",
+        "REMAINING_GENERATION_MANIFEST",
+        "RENDER_REPORT",
+        "QA_REPORT",
+        "FINAL_MANIFEST"
+      ],
+      "stateUpdates": {},
+      "preserveHistory": true,
+      "description": "Material global visual changes invalidate Style Lock and approvals."
+    },
+    {
+      "ruleId": "INV-006",
+      "changeType": "SINGLE_PAGE_BACKGROUND_CHANGE",
+      "changedFields": ["page_background"],
+      "invalidatedApprovals": ["FINAL_SET"],
+      "invalidatedArtifacts": [
+        "CHANGED_PAGE_RENDER_REPORT",
+        "CHANGED_PAGE_VISUAL_QA",
+        "CHANGED_PAGE_FILE_QA",
+        "FINAL_MANIFEST"
+      ],
+      "stateUpdates": {},
+      "preserveHistory": true,
+      "description": "Local background change keeps Style Lock and normally keeps first-page approval."
+    },
+    {
+      "ruleId": "INV-007",
+      "changeType": "SINGLE_PAGE_LAYOUT_TWEAK",
+      "changedFields": ["page_layout"],
+      "invalidatedApprovals": ["FINAL_SET"],
+      "invalidatedArtifacts": ["CHANGED_PAGE_RENDER_REPORT", "CHANGED_PAGE_QA", "FINAL_MANIFEST"],
+      "stateUpdates": {},
+      "preserveHistory": true,
+      "description": "Pure layout tweak reruns page QA while keeping Style Lock and first-page approval."
+    },
+    {
+      "ruleId": "INV-008",
+      "changeType": "FINALIZED_CONTENT_CHANGE",
+      "changedFields": ["finalized_content"],
+      "invalidatedApprovals": ["CONTENT_COPY", "FIRST_PAGE", "FINAL_SET"],
+      "invalidatedArtifacts": ["CURRENT_VERSION_OUTPUT"],
+      "stateUpdates": {
+        "content_status": "CONTENT_PLANNING"
+      },
+      "preserveHistory": true,
+      "description": "Editing finalized content creates a new version and preserves all prior outputs."
+    },
+    {
+      "ruleId": "INV-009",
+      "changeType": "ASSET_FILE_REPLACED",
+      "changedFields": ["asset_file"],
+      "invalidatedApprovals": ["FINAL_SET"],
+      "invalidatedArtifacts": ["CHECKSUM", "FILE_QA", "FINAL_MANIFEST"],
+      "stateUpdates": {},
+      "preserveHistory": true,
+      "description": "Replacing a file invalidates its checksum, File QA, G5 approval, and final manifest without deleting history."
+    }
+  ]
+}

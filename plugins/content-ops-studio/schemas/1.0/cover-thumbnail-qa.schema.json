@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/cover-thumbnail-qa.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Cover thumbnail QA",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "candidate_id",
+    "source_asset_checksum",
+    "thumbnails",
+    "primary_hook_lines",
+    "primary_hook_first_focus",
+    "single_click_message",
+    "audience_or_painpoint_or_value_clear",
+    "background_competes",
+    "small_paragraph_present",
+    "text_background_contrast",
+    "text_visual_share",
+    "business_scene_recognizable",
+    "hard_blocks",
+    "result",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^CTQA-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "candidate_id": { "type": "string", "pattern": "^CCC-[A-Z0-9-]+$" },
+    "source_asset_checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "thumbnails": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "$ref": "#/$defs/thumbnail" }
+    },
+    "primary_hook_lines": { "type": "integer", "minimum": 1, "maximum": 20 },
+    "primary_hook_first_focus": { "type": "boolean" },
+    "single_click_message": { "type": "boolean" },
+    "audience_or_painpoint_or_value_clear": { "type": "boolean" },
+    "background_competes": { "type": "boolean" },
+    "small_paragraph_present": { "type": "boolean" },
+    "text_background_contrast": { "type": "number", "minimum": 1 },
+    "text_visual_share": { "type": "number", "minimum": 0, "maximum": 1 },
+    "business_scene_recognizable": { "type": "boolean" },
+    "hard_blocks": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "result": { "type": "string", "enum": ["PASS", "FAIL", "BLOCKED"] },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "thumbnail": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "size",
+        "width",
+        "height",
+        "relative_path",
+        "checksum",
+        "primary_effective_font_px",
+        "secondary_effective_font_px",
+        "readable"
+      ],
+      "properties": {
+        "size": { "type": "string", "enum": ["310x414", "186x248"] },
+        "width": { "type": "integer", "enum": [186, 310] },
+        "height": { "type": "integer", "enum": [248, 414] },
+        "relative_path": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+        "checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+        "primary_effective_font_px": { "type": "number", "minimum": 0 },
+        "secondary_effective_font_px": { "type": "number", "minimum": 0 },
+        "readable": { "type": "boolean" }
+      }
+    }
+  }
+}

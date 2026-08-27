@@ -1,0 +1,32 @@
+{
+  "evidence_id": "RTE-NODE22-POLICY-001",
+  "runtime_name": "node",
+  "runtime_version": "v22.0.0",
+  "runtime_major": 22,
+  "runtime_range": ">=24 <25",
+  "support_policy_status": "UNCLAIMED",
+  "policy_reason_code": "NOT_VALIDATED_BY_THIS_PROJECT",
+  "execution_status": "NOT_RUN",
+  "commands": ["pnpm test"],
+  "command_results": [
+    {
+      "command": "pnpm test",
+      "status": "PASSED",
+      "exit_code": 0
+    }
+  ],
+  "environment": {
+    "package_manager": "pnpm",
+    "package_manager_version": "11.19.0",
+    "ci": false
+  },
+  "platform": "fixture-os",
+  "architecture": "fixture-arch",
+  "started_at": "2099-01-01T01:02:03.000Z",
+  "completed_at": "2099-01-01T01:02:03.000Z",
+  "evidence_source": "POLICY",
+  "report_path": "plugins/content-ops-studio/config/runtime-support-policy.json",
+  "limitations": ["No project compatibility claim or execution evidence."],
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

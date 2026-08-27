@@ -1,0 +1,19 @@
+{
+  "id": "xiaohongshu",
+  "version": "1.0.0",
+  "display_name": "小红书",
+  "status": "INVALID_ENUM_VALUE",
+  "supported_formats": ["image-post"],
+  "default_aspect_ratio": "3:4",
+  "default_page_range": {
+    "min": 4,
+    "max": 8
+  },
+  "default_page_count": 6,
+  "title_visible_character_limit": 20,
+  "rules": ["Use one clear Audience-facing reason to click."],
+  "prohibited_patterns": ["Do not fabricate platform success."],
+  "extensions": {
+    "source_directory": "packs/platforms/xiaohongshu"
+  }
+}

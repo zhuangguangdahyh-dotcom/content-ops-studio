@@ -1,0 +1,3 @@
+# Workflow
+
+`DISCOVER` reads the current profile and conversation-known fields, calls the initialization planner, creates a gap report, and asks only material blockers. Inference stays unconfirmed. Known fields are never re-asked. `PROVISION` runs preflight → plan → lock → create/adopt Base → safe default-table adoption → four tables → non-relation fields → relations → named views → pending project draft → read verification → local mappings → G1 pause. `UPDATE` marks major changes `CONFIG_UPDATE_REQUIRED`. `INSPECT` and `VERIFY` are read-only. `REPAIR` adds only missing objects. `MIGRATE` applies only an explicit approved non-destructive migration. G1 approval activates the project only after another read verification.

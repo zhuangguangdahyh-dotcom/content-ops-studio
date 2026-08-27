@@ -1,0 +1,75 @@
+{
+  "machine": "sync-status",
+  "version": "1.0.0",
+  "states": [
+    "SYNC_NOT_STARTED",
+    "SYNC_IN_PROGRESS",
+    "SYNC_COMPLETED",
+    "SYNC_PARTIAL",
+    "SYNC_FAILED"
+  ],
+  "initialStates": ["SYNC_NOT_STARTED"],
+  "terminalStates": ["SYNC_COMPLETED"],
+  "transitions": [
+    {
+      "from": "SYNC_NOT_STARTED",
+      "to": "SYNC_IN_PROGRESS",
+      "trigger": "START_SYNC",
+      "ownerSkill": "content-finalization",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "SYNC_NOT_STARTED to SYNC_IN_PROGRESS"
+    },
+    {
+      "from": "SYNC_IN_PROGRESS",
+      "to": "SYNC_COMPLETED",
+      "trigger": "COMPLETE_SYNC",
+      "ownerSkill": "content-finalization",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "SYNC_IN_PROGRESS to SYNC_COMPLETED"
+    },
+    {
+      "from": "SYNC_IN_PROGRESS",
+      "to": "SYNC_PARTIAL",
+      "trigger": "PARTIAL_SYNC",
+      "ownerSkill": "content-finalization",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "SYNC_IN_PROGRESS to SYNC_PARTIAL"
+    },
+    {
+      "from": "SYNC_IN_PROGRESS",
+      "to": "SYNC_FAILED",
+      "trigger": "FAIL_SYNC",
+      "ownerSkill": "content-finalization",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "SYNC_IN_PROGRESS to SYNC_FAILED"
+    },
+    {
+      "from": "SYNC_PARTIAL",
+      "to": "SYNC_IN_PROGRESS",
+      "trigger": "RETRY_SYNC",
+      "ownerSkill": "content-finalization",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "SYNC_PARTIAL to SYNC_IN_PROGRESS"
+    },
+    {
+      "from": "SYNC_FAILED",
+      "to": "SYNC_IN_PROGRESS",
+      "trigger": "RETRY_SYNC",
+      "ownerSkill": "content-finalization",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "SYNC_FAILED to SYNC_IN_PROGRESS"
+    }
+  ]
+}

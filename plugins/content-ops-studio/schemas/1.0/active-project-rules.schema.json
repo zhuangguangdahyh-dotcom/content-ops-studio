@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/active-project-rules.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Active project rules",
+  "description": "Confirmed compiled runtime snapshot; each item remains an atomic rule.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project_id",
+    "rule_snapshot_version",
+    "compiled_at",
+    "source_rule_ids",
+    "hard_requirements",
+    "preferences",
+    "prohibitions",
+    "corrections",
+    "workflow_rules",
+    "compilation_status",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "rule_snapshot_version": {
+      "$ref": "common-definitions.schema.json#/$defs/semanticVersion"
+    },
+    "compiled_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "source_rule_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common-definitions.schema.json#/$defs/ruleId"
+      },
+      "uniqueItems": true
+    },
+    "hard_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "preferences": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "prohibitions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "corrections": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "workflow_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "compilation_status": {
+      "type": "string",
+      "enum": ["CONFIRMED_SNAPSHOT"]
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    },
+    "extensions": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    }
+  }
+}

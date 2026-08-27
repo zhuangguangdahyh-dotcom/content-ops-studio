@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/image-production-policy.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Image production policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policy_id",
+    "policy_version",
+    "asset_channels",
+    "visual_modes",
+    "candidate_count",
+    "final_page_count_range",
+    "candidate_quality_threshold",
+    "formal_quality_threshold",
+    "hard_blocks",
+    "formal_text_renderer_only",
+    "production_mock_fallback",
+    "schema_version"
+  ],
+  "properties": {
+    "policy_id": { "const": "IMAGE-PRODUCTION-SPEC-V1" },
+    "policy_version": { "const": "1.0.0" },
+    "asset_channels": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "PROJECT_ASSET",
+          "AI_GENERATED_VISUAL",
+          "PROGRAMMATIC_GRAPHIC",
+          "EVIDENCE_ASSET",
+          "PURE_TYPOGRAPHY",
+          "MIXED_ASSET"
+        ]
+      }
+    },
+    "visual_modes": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": { "$ref": "common-definitions.schema.json#/$defs/visualMode" }
+    },
+    "candidate_count": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum", "maximum"],
+      "properties": { "minimum": { "const": 2 }, "maximum": { "const": 3 } }
+    },
+    "final_page_count_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum", "maximum"],
+      "properties": { "minimum": { "const": 4 }, "maximum": { "const": 8 } }
+    },
+    "candidate_quality_threshold": { "const": 75 },
+    "formal_quality_threshold": { "type": "integer", "minimum": 85, "maximum": 100 },
+    "hard_blocks": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "formal_text_renderer_only": { "const": true },
+    "production_mock_fallback": { "const": false },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" }
+  }
+}

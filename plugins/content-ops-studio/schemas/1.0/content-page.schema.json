@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/content-page.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Content page",
+  "description": "One structured page in a content package.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "page_number",
+    "page_role",
+    "copy_version",
+    "headline",
+    "body",
+    "supporting_text",
+    "content_purpose",
+    "background_direction",
+    "visual_evidence_requirement",
+    "layout_notes",
+    "negative_constraints",
+    "created_at",
+    "updated_at",
+    "extensions"
+  ],
+  "properties": {
+    "page_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "page_role": {
+      "type": "string",
+      "enum": [
+        "COVER",
+        "PROBLEM",
+        "SCENARIO",
+        "MISCONCEPTION",
+        "ANALYSIS",
+        "EVIDENCE",
+        "SOLUTION",
+        "STEP",
+        "COMPARISON",
+        "CASE",
+        "SUMMARY",
+        "CTA"
+      ]
+    },
+    "copy_version": {
+      "$ref": "common-definitions.schema.json#/$defs/contentVersion"
+    },
+    "headline": {
+      "type": "string",
+      "minLength": 1
+    },
+    "body": {
+      "type": "string"
+    },
+    "supporting_text": {
+      "type": "string"
+    },
+    "content_purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "background_direction": {
+      "type": "string"
+    },
+    "visual_evidence_requirement": {
+      "type": "string"
+    },
+    "layout_notes": {
+      "type": "string"
+    },
+    "negative_constraints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "created_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "updated_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "extensions": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    }
+  }
+}

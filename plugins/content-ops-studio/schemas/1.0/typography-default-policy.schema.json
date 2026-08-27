@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/typography-default-policy.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Typography default policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policy_id",
+    "policy_version",
+    "fallback_only",
+    "chinese_serif_candidates",
+    "title",
+    "subtitle",
+    "body",
+    "geometry",
+    "silent_pingfang_fallback_forbidden",
+    "font_download_forbidden",
+    "renderer_probe_required",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "policy_id": { "const": "UNIVERSAL-TYPOGRAPHY-DEFAULT" },
+    "policy_version": { "const": "TDPV-1" },
+    "fallback_only": { "const": true },
+    "chinese_serif_candidates": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "title": { "$ref": "#/$defs/typeRole" },
+    "subtitle": { "$ref": "#/$defs/typeRole" },
+    "body": { "$ref": "#/$defs/typeRole" },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title_line_height",
+        "title_letter_spacing_em",
+        "subtitle_line_height",
+        "subtitle_letter_spacing_em",
+        "body_line_height",
+        "body_letter_spacing_em"
+      ],
+      "properties": {
+        "title_line_height": { "$ref": "#/$defs/range" },
+        "title_letter_spacing_em": { "$ref": "#/$defs/range" },
+        "subtitle_line_height": { "$ref": "#/$defs/range" },
+        "subtitle_letter_spacing_em": { "$ref": "#/$defs/range" },
+        "body_line_height": { "$ref": "#/$defs/range" },
+        "body_letter_spacing_em": { "$ref": "#/$defs/range" }
+      }
+    },
+    "silent_pingfang_fallback_forbidden": { "const": true },
+    "font_download_forbidden": { "const": true },
+    "renderer_probe_required": { "const": true },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "typeRole": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "family_class",
+        "preferred_weights",
+        "relative_size_min",
+        "relative_size_max",
+        "default_bold"
+      ],
+      "properties": {
+        "family_class": { "const": "MODERN_CHINESE_SERIF" },
+        "preferred_weights": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "integer", "minimum": 100, "maximum": 900 },
+          "uniqueItems": true
+        },
+        "relative_size_min": { "type": "number", "minimum": 0, "maximum": 1 },
+        "relative_size_max": { "type": "number", "minimum": 0, "maximum": 1 },
+        "default_bold": { "type": "boolean" }
+      }
+    },
+    "range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum", "maximum", "hard_coded"],
+      "properties": {
+        "minimum": { "type": "number" },
+        "maximum": { "type": "number" },
+        "hard_coded": { "const": false }
+      }
+    }
+  }
+}

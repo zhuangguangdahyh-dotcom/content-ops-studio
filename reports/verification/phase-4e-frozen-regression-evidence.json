@@ -1,0 +1,35 @@
+{
+  "phase": "4E",
+  "status": "PASSED",
+  "image_production_skill_v1": "PRODUCTION_READY / FROZEN_FOR_V1",
+  "imagegen_calls": 0,
+  "cases": [
+    {
+      "case": "A",
+      "project_id": "CAL-COMMERCIAL-BLIND-001",
+      "source_run_id": "RUN-20260827-080000-P4DA",
+      "run_id": "RUN-20260827-141000-P4EA",
+      "formal_pages": 6,
+      "hard_blocks": 0,
+      "deterministic_pages": 6,
+      "status": "PASSED"
+    },
+    {
+      "case": "B",
+      "project_id": "CAL-PRO-SERVICE-BLIND-001",
+      "source_run_id": "RUN-20260827-080100-P4DB",
+      "run_id": "RUN-20260827-141100-P4EB",
+      "formal_pages": 6,
+      "hard_blocks": 0,
+      "deterministic_pages": 6,
+      "status": "PASSED"
+    }
+  ],
+  "historical_phase4d": {
+    "unchanged": true,
+    "case_a_aggregate_sha256": "c02ace9a4f9d71b131c7b83d04bec46db8559081bad6a9e3ddf3b77d80e2db8a",
+    "case_b_aggregate_sha256": "9f6e1058e2c9e62c1dba02ff72c184c3d5e7d5d7ec20a66ee37c94f3a2730460"
+  },
+  "project_home_policy": "REPOSITORY_EXTERNAL",
+  "created_at": "2026-08-27T13:30:00.000Z"
+}

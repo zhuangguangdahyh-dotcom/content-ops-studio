@@ -1,0 +1,238 @@
+{
+  "manifest_id": "EDKSM-V1-20260826",
+  "knowledge_version": "1.0.0",
+  "runtime_browsing": false,
+  "sources": [
+    {
+      "source_id": "EDKS-AIGA-MAGAZINE-COVER",
+      "organization": "AIGA Design Teaching Resource",
+      "title": "Magazine Cover Design",
+      "url": "https://teachingresource.aiga.org/project/magazine-cover-design/",
+      "domain": "teachingresource.aiga.org",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "SYSTEM_BEFORE_STYLE",
+        "HIERARCHY_BEFORE_DECORATION",
+        "RESTRAINT_IS_EDITING"
+      ],
+      "limitations": "A classroom brief and thumbnail-sketch exercise, not a production scoring system or a reusable cover template."
+    },
+    {
+      "source_id": "EDKS-AIGA-EYE-STACK",
+      "organization": "AIGA Eye on Design",
+      "title": "Cover Story: What the Stack Awards Winner Tells Us About the New Rules of Magazine Design",
+      "url": "https://eyeondesign.aiga.org/cover-story-what-the-stack-awards-winner-tells-us-about-the-new-rules-of-magazine-design/",
+      "domain": "eyeondesign.aiga.org",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "HIERARCHY_BEFORE_DECORATION",
+        "RESTRAINT_IS_EDITING",
+        "TYPE_IS_VISUAL_FORM"
+      ],
+      "limitations": "An editorial case discussion about changing cover contexts and social display, not a universal quantitative law."
+    },
+    {
+      "source_id": "EDKS-JAGDA-GDIJ",
+      "organization": "Japan Graphic Design Association",
+      "title": "Graphic Design in Japan and public jury-comment context",
+      "url": "https://www.jagda.or.jp/en/news/10423/",
+      "domain": "jagda.or.jp",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "SYSTEM_BEFORE_STYLE",
+        "CONSISTENCY_IS_SYSTEM_NOT_SAMENESS",
+        "RESTRAINT_IS_EDITING"
+      ],
+      "limitations": "Award-selection context with public reviews. It does not justify reducing Japanese graphic design to whitespace, minimalism, or one house style."
+    },
+    {
+      "source_id": "EDKS-COOPER-HOW-POSTERS-WORK",
+      "organization": "Cooper Hewitt, Smithsonian Design Museum",
+      "title": "How Posters Work and digitized graphic-design collection context",
+      "url": "https://www.cooperhewitt.org/exhibitions/how-posters-work/",
+      "domain": "cooperhewitt.org",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "FORM_BEFORE_COLOR",
+        "NEGATIVE_SPACE_IS_ACTIVE",
+        "IMAGE_AND_TYPE_MUST_DIALOGUE",
+        "CONTROLLED_TENSION"
+      ],
+      "limitations": "Museum exhibition framing supports composition, perception, and storytelling mechanics; it is not a single-style recipe and does not by itself establish every designer-specific claim about Hofmann, Crouwel, or Monguzzi."
+    },
+    {
+      "source_id": "EDKS-PENTAGRAM-EDITORIAL",
+      "organization": "Pentagram",
+      "title": "Editorial systems: The Baffler, The New Republic, Citizen, Stern, Sight and Sound, and London Fashion Week",
+      "url": "https://www.pentagram.com/work/the-baffler",
+      "domain": "pentagram.com",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "SYSTEM_BEFORE_STYLE",
+        "CONSISTENCY_IS_SYSTEM_NOT_SAMENESS",
+        "IMAGE_AND_TYPE_MUST_DIALOGUE",
+        "GRID_IS_SCAFFOLD_NOT_CAGE"
+      ],
+      "limitations": "A family of public portfolio case studies. Their grids, type voices, crops, and image treatments are project-specific evidence, not layouts to copy."
+    },
+    {
+      "source_id": "EDKS-ADOBE-COLOR-CONTRAST",
+      "organization": "Adobe",
+      "title": "A guide to basic color theory and color contrast",
+      "url": "https://www.adobe.com/uk/creativecloud/design/discover/color-contrast.html",
+      "domain": "adobe.com",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": ["FORM_BEFORE_COLOR", "HIERARCHY_BEFORE_DECORATION"],
+      "limitations": "General color education. It does not prescribe a fixed palette, semantic color meaning, or a universal accent-area percentage."
+    },
+    {
+      "source_id": "EDKS-YALE-ALBERS",
+      "organization": "Yale University Press",
+      "title": "Interaction of Color",
+      "url": "https://yalebooks.yale.edu/book/9780300146936/interaction-of-color/",
+      "domain": "yalebooks.yale.edu",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": ["FORM_BEFORE_COLOR", "CONTROLLED_TENSION"],
+      "limitations": "Publisher material supports contextual and relative color perception. It does not replace the book, authorize long excerpts, or imply fixed color recipes."
+    },
+    {
+      "source_id": "EDKS-FANTASTIC-MAN-MARTENS",
+      "organization": "Fantastic Man",
+      "title": "Karel Martens",
+      "url": "https://www.fantasticman.com/articles/karel-martens/",
+      "domain": "fantasticman.com",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "CONSISTENCY_IS_SYSTEM_NOT_SAMENESS",
+        "GRID_IS_SCAFFOLD_NOT_CAGE",
+        "RESTRAINT_IS_EDITING"
+      ],
+      "limitations": "A public profile and interview example, not an exhaustive specification for Fantastic Man, The Gentlewoman, or all editorial design."
+    },
+    {
+      "source_id": "EDKS-GENTLEWOMAN-DITTING",
+      "organization": "The Gentlewoman",
+      "title": "Veronica Ditting",
+      "url": "https://thegentlewoman.co.uk/names/veronica-ditting",
+      "domain": "thegentlewoman.co.uk",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "TYPE_IS_VISUAL_FORM",
+        "NEGATIVE_SPACE_IS_ACTIVE",
+        "RESTRAINT_IS_EDITING"
+      ],
+      "limitations": "A public editorial profile used only as contextual evidence; it does not expose a complete production system or license imitation."
+    },
+    {
+      "source_id": "EDKS-COOPER-ARMIN-CONTEXT",
+      "organization": "Cooper Hewitt, Smithsonian Design Museum",
+      "title": "Schule für Gestaltung Bern collection note and Armin Hofmann acquisition context",
+      "url": "https://collection.cooperhewitt.org/objects/18708391/",
+      "domain": "collection.cooperhewitt.org",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "SYSTEM_BEFORE_STYLE",
+        "CONTROLLED_TENSION",
+        "GRID_IS_SCAFFOLD_NOT_CAGE"
+      ],
+      "limitations": "The object note provides collection and Swiss-poster context and names Armin Hofmann; it is not itself a Hofmann object record or a license to treat Swiss design as one style."
+    },
+    {
+      "source_id": "EDKS-COOPER-WIM-CROUWEL",
+      "organization": "Cooper Hewitt, Smithsonian Design Museum",
+      "title": "Wim Crouwel a graphic odyssey collection tag context",
+      "url": "https://collection.cooperhewitt.org/tags/typography/",
+      "domain": "collection.cooperhewitt.org",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": ["TYPE_IS_VISUAL_FORM", "GRID_IS_SCAFFOLD_NOT_CAGE"],
+      "limitations": "A collection index exposing a Wim Crouwel-related poster, not a comprehensive account of Crouwel's practice or a reusable grid."
+    },
+    {
+      "source_id": "EDKS-COOPER-BRUNO-MONGUZZI",
+      "organization": "Cooper Hewitt, Smithsonian Design Museum",
+      "title": "Museo d'Arte e Archittectura poster collection context",
+      "url": "https://collection.cooperhewitt.org/tags/geometric/",
+      "domain": "collection.cooperhewitt.org",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "FORM_BEFORE_COLOR",
+        "IMAGE_AND_TYPE_MUST_DIALOGUE",
+        "CONTROLLED_TENSION"
+      ],
+      "limitations": "A collection tag page identifying a poster gifted by Bruno Monguzzi; it supports object provenance but not a complete design method."
+    },
+    {
+      "source_id": "EDKS-PENTAGRAM-NEW-REPUBLIC",
+      "organization": "Pentagram",
+      "title": "The New Republic",
+      "url": "https://www.pentagram.com/work/the-new-republic",
+      "domain": "pentagram.com",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "SYSTEM_BEFORE_STYLE",
+        "CONSISTENCY_IS_SYSTEM_NOT_SAMENESS",
+        "TYPE_IS_VISUAL_FORM"
+      ],
+      "limitations": "A project-specific portfolio case; its display voices and identity system are evidence of principles, not a template."
+    },
+    {
+      "source_id": "EDKS-PENTAGRAM-STERN",
+      "organization": "Pentagram",
+      "title": "Stern",
+      "url": "https://www.pentagram.com/work/stern",
+      "domain": "pentagram.com",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "CONSISTENCY_IS_SYSTEM_NOT_SAMENESS",
+        "HIERARCHY_BEFORE_DECORATION",
+        "NEGATIVE_SPACE_IS_ACTIVE"
+      ],
+      "limitations": "A project-specific portfolio case supporting flexible grids, scale, and pacing; no single layout is generalized."
+    },
+    {
+      "source_id": "EDKS-PENTAGRAM-CITIZEN",
+      "organization": "Pentagram",
+      "title": "Citizen",
+      "url": "https://www.pentagram.com/work/citizen",
+      "domain": "pentagram.com",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "CONSISTENCY_IS_SYSTEM_NOT_SAMENESS",
+        "TYPE_IS_VISUAL_FORM",
+        "NEGATIVE_SPACE_IS_ACTIVE"
+      ],
+      "limitations": "A project-specific portfolio case; typography weight and photographic breathing are interpreted as heuristics, not copied."
+    },
+    {
+      "source_id": "EDKS-PENTAGRAM-SIGHT-SOUND",
+      "organization": "Pentagram",
+      "title": "Sight and Sound",
+      "url": "https://www.pentagram.com/work/sight-and-sound",
+      "domain": "pentagram.com",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "IMAGE_AND_TYPE_MUST_DIALOGUE",
+        "CONTROLLED_TENSION",
+        "TYPE_IS_VISUAL_FORM"
+      ],
+      "limitations": "A project-specific portfolio case; visible grids, pace, and juxtaposition are evidence, not universal styling instructions."
+    },
+    {
+      "source_id": "EDKS-PENTAGRAM-LFW",
+      "organization": "Pentagram",
+      "title": "London Fashion Week SS19",
+      "url": "https://www.pentagram.com/work/london-fashion-week-ss19",
+      "domain": "pentagram.com",
+      "verified_at": "2026-08-26T10:00:00.000Z",
+      "principles_derived": [
+        "IMAGE_AND_TYPE_MUST_DIALOGUE",
+        "CONTROLLED_TENSION",
+        "GRID_IS_SCAFFOLD_NOT_CAGE"
+      ],
+      "limitations": "A fashion-specific identity case. Image-type collision is extracted as a relation principle, not a prescribed aesthetic."
+    }
+  ],
+  "run_id": "RUN-20260826-180000-EDK1",
+  "schema_version": "1.0.0",
+  "created_at": "2026-08-26T10:00:00.000Z"
+}

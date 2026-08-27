@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/workspace-field-map.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Workspace field map",
+  "description": "Stable logical-key mapping to external field identifiers.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provider",
+    "project_id",
+    "blueprint_version",
+    "projectConfig",
+    "painpoints",
+    "contents",
+    "rulesAndFeedback",
+    "generated_at",
+    "schema_version"
+  ],
+  "properties": {
+    "provider": {
+      "type": "string",
+      "enum": ["FEISHU", "MOCK"]
+    },
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "blueprint_version": {
+      "$ref": "common-definitions.schema.json#/$defs/semanticVersion"
+    },
+    "projectConfig": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "logicalKey",
+          "externalFieldId",
+          "displayNameSnapshot",
+          "fieldTypeSnapshot",
+          "lastVerifiedAt"
+        ],
+        "properties": {
+          "logicalKey": {
+            "type": "string",
+            "pattern": "^[a-z][A-Za-z0-9]*$"
+          },
+          "externalFieldId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "displayNameSnapshot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fieldTypeSnapshot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lastVerifiedAt": {
+            "$ref": "common-definitions.schema.json#/$defs/timestamp"
+          }
+        }
+      }
+    },
+    "painpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "logicalKey",
+          "externalFieldId",
+          "displayNameSnapshot",
+          "fieldTypeSnapshot",
+          "lastVerifiedAt"
+        ],
+        "properties": {
+          "logicalKey": {
+            "type": "string",
+            "pattern": "^[a-z][A-Za-z0-9]*$"
+          },
+          "externalFieldId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "displayNameSnapshot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fieldTypeSnapshot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lastVerifiedAt": {
+            "$ref": "common-definitions.schema.json#/$defs/timestamp"
+          }
+        }
+      }
+    },
+    "contents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "logicalKey",
+          "externalFieldId",
+          "displayNameSnapshot",
+          "fieldTypeSnapshot",
+          "lastVerifiedAt"
+        ],
+        "properties": {
+          "logicalKey": {
+            "type": "string",
+            "pattern": "^[a-z][A-Za-z0-9]*$"
+          },
+          "externalFieldId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "displayNameSnapshot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fieldTypeSnapshot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lastVerifiedAt": {
+            "$ref": "common-definitions.schema.json#/$defs/timestamp"
+          }
+        }
+      }
+    },
+    "rulesAndFeedback": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "logicalKey",
+          "externalFieldId",
+          "displayNameSnapshot",
+          "fieldTypeSnapshot",
+          "lastVerifiedAt"
+        ],
+        "properties": {
+          "logicalKey": {
+            "type": "string",
+            "pattern": "^[a-z][A-Za-z0-9]*$"
+          },
+          "externalFieldId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "displayNameSnapshot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fieldTypeSnapshot": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lastVerifiedAt": {
+            "$ref": "common-definitions.schema.json#/$defs/timestamp"
+          }
+        }
+      }
+    },
+    "generated_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    }
+  }
+}

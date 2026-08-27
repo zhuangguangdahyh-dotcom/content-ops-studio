@@ -1,0 +1,22 @@
+{
+  "write_id": "W-DEMO-001",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "project_id": "PRJ-20990101-DEMO",
+  "owner_skill": "content-finalization",
+  "provider": "MOCK",
+  "operation": "VERIFY",
+  "target_type": "fixture",
+  "target_id": "C-0001",
+  "idempotency_key": "fixture-idempotency-key",
+  "state_before": {},
+  "state_after": {},
+  "request_summary": "Redacted fictional request.",
+  "response_summary": "Redacted fictional response.",
+  "verification_status": "VERIFIED",
+  "verification_details": "No external write occurred.",
+  "attempt_number": 1,
+  "retryable": false,
+  "error": null,
+  "started_at": "2099-01-01T01:02:03.000Z",
+  "completed_at": "2099-01-01T01:02:03.000Z"
+}

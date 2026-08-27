@@ -1,0 +1,23 @@
+{
+  "report_id": "CAS-DEMO-I",
+  "candidate_id": "CCC-DEMO-I",
+  "grayscale_structure_score": 90,
+  "grayscale_check": "PASS",
+  "hierarchy_aligned": true,
+  "color_dimensions": {
+    "hue": "neutral base with one warm signal",
+    "value": "dark-light hierarchy remains legible in grayscale",
+    "saturation": "low dominant saturation with controlled accent",
+    "temperature": "warm-cool relation supports the focal contrast",
+    "quantity": {
+      "dominant": 0.72,
+      "support": 0.2,
+      "accent": 0.08
+    }
+  },
+  "hard_blocks": [],
+  "result": "PASS",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z"
+}

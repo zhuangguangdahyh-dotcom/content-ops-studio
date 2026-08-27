@@ -1,0 +1,19 @@
+{
+  "status": "PASSED",
+  "product": "content-ops-studio",
+  "version": "0.1.0",
+  "artifact_filename": "content-ops-studio-0.1.0.tgz",
+  "packed_file_count": 489,
+  "package_size_bytes": 1897198,
+  "package_sha256": "3f478f1d3d9b6abb9cab32f276f3e939d006d098e1aa74bb1bbb2c9a9334e44a",
+  "canonical_content_fingerprint": "2fe01c2dd1126e37b9f46d5e3de385e0675451725bc5b8f247dfa5ac73de6702",
+  "repeated_pack_file_list_match": true,
+  "repeated_pack_content_match": true,
+  "repeated_pack_byte_match": true,
+  "repeated_pack_second_sha256": "3f478f1d3d9b6abb9cab32f276f3e939d006d098e1aa74bb1bbb2c9a9334e44a",
+  "strict_schema_count": 158,
+  "generated_typescript_count": 159,
+  "skill_count": 8,
+  "required_files_present": 12,
+  "forbidden_files": 0
+}

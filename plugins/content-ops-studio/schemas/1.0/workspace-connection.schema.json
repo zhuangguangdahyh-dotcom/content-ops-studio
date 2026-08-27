@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/workspace-connection.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Workspace connection",
+  "description": "Non-secret external workspace identifiers and verification state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provider",
+    "project_id",
+    "workspace_identifier",
+    "app_token",
+    "table_ids",
+    "field_ids",
+    "view_ids",
+    "schema_version",
+    "last_verified_at",
+    "verification_status"
+  ],
+  "properties": {
+    "provider": {
+      "type": "string",
+      "enum": ["FEISHU", "MOCK"]
+    },
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "workspace_identifier": {
+      "type": "string",
+      "minLength": 1
+    },
+    "app_token": {
+      "type": "string",
+      "minLength": 1
+    },
+    "table_ids": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projectConfig", "painpoints", "contents", "rulesAndFeedback"],
+      "properties": {
+        "projectConfig": {
+          "type": "string",
+          "minLength": 1
+        },
+        "painpoints": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contents": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rulesAndFeedback": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "field_ids": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "view_ids": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    },
+    "last_verified_at": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": ["UNVERIFIED", "VERIFIED", "FAILED"]
+    }
+  }
+}

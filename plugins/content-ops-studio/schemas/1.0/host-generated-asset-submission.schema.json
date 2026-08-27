@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/host-generated-asset-submission.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Host generated asset submission",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "submission_id",
+    "generation_id",
+    "project_id",
+    "content_id",
+    "candidate_id",
+    "source_kind",
+    "source_path",
+    "temporary_url",
+    "declared_mime_type",
+    "expected_role",
+    "host_provider",
+    "host_model",
+    "run_id",
+    "schema_version",
+    "submitted_at"
+  ],
+  "properties": {
+    "submission_id": { "type": "string", "pattern": "^HGAS-[A-Z0-9-]+$" },
+    "generation_id": { "type": "string", "pattern": "^GEN-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "candidate_id": {
+      "anyOf": [{ "type": "string", "pattern": "^VDC-[A-Z0-9-]+$" }, { "type": "null" }]
+    },
+    "source_kind": { "const": "LOCAL_FILE" },
+    "source_path": { "type": "string", "minLength": 1 },
+    "temporary_url": { "const": null },
+    "declared_mime_type": { "type": "string", "enum": ["image/png", "image/jpeg", "image/webp"] },
+    "expected_role": {
+      "type": "string",
+      "enum": ["DIRECTION_CANDIDATE", "FORMAL_FIRST_PAGE", "FORMAL_INNER_PAGE"]
+    },
+    "host_provider": { "type": "string", "minLength": 1 },
+    "host_model": { "anyOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }] },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "submitted_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  }
+}

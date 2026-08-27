@@ -1,0 +1,99 @@
+{
+  "machine": "painpoint-contentization",
+  "version": "1.0.0",
+  "states": [
+    "PAINPOINT_NOT_CONTENTIZED",
+    "PAINPOINT_CONTENT_IN_PROGRESS",
+    "PAINPOINT_CONTENT_AVAILABLE",
+    "PAINPOINT_COVERED",
+    "PAINPOINT_PAUSED"
+  ],
+  "initialStates": ["PAINPOINT_NOT_CONTENTIZED"],
+  "terminalStates": ["PAINPOINT_COVERED"],
+  "transitions": [
+    {
+      "from": "PAINPOINT_NOT_CONTENTIZED",
+      "to": "PAINPOINT_CONTENT_IN_PROGRESS",
+      "trigger": "CREATE_FORMAL_CONTENT",
+      "ownerSkill": "content-creation",
+      "requiresApprovalGate": null,
+      "requiredContext": [
+        "project_status",
+        "config_confirmation_status",
+        "painpoint_review_status"
+      ],
+      "invalidates": [],
+      "description": "PAINPOINT_NOT_CONTENTIZED to PAINPOINT_CONTENT_IN_PROGRESS"
+    },
+    {
+      "from": "PAINPOINT_CONTENT_IN_PROGRESS",
+      "to": "PAINPOINT_CONTENT_AVAILABLE",
+      "trigger": "COMPLETE_CONTENT_DRAFT",
+      "ownerSkill": "content-creation",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PAINPOINT_CONTENT_IN_PROGRESS to PAINPOINT_CONTENT_AVAILABLE"
+    },
+    {
+      "from": "PAINPOINT_CONTENT_AVAILABLE",
+      "to": "PAINPOINT_CONTENT_IN_PROGRESS",
+      "trigger": "CREATE_FORMAL_CONTENT",
+      "ownerSkill": "content-creation",
+      "requiresApprovalGate": null,
+      "requiredContext": ["painpoint_review_status"],
+      "invalidates": [],
+      "description": "PAINPOINT_CONTENT_AVAILABLE to PAINPOINT_CONTENT_IN_PROGRESS"
+    },
+    {
+      "from": "PAINPOINT_CONTENT_AVAILABLE",
+      "to": "PAINPOINT_COVERED",
+      "trigger": "MARK_PAINPOINT_COVERED",
+      "ownerSkill": "content-finalization",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PAINPOINT_CONTENT_AVAILABLE to PAINPOINT_COVERED"
+    },
+    {
+      "from": "PAINPOINT_NOT_CONTENTIZED",
+      "to": "PAINPOINT_PAUSED",
+      "trigger": "PAUSE_PAINPOINT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PAINPOINT_NOT_CONTENTIZED to PAINPOINT_PAUSED"
+    },
+    {
+      "from": "PAINPOINT_CONTENT_IN_PROGRESS",
+      "to": "PAINPOINT_PAUSED",
+      "trigger": "PAUSE_PAINPOINT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PAINPOINT_CONTENT_IN_PROGRESS to PAINPOINT_PAUSED"
+    },
+    {
+      "from": "PAINPOINT_CONTENT_AVAILABLE",
+      "to": "PAINPOINT_PAUSED",
+      "trigger": "PAUSE_PAINPOINT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PAINPOINT_CONTENT_AVAILABLE to PAINPOINT_PAUSED"
+    },
+    {
+      "from": "PAINPOINT_PAUSED",
+      "to": "PAINPOINT_NOT_CONTENTIZED",
+      "trigger": "RESUME_PAINPOINT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PAINPOINT_PAUSED to PAINPOINT_NOT_CONTENTIZED"
+    }
+  ]
+}

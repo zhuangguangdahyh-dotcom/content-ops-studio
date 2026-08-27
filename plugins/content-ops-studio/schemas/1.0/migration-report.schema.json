@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/migration-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Migration report",
+  "description": "Dry-run or applied migration outcome without destructive mutation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "migration_id",
+    "from_version",
+    "to_version",
+    "status",
+    "dry_run",
+    "changes",
+    "warnings",
+    "conflicts",
+    "unmigrated_items",
+    "input_unchanged",
+    "idempotent",
+    "started_at",
+    "completed_at",
+    "run_id",
+    "schema_version"
+  ],
+  "properties": {
+    "migration_id": {
+      "type": "string",
+      "pattern": "^MIG-[A-Z0-9.-]+$"
+    },
+    "from_version": {
+      "$ref": "common-definitions.schema.json#/$defs/semanticVersion"
+    },
+    "to_version": {
+      "$ref": "common-definitions.schema.json#/$defs/semanticVersion"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PLANNED", "NO_OP", "APPLIED", "BLOCKED", "CONFLICT"]
+    },
+    "dry_run": {
+      "type": "boolean"
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "operation", "before_present", "after_present"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "before_present": {
+            "type": "boolean"
+          },
+          "after_present": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unmigrated_items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "input_unchanged": {
+      "type": "boolean"
+    },
+    "idempotent": {
+      "type": "boolean"
+    },
+    "started_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "completed_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    }
+  }
+}

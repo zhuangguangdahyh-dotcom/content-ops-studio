@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/global-user-visual-preference.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Global user visual preference",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "preference_id",
+    "preference_version",
+    "active_rule_refs",
+    "supersedes_version",
+    "confirmed_by_operator",
+    "source_event_id",
+    "run_id",
+    "created_at",
+    "updated_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "preference_id": { "type": "string", "pattern": "^GUVP-[A-Z0-9-]+$" },
+    "preference_version": { "type": "string", "pattern": "^GUVPV-[1-9][0-9]*$" },
+    "active_rule_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^VR-[A-Z0-9-]+@[1-9][0-9]*$" },
+      "uniqueItems": true
+    },
+    "supersedes_version": {
+      "anyOf": [{ "type": "string", "pattern": "^GUVPV-[1-9][0-9]*$" }, { "type": "null" }]
+    },
+    "confirmed_by_operator": { "const": true },
+    "source_event_id": { "type": "string", "pattern": "^VFE-[A-Z0-9-]+$" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "updated_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

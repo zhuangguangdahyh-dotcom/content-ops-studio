@@ -1,0 +1,27 @@
+{
+  "manifest_version": "1.0.0",
+  "provider": "FEISHU",
+  "auth_mode": "SELF_BUILT_TENANT_APP",
+  "permissions": [
+    {
+      "scope_key": "base:app:read",
+      "display_name": "查看多维表格",
+      "purpose": "Fixture read.",
+      "required": true,
+      "operations": ["GET_WORKSPACE"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app/get"
+    }
+  ],
+  "required_for_read": ["base:app:read"],
+  "required_for_workspace_create": [],
+  "required_for_schema_write": [],
+  "required_for_record_read": [],
+  "required_for_record_write": [],
+  "required_for_view_write": [],
+  "optional_permissions": [],
+  "deferred_permissions": ["drive:file:upload"],
+  "source_snapshot_date": "2099-01-01",
+  "source_references": ["docs/research/feishu-openapi-snapshot-2026-08-24.md"],
+  "schema_version": "9.9.9",
+  "extensions": {}
+}

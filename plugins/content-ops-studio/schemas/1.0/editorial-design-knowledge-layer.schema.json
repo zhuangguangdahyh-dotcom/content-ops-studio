@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/editorial-design-knowledge-layer.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Editorial design knowledge layer",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "layer_id",
+    "layer_type",
+    "knowledge_id",
+    "knowledge_version",
+    "source_manifest_id",
+    "principles",
+    "design_grammar",
+    "page_design_intents",
+    "cover_inner_page_separation",
+    "non_template",
+    "runtime_browsing",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "layer_id": { "const": "EDITORIAL_DESIGN_KNOWLEDGE_LAYER" },
+    "layer_type": { "const": "KNOWLEDGE_NOT_TEMPLATE" },
+    "knowledge_id": { "const": "EDITORIAL_DESIGN_KNOWLEDGE_V1" },
+    "knowledge_version": { "const": "1.0.0" },
+    "source_manifest_id": { "type": "string", "pattern": "^EDKSM-[A-Z0-9-]+$" },
+    "principles": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/principle" }
+    },
+    "design_grammar": {
+      "type": "array",
+      "minItems": 10,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "page_design_intents": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/pageDesignIntent" }
+    },
+    "cover_inner_page_separation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cover_task",
+        "content_task",
+        "cover_scale_not_inherited_by_content",
+        "content_density_not_inherited_by_cover"
+      ],
+      "properties": {
+        "cover_task": { "type": "string", "minLength": 1 },
+        "content_task": { "type": "string", "minLength": 1 },
+        "cover_scale_not_inherited_by_content": { "const": true },
+        "content_density_not_inherited_by_cover": { "const": true }
+      }
+    },
+    "non_template": { "const": true },
+    "runtime_browsing": { "const": false },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "principle": {
+      "type": "string",
+      "enum": [
+        "SYSTEM_BEFORE_STYLE",
+        "CONSISTENCY_IS_SYSTEM_NOT_SAMENESS",
+        "HIERARCHY_BEFORE_DECORATION",
+        "FORM_BEFORE_COLOR",
+        "NEGATIVE_SPACE_IS_ACTIVE",
+        "TYPE_IS_VISUAL_FORM",
+        "IMAGE_AND_TYPE_MUST_DIALOGUE",
+        "CONTROLLED_TENSION",
+        "GRID_IS_SCAFFOLD_NOT_CAGE",
+        "RESTRAINT_IS_EDITING"
+      ]
+    },
+    "pageDesignIntent": {
+      "type": "string",
+      "enum": [
+        "COVER_ENTRY",
+        "CONTENT_EDITORIAL",
+        "EVIDENCE_PAGE",
+        "DIAGNOSTIC_PAGE",
+        "SUMMARY_PAGE",
+        "CTA_PAGE"
+      ]
+    }
+  }
+}

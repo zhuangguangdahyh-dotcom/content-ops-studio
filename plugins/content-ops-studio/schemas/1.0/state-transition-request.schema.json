@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/state-transition-request.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "State transition request",
+  "description": "Complete deterministic transition evaluation input.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "machine",
+    "from_state",
+    "to_state",
+    "trigger",
+    "actor_skill",
+    "project_id",
+    "target_type",
+    "target_id",
+    "target_version",
+    "approval_event",
+    "current_context",
+    "available_artifacts",
+    "requested_at",
+    "run_id",
+    "schema_version"
+  ],
+  "properties": {
+    "machine": {
+      "$ref": "common-definitions.schema.json#/$defs/machineName"
+    },
+    "from_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "to_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "trigger": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor_skill": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "target_type": {
+      "type": "string",
+      "enum": ["PROJECT", "PAINPOINT_BATCH", "PAINPOINT", "CONTENT", "IMAGE_SET", "RULE", "RUN"]
+    },
+    "target_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approval_event": {
+      "anyOf": [
+        {
+          "$ref": "approval-event.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "current_context": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    },
+    "available_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact_type", "artifact_id", "version", "status"],
+        "properties": {
+          "artifact_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "artifact_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "requested_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    }
+  }
+}

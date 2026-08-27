@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/feishu-permission-manifest.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Feishu Permission Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_version",
+    "provider",
+    "auth_mode",
+    "permissions",
+    "required_for_read",
+    "required_for_workspace_create",
+    "required_for_schema_write",
+    "required_for_record_read",
+    "required_for_record_write",
+    "required_for_view_write",
+    "optional_permissions",
+    "deferred_permissions",
+    "source_snapshot_date",
+    "source_references",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "manifest_version": { "const": "1.0.0" },
+    "provider": { "const": "FEISHU" },
+    "auth_mode": { "const": "SELF_BUILT_TENANT_APP" },
+    "permissions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/permission" } },
+    "required_for_read": { "$ref": "#/$defs/scopes" },
+    "required_for_workspace_create": { "$ref": "#/$defs/scopes" },
+    "required_for_schema_write": { "$ref": "#/$defs/scopes" },
+    "required_for_record_read": { "$ref": "#/$defs/scopes" },
+    "required_for_record_write": { "$ref": "#/$defs/scopes" },
+    "required_for_view_write": { "$ref": "#/$defs/scopes" },
+    "optional_permissions": { "$ref": "#/$defs/scopes" },
+    "deferred_permissions": { "$ref": "#/$defs/scopes" },
+    "source_snapshot_date": { "type": "string", "format": "date" },
+    "source_references": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "schema_version": { "const": "1.0.0" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "scopes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_.-]*(?::[a-z][a-z0-9_.-]*)+$" }
+    },
+    "permission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope_key",
+        "display_name",
+        "purpose",
+        "required",
+        "operations",
+        "official_source"
+      ],
+      "properties": {
+        "scope_key": { "type": "string", "pattern": "^[a-z][a-z0-9_.-]*(?::[a-z][a-z0-9_.-]*)+$" },
+        "display_name": { "type": "string", "minLength": 1 },
+        "purpose": { "type": "string", "minLength": 1 },
+        "required": { "type": "boolean" },
+        "operations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]+$" }
+        },
+        "official_source": { "type": "string", "pattern": "^https://open\\.feishu\\.cn/" }
+      }
+    }
+  }
+}

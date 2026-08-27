@@ -1,0 +1,58 @@
+{
+  "angle_decision_id": "INVALID-ID",
+  "content_creation_plan_id": "CPL-DEMO-001",
+  "candidates": [
+    {
+      "candidate_id": "AC-01",
+      "angle_name": "Decision checklist",
+      "angle_code": "DECISION",
+      "premise": "Use one fictional evidence-grounded premise.",
+      "target_emotion_or_decision": "Reduce uncertainty.",
+      "subject_advantage_fit": "Transparent process.",
+      "evidence_coverage": "E-0001",
+      "content_value": "Decision value.",
+      "expected_structure": "CHECKLIST",
+      "duplication_risk": "LOW",
+      "strengths": ["Focused"],
+      "limitations": ["Fixture only"]
+    },
+    {
+      "candidate_id": "AC-02",
+      "angle_name": "Risk diagnosis",
+      "angle_code": "RISK",
+      "premise": "Use one fictional evidence-grounded premise.",
+      "target_emotion_or_decision": "Reduce uncertainty.",
+      "subject_advantage_fit": "Transparent process.",
+      "evidence_coverage": "E-0001",
+      "content_value": "Decision value.",
+      "expected_structure": "DIAGNOSIS",
+      "duplication_risk": "LOW",
+      "strengths": ["Focused"],
+      "limitations": ["Fixture only"]
+    },
+    {
+      "candidate_id": "AC-03",
+      "angle_name": "Misconception",
+      "angle_code": "MISCONCEPTION",
+      "premise": "Use one fictional evidence-grounded premise.",
+      "target_emotion_or_decision": "Reduce uncertainty.",
+      "subject_advantage_fit": "Transparent process.",
+      "evidence_coverage": "E-0001",
+      "content_value": "Decision value.",
+      "expected_structure": "MISCONCEPTION",
+      "duplication_risk": "LOW",
+      "strengths": ["Focused"],
+      "limitations": ["Fixture only"]
+    }
+  ],
+  "selected_candidate_id": "AC-01",
+  "selection_rationale": "The checklist offers the clearest decision value.",
+  "historical_angles": [],
+  "recent_structure_usage": [],
+  "user_fixed_angle": null,
+  "user_rejected_angles": [],
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

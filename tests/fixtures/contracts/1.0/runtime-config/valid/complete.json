@@ -1,0 +1,61 @@
+{
+  "runtime_mode": "MOCK",
+  "content_ops_home": "/fixture/content-ops-home",
+  "plugin_root": "/fixture/plugin-root",
+  "schema_version": "1.0.0",
+  "workspace_adapter": {
+    "implementation": "local-mock-workspace",
+    "capability_status": "MOCK_ONLY"
+  },
+  "research_adapter": {
+    "implementation": "mock-research",
+    "capability_status": "MOCK_ONLY"
+  },
+  "image_adapter": {
+    "implementation": "mock-image-generation",
+    "capability_status": "MOCK_ONLY"
+  },
+  "renderer_adapter": {
+    "implementation": "mock-renderer",
+    "capability_status": "MOCK_ONLY"
+  },
+  "asset_store": {
+    "implementation": "temporary-filesystem",
+    "capability_status": "MOCK_ONLY"
+  },
+  "strict_mode": true,
+  "allow_fixture_workflows": true,
+  "allow_mock_adapters": true,
+  "allow_external_network": false,
+  "required_runtime_policy": {
+    "policy_version": "1.0.0",
+    "runtime_name": "node",
+    "supported_range": ">=24 <25",
+    "primary_major": 24
+  },
+  "enforce_supported_runtime": true,
+  "allow_unclaimed_runtime": false,
+  "lock_timeout_ms": 30000,
+  "stale_lock_threshold_ms": 120000,
+  "checkpoint_policy": {
+    "enabled": true,
+    "verify_after_write": true,
+    "fsync": "REQUIRED_WHERE_SUPPORTED"
+  },
+  "journal_policy": {
+    "enabled": true,
+    "verify_after_write": true,
+    "fsync": "REQUIRED_WHERE_SUPPORTED"
+  },
+  "log_redaction": {
+    "enabled": true,
+    "blocked_keys": ["access_token", "authorization", "app_secret", "api_key", "signed_url"]
+  },
+  "file_permissions": {
+    "project_directory": "0700",
+    "sensitive_json": "0600",
+    "report": "0644"
+  },
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "extensions": {}
+}

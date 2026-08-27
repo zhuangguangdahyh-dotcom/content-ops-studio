@@ -1,0 +1,13 @@
+{
+  "implementationStatus": "scaffold",
+  "skills": {
+    "content-studio-router": ["project-registry", "state-validator"],
+    "project-initialization": ["workspace-adapter", "asset-store"],
+    "painpoint-research": ["workspace-adapter", "research-adapter"],
+    "content-creation": ["workspace-adapter", "title-counter"],
+    "visual-planning": ["workspace-adapter", "pack-loader"],
+    "image-set-production": ["image-adapter", "renderer", "asset-store"],
+    "content-finalization": ["workspace-adapter", "asset-store", "validator"],
+    "project-learning": ["workspace-adapter", "rule-compiler"]
+  }
+}

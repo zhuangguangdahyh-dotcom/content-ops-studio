@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-direction-candidate-set.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual direction candidate set",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidate_set_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "source_visual_plan_version",
+    "status",
+    "candidates",
+    "material_difference_verified",
+    "formal_delivery_count",
+    "feishu_formal_write_count",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "candidate_set_id": { "type": "string", "pattern": "^VDCS-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "source_visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "status": {
+      "type": "string",
+      "enum": ["PLANNED", "GENERATING", "AWAITING_USER_SELECTION", "SELECTED", "BLOCKED"]
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 3,
+      "items": { "$ref": "#/$defs/candidate" }
+    },
+    "material_difference_verified": { "const": true },
+    "formal_delivery_count": { "const": 0 },
+    "feishu_formal_write_count": { "const": 0 },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "asset_id",
+        "asset_channel",
+        "visual_mode",
+        "composition_summary",
+        "palette",
+        "typography_character",
+        "asset",
+        "quality_score",
+        "hard_blocks",
+        "host_imagegen",
+        "renderer",
+        "delivery_role"
+      ],
+      "properties": {
+        "candidate_id": { "type": "string", "pattern": "^VDC-[A-Z0-9-]+$" },
+        "asset_id": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+        "asset_channel": { "$ref": "industry-visual-pack.schema.json#/$defs/assetChannel" },
+        "visual_mode": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+        "composition_summary": { "type": "string", "minLength": 1 },
+        "palette": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+        },
+        "typography_character": { "type": "string", "minLength": 1 },
+        "asset": { "$ref": "common-definitions.schema.json#/$defs/assetReference" },
+        "quality_score": { "type": "integer", "minimum": 75, "maximum": 100 },
+        "hard_blocks": { "type": "array", "maxItems": 0 },
+        "host_imagegen": { "type": "boolean" },
+        "renderer": { "type": "boolean" },
+        "delivery_role": { "const": "DIRECTION_CANDIDATE_ONLY" }
+      }
+    }
+  }
+}

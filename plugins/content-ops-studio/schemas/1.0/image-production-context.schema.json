@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/image-production-context.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Image production context",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "context_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "page_count",
+    "project_visual_profile_maturity",
+    "direction_selection_status",
+    "host_imagegen_capability",
+    "industry_pack_binding",
+    "overlay_bindings",
+    "rejected_directions",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "context_id": { "type": "string", "pattern": "^IPC-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "page_count": { "type": "integer", "minimum": 1 },
+    "project_visual_profile_maturity": {
+      "type": "string",
+      "enum": ["UNMATURE", "MATURE", "UNAVAILABLE"]
+    },
+    "direction_selection_status": {
+      "type": "string",
+      "enum": ["REQUIRED", "AWAITING_USER_SELECTION", "SELECTED", "SKIPPED_EXPLICIT_DIRECTION"]
+    },
+    "host_imagegen_capability": {
+      "type": "string",
+      "enum": ["READY", "UNAVAILABLE", "UNVERIFIED"]
+    },
+    "industry_pack_binding": { "$ref": "industry-visual-pack.schema.json#/$defs/packBinding" },
+    "overlay_bindings": {
+      "type": "array",
+      "items": { "$ref": "industry-visual-pack.schema.json#/$defs/overlayBinding" },
+      "uniqueItems": true
+    },
+    "rejected_directions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  }
+}

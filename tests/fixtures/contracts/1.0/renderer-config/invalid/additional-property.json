@@ -1,0 +1,36 @@
+{
+  "renderer_config_id": "RCFG-PHASE4B-001",
+  "renderer_id": "PLAYWRIGHT_HTML_CSS",
+  "renderer_version": "1.0.0",
+  "runtime_package": "playwright-core",
+  "runtime_package_version": "1.62.1",
+  "browser_family": "CHROMIUM",
+  "browser_channel": "PLAYWRIGHT_MANAGED",
+  "browser_path_reference": "EXTERNAL_RENDERER_CACHE",
+  "headless": true,
+  "viewport": {
+    "width": 1242,
+    "height": 1660
+  },
+  "device_scale_factor": 1,
+  "locale": "zh-CN",
+  "timezone": "Asia/Shanghai",
+  "color_scheme": "light",
+  "reduced_motion": "reduce",
+  "screenshot_options": {
+    "type": "png",
+    "animations": "disabled",
+    "caret": "hide",
+    "scale": "css",
+    "omit_background": false
+  },
+  "network_policy": "BLOCK_ALL",
+  "font_policy": "SYSTEM_CJK_STACK",
+  "animation_policy": "DISABLED",
+  "time_policy": "NO_DYNAMIC_TIME",
+  "random_policy": "NO_RANDOM_VALUES",
+  "timeout_ms": 30000,
+  "schema_version": "1.0.0",
+  "extensions": {},
+  "unexpected": true
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/feishu-provisioning-state.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Feishu Provisioning State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provisioning_id",
+    "project_id",
+    "run_id",
+    "base_creation_status",
+    "app_token_reference",
+    "table_states",
+    "field_states",
+    "relation_states",
+    "view_states",
+    "record_states",
+    "current_phase",
+    "completed_operations",
+    "failed_operations",
+    "pending_operations",
+    "remote_identifiers",
+    "mapping_version",
+    "journal_head",
+    "write_log_head",
+    "checkpoint_id",
+    "overall_status",
+    "created_at",
+    "updated_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "provisioning_id": { "type": "string", "pattern": "^FPS-[A-Z0-9-]+$" },
+    "project_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "base_creation_status": {
+      "enum": [
+        "NOT_STARTED",
+        "CREATED_UNVERIFIED",
+        "VERIFIED",
+        "ADOPTED",
+        "ORPHAN_CANDIDATE",
+        "FAILED"
+      ]
+    },
+    "app_token_reference": { "type": ["string", "null"], "pattern": "^project-secret-reference:" },
+    "table_states": { "$ref": "#/$defs/states" },
+    "field_states": { "$ref": "#/$defs/states" },
+    "relation_states": { "$ref": "#/$defs/states" },
+    "view_states": { "$ref": "#/$defs/states" },
+    "record_states": { "$ref": "#/$defs/states" },
+    "current_phase": { "type": "integer", "minimum": 0, "maximum": 13 },
+    "completed_operations": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "failed_operations": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "pending_operations": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "remote_identifiers": {
+      "type": "object",
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "mapping_version": { "type": "integer", "minimum": 1 },
+    "journal_head": { "type": ["string", "null"] },
+    "write_log_head": { "type": ["string", "null"] },
+    "checkpoint_id": { "type": ["string", "null"] },
+    "overall_status": {
+      "enum": [
+        "PLANNED",
+        "IN_PROGRESS",
+        "AWAITING_APPROVAL",
+        "SUCCESS",
+        "BLOCKED",
+        "FAILED",
+        "CONFLICT"
+      ]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "schema_version": { "const": "1.0.0" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "states": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["logical_key", "status", "remote_reference"],
+        "properties": {
+          "logical_key": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["PENDING", "CREATED", "ADOPTED", "VERIFIED", "FAILED", "CONFLICT"] },
+          "remote_reference": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

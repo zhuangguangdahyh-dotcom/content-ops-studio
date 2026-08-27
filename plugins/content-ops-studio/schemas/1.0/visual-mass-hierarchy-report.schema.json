@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-mass-hierarchy-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual mass hierarchy report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "candidate_id",
+    "page_design_intent",
+    "primary",
+    "secondary",
+    "tertiary",
+    "clear_primary",
+    "hard_blocks",
+    "result",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^VMHR-[A-Z0-9-]+$" },
+    "candidate_id": { "type": "string", "minLength": 1 },
+    "page_design_intent": {
+      "$ref": "editorial-design-knowledge-layer.schema.json#/$defs/pageDesignIntent"
+    },
+    "primary": { "$ref": "#/$defs/mass" },
+    "secondary": { "$ref": "#/$defs/mass" },
+    "tertiary": { "$ref": "#/$defs/mass" },
+    "clear_primary": { "type": "boolean" },
+    "hard_blocks": {
+      "type": "array",
+      "items": { "$ref": "cover-attention-dominance-report.schema.json#/$defs/errorCode" },
+      "uniqueItems": true
+    },
+    "result": { "type": "string", "enum": ["PASS", "BLOCKED"] },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "mass": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "mass_score"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "mass_score": { "type": "number", "minimum": 0 }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "manifest_version": "1.0.0",
+  "product": "content-ops-studio",
+  "version": "0.1.0",
+  "package_kind": "LOCAL_CODEX_PLUGIN_RELEASE",
+  "included": [
+    "package metadata",
+    "Plugin manifest and MCP configuration",
+    "eight Skills and their references",
+    "bundled STDIO MCP runtime",
+    "strict Schemas and required configs",
+    "packs, templates and Plugin references",
+    "generated TypeScript contracts",
+    "README, Quick Start, environment, changelog, security, privacy, MIT license and third-party notices"
+  ],
+  "excluded": [
+    "node_modules and package-manager caches",
+    "environment and secret files",
+    "external Project Homes and runtime data",
+    "temporary renders, coverage and debug output",
+    "Playwright browser binaries",
+    "repository reports and historical calibration raster evidence",
+    "Git internals and release staging directories",
+    "personal assets and personal absolute paths"
+  ],
+  "image_production_skill_v1": "PRODUCTION_READY / FROZEN_FOR_V1",
+  "feishu_metadata_sync": "PARTIAL",
+  "feishu_attachment_upload": "DEFERRED",
+  "license": "MIT"
+}

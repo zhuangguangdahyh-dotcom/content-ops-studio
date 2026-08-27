@@ -1,0 +1,20 @@
+{
+  "name": "content-ops-studio-local",
+  "interface": {
+    "displayName": "Content Ops Studio Local"
+  },
+  "plugins": [
+    {
+      "name": "content-ops-studio",
+      "source": {
+        "source": "local",
+        "path": "./plugins/content-ops-studio"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

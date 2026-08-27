@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/project-lock.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Project lock",
+  "description": "Auditable project write-lock state without raw device identity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lock_id",
+    "project_id",
+    "run_id",
+    "owner_process_id",
+    "owner_host_label",
+    "acquired_at",
+    "expires_at",
+    "last_heartbeat_at",
+    "lock_version",
+    "status",
+    "recovery_reason",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "lock_id": { "type": "string", "pattern": "^LOCK-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "owner_process_id": { "type": "string", "pattern": "^PROC-[A-Z0-9-]+$" },
+    "owner_host_label": { "type": "string", "pattern": "^HOST-[A-Z0-9-]+$" },
+    "acquired_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "expires_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "last_heartbeat_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "lock_version": { "type": "integer", "minimum": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["LOCK_ACTIVE", "LOCK_RELEASED", "LOCK_STALE", "LOCK_RECOVERED"]
+    },
+    "recovery_reason": { "type": ["string", "null"] },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "migration_id": "MIG-1.0.0-TO-1.0.0",
+  "from_version": "1.0.0",
+  "to_version": "1.0.0",
+  "classification": "PATCH",
+  "description": "Honest Phase 1A baseline no-op migration.",
+  "operations": [
+    {
+      "operation": "NO_OP",
+      "path": "/",
+      "target_path": null,
+      "details": "No data change."
+    }
+  ],
+  "warnings": [],
+  "preserves_history": true,
+  "default_dry_run": true,
+  "schema_version": "1.0.0"
+}

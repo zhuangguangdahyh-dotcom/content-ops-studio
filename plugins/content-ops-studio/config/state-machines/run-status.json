@@ -1,0 +1,191 @@
+{
+  "machine": "run-status",
+  "version": "1.0.0",
+  "states": [
+    "RUN_CREATED",
+    "RUN_PREFLIGHT",
+    "RUNNING",
+    "AWAITING_APPROVAL",
+    "RUN_PARTIAL",
+    "RUN_BLOCKED",
+    "RUN_CONFLICT",
+    "RUN_FAILED",
+    "RUN_CANCELLED",
+    "RUN_SUCCEEDED",
+    "RUN_RESUMING"
+  ],
+  "initialStates": ["RUN_CREATED"],
+  "terminalStates": ["RUN_CANCELLED", "RUN_SUCCEEDED"],
+  "transitions": [
+    {
+      "from": "RUN_CREATED",
+      "to": "RUN_PREFLIGHT",
+      "trigger": "START_PREFLIGHT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUN_CREATED to RUN_PREFLIGHT"
+    },
+    {
+      "from": "RUN_PREFLIGHT",
+      "to": "RUNNING",
+      "trigger": "START_PAINPOINT_RESEARCH",
+      "ownerSkill": "painpoint-research",
+      "requiresApprovalGate": null,
+      "requiredContext": ["project_status", "config_confirmation_status"],
+      "invalidates": [],
+      "description": "RUN_PREFLIGHT to RUNNING"
+    },
+    {
+      "from": "RUN_PREFLIGHT",
+      "to": "RUNNING",
+      "trigger": "PASS_PREFLIGHT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUN_PREFLIGHT to RUNNING"
+    },
+    {
+      "from": "RUN_PREFLIGHT",
+      "to": "RUN_BLOCKED",
+      "trigger": "BLOCK_PREFLIGHT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUN_PREFLIGHT to RUN_BLOCKED"
+    },
+    {
+      "from": "RUNNING",
+      "to": "AWAITING_APPROVAL",
+      "trigger": "REQUEST_APPROVAL",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUNNING to AWAITING_APPROVAL"
+    },
+    {
+      "from": "RUNNING",
+      "to": "RUN_PARTIAL",
+      "trigger": "COMPLETE_PARTIAL",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUNNING to RUN_PARTIAL"
+    },
+    {
+      "from": "RUNNING",
+      "to": "RUN_BLOCKED",
+      "trigger": "BLOCK_RUN",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUNNING to RUN_BLOCKED"
+    },
+    {
+      "from": "RUNNING",
+      "to": "RUN_CONFLICT",
+      "trigger": "DETECT_CONFLICT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUNNING to RUN_CONFLICT"
+    },
+    {
+      "from": "RUNNING",
+      "to": "RUN_FAILED",
+      "trigger": "FAIL_RUN",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUNNING to RUN_FAILED"
+    },
+    {
+      "from": "RUNNING",
+      "to": "RUN_CANCELLED",
+      "trigger": "CANCEL_RUN",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUNNING to RUN_CANCELLED"
+    },
+    {
+      "from": "RUNNING",
+      "to": "RUN_SUCCEEDED",
+      "trigger": "COMPLETE_RUN",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUNNING to RUN_SUCCEEDED"
+    },
+    {
+      "from": "AWAITING_APPROVAL",
+      "to": "RUN_RESUMING",
+      "trigger": "RECEIVE_APPROVAL",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "AWAITING_APPROVAL to RUN_RESUMING"
+    },
+    {
+      "from": "RUN_PARTIAL",
+      "to": "RUN_RESUMING",
+      "trigger": "RESUME_RUN",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUN_PARTIAL to RUN_RESUMING"
+    },
+    {
+      "from": "RUN_BLOCKED",
+      "to": "RUN_RESUMING",
+      "trigger": "RESUME_RUN",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUN_BLOCKED to RUN_RESUMING"
+    },
+    {
+      "from": "RUN_CONFLICT",
+      "to": "RUN_RESUMING",
+      "trigger": "RESOLVE_CONFLICT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUN_CONFLICT to RUN_RESUMING"
+    },
+    {
+      "from": "RUN_FAILED",
+      "to": "RUN_RESUMING",
+      "trigger": "RETRY_RUN",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUN_FAILED to RUN_RESUMING"
+    },
+    {
+      "from": "RUN_RESUMING",
+      "to": "RUNNING",
+      "trigger": "CONTINUE_RUN",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RUN_RESUMING to RUNNING"
+    }
+  ]
+}

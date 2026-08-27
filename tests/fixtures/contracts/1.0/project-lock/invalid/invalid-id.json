@@ -1,0 +1,15 @@
+{
+  "lock_id": "LOCK-DEMO-001",
+  "project_id": "INVALID-ID",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "owner_process_id": "PROC-DEMO-001",
+  "owner_host_label": "HOST-DEMO",
+  "acquired_at": "2099-01-01T01:02:03.000Z",
+  "expires_at": "2099-01-01T01:04:03.000Z",
+  "last_heartbeat_at": "2099-01-01T01:02:03.000Z",
+  "lock_version": 1,
+  "status": "LOCK_ACTIVE",
+  "recovery_reason": null,
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

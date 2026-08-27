@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/qa-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "QA report",
+  "description": "Four-layer content, visual, file, and data quality report.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "qa_report_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "style_lock_version",
+    "qa_scope",
+    "checks",
+    "content_checks",
+    "visual_checks",
+    "file_checks",
+    "data_checks",
+    "blocking_failure_count",
+    "warning_count",
+    "passed_count",
+    "overall_status",
+    "ready_for_final_approval",
+    "checked_assets",
+    "checked_manifests",
+    "run_id",
+    "schema_version",
+    "started_at",
+    "completed_at",
+    "extensions"
+  ],
+  "properties": {
+    "qa_report_id": { "type": "string", "pattern": "^RPT-QA-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "style_lock_version": {
+      "anyOf": [
+        { "$ref": "common-definitions.schema.json#/$defs/styleLockVersion" },
+        { "type": "null" }
+      ]
+    },
+    "qa_scope": { "type": "string", "enum": ["FIRST_PAGE", "PAGE", "FINAL_SET"] },
+    "checks": {
+      "type": "array",
+      "minItems": 4,
+      "items": { "$ref": "common-definitions.schema.json#/$defs/checkResult" }
+    },
+    "content_checks": { "$ref": "#/$defs/checkArray" },
+    "visual_checks": { "$ref": "#/$defs/checkArray" },
+    "file_checks": { "$ref": "#/$defs/checkArray" },
+    "data_checks": { "$ref": "#/$defs/checkArray" },
+    "blocking_failure_count": { "type": "integer", "minimum": 0 },
+    "warning_count": { "type": "integer", "minimum": 0 },
+    "passed_count": { "type": "integer", "minimum": 0 },
+    "overall_status": {
+      "type": "string",
+      "enum": ["QA_PENDING", "QA_RUNNING", "QA_PASSED", "QA_PASSED_WITH_WARNINGS", "QA_FAILED"]
+    },
+    "ready_for_final_approval": { "type": "boolean" },
+    "checked_assets": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/assetReference" }
+    },
+    "checked_manifests": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "started_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "completed_at": {
+      "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/timestamp" }, { "type": "null" }]
+    },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "checkArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common-definitions.schema.json#/$defs/checkResult" }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "report_id": "PSCR-CAL-SPACE-001-D",
+  "project_id": "CAL-COMMERCIAL-SPACE-001",
+  "content_id": "C-9001",
+  "candidate_id": "CCC-CAL-SPACE-001-D",
+  "conversion_strategy": "PAINPOINT_FIRST",
+  "relation": "DIRECTLY_SUPPORTS_PAINPOINT",
+  "painpoint_statement": "The storefront fails to communicate category, positioning and entrance at first glance.",
+  "visible_scene_evidence": [
+    "Weak category identification",
+    "Recessed entrance",
+    "Low-presence fascia"
+  ],
+  "diagnostic_markers": [],
+  "dimensions": [
+    {
+      "dimension": "VISIBLE_PAINPOINT_EVIDENCE",
+      "weight": 30,
+      "score": 28,
+      "reason": "VISIBLE_PAINPOINT_EVIDENCE is visible and not inferred after the fact."
+    },
+    {
+      "dimension": "COPY_SCENE_RELATION",
+      "weight": 25,
+      "score": 23,
+      "reason": "COPY_SCENE_RELATION is visible and not inferred after the fact."
+    },
+    {
+      "dimension": "BUSINESS_SCENE_RECOGNITION",
+      "weight": 20,
+      "score": 19,
+      "reason": "BUSINESS_SCENE_RECOGNITION is visible and not inferred after the fact."
+    },
+    {
+      "dimension": "CONTRAST_OR_DIAGNOSTIC_VALIDITY",
+      "weight": 25,
+      "score": 22,
+      "reason": "CONTRAST_OR_DIAGNOSTIC_VALIDITY is visible and not inferred after the fact."
+    }
+  ],
+  "total_score": 92,
+  "threshold": 85,
+  "hard_blocks": [],
+  "result": "PASS_PENDING_OPERATOR",
+  "operator_approval_required": true,
+  "run_id": "RUN-20990101-010203-R021",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

@@ -1,0 +1,318 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/calibration-remaining-page-production.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0; historical pre-ADR-0054 calibration evidence only, not a future formal full-set continuity contract",
+  "title": "Calibration remaining-page production",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "production_id",
+    "project_ref",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "first_page_version",
+    "first_page_asset_id",
+    "first_page_checksum",
+    "g4_approval_id",
+    "style_lock_id",
+    "style_lock_version",
+    "rhythm_plan",
+    "page_reports",
+    "space_identity_continuity",
+    "group_editorial_rhythm",
+    "group_color_rhythm",
+    "group_qa",
+    "contact_sheets",
+    "remaining_pages_planned",
+    "remaining_pages_generated",
+    "total_pages",
+    "imagegen_calls",
+    "renderer_calls",
+    "feishu_writes",
+    "production_workspace_write_eligible",
+    "status",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "production_id": { "type": "string", "pattern": "^CRPP-[A-Z0-9-]+$" },
+    "project_ref": { "$ref": "project-reference.schema.json" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "first_page_version": { "type": "string", "pattern": "^FPV-[1-9][0-9]*$" },
+    "first_page_asset_id": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+    "first_page_checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "g4_approval_id": { "type": "string", "pattern": "^APR-[A-Z0-9-]+$" },
+    "style_lock_id": { "type": "string", "pattern": "^CSL2-[A-Z0-9-]+$" },
+    "style_lock_version": { "type": "string", "pattern": "^SLV-[1-9][0-9]*$" },
+    "rhythm_plan": { "$ref": "#/$defs/rhythmPlan" },
+    "page_reports": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/pageReport" }
+    },
+    "space_identity_continuity": { "$ref": "#/$defs/passEvidence" },
+    "group_editorial_rhythm": { "$ref": "#/$defs/editorialRhythm" },
+    "group_color_rhythm": { "$ref": "#/$defs/colorRhythm" },
+    "group_qa": { "$ref": "#/$defs/groupQa" },
+    "contact_sheets": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "$ref": "#/$defs/assetRef" }
+    },
+    "remaining_pages_planned": { "const": 5 },
+    "remaining_pages_generated": { "const": 5 },
+    "total_pages": { "const": 6 },
+    "imagegen_calls": { "type": "integer", "minimum": 0 },
+    "renderer_calls": { "type": "integer", "minimum": 5 },
+    "feishu_writes": { "const": 0 },
+    "production_workspace_write_eligible": { "const": false },
+    "status": { "const": "G5_READY" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "assetRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["asset_ref", "checksum", "width", "height"],
+      "properties": {
+        "asset_ref": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+        "checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "passEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "basis", "hard_blocks"],
+      "properties": {
+        "status": { "const": "PASSED" },
+        "basis": { "type": "array", "minItems": 3, "items": { "type": "string", "minLength": 1 } },
+        "hard_blocks": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "rhythmPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["plan_id", "pages", "status"],
+      "properties": {
+        "plan_id": { "type": "string", "pattern": "^GERP-[A-Z0-9-]+$" },
+        "pages": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": { "$ref": "#/$defs/rhythmPage" }
+        },
+        "status": { "const": "EXECUTED" }
+      }
+    },
+    "rhythmPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "page_number",
+        "page_intent",
+        "page_role",
+        "composition_family",
+        "visual_intensity",
+        "information_density",
+        "image_dominance",
+        "typography_scale",
+        "color_intensity",
+        "rhythm_role",
+        "reading_path",
+        "visual_motif",
+        "continuity_requirements"
+      ],
+      "properties": {
+        "page_number": { "type": "integer", "minimum": 1, "maximum": 6 },
+        "page_intent": { "type": "string", "minLength": 1 },
+        "page_role": { "$ref": "common-definitions.schema.json#/$defs/pageRole" },
+        "composition_family": { "type": "string", "minLength": 1 },
+        "visual_intensity": { "enum": ["HIGH", "MEDIUM", "LOW"] },
+        "information_density": { "enum": ["HIGH", "MEDIUM", "LOW"] },
+        "image_dominance": { "enum": ["HIGH", "MEDIUM", "LOW"] },
+        "typography_scale": {
+          "enum": ["COVER", "CONTENT_LARGE", "CONTENT_MEDIUM", "CONTENT_SMALL"]
+        },
+        "color_intensity": { "enum": ["HIGH", "MEDIUM", "LOW"] },
+        "rhythm_role": { "enum": ["OPEN", "BUILD", "PAUSE", "ACCELERATE", "PROVE", "RESOLVE"] },
+        "reading_path": { "type": "string", "minLength": 1 },
+        "visual_motif": { "type": "string", "minLength": 1 },
+        "continuity_requirements": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "pageReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "page_number",
+        "page_role",
+        "page_intent",
+        "composition_family",
+        "visual_intensity",
+        "asset_source",
+        "asset",
+        "thumbnail_310",
+        "thumbnail_186",
+        "copy_hash",
+        "single_page_qa",
+        "scores",
+        "hard_blocks",
+        "status"
+      ],
+      "properties": {
+        "page_number": { "type": "integer", "minimum": 2, "maximum": 6 },
+        "page_role": { "$ref": "common-definitions.schema.json#/$defs/pageRole" },
+        "page_intent": { "type": "string", "minLength": 1 },
+        "composition_family": { "type": "string", "minLength": 1 },
+        "visual_intensity": { "enum": ["HIGH", "MEDIUM", "LOW"] },
+        "asset_source": { "const": "VERIFIED_MASTER_ASSET_CROP" },
+        "asset": { "$ref": "#/$defs/assetRef" },
+        "thumbnail_310": { "$ref": "#/$defs/assetRef" },
+        "thumbnail_186": { "$ref": "#/$defs/assetRef" },
+        "copy_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+        "single_page_qa": {
+          "type": "array",
+          "minItems": 15,
+          "maxItems": 15,
+          "items": { "$ref": "#/$defs/qaCheck" }
+        },
+        "scores": { "$ref": "#/$defs/pageScores" },
+        "hard_blocks": { "type": "array", "maxItems": 0 },
+        "status": { "const": "PASSED" }
+      }
+    },
+    "qaCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check", "result"],
+      "properties": {
+        "check": {
+          "enum": [
+            "AUTHENTICITY",
+            "MECHANICAL_QA",
+            "COPY_FIDELITY",
+            "TYPOGRAPHY_POLICY",
+            "TYPOGRAPHY_SPATIAL_INTEGRITY",
+            "TYPOGRAPHY_BREATHING_ROOM",
+            "RASTER_TEXT_BACKGROUND_CONTRAST_INTEGRITY",
+            "CONTRAST_STABILITY",
+            "BACKGROUND_COMPLEXITY",
+            "SEMANTIC_RELEVANCE",
+            "PAGE_INTENT_FIT",
+            "EDITORIAL_SPATIAL",
+            "IMAGE_TEXT_INTEGRATION",
+            "IMAGE_QUALITY",
+            "ACTUAL_PIXEL_INSPECTION"
+          ]
+        },
+        "result": { "const": "PASS" }
+      }
+    },
+    "pageScores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["editorial_spatial", "image_text_integration", "image_quality"],
+      "properties": {
+        "editorial_spatial": { "type": "integer", "minimum": 85, "maximum": 100 },
+        "image_text_integration": { "type": "integer", "minimum": 85, "maximum": 100 },
+        "image_quality": { "type": "integer", "minimum": 85, "maximum": 100 }
+      }
+    },
+    "editorialRhythm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "visual_intensity_sequence",
+        "information_density_sequence",
+        "image_dominance_sequence",
+        "typography_scale_sequence",
+        "composition_sequence",
+        "reading_path_sequence",
+        "pause_points",
+        "proof_points",
+        "resolution",
+        "hard_blocks"
+      ],
+      "properties": {
+        "status": { "const": "PASSED" },
+        "visual_intensity_sequence": { "$ref": "#/$defs/textList" },
+        "information_density_sequence": { "$ref": "#/$defs/textList" },
+        "image_dominance_sequence": { "$ref": "#/$defs/textList" },
+        "typography_scale_sequence": { "$ref": "#/$defs/textList" },
+        "composition_sequence": { "$ref": "#/$defs/textList" },
+        "reading_path_sequence": { "$ref": "#/$defs/textList" },
+        "pause_points": { "$ref": "#/$defs/textList" },
+        "proof_points": { "$ref": "#/$defs/textList" },
+        "resolution": { "type": "string", "minLength": 1 },
+        "hard_blocks": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "colorRhythm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "dominant_color_sequence",
+        "value_sequence",
+        "saturation_sequence",
+        "temperature_sequence",
+        "accent_repetition",
+        "accent_spacing",
+        "hard_blocks"
+      ],
+      "properties": {
+        "status": { "const": "PASSED" },
+        "dominant_color_sequence": { "$ref": "#/$defs/textList" },
+        "value_sequence": { "$ref": "#/$defs/textList" },
+        "saturation_sequence": { "$ref": "#/$defs/textList" },
+        "temperature_sequence": { "$ref": "#/$defs/textList" },
+        "accent_repetition": { "type": "string", "minLength": 1 },
+        "accent_spacing": { "type": "string", "minLength": 1 },
+        "hard_blocks": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "groupQa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "score", "dimensions", "hard_blocks", "aesthetic_risks"],
+      "properties": {
+        "status": { "const": "PASSED" },
+        "score": { "type": "integer", "minimum": 85, "maximum": 100 },
+        "dimensions": {
+          "type": "array",
+          "minItems": 9,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["dimension", "score", "maximum"],
+            "properties": {
+              "dimension": { "type": "string", "minLength": 1 },
+              "score": { "type": "integer", "minimum": 0 },
+              "maximum": { "type": "integer", "minimum": 1 }
+            }
+          }
+        },
+        "hard_blocks": { "type": "array", "maxItems": 0 },
+        "aesthetic_risks": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "textList": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+  }
+}

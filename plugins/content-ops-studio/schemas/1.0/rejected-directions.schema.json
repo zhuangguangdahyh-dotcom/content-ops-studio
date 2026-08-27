@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/rejected-directions.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Rejected direction",
+  "description": "Traceable rejected creative or workflow direction.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project_id",
+    "direction_id",
+    "module",
+    "rejected_direction",
+    "rejection_reason",
+    "original_user_wording",
+    "related_content_id",
+    "related_page_numbers",
+    "long_term_effective",
+    "replacement_suggestion",
+    "source_rule_id",
+    "source_run_id",
+    "created_at",
+    "updated_at",
+    "extensions"
+  ],
+  "properties": {
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "direction_id": {
+      "type": "string",
+      "pattern": "^D-[0-9]{4}$"
+    },
+    "module": {
+      "type": "string",
+      "enum": ["CONTENT", "VISUAL", "WORKFLOW", "PLATFORM", "INDUSTRY"]
+    },
+    "rejected_direction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rejection_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "original_user_wording": {
+      "type": "string",
+      "minLength": 1
+    },
+    "related_content_id": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/contentId"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "related_page_numbers": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "uniqueItems": true
+    },
+    "long_term_effective": {
+      "type": "boolean"
+    },
+    "replacement_suggestion": {
+      "type": "string"
+    },
+    "source_rule_id": {
+      "$ref": "common-definitions.schema.json#/$defs/ruleId"
+    },
+    "source_run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "created_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "updated_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "extensions": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    }
+  }
+}

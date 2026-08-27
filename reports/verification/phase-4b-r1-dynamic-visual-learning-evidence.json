@@ -1,0 +1,45 @@
+{
+  "evidence_id": "DVSLE-PHASE4BR1-FICTIONAL",
+  "fictional_project_id": "PRJ-20990101-R1LR",
+  "run_count": 4,
+  "profile_versions": ["PVPFV-1", "PVPFV-2", "PVPFV-3"],
+  "run_1": {
+    "maturity": "COLD_START",
+    "candidate_count": 3,
+    "fixed_ai_typography_mixed_slots": false,
+    "plan_hash": "94dcca61fd9c9e7fa773dc501399a6f60253ab27a7585dd3da923ed1292f7c4a"
+  },
+  "learning": {
+    "feedback_event_created": true,
+    "rule_candidate_created": true,
+    "explicit_confirmation_required": true,
+    "confirmed_rule_created": true,
+    "profile_transition": "PVPFV-1:COLD_START -> PVPFV-2:LEARNING"
+  },
+  "run_2": {
+    "confirmed_rule_applied": true,
+    "low_saturation_applied": true,
+    "project_asset_applied": true,
+    "layout_copied_from_run_1": false,
+    "plan_hash": "f54da69bdee85cfb03bada51b3fcf0ebc9c4f5f6cff472c8154b60f741a407b7"
+  },
+  "override": {
+    "current_set_only": true,
+    "dark_direction_applied": true,
+    "profile_checksum_unchanged": true
+  },
+  "revoke": {
+    "rule_status": "DISABLED",
+    "profile_version_after": "PVPFV-3",
+    "historic_run_binding_preserved": true,
+    "next_run_applies_revoked_rule": false
+  },
+  "isolation": {
+    "industry_pack_mutated_by_project_feedback": false,
+    "global_preference_mutated": false,
+    "c_0001_touched": false,
+    "feishu_writes": 0,
+    "images_generated": 0
+  },
+  "overall_status": "PASSED"
+}

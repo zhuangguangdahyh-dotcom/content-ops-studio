@@ -1,0 +1,28 @@
+{
+  "report_id": "VSCR-C-0001-DEMO",
+  "strategy_plan_id": "DVSP-C-0001-DEMO",
+  "overall_confidence": 0.72,
+  "confidence_level": "MEDIUM",
+  "dimensions": [
+    {
+      "dimension": "SOURCE_COVERAGE",
+      "score": 0.8,
+      "reason": "Eight source groups are available."
+    },
+    {
+      "dimension": "PROFILE_MATURITY",
+      "score": 0.62,
+      "reason": "Profile is COLD_START."
+    }
+  ],
+  "source_coverage": {
+    "required_source_count": 10,
+    "available_source_count": 8,
+    "missing_sources": ["APPROVED_REFERENCE", "HISTORICAL_GATE_RESULT"]
+  },
+  "review_required": false,
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "unexpected": true
+}

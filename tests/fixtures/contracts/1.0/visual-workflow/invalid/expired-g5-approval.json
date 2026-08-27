@@ -1,0 +1,15 @@
+{
+  "final_approval": {
+    "approval_id": "APR-20990101-G5AA",
+    "gate": "FINAL_SET",
+    "target_type": "IMAGE_SET",
+    "target_id": "C-0001",
+    "target_version": "FINAL-CV-1-VV-1-SLV-1",
+    "decision": "APPROVE",
+    "comment": "Approved fictional final set.",
+    "source_run_id": "RUN-20990101-010203-DEMO",
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "deprecated_at": "2099-01-01T01:02:03.000Z",
+    "schema_version": "1.0.0"
+  }
+}

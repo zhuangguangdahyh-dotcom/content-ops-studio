@@ -1,0 +1,26 @@
+{
+  "evidence_id": "RTE-NODE20-POLICY-001",
+  "runtime_name": "node",
+  "runtime_version": "v20.20.2",
+  "runtime_major": 20,
+  "runtime_range": ">=24 <25",
+  "support_policy_status": "SUPPORTED",
+  "policy_reason_code": "UPSTREAM_EOL",
+  "execution_status": "NOT_REQUIRED",
+  "commands": [],
+  "command_results": [],
+  "environment": {
+    "package_manager": "pnpm",
+    "package_manager_version": "11.19.0",
+    "ci": false
+  },
+  "platform": "fixture-os",
+  "architecture": "fixture-arch",
+  "started_at": "2099-01-01T01:02:03.000Z",
+  "completed_at": "2099-01-01T01:02:03.000Z",
+  "evidence_source": "POLICY",
+  "report_path": "plugins/content-ops-studio/config/runtime-support-policy.json",
+  "limitations": ["Node 20 compatibility execution is not required by current policy."],
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

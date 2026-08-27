@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/feishu-api-capability.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Feishu API Capability",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "capability_id",
+    "operation",
+    "endpoint",
+    "http_method",
+    "sdk_method",
+    "transport_strategy",
+    "required_permissions",
+    "pagination",
+    "batch_limit",
+    "rate_limit",
+    "retry_classification",
+    "implementation_status",
+    "live_verified",
+    "official_source",
+    "snapshot_date",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "capability_id": { "type": "string", "pattern": "^FAPI-[A-Z0-9_-]+$" },
+    "operation": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]+$" },
+    "endpoint": { "type": "string", "minLength": 1 },
+    "http_method": { "enum": ["GET", "POST", "PUT", "PATCH", "DELETE"] },
+    "sdk_method": { "type": ["string", "null"] },
+    "transport_strategy": { "const": "NODE24_NATIVE_FETCH" },
+    "required_permissions": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "pagination": { "enum": ["NONE", "PAGE_TOKEN", "UNKNOWN_REQUIRES_RUNTIME_CONFIRMATION"] },
+    "batch_limit": {
+      "oneOf": [
+        { "type": "integer", "minimum": 1 },
+        { "type": "string", "const": "UNKNOWN_REQUIRES_RUNTIME_CONFIRMATION" },
+        { "type": "null" }
+      ]
+    },
+    "rate_limit": { "enum": ["SERVER_DIRECTED", "UNKNOWN_REQUIRES_RUNTIME_CONFIRMATION"] },
+    "retry_classification": { "type": "string", "minLength": 1 },
+    "implementation_status": {
+      "enum": ["DOCUMENTED", "IMPLEMENTED_OFFLINE", "LIVE_VERIFIED", "DEFERRED", "UNSUPPORTED"]
+    },
+    "live_verified": { "type": "boolean" },
+    "official_source": {
+      "type": "string",
+      "pattern": "^https://(open\\.feishu\\.cn|github\\.com/larksuite/node-sdk)"
+    },
+    "snapshot_date": { "type": "string", "format": "date" },
+    "schema_version": { "const": "1.0.0" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/feishu-auth-diagnostic.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Feishu Auth Diagnostic",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "diagnostic_id",
+    "provider",
+    "region",
+    "auth_mode",
+    "credential_presence",
+    "secret_redaction_verified",
+    "token_request_status",
+    "token_expiry_metadata",
+    "application_identity_status",
+    "workspace_access_status",
+    "permission_status",
+    "missing_permissions",
+    "live_write_gate_status",
+    "warnings",
+    "blocking_errors",
+    "overall_status",
+    "checked_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "diagnostic_id": { "type": "string", "pattern": "^FAD-[A-Z0-9-]+$" },
+    "provider": { "const": "FEISHU" },
+    "region": { "const": "CHINA" },
+    "auth_mode": { "const": "SELF_BUILT_TENANT_APP" },
+    "credential_presence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["app_id", "app_secret", "parent_folder", "test_parent_folder"],
+      "properties": {
+        "app_id": { "type": "boolean" },
+        "app_secret": { "type": "boolean" },
+        "parent_folder": { "type": "boolean" },
+        "test_parent_folder": { "type": "boolean" }
+      }
+    },
+    "secret_redaction_verified": { "type": "boolean" },
+    "token_request_status": { "enum": ["NOT_ATTEMPTED", "SUCCESS", "FAILED", "NOT_CONFIGURED"] },
+    "token_expiry_metadata": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["expires_in_seconds", "refresh_at"],
+      "properties": {
+        "expires_in_seconds": { "type": "integer", "minimum": 1 },
+        "refresh_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "application_identity_status": { "enum": ["NOT_CHECKED", "VERIFIED", "FAILED"] },
+    "workspace_access_status": { "enum": ["NOT_CHECKED", "VERIFIED", "DENIED"] },
+    "permission_status": { "enum": ["NOT_CHECKED", "SATISFIED", "MISSING", "UNKNOWN"] },
+    "missing_permissions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_.-]*(?::[a-z][a-z0-9_.-]*)+$" }
+    },
+    "live_write_gate_status": { "enum": ["DISABLED", "ENVIRONMENT_ONLY", "CLI_ONLY", "CONFIRMED"] },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "blocking_errors": { "type": "array", "items": { "type": "string" } },
+    "overall_status": { "enum": ["READY", "DEGRADED", "BLOCKED", "NOT_CONFIGURED"] },
+    "checked_at": { "type": "string", "format": "date-time" },
+    "schema_version": { "const": "1.0.0" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  }
+}

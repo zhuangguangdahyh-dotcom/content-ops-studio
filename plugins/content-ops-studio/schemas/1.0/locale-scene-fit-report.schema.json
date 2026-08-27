@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/locale-scene-fit-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Locale scene fit report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "candidate_id",
+    "audience_locale",
+    "project_region",
+    "resolved_scene_locale",
+    "locale_evidence",
+    "region_question_required",
+    "total_score",
+    "threshold",
+    "hard_blocks",
+    "result",
+    "operator_approval_required",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^LSFR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "candidate_id": { "type": "string", "pattern": "^CCC-[A-Z0-9-]+$" },
+    "audience_locale": { "type": "string", "minLength": 1 },
+    "project_region": { "anyOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }] },
+    "resolved_scene_locale": { "type": "string", "minLength": 1 },
+    "locale_evidence": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "region_question_required": { "type": "boolean" },
+    "total_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "threshold": { "const": 80 },
+    "hard_blocks": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "result": { "type": "string", "enum": ["PASS_PENDING_OPERATOR", "FAIL", "BLOCKED"] },
+    "operator_approval_required": { "const": true },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "candidate_id": "CCC-C-0001-A",
+  "semantic_role": "DIRECT_PAINPOINT_SCENE",
+  "direct_relation_statement": "The complete storefront directly represents the first-impression problem.",
+  "dimensions": [
+    {
+      "dimension": "INDUSTRY_RELEVANCE",
+      "weight": 20,
+      "score": 20,
+      "reason": "Commercial storefront is explicit."
+    },
+    {
+      "dimension": "BUSINESS_SCENE_RELEVANCE",
+      "weight": 20,
+      "score": 19,
+      "reason": "The operating entrance is visible."
+    },
+    {
+      "dimension": "PAINPOINT_RELEVANCE",
+      "weight": 20,
+      "score": 19,
+      "reason": "Recognition weakness is visible."
+    },
+    {
+      "dimension": "CONTENT_VALUE_RELEVANCE",
+      "weight": 15,
+      "score": 13,
+      "reason": "The image supports diagnosis."
+    },
+    {
+      "dimension": "PROJECT_OR_SUBJECT_RELEVANCE",
+      "weight": 15,
+      "score": 13,
+      "reason": "It matches the fictional subject."
+    },
+    {
+      "dimension": "AUDIENCE_RECOGNITION",
+      "weight": 10,
+      "score": 9,
+      "reason": "Store owners can self-identify."
+    }
+  ],
+  "total_score": 93,
+  "threshold": 80,
+  "hard_blocks": [],
+  "result": "PASS_PENDING_OPERATOR",
+  "operator_approval_required": true,
+  "run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

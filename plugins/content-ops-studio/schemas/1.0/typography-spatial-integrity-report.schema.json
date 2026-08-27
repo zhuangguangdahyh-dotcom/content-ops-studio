@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/typography-spatial-integrity-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Typography spatial integrity report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "candidate_id",
+    "typography_policy_result",
+    "title_measurement",
+    "secondary_measurement",
+    "minimum_text_layer_gap_px",
+    "findings",
+    "hard_blocks",
+    "mechanical_geometry_checked",
+    "visual_spatial_qa_result",
+    "result",
+    "visual_quality_eligible",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^TSIR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "candidate_id": { "type": "string", "pattern": "^CCC-[A-Z0-9-]+$" },
+    "typography_policy_result": { "enum": ["PASS", "FAIL"] },
+    "title_measurement": { "$ref": "#/$defs/textMeasurement" },
+    "secondary_measurement": { "$ref": "#/$defs/textMeasurement" },
+    "minimum_text_layer_gap_px": { "type": "number", "minimum": 0 },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/finding" }
+    },
+    "hard_blocks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/errorCode" },
+      "uniqueItems": true
+    },
+    "mechanical_geometry_checked": { "const": true },
+    "visual_spatial_qa_result": { "enum": ["PASS", "FAIL", "PENDING"] },
+    "result": { "enum": ["PASS", "BLOCKED"] },
+    "visual_quality_eligible": { "type": "boolean" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "rect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "width", "height"],
+      "properties": {
+        "x": { "type": "number", "minimum": 0 },
+        "y": { "type": "number", "minimum": 0 },
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "padding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["top", "right", "bottom", "left"],
+      "properties": {
+        "top": { "type": "number", "minimum": 0 },
+        "right": { "type": "number", "minimum": 0 },
+        "bottom": { "type": "number", "minimum": 0 },
+        "left": { "type": "number", "minimum": 0 }
+      }
+    },
+    "textMeasurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "layer_id",
+        "role",
+        "text",
+        "lines",
+        "bounding_box",
+        "container_box",
+        "container_padding_px",
+        "computed_font_family",
+        "computed_font_size_px",
+        "computed_font_weight",
+        "computed_line_height_px",
+        "computed_letter_spacing_px",
+        "z_index",
+        "visibility"
+      ],
+      "properties": {
+        "layer_id": { "type": "string", "minLength": 1 },
+        "role": { "enum": ["TITLE", "SECONDARY", "BODY", "SIGNATURE", "PAGE_NUMBER"] },
+        "text": { "type": "string", "minLength": 1 },
+        "lines": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "bounding_box": { "$ref": "#/$defs/rect" },
+        "container_box": { "anyOf": [{ "$ref": "#/$defs/rect" }, { "type": "null" }] },
+        "container_padding_px": { "anyOf": [{ "$ref": "#/$defs/padding" }, { "type": "null" }] },
+        "computed_font_family": { "type": "string", "minLength": 1 },
+        "computed_font_size_px": { "type": "number", "exclusiveMinimum": 0 },
+        "computed_font_weight": { "type": "integer", "minimum": 100, "maximum": 900 },
+        "computed_line_height_px": { "type": "number", "exclusiveMinimum": 0 },
+        "computed_letter_spacing_px": { "type": "number" },
+        "z_index": { "type": "integer" },
+        "visibility": { "enum": ["VISIBLE", "HIDDEN"] }
+      }
+    },
+    "errorCode": {
+      "enum": [
+        "TYPOGRAPHY_SPATIAL_INTEGRITY_BLOCKED",
+        "TEXT_TEXT_OVERLAP",
+        "TEXT_GRAPHIC_OCCLUSION",
+        "TEXT_REGION_COLLISION",
+        "INSUFFICIENT_CONTAINER_PADDING",
+        "LINE_GLYPH_COLLISION",
+        "FORCED_TRACKING_DISTORTION",
+        "ORPHAN_CHARACTER_BREAK",
+        "COMPETING_PRIMARY_TEXT",
+        "DENSITY_FORCED_COMPRESSION"
+      ]
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "layer_ids", "reason"],
+      "properties": {
+        "code": { "$ref": "#/$defs/errorCode" },
+        "layer_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

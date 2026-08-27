@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/calibration-g4-approval.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Calibration G4 approval",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "approval_evidence_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "first_page_version",
+    "asset_id",
+    "asset_checksum",
+    "attention_mode",
+    "formal_run_id",
+    "decision",
+    "status",
+    "approval_event",
+    "qa_evidence",
+    "hard_blocks",
+    "requested_changes",
+    "accepted_non_blocking_risks",
+    "style_lock_authorized",
+    "remaining_page_production_eligibility",
+    "remaining_pages_created",
+    "image_generation_calls",
+    "feishu_writes",
+    "idempotency_key",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "approval_evidence_id": { "type": "string", "pattern": "^CG4A-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "first_page_version": { "type": "string", "pattern": "^FPV-[1-9][0-9]*$" },
+    "asset_id": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+    "asset_checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "attention_mode": { "const": "TYPE_DOMINANT" },
+    "formal_run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "decision": { "const": "APPROVE" },
+    "status": { "const": "PASSED" },
+    "approval_event": { "$ref": "approval-event.schema.json" },
+    "qa_evidence": {
+      "type": "array",
+      "minItems": 7,
+      "items": { "$ref": "#/$defs/qaEvidence" }
+    },
+    "hard_blocks": { "type": "array", "maxItems": 0 },
+    "requested_changes": { "type": "array", "maxItems": 0 },
+    "accepted_non_blocking_risks": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "style_lock_authorized": { "const": true },
+    "remaining_page_production_eligibility": { "const": "ELIGIBLE" },
+    "remaining_pages_created": { "const": 0 },
+    "image_generation_calls": { "const": 0 },
+    "feishu_writes": { "const": 0 },
+    "idempotency_key": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "qaEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_type", "artifact_ref", "checksum", "result"],
+      "properties": {
+        "evidence_type": {
+          "type": "string",
+          "enum": [
+            "FORMAL_COVER",
+            "RASTER_CONTRAST",
+            "FULL_PNG",
+            "DETERMINISTIC_REPLAY",
+            "THUMBNAIL_310",
+            "THUMBNAIL_186",
+            "BACKGROUND_ANALYSIS"
+          ]
+        },
+        "artifact_ref": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+        "checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+        "result": { "const": "PASS" }
+      }
+    }
+  }
+}

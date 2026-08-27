@@ -1,0 +1,16 @@
+{
+  "selection_id": "VDS-C-0001-A",
+  "candidate_set_id": "VDCS-C-0001-R1",
+  "candidate_id": "VDC-C-0001-A",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "selected_by": "OPERATOR",
+  "selection_comment": "Fictional fixture selection.",
+  "creates_g4": false,
+  "creates_style_lock": false,
+  "next_visual_plan_version": "VV-2",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "selected_at": "2099-01-01T01:02:03.000Z",
+  "unexpected": true
+}

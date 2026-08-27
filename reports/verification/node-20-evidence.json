@@ -1,0 +1,21 @@
+{
+  "status": "NOT_AVAILABLE",
+  "probed_at": "2026-08-23T15:59:24.233Z",
+  "bounded_probe": true,
+  "system_install_attempted": false,
+  "tools_checked": [
+    "node20",
+    "node-20",
+    "mise",
+    "fnm",
+    "volta",
+    "asdf",
+    "docker",
+    "podman",
+    "brew"
+  ],
+  "tools_found": [],
+  "selected_runtime": null,
+  "commands": [],
+  "compatibility_gap_closed": false
+}

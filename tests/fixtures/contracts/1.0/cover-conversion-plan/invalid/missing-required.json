@@ -1,0 +1,48 @@
+{
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "platform": "XIAOHONGSHU",
+  "account_goal": "LEAD_GENERATION",
+  "cover_objective": "PAINPOINT_DIRECT",
+  "subject": "Fictional commercial-space advisory studio",
+  "audience": "Fictional independent store owners",
+  "painpoint": "A storefront fails to communicate category and positioning at first glance.",
+  "content_value": "A practical first-impression diagnostic.",
+  "decision_stage": "Storefront renovation consideration",
+  "publish_title": "Fictional storefront diagnostic",
+  "page_1_content_copy": "The first impression should communicate category and positioning.",
+  "strategy_candidates": ["PAINPOINT_FIRST", "TARGET_AUDIENCE_FIRST", "QUESTION_FIRST"],
+  "selected_strategy": "PAINPOINT_FIRST",
+  "primary_hook_constraints": {
+    "recommended_min_visible_characters": 6,
+    "recommended_max_visible_characters": 16,
+    "hard_max_visible_characters": 20,
+    "max_lines": 3
+  },
+  "secondary_line_constraints": {
+    "recommended_min_visible_characters": 0,
+    "recommended_max_visible_characters": 16,
+    "hard_max_visible_characters": 20,
+    "max_lines": 2
+  },
+  "thumbnail_constraints": {
+    "targets": ["310x414", "186x248"],
+    "primary_min_effective_font_px": 28,
+    "secondary_min_effective_font_px": 14,
+    "primary_max_lines": 3
+  },
+  "project_visual_profile_version": null,
+  "global_visual_preference_version": "GUVPV-1",
+  "industry_pack_version": "1.0.0",
+  "platform_pack_version": "1.1.0",
+  "ambiguities": [],
+  "blocking_questions": [],
+  "ready": true,
+  "plan_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

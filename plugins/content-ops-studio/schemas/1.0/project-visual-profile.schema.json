@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/project-visual-profile.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Project visual profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_id",
+    "project_id",
+    "profile_version",
+    "maturity",
+    "industry_pack_binding",
+    "overlay_bindings",
+    "preferred_visual_modes",
+    "preferred_asset_channels",
+    "identity_invariants",
+    "confirmed_preferences",
+    "rejected_directions",
+    "approved_reference_assets",
+    "source_rule_versions",
+    "confirmed_by_operator",
+    "run_id",
+    "schema_version",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "profile_id": { "type": "string", "pattern": "^PVPF-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "profile_version": { "type": "string", "pattern": "^PVPFV-[1-9][0-9]*$" },
+    "maturity": {
+      "type": "string",
+      "enum": ["UNMATURE", "COLD_START", "LEARNING", "MATURE", "REVIEW_REQUIRED"]
+    },
+    "maturity_status": {
+      "type": "string",
+      "enum": ["COLD_START", "LEARNING", "MATURE", "REVIEW_REQUIRED"]
+    },
+    "industry_pack_binding": { "$ref": "industry-visual-pack.schema.json#/$defs/packBinding" },
+    "overlay_bindings": {
+      "type": "array",
+      "items": { "$ref": "industry-visual-pack.schema.json#/$defs/overlayBinding" }
+    },
+    "preferred_visual_modes": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+      "uniqueItems": true
+    },
+    "preferred_asset_channels": {
+      "type": "array",
+      "items": { "$ref": "industry-visual-pack.schema.json#/$defs/assetChannel" },
+      "uniqueItems": true
+    },
+    "identity_invariants": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "confirmed_preferences": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "rejected_directions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "approved_reference_assets": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/assetReference" }
+    },
+    "source_rule_versions": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^VRV-[1-9][0-9]*$" }
+    },
+    "asset_source_preferences": { "$ref": "#/$defs/assetChannels" },
+    "background_preferences": { "$ref": "#/$defs/stringList" },
+    "image_realism_preferences": { "$ref": "#/$defs/stringList" },
+    "photography_preferences": { "$ref": "#/$defs/stringList" },
+    "illustration_preferences": { "$ref": "#/$defs/stringList" },
+    "character_preferences": { "$ref": "#/$defs/stringList" },
+    "space_preferences": { "$ref": "#/$defs/stringList" },
+    "product_preferences": { "$ref": "#/$defs/stringList" },
+    "composition_preferences": { "$ref": "#/$defs/stringList" },
+    "composition_family_preferences": {
+      "type": "array",
+      "items": { "$ref": "universal-visual-default-policy.schema.json#/$defs/compositionFamily" },
+      "uniqueItems": true
+    },
+    "image_text_integration_preferences": { "$ref": "#/$defs/stringList" },
+    "spatial_tension_preferences": { "$ref": "#/$defs/stringList" },
+    "negative_space_preferences": { "$ref": "#/$defs/stringList" },
+    "visual_focus_preferences": { "$ref": "#/$defs/stringList" },
+    "whitespace_preferences": { "$ref": "#/$defs/stringList" },
+    "visual_density_preferences": { "$ref": "#/$defs/stringList" },
+    "typography_preferences": { "$ref": "#/$defs/stringList" },
+    "font_family_preferences": { "$ref": "#/$defs/stringList" },
+    "title_font_preferences": { "$ref": "#/$defs/stringList" },
+    "subtitle_font_preferences": { "$ref": "#/$defs/stringList" },
+    "body_font_preferences": { "$ref": "#/$defs/stringList" },
+    "title_size_preferences": { "$ref": "#/$defs/stringList" },
+    "body_size_preferences": { "$ref": "#/$defs/stringList" },
+    "font_weight_preferences": { "$ref": "#/$defs/stringList" },
+    "line_height_preferences": { "$ref": "#/$defs/stringList" },
+    "letter_spacing_preferences": { "$ref": "#/$defs/stringList" },
+    "alignment_preferences": { "$ref": "#/$defs/stringList" },
+    "color_preferences": { "$ref": "#/$defs/stringList" },
+    "accent_color_preferences": { "$ref": "#/$defs/stringList" },
+    "contrast_preferences": { "$ref": "#/$defs/stringList" },
+    "effect_preferences": { "$ref": "#/$defs/stringList" },
+    "shadow_preferences": { "$ref": "#/$defs/stringList" },
+    "gradient_preferences": { "$ref": "#/$defs/stringList" },
+    "mask_preferences": { "$ref": "#/$defs/stringList" },
+    "border_preferences": { "$ref": "#/$defs/stringList" },
+    "corner_preferences": { "$ref": "#/$defs/stringList" },
+    "texture_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_account_goal_preferences": {
+      "type": "array",
+      "items": { "$ref": "cover-conversion-plan.schema.json#/$defs/accountGoal" },
+      "uniqueItems": true
+    },
+    "cover_objective_preferences": {
+      "type": "array",
+      "items": { "$ref": "cover-conversion-plan.schema.json#/$defs/coverObjective" },
+      "uniqueItems": true
+    },
+    "cover_primary_hook_length_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_primary_hook_line_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_secondary_line_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_text_prominence_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_text_area_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_text_to_image_ratio_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_thumbnail_font_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_alignment_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_contrast_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_effect_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_background_semantic_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_approved_reference_elements": { "$ref": "#/$defs/stringList" },
+    "cover_rejected_reference_elements": { "$ref": "#/$defs/stringList" },
+    "preferred_cover_attention_modes": {
+      "type": "array",
+      "items": { "$ref": "cover-attention-plan.schema.json#/$defs/mode" },
+      "uniqueItems": true
+    },
+    "cover_visual_mass_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_scale_contrast_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_grid_discipline_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_grid_break_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_crop_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_negative_space_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_color_contrast_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_color_quantity_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_typography_shape_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_info_density_preferences": { "$ref": "#/$defs/stringList" },
+    "cover_visual_tension_preferences": { "$ref": "#/$defs/stringList" },
+    "formal_text_policy": { "type": "string", "enum": ["RENDERER_ONLY"] },
+    "image_text_policy": {
+      "type": "string",
+      "enum": ["TEXT_FREE_GENERATED_VISUALS", "AUTHORIZED_INCIDENTAL_TEXT_ONLY"]
+    },
+    "preferred_page_counts": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1, "maximum": 20 },
+      "uniqueItems": true
+    },
+    "preferred_candidate_counts": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1, "maximum": 3 },
+      "uniqueItems": true
+    },
+    "production_batch_preferences": { "$ref": "#/$defs/stringList" },
+    "quality_thresholds": { "$ref": "#/$defs/qualityThresholds" },
+    "approved_reference_elements": { "$ref": "#/$defs/stringList" },
+    "rejected_reference_elements": { "$ref": "#/$defs/stringList" },
+    "must_rules": { "$ref": "#/$defs/stringList" },
+    "must_not_rules": { "$ref": "#/$defs/stringList" },
+    "prefer_rules": { "$ref": "#/$defs/stringList" },
+    "avoid_rules": { "$ref": "#/$defs/stringList" },
+    "confirmed_feedback_refs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^VFE-[A-Z0-9-]+$" },
+      "uniqueItems": true
+    },
+    "rule_version_refs": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^VR-[A-Z0-9-]+@[1-9][0-9]*$" },
+      "uniqueItems": true
+    },
+    "known_exceptions": { "$ref": "#/$defs/stringList" },
+    "review_required_reasons": { "$ref": "#/$defs/stringList" },
+    "confirmed_by_operator": { "type": "boolean" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "updated_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "stringList": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "assetChannels": {
+      "type": "array",
+      "items": { "$ref": "industry-visual-pack.schema.json#/$defs/assetChannel" },
+      "uniqueItems": true
+    },
+    "qualityThresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["direction_candidate", "formal_asset", "group", "core_dimension_floor"],
+      "properties": {
+        "direction_candidate": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "formal_asset": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "group": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "core_dimension_floor": { "type": "integer", "minimum": 0, "maximum": 5 }
+      }
+    }
+  }
+}

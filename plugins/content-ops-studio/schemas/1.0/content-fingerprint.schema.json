@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/content-fingerprint.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Content fingerprint",
+  "description": "Deterministic non-semantic normalized-input hash.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "algorithm",
+    "algorithm_version",
+    "normalized_inputs",
+    "hash",
+    "semantic_embedding_ref",
+    "similarity_threshold",
+    "created_at"
+  ],
+  "properties": {
+    "algorithm": {
+      "type": "string",
+      "enum": ["SHA-256"]
+    },
+    "algorithm_version": {
+      "const": "1.0.0"
+    },
+    "normalized_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "painpoint_id",
+        "content_angle",
+        "core_viewpoint",
+        "cover_hook",
+        "content_structure_type",
+        "main_conclusion"
+      ],
+      "properties": {
+        "painpoint_id": {
+          "$ref": "common-definitions.schema.json#/$defs/painpointId"
+        },
+        "content_angle": {
+          "type": "string"
+        },
+        "core_viewpoint": {
+          "type": "string"
+        },
+        "cover_hook": {
+          "type": "string"
+        },
+        "content_structure_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "main_conclusion": {
+          "type": "string"
+        }
+      }
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "semantic_embedding_ref": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "similarity_threshold": {
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    }
+  }
+}

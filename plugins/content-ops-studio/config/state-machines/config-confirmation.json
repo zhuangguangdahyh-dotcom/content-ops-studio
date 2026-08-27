@@ -1,0 +1,39 @@
+{
+  "machine": "config-confirmation",
+  "version": "1.0.0",
+  "states": ["CONFIG_PENDING", "CONFIG_CONFIRMED", "CONFIG_UPDATE_REQUIRED"],
+  "initialStates": ["CONFIG_PENDING"],
+  "terminalStates": [],
+  "transitions": [
+    {
+      "from": "CONFIG_PENDING",
+      "to": "CONFIG_CONFIRMED",
+      "trigger": "CONFIRM_CONFIGURATION",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": "PROJECT_PROFILE",
+      "requiredContext": ["configuration_version"],
+      "invalidates": [],
+      "description": "CONFIG_PENDING to CONFIG_CONFIRMED"
+    },
+    {
+      "from": "CONFIG_CONFIRMED",
+      "to": "CONFIG_UPDATE_REQUIRED",
+      "trigger": "INVALIDATE_CONFIGURATION",
+      "ownerSkill": "project-learning",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": ["PAINPOINT_RESEARCH_VALIDITY", "UNFINALIZED_CONTENT_REVIEW"],
+      "description": "CONFIG_CONFIRMED to CONFIG_UPDATE_REQUIRED"
+    },
+    {
+      "from": "CONFIG_UPDATE_REQUIRED",
+      "to": "CONFIG_CONFIRMED",
+      "trigger": "CONFIRM_CONFIGURATION",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": "PROJECT_PROFILE",
+      "requiredContext": ["configuration_version"],
+      "invalidates": [],
+      "description": "CONFIG_UPDATE_REQUIRED to CONFIG_CONFIRMED"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/task-envelope.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Task envelope",
+  "description": "Versioned resumable input passed from Router to a specialist Skill.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "schema_version",
+    "run_id",
+    "project_id",
+    "task_type",
+    "operation",
+    "source",
+    "raw_instruction",
+    "targets",
+    "overrides",
+    "approval_event",
+    "resume",
+    "dry_run"
+  ],
+  "properties": {
+    "contract_version": {
+      "$ref": "common-definitions.schema.json#/$defs/contractVersion"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    },
+    "run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "task_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "enum": ["conversation", "resume", "system", "mock"]
+    },
+    "raw_instruction": {
+      "type": "string"
+    },
+    "targets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["painpoint_ids", "content_ids", "page_numbers"],
+      "properties": {
+        "painpoint_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "common-definitions.schema.json#/$defs/painpointId"
+          },
+          "uniqueItems": true
+        },
+        "content_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "common-definitions.schema.json#/$defs/contentId"
+          },
+          "uniqueItems": true
+        },
+        "page_numbers": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "overrides": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    },
+    "approval_event": {
+      "anyOf": [
+        {
+          "$ref": "approval-event.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "resume": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from_run_id", "from_step"],
+      "properties": {
+        "from_run_id": {
+          "anyOf": [
+            {
+              "$ref": "common-definitions.schema.json#/$defs/runId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "from_step": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "dry_run": {
+      "type": "boolean"
+    }
+  }
+}

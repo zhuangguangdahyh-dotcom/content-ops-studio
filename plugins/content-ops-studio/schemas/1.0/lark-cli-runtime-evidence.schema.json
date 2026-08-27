@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/lark-cli-runtime-evidence.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Official Lark CLI runtime evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "version",
+    "version_status",
+    "auth_state",
+    "identity",
+    "capability_status",
+    "live_status",
+    "checked_at",
+    "limitations",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "evidence_id": { "type": "string", "pattern": "^LCE-[A-Z0-9-]+$" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "version_status": { "enum": ["SUPPORTED", "TOO_OLD", "UNCLAIMED", "INVALID"] },
+    "auth_state": {
+      "enum": [
+        "NOT_CONFIGURED",
+        "AWAITING_USER_AUTHORIZATION",
+        "AWAITING_ADMIN_APPROVAL",
+        "AUTHENTICATED",
+        "BLOCKED"
+      ]
+    },
+    "identity": { "enum": ["user", "bot"] },
+    "capability_status": { "enum": ["READY", "BLOCKED", "NOT_RUN"] },
+    "live_status": {
+      "enum": [
+        "PASSED",
+        "FAILED",
+        "NOT_RUN",
+        "AWAITING_USER_AUTHORIZATION",
+        "AWAITING_ADMIN_APPROVAL",
+        "BLOCKED"
+      ]
+    },
+    "checked_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "limitations": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

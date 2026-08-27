@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/painpoint-batch.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Painpoint batch",
+  "description": "Research batch that reports produced evidence-backed and hypothesis counts honestly.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "research_batch_id",
+    "project_id",
+    "requested_count",
+    "produced_count",
+    "evidence_backed_count",
+    "hypothesis_count",
+    "research_scope",
+    "date_range",
+    "region_scope",
+    "painpoints",
+    "evidence_records",
+    "deduplication_summary",
+    "partial_failures",
+    "write_summary",
+    "approval_request",
+    "run_id",
+    "schema_version",
+    "created_at",
+    "completion_status"
+  ],
+  "properties": {
+    "research_batch_id": {
+      "type": "string",
+      "pattern": "^RB-[A-Z0-9-]+$"
+    },
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "requested_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "produced_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "evidence_backed_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "hypothesis_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "research_scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "date_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to"],
+      "properties": {
+        "from": {
+          "anyOf": [
+            {
+              "$ref": "common-definitions.schema.json#/$defs/date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "to": {
+          "anyOf": [
+            {
+              "$ref": "common-definitions.schema.json#/$defs/date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "region_scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "painpoints": {
+      "type": "array",
+      "items": {
+        "$ref": "painpoint-record.schema.json"
+      }
+    },
+    "evidence_records": {
+      "type": "array",
+      "items": {
+        "$ref": "evidence-record.schema.json"
+      }
+    },
+    "deduplication_summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "partial_failures": {
+      "type": "array",
+      "items": {
+        "$ref": "error.schema.json"
+      }
+    },
+    "write_summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approval_request": {
+      "anyOf": [
+        {
+          "$ref": "approval-event.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    },
+    "created_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "completion_status": {
+      "type": "string",
+      "enum": ["COMPLETE", "PARTIAL", "EMPTY_WITH_REASON"]
+    }
+  }
+}

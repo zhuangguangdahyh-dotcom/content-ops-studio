@@ -1,0 +1,5 @@
+# Direction selection policy
+
+Compatible MATURE Profiles or explicit current directions may skip exploration. COLD_START shows 2–3 and LEARNING shows 1–2 real, materially different previews with channel, mode, composition, palette, type character and quality result. Directions are synthesized from this Content and may use the same channel when their visual arguments, subjects, views or compositions are materially different. Never reserve candidate slots for predefined channels. Changing only color, font or card border is not material. Candidate threshold is 75 with zero hard blocks. Only the Operator selects.
+
+If the Operator cannot compare complete direction behavior from the initial assets, preserve every Candidate ID, original asset, checksum and historical quality report. Create separate Renderer-complete previews with identical approved copy, no added information text, equal 1242×1660 canvases and a same-scale contact sheet whose labels stay outside the candidate frames. Re-evaluate each complete preview. This does not create a new direction, VV/FPV version, G4 event, Style Lock, Feishu formal write or remaining-page eligibility.

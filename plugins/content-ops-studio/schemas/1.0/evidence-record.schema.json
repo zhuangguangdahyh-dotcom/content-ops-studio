@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/evidence-record.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Evidence record",
+  "description": "Structured evidence with claims, confidence, citation, and limitations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "project_id",
+    "source_type",
+    "source_name",
+    "source_location",
+    "source_date",
+    "retrieved_at",
+    "summary",
+    "supported_claims",
+    "confidence",
+    "is_first_party",
+    "citation_locator",
+    "limitations",
+    "run_id",
+    "schema_version",
+    "created_at",
+    "updated_at",
+    "extensions"
+  ],
+  "properties": {
+    "evidence_id": {
+      "$ref": "common-definitions.schema.json#/$defs/evidenceId"
+    },
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "OFFICIAL_SOURCE",
+        "FIRST_PARTY_DATA",
+        "CUSTOMER_MATERIAL",
+        "CUSTOMER_INTERVIEW",
+        "INDUSTRY_REPORT",
+        "PLATFORM_DOCUMENTATION",
+        "SOCIAL_COMMENT",
+        "PUBLIC_REVIEW",
+        "COMPETITOR_CONTENT",
+        "QUESTION_AND_ANSWER",
+        "FORUM",
+        "NEWS",
+        "MANUAL_SOURCE",
+        "MODEL_HYPOTHESIS"
+      ]
+    },
+    "source_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_location": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_date": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "retrieved_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supported_claims": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "confidence": {
+      "$ref": "common-definitions.schema.json#/$defs/evidenceConfidence"
+    },
+    "is_first_party": {
+      "type": "boolean"
+    },
+    "citation_locator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "limitations": {
+      "type": "string"
+    },
+    "run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    },
+    "created_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "updated_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "extensions": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "source_type": {
+            "const": "MODEL_HYPOTHESIS"
+          }
+        },
+        "required": ["source_type"]
+      },
+      "then": {
+        "properties": {
+          "confidence": {
+            "enum": ["C_SINGLE_OR_INDIRECT", "D_HYPOTHESIS"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "confidence": {
+            "const": "D_HYPOTHESIS"
+          }
+        },
+        "required": ["confidence"]
+      },
+      "then": {
+        "properties": {
+          "limitations": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ]
+}

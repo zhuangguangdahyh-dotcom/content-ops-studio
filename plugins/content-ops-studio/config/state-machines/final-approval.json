@@ -1,0 +1,59 @@
+{
+  "machine": "final-approval",
+  "version": "1.0.0",
+  "states": [
+    "FINAL_NOT_SUBMITTED",
+    "FINAL_APPROVAL_PENDING",
+    "FINAL_REVISION_REQUIRED",
+    "FINAL_APPROVAL_APPROVED"
+  ],
+  "initialStates": ["FINAL_NOT_SUBMITTED"],
+  "terminalStates": ["FINAL_APPROVAL_APPROVED"],
+  "transitions": [
+    {
+      "from": "FINAL_NOT_SUBMITTED",
+      "to": "FINAL_APPROVAL_PENDING",
+      "trigger": "SUBMIT_FINAL_VERSION",
+      "ownerSkill": "content-finalization",
+      "requiresApprovalGate": null,
+      "requiredContext": [
+        "image_status",
+        "generated_page_count",
+        "expected_page_count",
+        "auto_qa_passed"
+      ],
+      "invalidates": [],
+      "description": "FINAL_NOT_SUBMITTED to FINAL_APPROVAL_PENDING"
+    },
+    {
+      "from": "FINAL_APPROVAL_PENDING",
+      "to": "FINAL_APPROVAL_APPROVED",
+      "trigger": "APPROVE_FINAL_SET",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": "FINAL_SET",
+      "requiredContext": ["content_version"],
+      "invalidates": [],
+      "description": "FINAL_APPROVAL_PENDING to FINAL_APPROVAL_APPROVED"
+    },
+    {
+      "from": "FINAL_APPROVAL_PENDING",
+      "to": "FINAL_REVISION_REQUIRED",
+      "trigger": "REQUEST_FINAL_REVISION",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "FINAL_APPROVAL_PENDING to FINAL_REVISION_REQUIRED"
+    },
+    {
+      "from": "FINAL_REVISION_REQUIRED",
+      "to": "FINAL_APPROVAL_PENDING",
+      "trigger": "RESUBMIT_FINAL_VERSION",
+      "ownerSkill": "content-finalization",
+      "requiresApprovalGate": null,
+      "requiredContext": ["auto_qa_passed"],
+      "invalidates": [],
+      "description": "FINAL_REVISION_REQUIRED to FINAL_APPROVAL_PENDING"
+    }
+  ]
+}

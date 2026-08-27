@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/image-set-production-strategy.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Image set production strategy",
+  "description": "Industry-neutral visual motif, page-duty, distinct-background and continuity plan for one formal image set.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "strategy_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "style_lock_version",
+    "visual_mode",
+    "visual_motif",
+    "continuity_anchors",
+    "pages",
+    "distinct_backgrounds_required",
+    "planned_distinct_backgrounds",
+    "composition_family_count",
+    "result",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "strategy_id": { "type": "string", "pattern": "^ISPS-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "style_lock_version": { "$ref": "common-definitions.schema.json#/$defs/styleLockVersion" },
+    "visual_mode": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+    "visual_motif": { "type": "string", "minLength": 1 },
+    "continuity_anchors": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 8,
+      "items": { "$ref": "#/$defs/pageStrategy" }
+    },
+    "distinct_backgrounds_required": { "type": "integer", "minimum": 0 },
+    "planned_distinct_backgrounds": { "type": "integer", "minimum": 0 },
+    "composition_family_count": { "type": "integer", "minimum": 3 },
+    "result": { "const": "PLANNED" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "pageStrategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "page_number",
+        "page_role",
+        "page_duty",
+        "semantic_responsibility",
+        "visual_system_key",
+        "background_asset_policy",
+        "planned_background_key",
+        "shot_signature",
+        "composition_family",
+        "continuity_anchor_refs",
+        "difference_from_previous"
+      ],
+      "properties": {
+        "page_number": { "type": "integer", "minimum": 1, "maximum": 8 },
+        "page_role": { "$ref": "common-definitions.schema.json#/$defs/pageRole" },
+        "page_duty": { "$ref": "#/$defs/pageDuty" },
+        "semantic_responsibility": { "type": "string", "minLength": 1 },
+        "visual_system_key": { "type": "string", "minLength": 1 },
+        "background_asset_policy": { "$ref": "#/$defs/backgroundAssetPolicy" },
+        "planned_background_key": {
+          "anyOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
+        },
+        "shot_signature": {
+          "anyOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
+        },
+        "composition_family": { "type": "string", "minLength": 1 },
+        "continuity_anchor_refs": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "difference_from_previous": { "type": "string", "minLength": 1 }
+      }
+    },
+    "pageDuty": {
+      "type": "string",
+      "enum": ["COVER_CLICK", "VALUE_DELIVERY", "SUMMARY_CONVERSION"]
+    },
+    "backgroundAssetPolicy": {
+      "type": "string",
+      "enum": [
+        "DISTINCT_BACKGROUND_REQUIRED",
+        "REUSE_WITH_MATERIAL_TRANSFORMATION",
+        "NO_RASTER_BACKGROUND"
+      ]
+    }
+  }
+}

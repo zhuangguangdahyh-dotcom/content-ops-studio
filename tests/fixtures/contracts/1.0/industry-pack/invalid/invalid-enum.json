@@ -1,0 +1,17 @@
+{
+  "id": "generic",
+  "version": "1.0.0",
+  "display_name": "通用行业包",
+  "status": "INVALID_ENUM_VALUE",
+  "industry_context": "Fictional generic scaffold.",
+  "audience_taxonomy": [],
+  "decision_chain": [],
+  "painpoint_taxonomy": [],
+  "content_angle_library": [],
+  "visual_evidence_library": [],
+  "claim_boundaries": ["Do not state unsupported claims."],
+  "prohibited_patterns": ["Do not include customer-specific rules."],
+  "extensions": {
+    "source_directory": "packs/industries/generic"
+  }
+}

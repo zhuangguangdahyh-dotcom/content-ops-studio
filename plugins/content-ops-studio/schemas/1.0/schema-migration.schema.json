@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/schema-migration.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Schema migration",
+  "description": "Non-destructive migration definition.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "migration_id",
+    "from_version",
+    "to_version",
+    "classification",
+    "description",
+    "operations",
+    "warnings",
+    "preserves_history",
+    "default_dry_run",
+    "schema_version"
+  ],
+  "properties": {
+    "migration_id": {
+      "type": "string",
+      "pattern": "^MIG-[A-Z0-9.-]+$"
+    },
+    "from_version": {
+      "$ref": "common-definitions.schema.json#/$defs/semanticVersion"
+    },
+    "to_version": {
+      "$ref": "common-definitions.schema.json#/$defs/semanticVersion"
+    },
+    "classification": {
+      "type": "string",
+      "enum": ["PATCH", "MINOR", "MAJOR", "POTENTIALLY_BREAKING"]
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["operation", "path", "target_path", "details"],
+        "properties": {
+          "operation": {
+            "type": "string",
+            "enum": ["NO_OP", "ADD_OPTIONAL_FIELD", "COPY_FIELD", "RENAME_FIELD", "TRANSFORM_VALUE"]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_path": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "details": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "preserves_history": {
+      "const": true
+    },
+    "default_dry_run": {
+      "const": true
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    }
+  }
+}

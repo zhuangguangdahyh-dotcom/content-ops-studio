@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/project-profile-gap-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Project profile gap report",
+  "description": "Deterministic DISCOVER result that keeps Operator, Subject and Audience separate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "gap_report_id",
+    "project_id",
+    "known_fields",
+    "missing_required_fields",
+    "missing_recommended_fields",
+    "conflicting_fields",
+    "inferred_fields",
+    "operator_known",
+    "subject_known",
+    "audience_known",
+    "material_blockers",
+    "non_blocking_gaps",
+    "recommended_questions",
+    "profile_completeness",
+    "ready_for_project_confirmation",
+    "ready_for_painpoint_research",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "gap_report_id": { "type": "string", "pattern": "^PGR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "known_fields": { "$ref": "#/$defs/fieldNames" },
+    "missing_required_fields": { "$ref": "#/$defs/fieldNames" },
+    "missing_recommended_fields": { "$ref": "#/$defs/fieldNames" },
+    "conflicting_fields": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/conflict" },
+      "uniqueItems": true
+    },
+    "inferred_fields": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/inference" },
+      "uniqueItems": true
+    },
+    "operator_known": { "$ref": "#/$defs/roleKnowledge" },
+    "subject_known": { "$ref": "#/$defs/roleKnowledge" },
+    "audience_known": { "$ref": "#/$defs/roleKnowledge" },
+    "material_blockers": { "$ref": "#/$defs/fieldNames" },
+    "non_blocking_gaps": { "$ref": "#/$defs/fieldNames" },
+    "recommended_questions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 300 },
+      "uniqueItems": true
+    },
+    "profile_completeness": { "type": "number", "minimum": 0, "maximum": 1 },
+    "ready_for_project_confirmation": { "type": "boolean" },
+    "ready_for_painpoint_research": { "type": "boolean" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "fieldNames": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+      "uniqueItems": true
+    },
+    "roleKnowledge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "known_fields"],
+      "properties": {
+        "role": { "enum": ["OPERATOR", "SUBJECT", "AUDIENCE"] },
+        "known_fields": { "$ref": "#/$defs/fieldNames" }
+      }
+    },
+    "conflict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "reason"],
+      "properties": {
+        "field": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+        "reason": { "type": "string", "minLength": 1, "maxLength": 500 }
+      }
+    },
+    "inference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "value_summary", "basis", "confirmed"],
+      "properties": {
+        "field": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+        "value_summary": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "basis": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "confirmed": { "type": "boolean" }
+      }
+    }
+  }
+}

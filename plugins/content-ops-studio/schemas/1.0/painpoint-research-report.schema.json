@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/painpoint-research-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Painpoint research report",
+  "description": "Complete recoverable research result before G2 review.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "research_plan",
+    "project_profile_snapshot",
+    "source_manifest",
+    "evidence_records",
+    "painpoint_candidates",
+    "scoring_records",
+    "requested_count",
+    "produced_count",
+    "evidence_backed_count",
+    "hypothesis_count",
+    "insufficiency_reason",
+    "decision_chain_summary",
+    "business_scenario_summary",
+    "audience_summary",
+    "deduplication_report",
+    "coverage_report",
+    "source_limitations",
+    "recommended_painpoints",
+    "deferred_candidates",
+    "rejected_candidates",
+    "final_painpoint_batch",
+    "g2_approval_request",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^RPT-[A-Z0-9-]+$" },
+    "research_plan": { "$ref": "painpoint-research-plan.schema.json" },
+    "project_profile_snapshot": { "$ref": "project-profile.schema.json" },
+    "source_manifest": { "$ref": "research-source-manifest.schema.json" },
+    "evidence_records": { "type": "array", "items": { "$ref": "evidence-record.schema.json" } },
+    "painpoint_candidates": {
+      "type": "array",
+      "items": { "$ref": "painpoint-record.schema.json" }
+    },
+    "scoring_records": {
+      "type": "array",
+      "items": { "$ref": "painpoint-scoring-record.schema.json" }
+    },
+    "requested_count": { "type": "integer", "minimum": 1 },
+    "produced_count": { "type": "integer", "minimum": 0 },
+    "evidence_backed_count": { "type": "integer", "minimum": 0 },
+    "hypothesis_count": { "type": "integer", "minimum": 0 },
+    "insufficiency_reason": {
+      "anyOf": [{ "type": "string", "minLength": 1, "maxLength": 1000 }, { "type": "null" }]
+    },
+    "decision_chain_summary": { "type": "string", "minLength": 1 },
+    "business_scenario_summary": { "type": "string", "minLength": 1 },
+    "audience_summary": { "type": "string", "minLength": 1 },
+    "deduplication_report": { "type": "string", "minLength": 1 },
+    "coverage_report": { "type": "string", "minLength": 1 },
+    "source_limitations": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "recommended_painpoints": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/painpointId" },
+      "uniqueItems": true
+    },
+    "deferred_candidates": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/painpointId" },
+      "uniqueItems": true
+    },
+    "rejected_candidates": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/painpointId" },
+      "uniqueItems": true
+    },
+    "final_painpoint_batch": { "$ref": "painpoint-batch.schema.json" },
+    "g2_approval_request": { "$ref": "approval-event.schema.json" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

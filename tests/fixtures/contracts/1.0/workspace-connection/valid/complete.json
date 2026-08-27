@@ -1,0 +1,21 @@
+{
+  "provider": "MOCK",
+  "project_id": "PRJ-20990101-DEMO",
+  "workspace_identifier": "WORKSPACE-DEMO",
+  "app_token": "APP-ID-DEMO",
+  "table_ids": {
+    "projectConfig": "TABLE-PROJECT",
+    "painpoints": "TABLE-PAIN",
+    "contents": "TABLE-CONTENT",
+    "rulesAndFeedback": "TABLE-RULE"
+  },
+  "field_ids": {
+    "projectName": "FIELD-PROJECT-NAME"
+  },
+  "view_ids": {
+    "active": "VIEW-ACTIVE"
+  },
+  "schema_version": "1.0.0",
+  "last_verified_at": "2099-01-01T01:02:03.000Z",
+  "verification_status": "VERIFIED"
+}

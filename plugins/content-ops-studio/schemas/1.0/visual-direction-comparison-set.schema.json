@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-direction-comparison-set.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual direction comparison set",
+  "description": "Renderer-complete, copy-equivalent direction previews and an external-label contact sheet that preserve the source candidates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "comparison_set_id",
+    "project_id",
+    "content_id",
+    "source_candidate_set_id",
+    "source_run_id",
+    "feedback_event_id",
+    "status",
+    "approved_copy",
+    "preview_conditions",
+    "previews",
+    "contact_sheet_asset",
+    "long_term_rule_candidate",
+    "formal_delivery_count",
+    "feishu_formal_write_count",
+    "vv2_created",
+    "fpv2_created",
+    "g4_created",
+    "style_lock_created",
+    "remaining_pages_created",
+    "idempotency_key",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "comparison_set_id": { "type": "string", "pattern": "^VDCPS-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "source_candidate_set_id": { "type": "string", "pattern": "^VDCS-[A-Z0-9-]+$" },
+    "source_run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "feedback_event_id": { "type": "string", "pattern": "^VFE-[A-Z0-9-]+$" },
+    "status": { "const": "AWAITING_USER_SELECTION" },
+    "approved_copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "body", "approved_text_only", "renderer_only"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "body": { "type": "string", "minLength": 1 },
+        "approved_text_only": { "const": true },
+        "renderer_only": { "const": true }
+      }
+    },
+    "preview_conditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height",
+        "aspect_ratio",
+        "same_copy",
+        "same_scale_in_contact_sheet",
+        "candidate_labels_outside_frames",
+        "text_overflow_free",
+        "mobile_title_legible"
+      ],
+      "properties": {
+        "width": { "const": 1242 },
+        "height": { "const": 1660 },
+        "aspect_ratio": { "const": "3:4" },
+        "same_copy": { "const": true },
+        "same_scale_in_contact_sheet": { "const": true },
+        "candidate_labels_outside_frames": { "const": true },
+        "text_overflow_free": { "const": true },
+        "mobile_title_legible": { "const": true }
+      }
+    },
+    "previews": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "$ref": "#/$defs/preview" }
+    },
+    "contact_sheet_asset": { "$ref": "common-definitions.schema.json#/$defs/assetReference" },
+    "long_term_rule_candidate": { "const": false },
+    "formal_delivery_count": { "const": 0 },
+    "feishu_formal_write_count": { "const": 0 },
+    "vv2_created": { "const": false },
+    "fpv2_created": { "const": false },
+    "g4_created": { "const": false },
+    "style_lock_created": { "const": false },
+    "remaining_pages_created": { "const": 0 },
+    "idempotency_key": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "original_asset_id",
+        "original_checksum",
+        "preview_asset",
+        "asset_channel",
+        "visual_mode",
+        "quality_report_id",
+        "quality_score",
+        "content_match_strength",
+        "aesthetic_risk",
+        "mobile_thumbnail_performance",
+        "host_imagegen_dependency",
+        "renderer_dependency"
+      ],
+      "properties": {
+        "candidate_id": { "type": "string", "pattern": "^VDC-[A-Z0-9-]+$" },
+        "original_asset_id": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+        "original_checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+        "preview_asset": { "$ref": "common-definitions.schema.json#/$defs/assetReference" },
+        "asset_channel": { "$ref": "industry-visual-pack.schema.json#/$defs/assetChannel" },
+        "visual_mode": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+        "quality_report_id": { "type": "string", "pattern": "^IQR-[A-Z0-9-]+$" },
+        "quality_score": { "type": "integer", "minimum": 75, "maximum": 100 },
+        "content_match_strength": { "type": "string", "minLength": 1 },
+        "aesthetic_risk": { "type": "string", "minLength": 1 },
+        "mobile_thumbnail_performance": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "host_imagegen_dependency": { "type": "boolean" },
+        "renderer_dependency": { "const": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "page_number": 1,
+  "page_role": "COVER",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "visual_plan_version": "VV-1",
+  "first_page_version": "FPV-1",
+  "copy_snapshot_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "visual_handoff_ref": "projects/demo/runs/run/visual/visual-handoff-package.json",
+  "visual_handoff_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+  "page_visual_plan_id": "PVP-DEMO-01",
+  "renderer_config": {
+    "renderer_config_id": "RCFG-PHASE4B-001",
+    "renderer_id": "PLAYWRIGHT_HTML_CSS",
+    "renderer_version": "1.0.0",
+    "runtime_package": "playwright-core",
+    "runtime_package_version": "1.62.1",
+    "browser_family": "CHROMIUM",
+    "browser_channel": "PLAYWRIGHT_MANAGED",
+    "browser_path_reference": "EXTERNAL_RENDERER_CACHE",
+    "headless": true,
+    "viewport": {
+      "width": 1242,
+      "height": 1660
+    },
+    "device_scale_factor": 1,
+    "locale": "zh-CN",
+    "timezone": "Asia/Shanghai",
+    "color_scheme": "light",
+    "reduced_motion": "reduce",
+    "screenshot_options": {
+      "type": "png",
+      "animations": "disabled",
+      "caret": "hide",
+      "scale": "css",
+      "omit_background": false
+    },
+    "network_policy": "BLOCK_ALL",
+    "font_policy": "SYSTEM_CJK_STACK",
+    "animation_policy": "DISABLED",
+    "time_policy": "NO_DYNAMIC_TIME",
+    "random_policy": "NO_RANDOM_VALUES",
+    "timeout_ms": 30000,
+    "schema_version": "1.0.0",
+    "extensions": {}
+  },
+  "renderer_environment_requirement": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "browser_family": "CHROMIUM",
+    "browser_required": true,
+    "font_profile_required": true
+  },
+  "template_id": "TPL-EDITORIAL-COVER",
+  "template_version": "1.0.0",
+  "asset_strategy": "PROGRAMMATIC_GRAPHIC",
+  "programmatic_graphic_plan": {
+    "graphic_id": "PG-PHASE4B-001",
+    "primitives": ["FRAME", "LINE", "NUMBER_MARKER"],
+    "contains_formal_copy": false,
+    "contains_remote_assets": false
+  },
+  "text_layer_plan": [
+    {
+      "layer_id": "TITLE",
+      "role": "TITLE",
+      "exact_text": "先别急着相信专业",
+      "source_hash": "2222222222222222222222222222222222222222222222222222222222222222"
+    }
+  ],
+  "font_resolution_plan": [
+    {
+      "role": "TITLE",
+      "font_stack": ["PingFang SC", "sans-serif"]
+    }
+  ],
+  "layout_measurement_plan": [
+    "BOUNDING_CLIENT_RECT",
+    "SCROLL_SIZE",
+    "CLIENT_SIZE",
+    "COMPUTED_FONT",
+    "LINE_COUNT",
+    "VISIBILITY",
+    "SAFE_AREA",
+    "CANVAS_SCROLL"
+  ],
+  "expected_outputs": [
+    "BACKGROUND_SVG",
+    "COMPILED_HTML",
+    "FIRST_PAGE_PNG",
+    "GENERATION_MANIFEST",
+    "RENDER_REPORT",
+    "QA_REPORT",
+    "PRODUCTION_REPORT",
+    "ENVIRONMENT_EVIDENCE"
+  ],
+  "qa_requirements": ["Exact copy", "No overflow"],
+  "live_write_required": true,
+  "explicit_confirmation": true,
+  "idempotency_key": "phase4b-demo-first-page-v1",
+  "plan_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

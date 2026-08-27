@@ -1,0 +1,29 @@
+{
+  "provider": "FEISHU",
+  "region": "CHINA",
+  "auth_mode": "SELF_BUILT_TENANT_APP",
+  "app_id_reference": "env:FEISHU_APP_ID",
+  "secret_provider": "ENVIRONMENT",
+  "parent_folder_token_reference": "env:FEISHU_PARENT_FOLDER_TOKEN",
+  "test_parent_folder_token_reference": "env:FEISHU_TEST_PARENT_FOLDER_TOKEN",
+  "base_url": "https://open.feishu.cn",
+  "request_timeout_ms": 30000,
+  "retry_policy": {
+    "max_attempts": 3,
+    "base_delay_ms": 250,
+    "max_delay_ms": 5000,
+    "jitter": true
+  },
+  "rate_limit_policy": {
+    "strategy": "SERVER_DIRECTED_BOUNDED",
+    "respect_retry_after": true
+  },
+  "token_refresh_policy": {
+    "refresh_window_seconds": 120,
+    "single_flight": true
+  },
+  "live_write_enabled": false,
+  "live_test_enabled": false,
+  "schema_version": "9.9.9",
+  "extensions": {}
+}

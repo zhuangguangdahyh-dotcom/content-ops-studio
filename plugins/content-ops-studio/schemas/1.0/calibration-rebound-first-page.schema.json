@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/calibration-rebound-first-page.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Calibration rebound first page",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_id",
+    "project_ref",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "first_page_version",
+    "asset_id",
+    "asset_source_type",
+    "source_asset_id",
+    "source_asset_ref",
+    "source_asset_checksum",
+    "asset_ref",
+    "asset_checksum",
+    "asset_file_size",
+    "canvas",
+    "copy_equivalence",
+    "asset_byte_reuse_eligibility",
+    "image_bytes",
+    "current_version_qa",
+    "historical_manifest_modified",
+    "operator_approved",
+    "g4_eligible",
+    "imagegen_calls",
+    "renderer_calls",
+    "feishu_writes",
+    "production_workspace_write_eligible",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "manifest_id": { "type": "string", "pattern": "^CRFPM-[A-Z0-9-]+$" },
+    "project_ref": { "$ref": "project-reference.schema.json" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "first_page_version": { "type": "string", "pattern": "^FPV-[1-9][0-9]*$" },
+    "asset_id": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+    "asset_source_type": { "const": "REUSED_VERIFIED_ASSET" },
+    "source_asset_id": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+    "source_asset_ref": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+    "source_asset_checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "asset_ref": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+    "asset_checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "asset_file_size": { "type": "integer", "minimum": 1 },
+    "canvas": { "$ref": "common-definitions.schema.json#/$defs/canvas" },
+    "copy_equivalence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "copy_byte_equivalence",
+        "content_promise_equivalence",
+        "page_role_equivalence",
+        "page_intent_equivalence"
+      ],
+      "properties": {
+        "copy_byte_equivalence": { "const": "PASS" },
+        "content_promise_equivalence": { "const": "PASS" },
+        "page_role_equivalence": { "const": "PASS" },
+        "page_intent_equivalence": { "const": "PASS" }
+      }
+    },
+    "asset_byte_reuse_eligibility": { "const": "PASSED" },
+    "image_bytes": { "const": "UNCHANGED" },
+    "current_version_qa": { "$ref": "#/$defs/currentVersionQa" },
+    "historical_manifest_modified": { "const": false },
+    "operator_approved": { "const": false },
+    "g4_eligible": { "const": true },
+    "imagegen_calls": { "const": 0 },
+    "renderer_calls": { "const": 0 },
+    "feishu_writes": { "const": 0 },
+    "production_workspace_write_eligible": { "const": false },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "currentVersionQa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qa_binding_id",
+        "target_binding",
+        "checks",
+        "evidence_refs",
+        "hard_blocks",
+        "status"
+      ],
+      "properties": {
+        "qa_binding_id": { "type": "string", "pattern": "^CVQA-[A-Z0-9-]+$" },
+        "target_binding": { "type": "string", "minLength": 1 },
+        "checks": {
+          "type": "array",
+          "minItems": 21,
+          "maxItems": 21,
+          "items": { "$ref": "#/$defs/qaCheck" }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 5,
+          "items": { "$ref": "#/$defs/evidenceRef" }
+        },
+        "hard_blocks": { "type": "array", "maxItems": 0 },
+        "status": { "const": "PASSED" }
+      }
+    },
+    "qaCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check", "result", "binding_basis"],
+      "properties": {
+        "check": {
+          "enum": [
+            "COPY_FIDELITY",
+            "TYPOGRAPHY_POLICY",
+            "TYPOGRAPHY_SPATIAL_INTEGRITY",
+            "TYPOGRAPHY_BREATHING_ROOM",
+            "RASTER_TEXT_BACKGROUND_CONTRAST_INTEGRITY",
+            "CONTRAST_STABILITY",
+            "BACKGROUND_COMPLEXITY",
+            "THUMBNAIL_QA",
+            "COVER_CLICK_CLARITY",
+            "SEMANTIC_RELEVANCE",
+            "PAINPOINT_SCENE_CONGRUENCE",
+            "EDITORIAL_SPATIAL",
+            "IMAGE_TEXT_INTEGRATION",
+            "COVER_ATTENTION",
+            "VISUAL_MASS",
+            "GREYSCALE_HIERARCHY",
+            "COLOR_INTELLIGENCE",
+            "TYPOGRAPHY_AS_FORM",
+            "IMAGE_QUALITY",
+            "ACTUAL_PIXEL_QA",
+            "DETERMINISTIC_ASSET_VERIFICATION"
+          ]
+        },
+        "result": { "const": "PASS" },
+        "binding_basis": { "type": "string", "minLength": 1 }
+      }
+    },
+    "evidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_ref", "checksum"],
+      "properties": {
+        "artifact_ref": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+        "checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" }
+      }
+    }
+  }
+}

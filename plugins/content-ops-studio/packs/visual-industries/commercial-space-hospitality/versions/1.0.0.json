@@ -1,0 +1,38 @@
+{
+  "pack_id": "COMMERCIAL_SPACE_HOSPITALITY",
+  "pack_version": "1.0.0",
+  "display_name": "Commercial Space and Hospitality",
+  "supported_industries": ["Commercial interiors", "Hospitality", "Retail and service spaces"],
+  "default_visual_mode_ranking": ["SCENE_SERIES", "EVIDENCE_LED", "EDITORIAL_SERIES", "MIXED"],
+  "asset_source_priority": [
+    "PROJECT_ASSET",
+    "EVIDENCE_ASSET",
+    "AI_GENERATED_VISUAL",
+    "MIXED_ASSET"
+  ],
+  "identity_invariants": [
+    "Preserve business category, zoning, circulation, anchors, and spatial structure."
+  ],
+  "specialized_hard_blocks": [
+    "Fabricated completed project",
+    "Changed architecture or spatial relationship"
+  ],
+  "specialized_quality_checks": [
+    "Perspective and scale",
+    "Material and lighting credibility",
+    "Commercial identity clarity"
+  ],
+  "consistency_requirements": [
+    "Consistent space identity across viewpoints",
+    "Meaningful camera diversity"
+  ],
+  "fallback_strategies": [
+    "Use an editorial diagram when no authorized project photography exists."
+  ],
+  "recommended_questions": ["Is this a real project, a concept, or a generated scene?"],
+  "prohibited_claims_or_representations": ["Generated scene presented as completed construction"],
+  "allowed_overlays": ["SPACE_IDENTITY", "EVIDENCE_AUTHENTICITY", "BRAND_ASSET_INTEGRITY"],
+  "known_limitations": ["Generated scenes are not construction evidence."],
+  "contains_customer_assets": false,
+  "schema_version": "1.0.0"
+}

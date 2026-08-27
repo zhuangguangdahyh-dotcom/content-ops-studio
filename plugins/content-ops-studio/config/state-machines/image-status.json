@@ -1,0 +1,111 @@
+{
+  "machine": "image-status",
+  "version": "1.0.0",
+  "states": [
+    "IMAGE_NOT_GENERATED",
+    "FIRST_PAGE_GENERATING",
+    "FIRST_PAGE_PENDING_APPROVAL",
+    "FIRST_PAGE_APPROVED",
+    "IMAGE_SET_GENERATING",
+    "IMAGE_SET_GENERATED",
+    "IMAGE_GENERATION_FAILED"
+  ],
+  "initialStates": ["IMAGE_NOT_GENERATED"],
+  "terminalStates": ["IMAGE_SET_GENERATED"],
+  "transitions": [
+    {
+      "from": "IMAGE_NOT_GENERATED",
+      "to": "FIRST_PAGE_GENERATING",
+      "trigger": "START_FIRST_PAGE_GENERATION",
+      "ownerSkill": "image-set-production",
+      "requiresApprovalGate": null,
+      "requiredContext": ["content_status", "visual_plan_version", "visual_plan_content_version"],
+      "invalidates": [],
+      "description": "IMAGE_NOT_GENERATED to FIRST_PAGE_GENERATING"
+    },
+    {
+      "from": "FIRST_PAGE_GENERATING",
+      "to": "FIRST_PAGE_PENDING_APPROVAL",
+      "trigger": "SUBMIT_FIRST_PAGE",
+      "ownerSkill": "image-set-production",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "FIRST_PAGE_GENERATING to FIRST_PAGE_PENDING_APPROVAL"
+    },
+    {
+      "from": "FIRST_PAGE_GENERATING",
+      "to": "IMAGE_GENERATION_FAILED",
+      "trigger": "FAIL_IMAGE_GENERATION",
+      "ownerSkill": "image-set-production",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "FIRST_PAGE_GENERATING to IMAGE_GENERATION_FAILED"
+    },
+    {
+      "from": "FIRST_PAGE_PENDING_APPROVAL",
+      "to": "FIRST_PAGE_APPROVED",
+      "trigger": "APPROVE_FIRST_PAGE",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": "FIRST_PAGE",
+      "requiredContext": ["visual_plan_version"],
+      "invalidates": [],
+      "description": "FIRST_PAGE_PENDING_APPROVAL to FIRST_PAGE_APPROVED"
+    },
+    {
+      "from": "FIRST_PAGE_PENDING_APPROVAL",
+      "to": "FIRST_PAGE_GENERATING",
+      "trigger": "REVISE_FIRST_PAGE",
+      "ownerSkill": "image-set-production",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": ["FIRST_PAGE_QA"],
+      "description": "FIRST_PAGE_PENDING_APPROVAL to FIRST_PAGE_GENERATING"
+    },
+    {
+      "from": "FIRST_PAGE_APPROVED",
+      "to": "IMAGE_SET_GENERATING",
+      "trigger": "START_IMAGE_SET_GENERATION",
+      "ownerSkill": "image-set-production",
+      "requiresApprovalGate": null,
+      "requiredContext": [
+        "first_page_approval_status",
+        "style_lock_version",
+        "style_lock_content_version"
+      ],
+      "invalidates": [],
+      "description": "FIRST_PAGE_APPROVED to IMAGE_SET_GENERATING"
+    },
+    {
+      "from": "IMAGE_SET_GENERATING",
+      "to": "IMAGE_SET_GENERATED",
+      "trigger": "COMPLETE_IMAGE_SET",
+      "ownerSkill": "image-set-production",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "IMAGE_SET_GENERATING to IMAGE_SET_GENERATED"
+    },
+    {
+      "from": "IMAGE_SET_GENERATING",
+      "to": "IMAGE_GENERATION_FAILED",
+      "trigger": "FAIL_IMAGE_GENERATION",
+      "ownerSkill": "image-set-production",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "IMAGE_SET_GENERATING to IMAGE_GENERATION_FAILED"
+    },
+    {
+      "from": "IMAGE_GENERATION_FAILED",
+      "to": "FIRST_PAGE_GENERATING",
+      "trigger": "RETRY_IMAGE_GENERATION",
+      "ownerSkill": "image-set-production",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "IMAGE_GENERATION_FAILED to FIRST_PAGE_GENERATING"
+    }
+  ]
+}

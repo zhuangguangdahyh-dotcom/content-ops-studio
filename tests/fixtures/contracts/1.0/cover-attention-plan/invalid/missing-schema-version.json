@@ -1,0 +1,39 @@
+{
+  "plan_id": "CAP-DEMO-I",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "candidate_id": "CCC-DEMO-I",
+  "page_design_intent": "COVER_ENTRY",
+  "mode": "TYPE_DOMINANT",
+  "primary_attention": "primary hook",
+  "secondary_attention": "storefront crop",
+  "tertiary_attention": "support line",
+  "primary_hook": "A fictional storefront hook",
+  "visual_hook": "Overscale type meets a text-free storefront edge",
+  "visual_mass_plan": "One primary mass at least 1.18 times the secondary mass",
+  "scale_contrast": "Overscale hook against restrained support copy",
+  "crop_strategy": "Purposeful edge crop",
+  "grid_strategy": "Disciplined asymmetric grid",
+  "grid_break_strategy": "One controlled title overhang",
+  "negative_space_strategy": "Active field isolates the hook",
+  "image_type_relation": "Type and image share one edge axis",
+  "color_strategy": {
+    "hue": "neutral base with one warm signal",
+    "value": "dark-light hierarchy remains legible in grayscale",
+    "saturation": "low dominant saturation with controlled accent",
+    "temperature": "warm-cool relation supports the focal contrast",
+    "quantity": {
+      "dominant": 0.72,
+      "support": 0.2,
+      "accent": 0.08
+    }
+  },
+  "silhouette_strategy": "One recognizable typographic block",
+  "information_compression": "One promise and one support line",
+  "motif": "threshold edge",
+  "rationale": "Makes the buyer problem recognizable within one second",
+  "risks": ["Type could overpower evidence"],
+  "runtime_browsing": false,
+  "run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z"
+}

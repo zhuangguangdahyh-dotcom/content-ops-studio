@@ -1,0 +1,22 @@
+{
+  "report_id": "VMHR-DEMO-I",
+  "candidate_id": "CCC-DEMO-I",
+  "page_design_intent": "COVER_ENTRY",
+  "primary": {
+    "id": "hook",
+    "mass_score": 86
+  },
+  "secondary": {
+    "id": "image",
+    "mass_score": 68
+  },
+  "tertiary": {
+    "id": "support",
+    "mass_score": 42
+  },
+  "clear_primary": true,
+  "hard_blocks": [],
+  "result": "PASS",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z"
+}

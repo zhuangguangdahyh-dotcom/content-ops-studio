@@ -1,0 +1,33 @@
+{
+  "routing_plan_id": "VARP-C-0001-R1",
+  "context_id": "IPC-C-0001-R1",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "routes": [
+    {
+      "page_number": 1,
+      "asset_channel": "AI_GENERATED_VISUAL",
+      "visual_mode": "EDITORIAL_SERIES",
+      "purpose": "Create a professional direction candidate.",
+      "formal_text_policy": "RENDERER_ONLY",
+      "requires_authorization": false
+    }
+  ],
+  "priority_order": [
+    "SAFETY",
+    "OPERATOR_REQUEST",
+    "STYLE_LOCK",
+    "PROJECT_PROFILE",
+    "GLOBAL_PREFERENCE",
+    "EVIDENCE_NEED",
+    "INDUSTRY_PACK",
+    "VISUAL_MODE",
+    "GENERIC"
+  ],
+  "requires_direction_candidates": true,
+  "blocked_reasons": [],
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "unexpected": true
+}

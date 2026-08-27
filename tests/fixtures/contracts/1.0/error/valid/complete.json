@@ -1,0 +1,8 @@
+{
+  "code": "INPUT_MISSING",
+  "message": "A fictional required input is missing.",
+  "retryable": false,
+  "scope": "fixture",
+  "recommended_action": "Provide fictional fixture input.",
+  "extensions": {}
+}

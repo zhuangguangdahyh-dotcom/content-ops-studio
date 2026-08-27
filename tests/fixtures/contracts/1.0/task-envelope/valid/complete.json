@@ -1,0 +1,22 @@
+{
+  "contract_version": "1.0.0",
+  "schema_version": "1.0.0",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "project_id": "PRJ-20990101-DEMO",
+  "task_type": "fixture",
+  "operation": "validate",
+  "source": "mock",
+  "raw_instruction": "Fictional fixture.",
+  "targets": {
+    "painpoint_ids": ["P-0001"],
+    "content_ids": ["C-0001"],
+    "page_numbers": [1]
+  },
+  "overrides": {},
+  "approval_event": null,
+  "resume": {
+    "from_run_id": null,
+    "from_step": null
+  },
+  "dry_run": true
+}

@@ -1,0 +1,51 @@
+{
+  "report_id": "ITIR-CAL-SPACE-001-D",
+  "project_id": "CAL-COMMERCIAL-SPACE-001",
+  "content_id": "C-9001",
+  "candidate_id": "CCC-CAL-SPACE-001-D",
+  "integration_strategy": "Title interlocks with the storefront edge and natural negative space.",
+  "image_responsibility": "PAINPOINT",
+  "anchor_relationships": ["Storefront fascia edge", "Recessed entrance axis"],
+  "key_evidence_obscured": false,
+  "generic_text_over_photo": false,
+  "dimensions": [
+    {
+      "dimension": "SUBJECT_OR_EDGE_RELATION",
+      "weight": 20,
+      "score": 18,
+      "reason": "SUBJECT_OR_EDGE_RELATION is visible in the output."
+    },
+    {
+      "dimension": "NEGATIVE_SPACE_RELATION",
+      "weight": 20,
+      "score": 18,
+      "reason": "NEGATIVE_SPACE_RELATION is visible in the output."
+    },
+    {
+      "dimension": "FOCUS_COOPERATION",
+      "weight": 20,
+      "score": 18,
+      "reason": "FOCUS_COOPERATION is visible in the output."
+    },
+    {
+      "dimension": "EVIDENCE_VISIBILITY",
+      "weight": 20,
+      "score": 18,
+      "reason": "EVIDENCE_VISIBILITY is visible in the output."
+    },
+    {
+      "dimension": "READING_PATH_INTEGRATION",
+      "weight": 20,
+      "score": 18,
+      "reason": "READING_PATH_INTEGRATION is visible in the output."
+    }
+  ],
+  "total_score": 90,
+  "threshold": 85,
+  "hard_blocks": [],
+  "result": "PASS_PENDING_OPERATOR",
+  "operator_approval_required": true,
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

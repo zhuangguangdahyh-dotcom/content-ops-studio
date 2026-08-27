@@ -1,0 +1,8 @@
+{
+  "overlay_id": "REGULATED_CLAIMS",
+  "overlay_version": "1.0.0",
+  "display_name": "Regulated claims",
+  "hard_blocks": ["Unsupported regulated claim"],
+  "quality_checks": ["Claim, evidence and disclaimer alignment"],
+  "schema_version": "1.0.0"
+}

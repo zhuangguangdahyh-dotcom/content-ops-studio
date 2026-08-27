@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/candidate-set-visual-diversity-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Candidate set visual diversity report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "candidate_set_id",
+    "candidate_ids",
+    "composition_families",
+    "text_regions",
+    "shot_scales",
+    "camera_viewpoints",
+    "asset_structures",
+    "semantic_roles",
+    "reading_paths",
+    "dimensions",
+    "near_template_duplicate_risk",
+    "total_score",
+    "threshold",
+    "hard_blocks",
+    "result",
+    "operator_approval_required",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^CSVDR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "candidate_set_id": { "type": "string", "pattern": "^CCCS-[A-Z0-9-]+$" },
+    "candidate_ids": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 3,
+      "items": { "type": "string", "pattern": "^CCC-[A-Z0-9-]+$" },
+      "uniqueItems": true
+    },
+    "composition_families": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "universal-visual-default-policy.schema.json#/$defs/compositionFamily" },
+      "uniqueItems": true
+    },
+    "text_regions": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "shot_scales": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "camera_viewpoints": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "asset_structures": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "semantic_roles": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "reading_paths": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": { "$ref": "#/$defs/dimension" }
+    },
+    "near_template_duplicate_risk": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "BLOCKING"]
+    },
+    "total_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "threshold": { "const": 85 },
+    "hard_blocks": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "result": { "type": "string", "enum": ["PASS_PENDING_OPERATOR", "FAIL", "BLOCKED"] },
+    "operator_approval_required": { "const": true },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimension", "weight", "score", "reason"],
+      "properties": {
+        "dimension": {
+          "type": "string",
+          "enum": [
+            "COMPOSITION_FAMILY_DIVERSITY",
+            "TEXT_REGION_DIVERSITY",
+            "SHOT_SCALE_DIVERSITY",
+            "CAMERA_VIEWPOINT_DIVERSITY",
+            "ASSET_STRUCTURE_DIVERSITY",
+            "SEMANTIC_ROLE_DIVERSITY",
+            "VISUAL_READING_PATH_DIVERSITY",
+            "IMAGE_TEXT_INTEGRATION_DIVERSITY",
+            "NEAR_TEMPLATE_DUPLICATE_RISK"
+          ]
+        },
+        "weight": { "type": "integer", "minimum": 10, "maximum": 20 },
+        "score": { "type": "integer", "minimum": 0, "maximum": 20 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

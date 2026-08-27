@@ -1,0 +1,31 @@
+{
+  "checkpoint_id": "CHK-DEMO-001",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "project_id": "PRJ-20990101-DEMO",
+  "workflow_id": "PROJECT_INITIALIZATION_LOCAL_V1",
+  "workflow_version": "1.0.0",
+  "journal_head_sequence": 1,
+  "journal_head_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "current_step_id": "AWAIT_G1_PROJECT_PROFILE",
+  "run_status": "INVALID_ENUM_VALUE",
+  "completed_steps": ["PREFLIGHT"],
+  "failed_steps": [],
+  "pending_approval": {
+    "gate": "PROJECT_PROFILE",
+    "target_id": "PRJ-20990101-DEMO",
+    "target_version": "1"
+  },
+  "artifact_index": {
+    "project_profile": "projects/demo/project.json"
+  },
+  "write_log_head": {
+    "entry_count": 1,
+    "last_write_id": "W-DEMO-001"
+  },
+  "idempotency_snapshot": {
+    "PREFLIGHT": "SUCCESS"
+  },
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

@@ -1,0 +1,13 @@
+{
+  "example": true,
+  "projectId": "PRJ-20990101-DEMO",
+  "projectName": "栖序空间设计示例项目",
+  "subject": {
+    "name": "栖序空间设计",
+    "type": "fictional-commercial-interior-studio",
+    "region": "示例城市"
+  },
+  "audience": "计划开设精品酒店或餐饮空间的经营者",
+  "platformPack": "xiaohongshu",
+  "industryPack": "commercial-interior"
+}

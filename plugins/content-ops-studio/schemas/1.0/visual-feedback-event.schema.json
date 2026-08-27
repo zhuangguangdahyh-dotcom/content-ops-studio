@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-feedback-event.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual feedback event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "project_id",
+    "content_id",
+    "feedback_class",
+    "scope",
+    "target_type",
+    "target_id",
+    "statement",
+    "is_tool_or_system_defect",
+    "creates_long_term_rule",
+    "source",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "event_id": { "type": "string", "pattern": "^VFE-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": {
+      "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/contentId" }, { "type": "null" }]
+    },
+    "feedback_class": {
+      "type": "string",
+      "enum": [
+        "QUALITY_DEFECT",
+        "PRODUCTION_FEEDBACK",
+        "VISUAL_PREFERENCE",
+        "PROJECT_OR_DOMAIN_CONSTRAINT"
+      ]
+    },
+    "scope": { "$ref": "#/$defs/scope" },
+    "target_type": {
+      "type": "string",
+      "enum": ["ELEMENT", "PAGE", "SET", "PROJECT", "INDUSTRY_PACK", "GLOBAL"]
+    },
+    "target_id": { "type": "string", "minLength": 1 },
+    "statement": { "type": "string", "minLength": 1 },
+    "is_tool_or_system_defect": { "type": "boolean" },
+    "long_term_rule_candidate": { "type": "boolean" },
+    "creates_long_term_rule": { "const": false },
+    "source": { "const": "OPERATOR_FEEDBACK" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "scope": {
+      "type": "string",
+      "enum": [
+        "CURRENT_ELEMENT",
+        "CURRENT_PAGE",
+        "CURRENT_SET",
+        "CURRENT_PROJECT",
+        "INDUSTRY_PACK",
+        "GLOBAL_USER_PREFERENCE"
+      ]
+    }
+  }
+}

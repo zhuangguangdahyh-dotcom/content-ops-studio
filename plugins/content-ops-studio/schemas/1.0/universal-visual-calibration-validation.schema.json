@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/universal-visual-calibration-validation.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Universal visual calibration validation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "validation_id",
+    "status",
+    "validation_scope",
+    "project_id",
+    "content_id",
+    "source_approval_id",
+    "source_style_lock_id",
+    "validated_systems",
+    "universal_template_created",
+    "universal_template_exclusions",
+    "project_profile_mutated",
+    "industry_pack_mutated",
+    "universal_default_mutated",
+    "c0001_unchanged",
+    "historical_assets_preserved",
+    "remaining_page_production_eligibility",
+    "remaining_pages_created",
+    "image_generation_calls",
+    "feishu_writes",
+    "idempotency_key",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "validation_id": { "type": "string", "pattern": "^UVCV-[A-Z0-9-]+$" },
+    "status": { "const": "CALIBRATION_VALIDATED_V1" },
+    "validation_scope": { "const": "RULES_KNOWLEDGE_QA_AND_DECISION_SYSTEMS_ONLY" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "source_approval_id": { "$ref": "common-definitions.schema.json#/$defs/approvalId" },
+    "source_style_lock_id": { "type": "string", "pattern": "^CSL-[A-Z0-9-]+$" },
+    "validated_systems": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/system" }
+    },
+    "universal_template_created": { "const": false },
+    "universal_template_exclusions": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["LAYOUT", "COLOR", "STOREFRONT", "TITLE_POSITION", "CROP", "TYPE_DOMINANT"]
+      }
+    },
+    "project_profile_mutated": { "const": false },
+    "industry_pack_mutated": { "const": false },
+    "universal_default_mutated": { "const": false },
+    "c0001_unchanged": { "const": true },
+    "historical_assets_preserved": { "const": true },
+    "remaining_page_production_eligibility": { "const": "ELIGIBLE" },
+    "remaining_pages_created": { "const": 0 },
+    "image_generation_calls": { "const": 0 },
+    "feishu_writes": { "const": 0 },
+    "idempotency_key": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "system": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "status"],
+      "properties": {
+        "system": {
+          "type": "string",
+          "enum": [
+            "UNIVERSAL_DEFAULT_VISUAL_BASELINE_V1",
+            "EDITORIAL_DESIGN_KNOWLEDGE_V1",
+            "COVER_ATTENTION_INTELLIGENCE_V1",
+            "TYPOGRAPHY_SPATIAL_INTEGRITY_V1",
+            "TYPOGRAPHY_BREATHING_ROOM_V1",
+            "RASTER_TEXT_BACKGROUND_CONTRAST_INTEGRITY_V1"
+          ]
+        },
+        "status": { "const": "CALIBRATION_VALIDATED_V1" }
+      }
+    }
+  }
+}

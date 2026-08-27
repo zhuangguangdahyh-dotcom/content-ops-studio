@@ -1,0 +1,133 @@
+{
+  "diagnostic_id": "DIAG-DEMO-001",
+  "runtime_mode": "MOCK",
+  "current_runtime": {
+    "name": "node",
+    "version": "v24.19.0",
+    "major": 24,
+    "platform": "fixture-os",
+    "architecture": "fixture-arch"
+  },
+  "runtime_support_policy": {
+    "policy_version": "1.0.0",
+    "runtime_name": "node",
+    "supported_range": ">=24 <25",
+    "primary_major": 24,
+    "support_level": "SUPPORTED_AND_VERIFIED"
+  },
+  "runtime_evidence": [
+    {
+      "evidence_id": "RTE-NODE20-POLICY-001",
+      "runtime_name": "node",
+      "runtime_version": "v20.20.2",
+      "runtime_major": 20,
+      "support_policy_status": "UPSTREAM_EOL",
+      "policy_reason_code": "UPSTREAM_EOL",
+      "execution_status": "NOT_REQUIRED",
+      "evidence_source": "POLICY",
+      "report_path": "plugins/content-ops-studio/config/runtime-support-policy.json",
+      "limitations": ["Node 20 compatibility execution is not required by current policy."]
+    },
+    {
+      "evidence_id": "RTE-NODE22-POLICY-001",
+      "runtime_name": "node",
+      "runtime_version": "v22.0.0",
+      "runtime_major": 22,
+      "support_policy_status": "UNCLAIMED",
+      "policy_reason_code": "NOT_VALIDATED_BY_THIS_PROJECT",
+      "execution_status": "NOT_RUN",
+      "evidence_source": "POLICY",
+      "report_path": "plugins/content-ops-studio/config/runtime-support-policy.json",
+      "limitations": ["No project compatibility claim or execution evidence."]
+    },
+    {
+      "evidence_id": "RTE-NODE24-FIXTURE-001",
+      "runtime_name": "node",
+      "runtime_version": "v24.19.0",
+      "runtime_major": 24,
+      "support_policy_status": "SUPPORTED",
+      "policy_reason_code": "PROJECT_SUPPORTED_RUNTIME",
+      "execution_status": "PASSED",
+      "evidence_source": "TEST",
+      "report_path": "reports/verification/runtime-evidence-node24.json",
+      "limitations": ["Fictional contract fixture only."]
+    },
+    {
+      "evidence_id": "RTE-NODE26-POLICY-001",
+      "runtime_name": "node",
+      "runtime_version": "v26.0.0",
+      "runtime_major": 26,
+      "support_policy_status": "UNCLAIMED",
+      "policy_reason_code": "NOT_VALIDATED_BY_THIS_PROJECT",
+      "execution_status": "NOT_RUN",
+      "evidence_source": "POLICY",
+      "report_path": "plugins/content-ops-studio/config/runtime-support-policy.json",
+      "limitations": ["No project compatibility claim or execution evidence."]
+    }
+  ],
+  "supported_runtime_match": true,
+  "upstream_lifecycle_snapshot": [
+    {
+      "runtime_name": "node",
+      "runtime_major": 20,
+      "upstream_status": "EOL",
+      "project_status": "UPSTREAM_EOL",
+      "execution_status": "NOT_REQUIRED"
+    },
+    {
+      "runtime_name": "node",
+      "runtime_major": 22,
+      "upstream_status": "LTS",
+      "project_status": "UNCLAIMED",
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "runtime_name": "node",
+      "runtime_major": 24,
+      "upstream_status": "LTS",
+      "project_status": "SUPPORTED",
+      "execution_status": "PASSED"
+    },
+    {
+      "runtime_name": "node",
+      "runtime_major": 26,
+      "upstream_status": "CURRENT",
+      "project_status": "UNCLAIMED",
+      "execution_status": "NOT_RUN"
+    }
+  ],
+  "local_runtime_readiness": "READY",
+  "production_integration_readiness": "BLOCKED",
+  "cross_platform_ci_evidence": "UNVERIFIED",
+  "project_home_status": "NOT_CREATED",
+  "schema_status": "READY",
+  "pack_status": "READY_WITH_WARNINGS",
+  "capabilities": [
+    {
+      "capability": "workspace.write",
+      "provider": "local-mock-workspace",
+      "status": "MOCK_ONLY",
+      "limitations": ["No Feishu operation"],
+      "last_verified_at": "2099-01-01T01:02:03.000Z",
+      "blocking_reason": null
+    }
+  ],
+  "adapters": [
+    {
+      "capability": "renderer.render",
+      "provider": "mock-renderer",
+      "status": "MOCK_ONLY",
+      "limitations": ["No PNG output"],
+      "last_verified_at": "2099-01-01T01:02:03.000Z",
+      "blocking_reason": null
+    }
+  ],
+  "git_status": "UNBORN_WORKING_TREE",
+  "remote_status": "NOT_CONFIGURED",
+  "warnings": ["Production integrations are not implemented."],
+  "blocking_errors": [],
+  "overall_status": "READY_WITH_WARNINGS",
+  "checked_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

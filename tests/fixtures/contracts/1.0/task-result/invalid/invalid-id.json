@@ -1,0 +1,15 @@
+{
+  "status": "SUCCESS",
+  "skill": "content-studio-router",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "project_id": "INVALID-ID",
+  "state_before": {},
+  "state_after": {},
+  "created_records": [],
+  "updated_records": [],
+  "artifacts": [],
+  "approval_request": null,
+  "warnings": [],
+  "errors": [],
+  "next_route": null
+}

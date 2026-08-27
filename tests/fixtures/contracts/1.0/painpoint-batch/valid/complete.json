@@ -1,0 +1,89 @@
+{
+  "research_batch_id": "RB-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "requested_count": 2,
+  "produced_count": 1,
+  "evidence_backed_count": 1,
+  "hypothesis_count": 0,
+  "research_scope": "Fictional scoped research.",
+  "date_range": {
+    "from": "2099-01-01",
+    "to": "2099-01-01"
+  },
+  "region_scope": ["Fictional Region"],
+  "painpoints": [
+    {
+      "painpoint_id": "P-0001",
+      "project_id": "PRJ-20990101-DEMO",
+      "record_unique_key": "PRJ-20990101-DEMO::painpoint::P-0001",
+      "painpoint_name": "Fictional decision uncertainty",
+      "review_status": "PAINPOINT_CONFIRMED",
+      "business_scenario": "A fictional service comparison.",
+      "audience_type": "Fictional decision maker",
+      "decision_stage": "SOLUTION_COMPARISON",
+      "explicit_need": "Understand the practical tradeoffs.",
+      "deep_anxiety": "Choosing an unsuitable approach.",
+      "trigger_events": ["A planned purchase"],
+      "primary_barriers": ["Unclear evidence"],
+      "analysis_reason": "The decision has meaningful cost.",
+      "commercial_loss_or_real_cost": "Lost time and rework.",
+      "content_entry_angles": ["Decision checklist"],
+      "subject_advantages_to_express": ["Transparent process"],
+      "evidence_refs": ["E-0001"],
+      "evidence_confidence": "C_SINGLE_OR_INDIRECT",
+      "painpoint_priority": "IMPORTANT",
+      "promotion_priority": "MEDIUM",
+      "contentization_status": "PAINPOINT_CONTENT_AVAILABLE",
+      "related_content_ids": ["C-0001"],
+      "finalized_content_count": 0,
+      "latest_content_date": null,
+      "duplication_risk": "LOW",
+      "version": 1,
+      "research_batch_id": "RB-DEMO-001",
+      "schema_version": "1.0.0",
+      "last_run_id": "RUN-20990101-010203-DEMO",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "updated_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    }
+  ],
+  "evidence_records": [
+    {
+      "evidence_id": "E-0001",
+      "project_id": "PRJ-20990101-DEMO",
+      "source_type": "MANUAL_SOURCE",
+      "source_name": "Fictional source",
+      "source_location": "sanitized-local-reference",
+      "source_date": "2099-01-01",
+      "retrieved_at": "2099-01-01T01:02:03.000Z",
+      "summary": "A fictional source supports the example claim.",
+      "supported_claims": ["Audience needs a clearer decision path."],
+      "confidence": "C_SINGLE_OR_INDIRECT",
+      "is_first_party": false,
+      "citation_locator": "section-1",
+      "limitations": "Fictional fixture only.",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "updated_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    }
+  ],
+  "deduplication_summary": "No duplicate in the fixture.",
+  "partial_failures": [
+    {
+      "code": "INPUT_MISSING",
+      "message": "A fictional required input is missing.",
+      "retryable": false,
+      "scope": "fixture",
+      "recommended_action": "Provide fictional fixture input.",
+      "extensions": {}
+    }
+  ],
+  "write_summary": "Dry-run only.",
+  "approval_request": null,
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "completion_status": "PARTIAL"
+}

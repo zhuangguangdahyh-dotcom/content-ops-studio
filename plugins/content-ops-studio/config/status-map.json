@@ -1,0 +1,92 @@
+{
+  "version": "1.0.0",
+  "groups": {
+    "project": {
+      "PROJECT_INITIALIZING": "初始化中",
+      "PROJECT_PENDING_CONFIRMATION": "待资料确认",
+      "PROJECT_ACTIVE": "已启用",
+      "PROJECT_PAUSED": "暂停",
+      "PROJECT_ARCHIVED": "已归档"
+    },
+    "configuration": {
+      "CONFIG_PENDING": "待确认",
+      "CONFIG_CONFIRMED": "已确认",
+      "CONFIG_UPDATE_REQUIRED": "需更新"
+    },
+    "painpointReview": {
+      "PAINPOINT_PENDING": "待确认",
+      "PAINPOINT_CONFIRMED": "已确认",
+      "PAINPOINT_REVISION_REQUIRED": "需修改",
+      "PAINPOINT_REJECTED": "已否定"
+    },
+    "painpointContentization": {
+      "PAINPOINT_NOT_CONTENTIZED": "待内容化",
+      "PAINPOINT_CONTENT_IN_PROGRESS": "内容创作中",
+      "PAINPOINT_CONTENT_AVAILABLE": "已有内容可继续",
+      "PAINPOINT_COVERED": "已充分覆盖",
+      "PAINPOINT_PAUSED": "暂停"
+    },
+    "content": {
+      "CONTENT_ANALYSIS_PENDING": "待分析",
+      "CONTENT_PLANNING": "策划中",
+      "COPY_PENDING_APPROVAL": "待文案确认",
+      "COPY_REVISION_REQUIRED": "文案需修改",
+      "COPY_APPROVED": "文案已确认",
+      "VISUAL_PLANNING": "视觉策划中",
+      "FINAL_REVIEW_PENDING": "待最终确认",
+      "CONTENT_FINALIZED": "已定稿",
+      "CONTENT_PUBLISHED": "已发布",
+      "CONTENT_PAUSED": "暂停",
+      "CONTENT_DISCARDED": "废弃"
+    },
+    "image": {
+      "IMAGE_NOT_GENERATED": "未生成",
+      "FIRST_PAGE_GENERATING": "首图生成中",
+      "FIRST_PAGE_PENDING_APPROVAL": "首图待确认",
+      "FIRST_PAGE_APPROVED": "首图已确认",
+      "IMAGE_SET_GENERATING": "整组生成中",
+      "IMAGE_SET_GENERATED": "已生成",
+      "IMAGE_GENERATION_FAILED": "生成失败"
+    },
+    "firstPageApproval": {
+      "FIRST_PAGE_NOT_SUBMITTED": "未提交",
+      "FIRST_PAGE_APPROVAL_PENDING": "待确认",
+      "FIRST_PAGE_REVISION_REQUIRED": "需修改",
+      "FIRST_PAGE_APPROVAL_APPROVED": "已通过",
+      "FIRST_PAGE_APPROVAL_REJECTED": "已否决"
+    },
+    "finalApproval": {
+      "FINAL_NOT_SUBMITTED": "未提交",
+      "FINAL_APPROVAL_PENDING": "待确认",
+      "FINAL_REVISION_REQUIRED": "需修改",
+      "FINAL_APPROVAL_APPROVED": "已通过"
+    },
+    "synchronization": {
+      "SYNC_NOT_STARTED": "未同步",
+      "SYNC_IN_PROGRESS": "同步中",
+      "SYNC_COMPLETED": "已同步",
+      "SYNC_PARTIAL": "部分成功",
+      "SYNC_FAILED": "同步失败"
+    },
+    "rule": {
+      "RULE_UNCLASSIFIED": "待分类",
+      "RULE_PENDING_APPROVAL": "待确认",
+      "RULE_ACTIVE": "已确认生效",
+      "RULE_REJECTED": "已拒绝",
+      "RULE_DEPRECATED": "已废弃"
+    },
+    "run": {
+      "RUN_CREATED": "已创建",
+      "RUN_PREFLIGHT": "预检中",
+      "RUNNING": "运行中",
+      "AWAITING_APPROVAL": "等待确认",
+      "RUN_PARTIAL": "部分成功",
+      "RUN_BLOCKED": "已阻塞",
+      "RUN_CONFLICT": "冲突",
+      "RUN_FAILED": "失败",
+      "RUN_CANCELLED": "已取消",
+      "RUN_SUCCEEDED": "成功",
+      "RUN_RESUMING": "恢复中"
+    }
+  }
+}

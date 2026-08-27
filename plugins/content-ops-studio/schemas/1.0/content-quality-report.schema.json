@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/content-quality-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Content quality report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "quality_report_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "hard_checks",
+    "dimension_scores",
+    "weighted_score",
+    "blocking_failure_count",
+    "warning_count",
+    "passed_count",
+    "ready_for_g3",
+    "limitations",
+    "recommended_changes",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "quality_report_id": { "type": "string", "pattern": "^CQR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "hard_checks": { "type": "array", "items": { "$ref": "#/$defs/hardCheck" }, "minItems": 13 },
+    "dimension_scores": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/dimension" },
+      "minItems": 9,
+      "maxItems": 9
+    },
+    "weighted_score": { "type": "number", "minimum": 0, "maximum": 100 },
+    "blocking_failure_count": { "type": "integer", "minimum": 0 },
+    "warning_count": { "type": "integer", "minimum": 0 },
+    "passed_count": { "type": "integer", "minimum": 0 },
+    "ready_for_g3": { "type": "boolean" },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 500 }
+    },
+    "recommended_changes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 500 }
+    },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "hardCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check_code", "passed", "blocking", "message"],
+      "properties": {
+        "check_code": {
+          "enum": [
+            "ONE_PRIMARY_PAINPOINT",
+            "ONE_CORE_PROBLEM",
+            "ONE_CORE_VIEWPOINT",
+            "PAGE_COUNT_VALID",
+            "PAGE_NUMBERS_CONTIGUOUS",
+            "FIRST_PAGE_COVER",
+            "TITLE_LENGTH_VALID",
+            "CLAIMS_SUPPORTED",
+            "CTA_RELEVANT",
+            "NO_PROHIBITED_EXPRESSION",
+            "NO_HIGH_DUPLICATION",
+            "NO_FABRICATED_DATA_OR_CASE",
+            "PAGE_PURPOSES_CLEAR",
+            "NO_VISUAL_PRODUCTION_CLAIM"
+          ]
+        },
+        "passed": { "type": "boolean" },
+        "blocking": { "type": "boolean" },
+        "message": { "type": "string", "minLength": 1, "maxLength": 500 }
+      }
+    },
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimension", "score", "weight", "rationale"],
+      "properties": {
+        "dimension": {
+          "enum": [
+            "FOCUS",
+            "AUDIENCE_RELEVANCE",
+            "VALUE_DELIVERY",
+            "EVIDENCE_SUPPORT",
+            "SUBJECT_FIT",
+            "PLATFORM_FIT",
+            "READABILITY",
+            "ORIGINALITY",
+            "CTA_RELEVANCE"
+          ]
+        },
+        "score": { "type": "number", "minimum": 0, "maximum": 5 },
+        "weight": { "type": "integer", "minimum": 1, "maximum": 100 },
+        "rationale": { "type": "string", "minLength": 1, "maxLength": 500 }
+      }
+    }
+  }
+}

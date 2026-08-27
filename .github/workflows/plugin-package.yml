@@ -1,0 +1,31 @@
+name: Plugin package validation
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "plugins/content-ops-studio/**"
+      - "scripts/validate-plugin.ts"
+
+jobs:
+  package-shape:
+    runs-on: ubuntu-latest
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/playwright-browsers
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm renderer:installed-copy-test
+      - name: Copy Plugin to a temporary directory
+        run: |
+          package_dir="$(mktemp -d)"
+          cp -R plugins/content-ops-studio "$package_dir/content-ops-studio"
+          test -f "$package_dir/content-ops-studio/.codex-plugin/plugin.json"
+          test -d "$package_dir/content-ops-studio/skills"
+      - run: pnpm validate:plugin

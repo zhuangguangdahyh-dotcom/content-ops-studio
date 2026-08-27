@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/render-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Render report",
+  "description": "Deterministic layout and page-export result with explicit blockers.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "render_report_id",
+    "generation_id",
+    "project_id",
+    "content_id",
+    "page_number",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "style_lock_version",
+    "renderer",
+    "renderer_version",
+    "render_mode",
+    "input_assets",
+    "output_asset",
+    "canvas",
+    "safe_area",
+    "font_resolution",
+    "layout_measurements",
+    "overflow_detected",
+    "missing_assets",
+    "font_fallbacks",
+    "clipping_detected",
+    "unsafe_regions",
+    "warnings",
+    "errors",
+    "render_status",
+    "run_id",
+    "schema_version",
+    "started_at",
+    "completed_at",
+    "extensions"
+  ],
+  "properties": {
+    "render_report_id": { "type": "string", "pattern": "^RPT-RENDER-[A-Z0-9-]+$" },
+    "generation_id": { "type": "string", "pattern": "^GEN-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "page_number": { "type": "integer", "minimum": 1 },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "style_lock_version": {
+      "anyOf": [
+        { "$ref": "common-definitions.schema.json#/$defs/styleLockVersion" },
+        { "type": "null" }
+      ]
+    },
+    "renderer": { "type": "string", "minLength": 1 },
+    "renderer_version": { "type": "string", "minLength": 1 },
+    "render_mode": {
+      "type": "string",
+      "enum": ["MOCK", "DETERMINISTIC_LAYOUT", "PLAYWRIGHT_HTML_CSS"]
+    },
+    "input_assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common-definitions.schema.json#/$defs/assetReference" }
+    },
+    "output_asset": {
+      "anyOf": [
+        { "$ref": "common-definitions.schema.json#/$defs/assetReference" },
+        { "type": "null" }
+      ]
+    },
+    "canvas": { "$ref": "common-definitions.schema.json#/$defs/canvas" },
+    "safe_area": { "$ref": "common-definitions.schema.json#/$defs/safeArea" },
+    "font_resolution": { "type": "array", "items": { "$ref": "#/$defs/fontResolution" } },
+    "layout_measurements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["layer_id", "measured_bbox", "line_count"],
+        "properties": {
+          "layer_id": { "type": "string", "minLength": 1 },
+          "measured_bbox": { "$ref": "common-definitions.schema.json#/$defs/boundingBox" },
+          "line_count": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "overflow_detected": { "type": "boolean" },
+    "missing_assets": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+      "uniqueItems": true
+    },
+    "font_fallbacks": { "type": "array", "items": { "$ref": "#/$defs/fontResolution" } },
+    "clipping_detected": { "type": "boolean" },
+    "unsafe_regions": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/boundingBox" }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "errors": { "type": "array", "items": { "type": "string" } },
+    "render_status": {
+      "type": "string",
+      "enum": [
+        "RENDER_PENDING",
+        "RENDER_RUNNING",
+        "RENDER_SUCCESS",
+        "RENDER_SUCCESS_WITH_WARNINGS",
+        "RENDER_FAILED"
+      ]
+    },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "started_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "completed_at": {
+      "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/timestamp" }, { "type": "null" }]
+    },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "fontResolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "requested_font",
+        "actual_font",
+        "substitution_reason",
+        "impact",
+        "blocking"
+      ],
+      "properties": {
+        "role": { "type": "string", "minLength": 1 },
+        "requested_font": { "type": "string", "minLength": 1 },
+        "actual_font": { "type": "string", "minLength": 1 },
+        "substitution_reason": { "anyOf": [{ "type": "string" }, { "type": "null" }] },
+        "impact": { "type": "string", "enum": ["NONE", "LOW", "MEDIUM", "HIGH"] },
+        "blocking": { "type": "boolean" }
+      }
+    }
+  }
+}

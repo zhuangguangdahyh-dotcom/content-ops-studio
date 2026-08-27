@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/painpoint-record.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Painpoint record",
+  "description": "One versioned evidence-linked audience painpoint.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "painpoint_id",
+    "project_id",
+    "record_unique_key",
+    "painpoint_name",
+    "review_status",
+    "business_scenario",
+    "audience_type",
+    "decision_stage",
+    "explicit_need",
+    "deep_anxiety",
+    "trigger_events",
+    "primary_barriers",
+    "analysis_reason",
+    "commercial_loss_or_real_cost",
+    "content_entry_angles",
+    "subject_advantages_to_express",
+    "evidence_refs",
+    "evidence_confidence",
+    "painpoint_priority",
+    "promotion_priority",
+    "contentization_status",
+    "related_content_ids",
+    "finalized_content_count",
+    "latest_content_date",
+    "duplication_risk",
+    "version",
+    "research_batch_id",
+    "schema_version",
+    "last_run_id",
+    "created_at",
+    "updated_at",
+    "extensions"
+  ],
+  "properties": {
+    "painpoint_id": {
+      "$ref": "common-definitions.schema.json#/$defs/painpointId"
+    },
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "record_unique_key": {
+      "$ref": "common-definitions.schema.json#/$defs/recordUniqueKey"
+    },
+    "painpoint_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review_status": {
+      "$ref": "common-definitions.schema.json#/$defs/painpointReviewStatus"
+    },
+    "business_scenario": {
+      "type": "string",
+      "minLength": 1
+    },
+    "audience_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision_stage": {
+      "type": "string",
+      "enum": [
+        "PROBLEM_AWARENESS",
+        "ACTIVE_SEARCH",
+        "SOLUTION_COMPARISON",
+        "RISK_EVALUATION",
+        "PURCHASE_DECISION",
+        "USAGE_EXPERIENCE",
+        "REPURCHASE_REFERRAL"
+      ]
+    },
+    "explicit_need": {
+      "type": "string",
+      "minLength": 1
+    },
+    "deep_anxiety": {
+      "type": "string",
+      "minLength": 1
+    },
+    "trigger_events": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "primary_barriers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "analysis_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "commercial_loss_or_real_cost": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_entry_angles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "subject_advantages_to_express": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "common-definitions.schema.json#/$defs/evidenceId"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "evidence_confidence": {
+      "$ref": "common-definitions.schema.json#/$defs/evidenceConfidence"
+    },
+    "painpoint_priority": {
+      "type": "string",
+      "enum": ["CORE", "IMPORTANT", "SUPPLEMENTARY"]
+    },
+    "promotion_priority": {
+      "$ref": "common-definitions.schema.json#/$defs/priority"
+    },
+    "contentization_status": {
+      "$ref": "common-definitions.schema.json#/$defs/painpointContentizationStatus"
+    },
+    "related_content_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common-definitions.schema.json#/$defs/contentId"
+      },
+      "uniqueItems": true
+    },
+    "finalized_content_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "latest_content_date": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "duplication_risk": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH"]
+    },
+    "version": {
+      "$ref": "common-definitions.schema.json#/$defs/revisionNumber"
+    },
+    "research_batch_id": {
+      "type": "string",
+      "pattern": "^RB-[A-Z0-9-]+$"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    },
+    "last_run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "created_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "updated_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "extensions": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    }
+  }
+}

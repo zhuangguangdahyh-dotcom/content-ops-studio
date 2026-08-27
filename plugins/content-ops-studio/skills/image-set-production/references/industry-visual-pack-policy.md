@@ -1,0 +1,5 @@
+# Industry Visual Pack policy
+
+Bind one of seven versioned Packs and zero or more versioned overlays. Packs are industry priors and risk boundaries, not final styles. They contain defaults and checks, never customer assets, logos, copyright images, fixed final templates or permanent prompts. Per-content strategy may choose a different channel, mode, palette, typography or composition when higher-priority evidence and Project requirements support it. A Pack update does not mutate historic work. Project feedback remains project-scoped unless separately reviewed for Pack governance.
+
+`COMMERCIAL_SPACE_HOSPITALITY + SPACE_IDENTITY` is the mature spatial baseline: preserve one Project DNA, architecture, zoning, doors/windows, materials, furniture, circulation and design authorization while varying area, viewpoint and shot scale. Require credible photography, perspective, light, shadow and reflection; block unrelated-project mixing, over-HDR/CG drift and unauthorized design changes. These spatial rules never become fixed backgrounds, palettes, camera styles, compositions or type layouts for other industries.

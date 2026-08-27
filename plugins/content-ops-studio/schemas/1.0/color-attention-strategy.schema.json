@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/color-attention-strategy.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Color attention strategy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "candidate_id",
+    "grayscale_structure_score",
+    "grayscale_check",
+    "hierarchy_aligned",
+    "color_dimensions",
+    "hard_blocks",
+    "result",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^CAS-[A-Z0-9-]+$" },
+    "candidate_id": { "type": "string", "minLength": 1 },
+    "grayscale_structure_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "grayscale_check": {
+      "type": "string",
+      "enum": ["PASS", "COLOR_NOT_ALLOWED_TO_RESCUE_STRUCTURE"]
+    },
+    "hierarchy_aligned": { "type": "boolean" },
+    "color_dimensions": { "$ref": "#/$defs/colorPlan" },
+    "hard_blocks": {
+      "type": "array",
+      "items": { "$ref": "cover-attention-dominance-report.schema.json#/$defs/errorCode" },
+      "uniqueItems": true
+    },
+    "result": { "type": "string", "enum": ["PASS", "BLOCKED"] },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "colorPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hue", "value", "saturation", "temperature", "quantity"],
+      "properties": {
+        "hue": { "type": "string", "minLength": 1 },
+        "value": { "type": "string", "minLength": 1 },
+        "saturation": { "type": "string", "minLength": 1 },
+        "temperature": { "type": "string", "minLength": 1 },
+        "quantity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["dominant", "support", "accent"],
+          "properties": {
+            "dominant": { "type": "number", "minimum": 0, "maximum": 1 },
+            "support": { "type": "number", "minimum": 0, "maximum": 1 },
+            "accent": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        }
+      }
+    }
+  }
+}

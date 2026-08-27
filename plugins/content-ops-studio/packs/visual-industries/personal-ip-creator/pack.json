@@ -1,0 +1,28 @@
+{
+  "pack_id": "PERSONAL_IP_CREATOR",
+  "pack_version": "1.0.0",
+  "display_name": "Personal IP and Creator",
+  "supported_industries": ["Personal IP", "Creator", "Founder-led content"],
+  "default_visual_mode_ranking": ["CHARACTER_SERIES", "EDITORIAL_SERIES", "MIXED"],
+  "asset_source_priority": [
+    "PROJECT_ASSET",
+    "AI_GENERATED_VISUAL",
+    "MIXED_ASSET",
+    "PURE_TYPOGRAPHY"
+  ],
+  "identity_invariants": ["Preserve face, body, age, signature traits, and public role."],
+  "specialized_hard_blocks": ["Wrong person identity", "Unapproved likeness manipulation"],
+  "specialized_quality_checks": [
+    "Character continuity",
+    "Natural expression",
+    "Platform-native presence"
+  ],
+  "consistency_requirements": ["One stable identity with varied but compatible compositions"],
+  "fallback_strategies": ["Use text-led editorial design without inventing a likeness."],
+  "recommended_questions": ["Which approved identity reference controls this set?"],
+  "prohibited_claims_or_representations": ["Impersonation or fabricated endorsement"],
+  "allowed_overlays": ["PERSON_CONTINUITY", "BRAND_ASSET_INTEGRITY"],
+  "known_limitations": ["A generated likeness is not identity evidence."],
+  "contains_customer_assets": false,
+  "schema_version": "1.0.0"
+}

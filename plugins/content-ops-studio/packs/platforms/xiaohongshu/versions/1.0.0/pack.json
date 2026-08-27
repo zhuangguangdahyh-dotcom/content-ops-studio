@@ -1,0 +1,14 @@
+{
+  "id": "xiaohongshu",
+  "version": "1.0.0",
+  "displayName": "小红书",
+  "status": "scaffold",
+  "supportedFormats": ["image-post"],
+  "defaultAspectRatio": "3:4",
+  "defaultPageRange": {
+    "min": 4,
+    "max": 8
+  },
+  "defaultPageCount": 6,
+  "titleVisibleCharacterLimit": 20
+}

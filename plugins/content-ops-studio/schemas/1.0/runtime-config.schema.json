@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/runtime-config.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Runtime config",
+  "description": "Explicit local runtime mode, roots, capability boundaries, durability policy, and safe defaults.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "runtime_mode",
+    "content_ops_home",
+    "plugin_root",
+    "schema_version",
+    "workspace_adapter",
+    "research_adapter",
+    "image_adapter",
+    "renderer_adapter",
+    "asset_store",
+    "strict_mode",
+    "allow_fixture_workflows",
+    "allow_mock_adapters",
+    "allow_external_network",
+    "required_runtime_policy",
+    "enforce_supported_runtime",
+    "allow_unclaimed_runtime",
+    "lock_timeout_ms",
+    "stale_lock_threshold_ms",
+    "checkpoint_policy",
+    "journal_policy",
+    "log_redaction",
+    "file_permissions",
+    "created_at",
+    "extensions"
+  ],
+  "properties": {
+    "runtime_mode": { "type": "string", "enum": ["MOCK", "DRY_RUN", "PRODUCTION"] },
+    "content_ops_home": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!.*(?:^|[\\/])\\.\\.(?:[\\/]|$))[^\\u0000]+$"
+    },
+    "plugin_root": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!.*(?:^|[\\/])\\.\\.(?:[\\/]|$))[^\\u0000]+$"
+    },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "workspace_adapter": { "$ref": "#/$defs/adapterSelection" },
+    "research_adapter": { "$ref": "#/$defs/adapterSelection" },
+    "image_adapter": { "$ref": "#/$defs/adapterSelection" },
+    "renderer_adapter": { "$ref": "#/$defs/adapterSelection" },
+    "asset_store": { "$ref": "#/$defs/adapterSelection" },
+    "strict_mode": { "const": true },
+    "allow_fixture_workflows": { "type": "boolean" },
+    "allow_mock_adapters": { "type": "boolean" },
+    "allow_external_network": { "const": false },
+    "required_runtime_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_version", "runtime_name", "supported_range", "primary_major"],
+      "properties": {
+        "policy_version": { "const": "1.0.0" },
+        "runtime_name": { "const": "node" },
+        "supported_range": { "const": ">=24 <25" },
+        "primary_major": { "const": 24 }
+      }
+    },
+    "enforce_supported_runtime": { "const": true, "default": true },
+    "allow_unclaimed_runtime": { "const": false, "default": false },
+    "lock_timeout_ms": { "type": "integer", "minimum": 100, "maximum": 3600000 },
+    "stale_lock_threshold_ms": { "type": "integer", "minimum": 1000, "maximum": 86400000 },
+    "checkpoint_policy": { "$ref": "#/$defs/durabilityPolicy" },
+    "journal_policy": { "$ref": "#/$defs/durabilityPolicy" },
+    "log_redaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "blocked_keys"],
+      "properties": {
+        "enabled": { "const": true },
+        "blocked_keys": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": ["access_token", "authorization", "app_secret", "api_key", "signed_url"]
+          }
+        }
+      }
+    },
+    "file_permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project_directory", "sensitive_json", "report"],
+      "properties": {
+        "project_directory": { "const": "0700" },
+        "sensitive_json": { "const": "0600" },
+        "report": { "const": "0644" }
+      }
+    },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "adapterSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["implementation", "capability_status"],
+      "properties": {
+        "implementation": { "type": "string", "minLength": 1 },
+        "capability_status": {
+          "type": "string",
+          "enum": ["AVAILABLE", "MOCK_ONLY", "NOT_IMPLEMENTED", "UNAVAILABLE", "BLOCKED", "UNKNOWN"]
+        }
+      }
+    },
+    "durabilityPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "verify_after_write", "fsync"],
+      "properties": {
+        "enabled": { "const": true },
+        "verify_after_write": { "const": true },
+        "fsync": { "type": "string", "enum": ["REQUIRED_WHERE_SUPPORTED", "BEST_EFFORT"] }
+      }
+    }
+  }
+}

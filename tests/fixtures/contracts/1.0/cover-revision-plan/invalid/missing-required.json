@@ -1,0 +1,21 @@
+{
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "source_content_version": "CV-1",
+  "source_copy_version": "CV-1",
+  "source_visual_plan_version": "VV-2",
+  "source_first_page_version": "FPV-2",
+  "source_asset_checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "revision_routes": ["CONTENT_COPY", "GLOBAL_VISUAL_DIRECTION"],
+  "next_content_version": "CV-2",
+  "next_copy_version": "CV-2",
+  "next_cover_copy_version": "CCV-1",
+  "requires_new_g3": true,
+  "preserve_source_asset": true,
+  "negative_reference_scope": "CURRENT_SET",
+  "next_action": "COVER_COPY_REVISION_REQUIRED",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

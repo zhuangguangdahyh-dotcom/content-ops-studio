@@ -1,0 +1,55 @@
+{
+  "machine": "rule-status",
+  "version": "1.0.0",
+  "states": [
+    "RULE_UNCLASSIFIED",
+    "RULE_PENDING_APPROVAL",
+    "RULE_ACTIVE",
+    "RULE_REJECTED",
+    "RULE_DEPRECATED"
+  ],
+  "initialStates": ["RULE_UNCLASSIFIED"],
+  "terminalStates": ["RULE_REJECTED", "RULE_DEPRECATED"],
+  "transitions": [
+    {
+      "from": "RULE_UNCLASSIFIED",
+      "to": "RULE_PENDING_APPROVAL",
+      "trigger": "CLASSIFY_RULE",
+      "ownerSkill": "project-learning",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RULE_UNCLASSIFIED to RULE_PENDING_APPROVAL"
+    },
+    {
+      "from": "RULE_PENDING_APPROVAL",
+      "to": "RULE_ACTIVE",
+      "trigger": "ACTIVATE_RULE",
+      "ownerSkill": "project-learning",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RULE_PENDING_APPROVAL to RULE_ACTIVE"
+    },
+    {
+      "from": "RULE_PENDING_APPROVAL",
+      "to": "RULE_REJECTED",
+      "trigger": "REJECT_RULE",
+      "ownerSkill": "project-learning",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RULE_PENDING_APPROVAL to RULE_REJECTED"
+    },
+    {
+      "from": "RULE_ACTIVE",
+      "to": "RULE_DEPRECATED",
+      "trigger": "DEPRECATE_RULE",
+      "ownerSkill": "project-learning",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "RULE_ACTIVE to RULE_DEPRECATED"
+    }
+  ]
+}

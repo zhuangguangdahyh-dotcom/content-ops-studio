@@ -1,0 +1,51 @@
+{
+  "phase": "4D",
+  "status": "FAILED",
+  "result_detail": "REVISION_REQUIRED",
+  "case_a": {
+    "project_id": "CAL-COMMERCIAL-BLIND-001",
+    "run_id": "RUN-20260827-080000-P4DA",
+    "status": "FAILED",
+    "page_count": 6,
+    "imagegen_calls": 5,
+    "source_asset_count": 5,
+    "unique_source_checksum_count": 5,
+    "hard_block_count": 5,
+    "g5": "AWAITING_USER_APPROVAL"
+  },
+  "case_b": {
+    "project_id": "CAL-PRO-SERVICE-BLIND-001",
+    "run_id": "RUN-20260827-080100-P4DB",
+    "status": "FAILED",
+    "page_count": 6,
+    "imagegen_calls": 3,
+    "renderer_evidence_fixture_count": 2,
+    "source_asset_count": 4,
+    "unique_source_checksum_count": 4,
+    "hard_block_count": 7,
+    "industry_leakage": "NONE",
+    "g5": "AWAITING_USER_APPROVAL"
+  },
+  "a_to_j_regressions_matched": 10,
+  "system_rule_changes_after_result": 0,
+  "production_code_fixes_after_result": 0,
+  "feishu_writes": 0,
+  "c9001": "UNCHANGED",
+  "g5_approval_events": 0,
+  "final_manifests": 0,
+  "repository_check": {
+    "status": "PASSED",
+    "strict_schema_count": 154,
+    "test_file_count": 75,
+    "test_count": 404,
+    "failed_test_count": 0,
+    "secret_scan": "PASSED"
+  },
+  "git": {
+    "branch": "main",
+    "commits": 0,
+    "remote": false,
+    "push": false
+  },
+  "created_at": "2026-08-27T08:00:00.000Z"
+}

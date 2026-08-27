@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/content-duplication-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Content duplication report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "duplication_report_id",
+    "project_id",
+    "painpoint_id",
+    "candidate_content_id",
+    "exact_fingerprint",
+    "exact_matches",
+    "same_painpoint_matches",
+    "recent_project_matches",
+    "near_semantic_assessments",
+    "title_overlap",
+    "hook_overlap",
+    "structure_overlap",
+    "viewpoint_overlap",
+    "conclusion_overlap",
+    "overall_risk",
+    "blocking",
+    "recommended_alternatives",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "duplication_report_id": { "type": "string", "pattern": "^DUP-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "painpoint_id": { "$ref": "common-definitions.schema.json#/$defs/painpointId" },
+    "candidate_content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "exact_fingerprint": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "exact_matches": { "$ref": "#/$defs/contentIds" },
+    "same_painpoint_matches": { "$ref": "#/$defs/contentIds" },
+    "recent_project_matches": { "$ref": "#/$defs/contentIds" },
+    "near_semantic_assessments": { "type": "array", "items": { "$ref": "#/$defs/assessment" } },
+    "title_overlap": { "type": "number", "minimum": 0, "maximum": 1 },
+    "hook_overlap": { "type": "number", "minimum": 0, "maximum": 1 },
+    "structure_overlap": { "type": "number", "minimum": 0, "maximum": 1 },
+    "viewpoint_overlap": { "type": "number", "minimum": 0, "maximum": 1 },
+    "conclusion_overlap": { "type": "number", "minimum": 0, "maximum": 1 },
+    "overall_risk": { "enum": ["LOW", "MEDIUM", "HIGH"] },
+    "blocking": { "type": "boolean" },
+    "recommended_alternatives": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 500 }
+    },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "contentIds": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+      "uniqueItems": true
+    },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_id",
+        "similarities",
+        "differences",
+        "worth_continuing",
+        "rationale",
+        "alternative_angle"
+      ],
+      "properties": {
+        "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+        "similarities": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "differences": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "worth_continuing": { "type": "boolean" },
+        "rationale": { "type": "string", "minLength": 1 },
+        "alternative_angle": { "anyOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }] }
+      }
+    }
+  }
+}

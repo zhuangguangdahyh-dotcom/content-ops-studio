@@ -1,0 +1,32 @@
+{
+  "evidence_id": "LCE-PHASE-2B2-LIVE-20260824",
+  "version": "1.0.63",
+  "version_status": "SUPPORTED",
+  "auth_state": "AUTHENTICATED",
+  "identity": "user",
+  "capability_status": "READY",
+  "live_status": "PASSED",
+  "checked_at": "2026-08-24T04:29:04.000Z",
+  "limitations": [
+    "Attachment upload is deferred.",
+    "Direct Feishu live readiness remains unverified.",
+    "Maximum batch and rate-limit behavior were not exercised by the one-record sandbox.",
+    "One sandbox Base requires manual cleanup."
+  ],
+  "schema_version": "1.0.0",
+  "extensions": {
+    "blueprint_tables": 4,
+    "blueprint_fields": 141,
+    "blueprint_relations": 5,
+    "named_views": 4,
+    "project_records": 1,
+    "remote_fields": 146,
+    "remote_visible_relation_fields": 7,
+    "remote_total_views": 8,
+    "idempotent_replay": "PASSED",
+    "repair": "PASSED_NO_OP",
+    "g1": "PASSED",
+    "manual_cleanup_required": true,
+    "remote_identifiers_in_repository": false
+  }
+}

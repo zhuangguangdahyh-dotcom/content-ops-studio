@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-direction-decision.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual direction decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "visual_direction_decision_id",
+    "visual_context_id",
+    "candidates",
+    "selected_candidate_id",
+    "selection_rationale",
+    "user_fixed_mode",
+    "user_fixed_direction",
+    "user_rejected_modes",
+    "user_rejected_directions",
+    "industry_mode_preferences",
+    "platform_constraints",
+    "asset_feasibility",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "visual_direction_decision_id": { "type": "string", "pattern": "^VDD-[A-Z0-9-]+$" },
+    "visual_context_id": { "type": "string", "pattern": "^VCTX-[A-Z0-9-]+$" },
+    "candidates": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/candidate" } },
+    "selected_candidate_id": { "type": "string", "pattern": "^VDC-[A-Z0-9-]+$" },
+    "selection_rationale": { "$ref": "#/$defs/text" },
+    "user_fixed_mode": {
+      "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/visualMode" }, { "type": "null" }]
+    },
+    "user_fixed_direction": { "type": ["string", "null"], "maxLength": 1000 },
+    "user_rejected_modes": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+      "uniqueItems": true
+    },
+    "user_rejected_directions": { "$ref": "#/$defs/textList" },
+    "industry_mode_preferences": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+      "uniqueItems": true
+    },
+    "platform_constraints": { "$ref": "#/$defs/textList" },
+    "asset_feasibility": { "$ref": "#/$defs/textList" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "text": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "textList": { "type": "array", "items": { "$ref": "#/$defs/text" }, "uniqueItems": true },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "visual_mode",
+        "direction_name",
+        "direction_summary",
+        "content_fit",
+        "industry_fit",
+        "platform_fit",
+        "project_fit",
+        "asset_feasibility",
+        "text_density_fit",
+        "background_strategy",
+        "typography_strategy",
+        "color_strategy",
+        "layout_strategy",
+        "evidence_strategy",
+        "strengths",
+        "limitations",
+        "blocking_risks",
+        "score"
+      ],
+      "properties": {
+        "candidate_id": { "type": "string", "pattern": "^VDC-[A-Z0-9-]+$" },
+        "visual_mode": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+        "direction_name": { "$ref": "#/$defs/text" },
+        "direction_summary": { "$ref": "#/$defs/text" },
+        "content_fit": { "$ref": "#/$defs/text" },
+        "industry_fit": { "$ref": "#/$defs/text" },
+        "platform_fit": { "$ref": "#/$defs/text" },
+        "project_fit": { "$ref": "#/$defs/text" },
+        "asset_feasibility": { "$ref": "#/$defs/text" },
+        "text_density_fit": { "$ref": "#/$defs/text" },
+        "background_strategy": { "$ref": "#/$defs/text" },
+        "typography_strategy": { "$ref": "#/$defs/text" },
+        "color_strategy": { "$ref": "#/$defs/text" },
+        "layout_strategy": { "$ref": "#/$defs/text" },
+        "evidence_strategy": { "$ref": "#/$defs/text" },
+        "strengths": { "$ref": "#/$defs/textList" },
+        "limitations": { "$ref": "#/$defs/textList" },
+        "blocking_risks": { "$ref": "#/$defs/textList" },
+        "score": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    }
+  }
+}

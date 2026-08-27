@@ -1,0 +1,5 @@
+# Project Visual Profile
+
+The Project Visual Profile stores only versioned, Operator-confirmed project-level visual preferences and invariants: Pack/overlay bindings; asset/background/realism/photography/illustration/character/space/product preferences; composition/focus/whitespace/density; font family/title/body size/weight/line-height/tracking/alignment; color/accent/contrast; effects/shadow/gradient/mask/border/corner/texture; formal/image text policies; preferred page/candidate/batch counts; quality thresholds; references; MUST/MUST_NOT/PREFER/AVOID rules; feedback/rule refs; exceptions and review reasons.
+
+Maturity is explicit: COLD_START for insufficient history, LEARNING for partial rules, MATURE for stable compatible behavior, and REVIEW_REQUIRED after material Subject/Audience/platform/industry/brand change. G4/G5 do not mature it automatically. The Profile lives under Project Home or Plugin Data, never immutable Plugin Root, and historic plans retain their original Profile version. Version artifacts are immutable; only the active pointer advances atomically after read verification.

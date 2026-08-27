@@ -1,0 +1,28 @@
+{
+  "release_manifest_version": "1.0.0",
+  "product": "content-ops-studio",
+  "version": "0.1.0",
+  "commit_sha": null,
+  "package_filename": "content-ops-studio-0.1.0.tgz",
+  "package_sha256": "3f478f1d3d9b6abb9cab32f276f3e939d006d098e1aa74bb1bbb2c9a9334e44a",
+  "canonical_package_fingerprint": "2fe01c2dd1126e37b9f46d5e3de385e0675451725bc5b8f247dfa5ac73de6702",
+  "node_requirement": ">=24 <25",
+  "pnpm_version": "11.19.0",
+  "tool_count": 71,
+  "skill_count": 8,
+  "schema_count": 158,
+  "generated_typescript_count": 159,
+  "test_count": 466,
+  "release_date": "2026-08-27",
+  "license": "MIT",
+  "source_tag": "v0.1.0",
+  "known_limitations": [
+    "Feishu final metadata sync is PARTIAL.",
+    "Feishu attachment upload is DEFERRED.",
+    "Public HTTP MCP and automatic publishing are not included.",
+    "Host ImageGen and pinned local Chromium are external capabilities."
+  ],
+  "clean_install_status": "PASSED",
+  "installed_e2e_status": "PASSED",
+  "image_production_skill_v1": "PRODUCTION_READY / FROZEN_FOR_V1"
+}

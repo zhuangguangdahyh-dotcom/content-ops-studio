@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/universal-visual-default-policy.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Universal visual default policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policy_id",
+    "policy_version",
+    "fallback_only",
+    "decision_precedence",
+    "cold_start_conditions",
+    "typography_policy_ref",
+    "composition_families",
+    "required_spatial_relationship_count",
+    "spatial_relationships",
+    "lead_generation_cover_text_area",
+    "content_page_text_area",
+    "industry_specific_rules_excluded",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "policy_id": { "const": "UNIVERSAL-VISUAL-DEFAULT" },
+    "policy_version": { "const": "UVDPV-1" },
+    "fallback_only": { "const": true },
+    "decision_precedence": {
+      "type": "array",
+      "minItems": 9,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "cold_start_conditions": {
+      "type": "array",
+      "minItems": 6,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "typography_policy_ref": { "type": "string", "pattern": "^TDPV-[1-9][0-9]*$" },
+    "composition_families": {
+      "type": "array",
+      "minItems": 10,
+      "items": { "$ref": "#/$defs/compositionFamily" },
+      "uniqueItems": true
+    },
+    "required_spatial_relationship_count": { "const": 2 },
+    "spatial_relationships": {
+      "type": "array",
+      "minItems": 10,
+      "items": { "$ref": "#/$defs/spatialRelationship" },
+      "uniqueItems": true
+    },
+    "lead_generation_cover_text_area": { "$ref": "#/$defs/softRange" },
+    "content_page_text_area": { "$ref": "#/$defs/softRange" },
+    "industry_specific_rules_excluded": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "compositionFamily": {
+      "type": "string",
+      "enum": [
+        "FULL_BLEED_ANCHORED",
+        "ASYMMETRIC_NEGATIVE_SPACE",
+        "IMAGE_TEXT_INTERLOCK",
+        "CROP_LAYERED",
+        "MULTI_EVIDENCE_EDITORIAL",
+        "TYPOGRAPHIC_FIELD",
+        "DIAGNOSTIC_COMPOSITION",
+        "SPLIT_DEPTH",
+        "EDGE_ANCHORED",
+        "SUBJECT_OVERLAP"
+      ]
+    },
+    "spatialRelationship": {
+      "type": "string",
+      "enum": [
+        "ASYMMETRIC_BALANCE",
+        "PROPORTIONAL_CONTRAST",
+        "IMAGE_TEXT_INTERLOCK",
+        "SUBJECT_CROP_TENSION",
+        "FOREGROUND_BACKGROUND_LAYERING",
+        "EDGE_TENSION",
+        "PRIMARY_SECONDARY_AXIS",
+        "CROSS_REGION_ALIGNMENT",
+        "PURPOSEFUL_NEGATIVE_SPACE",
+        "VISUAL_DEPTH_RELATION"
+      ]
+    },
+    "softRange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum", "maximum", "hard_coded"],
+      "properties": {
+        "minimum": { "type": "number", "minimum": 0, "maximum": 1 },
+        "maximum": { "type": "number", "minimum": 0, "maximum": 1 },
+        "hard_coded": { "const": false }
+      }
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-system.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual system",
+  "description": "Version-bound global visual rules and the complete ordered page system.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "visual_system_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "visual_mode",
+    "visual_status",
+    "canvas",
+    "safe_area",
+    "grid_system",
+    "typography_tokens",
+    "color_tokens",
+    "global_image_treatment",
+    "global_layout_rules",
+    "brand_mark_rules",
+    "page_number_rules",
+    "global_visual_direction",
+    "global_background_strategy",
+    "global_negative_constraints",
+    "project_rule_snapshot_id",
+    "platform_pack_id",
+    "platform_pack_version",
+    "industry_pack_id",
+    "industry_pack_version",
+    "pages",
+    "created_by_skill",
+    "run_id",
+    "schema_version",
+    "created_at",
+    "updated_at",
+    "extensions"
+  ],
+  "properties": {
+    "visual_system_id": { "type": "string", "pattern": "^VS-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "visual_mode": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+    "visual_status": {
+      "type": "string",
+      "enum": [
+        "VISUAL_DRAFT",
+        "VISUAL_VALIDATED",
+        "FIRST_PAGE_READY",
+        "STYLE_LOCKED",
+        "VISUAL_INVALIDATED"
+      ]
+    },
+    "canvas": { "$ref": "common-definitions.schema.json#/$defs/canvas" },
+    "safe_area": { "$ref": "common-definitions.schema.json#/$defs/safeArea" },
+    "grid_system": { "$ref": "#/$defs/rulesObject" },
+    "typography_tokens": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common-definitions.schema.json#/$defs/typographyToken" }
+    },
+    "color_tokens": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common-definitions.schema.json#/$defs/colorToken" }
+    },
+    "global_image_treatment": { "$ref": "common-definitions.schema.json#/$defs/imageTreatment" },
+    "global_layout_rules": { "$ref": "#/$defs/rulesObject" },
+    "brand_mark_rules": { "$ref": "#/$defs/rulesObject" },
+    "page_number_rules": { "$ref": "#/$defs/rulesObject" },
+    "global_visual_direction": { "type": "string", "minLength": 1 },
+    "global_background_strategy": { "type": "string", "minLength": 1 },
+    "global_negative_constraints": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "project_rule_snapshot_id": { "type": "string", "minLength": 1 },
+    "platform_pack_id": { "type": "string", "minLength": 1 },
+    "platform_pack_version": { "$ref": "common-definitions.schema.json#/$defs/semanticVersion" },
+    "industry_pack_id": { "type": "string", "minLength": 1 },
+    "industry_pack_version": { "$ref": "common-definitions.schema.json#/$defs/semanticVersion" },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "page-visual-plan.schema.json" }
+    },
+    "created_by_skill": { "const": "visual-planning" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "updated_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "rulesObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rules"],
+      "properties": { "rules": { "type": "array", "items": { "type": "string", "minLength": 1 } } }
+    }
+  }
+}

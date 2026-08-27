@@ -1,0 +1,80 @@
+{
+  "report_id": "ESCR-CAL-SPACE-001-D",
+  "project_id": "CAL-COMMERCIAL-SPACE-001",
+  "content_id": "C-9001",
+  "candidate_id": "CCC-CAL-SPACE-001-D",
+  "composition_family": "IMAGE_TEXT_INTERLOCK",
+  "spatial_relationships": ["IMAGE_TEXT_INTERLOCK", "EDGE_TENSION"],
+  "dimensions": [
+    {
+      "dimension": "HIERARCHY",
+      "weight": 10,
+      "score": 9,
+      "reason": "HIERARCHY is grounded in the rendered composition."
+    },
+    {
+      "dimension": "SPATIAL_AXIS",
+      "weight": 10,
+      "score": 9,
+      "reason": "SPATIAL_AXIS is grounded in the rendered composition."
+    },
+    {
+      "dimension": "ASYMMETRY",
+      "weight": 10,
+      "score": 9,
+      "reason": "ASYMMETRY is grounded in the rendered composition."
+    },
+    {
+      "dimension": "PROPORTION",
+      "weight": 10,
+      "score": 9,
+      "reason": "PROPORTION is grounded in the rendered composition."
+    },
+    {
+      "dimension": "NEGATIVE_SPACE_PURPOSE",
+      "weight": 10,
+      "score": 9,
+      "reason": "NEGATIVE_SPACE_PURPOSE is grounded in the rendered composition."
+    },
+    {
+      "dimension": "SUBJECT_CROP",
+      "weight": 10,
+      "score": 9,
+      "reason": "SUBJECT_CROP is grounded in the rendered composition."
+    },
+    {
+      "dimension": "DEPTH",
+      "weight": 10,
+      "score": 9,
+      "reason": "DEPTH is grounded in the rendered composition."
+    },
+    {
+      "dimension": "IMAGE_TEXT_RELATION",
+      "weight": 10,
+      "score": 9,
+      "reason": "IMAGE_TEXT_RELATION is grounded in the rendered composition."
+    },
+    {
+      "dimension": "TENSION",
+      "weight": 10,
+      "score": 9,
+      "reason": "TENSION is grounded in the rendered composition."
+    },
+    {
+      "dimension": "READING_PATH",
+      "weight": 10,
+      "score": 9,
+      "reason": "READING_PATH is grounded in the rendered composition."
+    }
+  ],
+  "total_score": 90,
+  "threshold": 80,
+  "hard_blocks": [],
+  "result": "PASS_PENDING_OPERATOR",
+  "operator_approval_required": true,
+  "run_id": "RUN-20990101-010203-R021",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {},
+  "forbidden_extra": true
+}

@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/style-lock.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Style lock",
+  "description": "Visual rules locked by a current approved G4 first page.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "style_lock_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "first_page_version",
+    "source_first_page_checksum",
+    "renderer_environment_ref",
+    "style_lock_version",
+    "source_first_page_plan_id",
+    "source_first_page_asset",
+    "first_page_approval_id",
+    "first_page_approval_version",
+    "first_page_approval",
+    "locked_canvas",
+    "locked_safe_area",
+    "locked_typography_tokens",
+    "locked_color_tokens",
+    "locked_grid",
+    "locked_image_treatment",
+    "locked_layout_logic",
+    "locked_brand_rules",
+    "locked_page_number_rules",
+    "locked_visual_mode",
+    "locked_rules",
+    "allowed_variations",
+    "allowed_page_variations",
+    "prohibited_deviations",
+    "created_by_skill",
+    "run_id",
+    "schema_version",
+    "created_at",
+    "invalidated_at",
+    "extensions"
+  ],
+  "properties": {
+    "style_lock_id": { "type": "string", "pattern": "^SL-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "first_page_version": { "type": "string", "pattern": "^FPV-[1-9][0-9]*$" },
+    "source_first_page_checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "renderer_environment_ref": {
+      "type": "string",
+      "pattern": "^projects/[A-Za-z0-9._/-]+\\.json$"
+    },
+    "style_lock_version": { "$ref": "common-definitions.schema.json#/$defs/styleLockVersion" },
+    "source_first_page_plan_id": { "type": "string", "pattern": "^PVP-[A-Z0-9-]+$" },
+    "source_first_page_asset": { "$ref": "common-definitions.schema.json#/$defs/assetReference" },
+    "first_page_approval_id": { "$ref": "common-definitions.schema.json#/$defs/approvalId" },
+    "first_page_approval_version": {
+      "$ref": "common-definitions.schema.json#/$defs/visualVersion"
+    },
+    "first_page_approval": { "$ref": "approval-event.schema.json" },
+    "locked_canvas": { "$ref": "common-definitions.schema.json#/$defs/canvas" },
+    "locked_safe_area": { "$ref": "common-definitions.schema.json#/$defs/safeArea" },
+    "locked_typography_tokens": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common-definitions.schema.json#/$defs/typographyToken" }
+    },
+    "locked_color_tokens": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common-definitions.schema.json#/$defs/colorToken" }
+    },
+    "locked_grid": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [{ "type": "string" }, { "type": "number" }, { "type": "boolean" }]
+      }
+    },
+    "locked_image_treatment": { "$ref": "common-definitions.schema.json#/$defs/imageTreatment" },
+    "locked_layout_logic": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "locked_brand_rules": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "locked_page_number_rules": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "locked_visual_mode": { "$ref": "common-definitions.schema.json#/$defs/visualMode" },
+    "locked_rules": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "allowed_variations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "allowed_page_variations": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "prohibited_deviations": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "CHANGE_TYPOGRAPHY_SYSTEM",
+          "CHANGE_GLOBAL_COLOR_SYSTEM",
+          "CHANGE_VISUAL_MODE",
+          "CHANGE_GLOBAL_IMAGE_TREATMENT",
+          "CHANGE_PRIMARY_LAYOUT_LOGIC",
+          "CHANGE_SAFE_AREA_SYSTEM",
+          "CHANGE_BRAND_MARK_RULES",
+          "CHANGE_PAGE_NUMBER_RULES"
+        ]
+      }
+    },
+    "created_by_skill": { "const": "image-set-production" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "invalidated_at": {
+      "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/timestamp" }, { "type": "null" }]
+    },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

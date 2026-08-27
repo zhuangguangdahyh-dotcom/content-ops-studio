@@ -1,0 +1,22 @@
+{
+  "report_id": "LSFR-CAL-SPACE-001-D",
+  "project_id": "CAL-COMMERCIAL-SPACE-001",
+  "content_id": "C-9001",
+  "candidate_id": "CCC-CAL-SPACE-001-D",
+  "audience_locale": "中国",
+  "project_region": "中国新一线或二线城市",
+  "resolved_scene_locale": "中国新一线或二线城市",
+  "locale_evidence": [
+    "Contemporary Chinese urban commercial street",
+    "Chinese storefront proportions and streetscape"
+  ],
+  "region_question_required": false,
+  "total_score": 95,
+  "threshold": 80,
+  "hard_blocks": [],
+  "result": "PASS_PENDING_OPERATOR",
+  "operator_approval_required": true,
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

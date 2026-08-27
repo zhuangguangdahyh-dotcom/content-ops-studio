@@ -1,0 +1,451 @@
+{
+  "production_id": "CRPP-CAL-DEMO-001-CV2",
+  "project_ref": { "project_kind": "CALIBRATION_PROJECT", "project_id": "CAL-DEMO-001" },
+  "content_id": "C-9001",
+  "content_version": "CV-2",
+  "copy_version": "CV-2",
+  "visual_plan_version": "VV-2",
+  "first_page_version": "FPV-3",
+  "first_page_asset_id": "AST-CAL-DEMO-001-FPV3",
+  "first_page_checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "g4_approval_id": "APR-20990101-G4C2",
+  "style_lock_id": "CSL2-CAL-DEMO-001-V2",
+  "style_lock_version": "SLV-2",
+  "rhythm_plan": {
+    "plan_id": "GERP-CAL-DEMO-001-CV2",
+    "pages": [
+      {
+        "page_number": 1,
+        "page_intent": "COVER_ENTRY",
+        "page_role": "COVER",
+        "composition_family": "ASYMMETRIC_NEGATIVE_SPACE",
+        "visual_intensity": "HIGH",
+        "information_density": "LOW",
+        "image_dominance": "MEDIUM",
+        "typography_scale": "COVER",
+        "color_intensity": "MEDIUM",
+        "rhythm_role": "OPEN",
+        "reading_path": "Reading path 1",
+        "visual_motif": "Motif 1",
+        "continuity_requirements": ["Same verified master space", "Same typography logic"]
+      },
+      {
+        "page_number": 2,
+        "page_intent": "CONTENT_EDITORIAL",
+        "page_role": "PROBLEM",
+        "composition_family": "EDITORIAL_SPLIT",
+        "visual_intensity": "MEDIUM",
+        "information_density": "MEDIUM",
+        "image_dominance": "MEDIUM",
+        "typography_scale": "CONTENT_MEDIUM",
+        "color_intensity": "MEDIUM",
+        "rhythm_role": "BUILD",
+        "reading_path": "Reading path 2",
+        "visual_motif": "Motif 2",
+        "continuity_requirements": ["Same verified master space", "Same typography logic"]
+      },
+      {
+        "page_number": 3,
+        "page_intent": "DIAGNOSTIC_PAGE",
+        "page_role": "ANALYSIS",
+        "composition_family": "DIAGNOSTIC_COMPOSITION",
+        "visual_intensity": "MEDIUM",
+        "information_density": "MEDIUM",
+        "image_dominance": "MEDIUM",
+        "typography_scale": "CONTENT_MEDIUM",
+        "color_intensity": "MEDIUM",
+        "rhythm_role": "PROVE",
+        "reading_path": "Reading path 3",
+        "visual_motif": "Motif 3",
+        "continuity_requirements": ["Same verified master space", "Same typography logic"]
+      },
+      {
+        "page_number": 4,
+        "page_intent": "DIAGNOSTIC_PAGE",
+        "page_role": "ANALYSIS",
+        "composition_family": "EVIDENCE_DOMINANT",
+        "visual_intensity": "LOW",
+        "information_density": "MEDIUM",
+        "image_dominance": "MEDIUM",
+        "typography_scale": "CONTENT_MEDIUM",
+        "color_intensity": "MEDIUM",
+        "rhythm_role": "PAUSE",
+        "reading_path": "Reading path 4",
+        "visual_motif": "Motif 4",
+        "continuity_requirements": ["Same verified master space", "Same typography logic"]
+      },
+      {
+        "page_number": 5,
+        "page_intent": "DIAGNOSTIC_PAGE",
+        "page_role": "ANALYSIS",
+        "composition_family": "IMAGE_DOMINANT",
+        "visual_intensity": "HIGH",
+        "information_density": "MEDIUM",
+        "image_dominance": "HIGH",
+        "typography_scale": "CONTENT_MEDIUM",
+        "color_intensity": "HIGH",
+        "rhythm_role": "ACCELERATE",
+        "reading_path": "Reading path 5",
+        "visual_motif": "Motif 5",
+        "continuity_requirements": ["Same verified master space", "Same typography logic"]
+      },
+      {
+        "page_number": 6,
+        "page_intent": "SUMMARY_PAGE",
+        "page_role": "SUMMARY",
+        "composition_family": "MULTI_EVIDENCE_EDITORIAL",
+        "visual_intensity": "LOW",
+        "information_density": "MEDIUM",
+        "image_dominance": "MEDIUM",
+        "typography_scale": "CONTENT_MEDIUM",
+        "color_intensity": "MEDIUM",
+        "rhythm_role": "RESOLVE",
+        "reading_path": "Reading path 6",
+        "visual_motif": "Motif 6",
+        "continuity_requirements": ["Same verified master space", "Same typography logic"]
+      }
+    ],
+    "status": "EXECUTED"
+  },
+  "page_reports": [
+    {
+      "page_number": 2,
+      "page_role": "PROBLEM",
+      "page_intent": "CONTENT_EDITORIAL",
+      "composition_family": "EDITORIAL_SPLIT",
+      "visual_intensity": "MEDIUM",
+      "asset_source": "VERIFIED_MASTER_ASSET_CROP",
+      "asset": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-2-full.png",
+        "checksum": "3333333333333333333333333333333333333333333333333333333333333333",
+        "width": 1242,
+        "height": 1660
+      },
+      "thumbnail_310": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-2-310.png",
+        "checksum": "3333333333333333333333333333333333333333333333333333333333333333",
+        "width": 310,
+        "height": 414
+      },
+      "thumbnail_186": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-2-186.png",
+        "checksum": "3333333333333333333333333333333333333333333333333333333333333333",
+        "width": 186,
+        "height": 248
+      },
+      "copy_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+      "single_page_qa": [
+        { "check": "AUTHENTICITY", "result": "PASS" },
+        { "check": "MECHANICAL_QA", "result": "PASS" },
+        { "check": "COPY_FIDELITY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_POLICY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_SPATIAL_INTEGRITY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_BREATHING_ROOM", "result": "PASS" },
+        { "check": "RASTER_TEXT_BACKGROUND_CONTRAST_INTEGRITY", "result": "PASS" },
+        { "check": "CONTRAST_STABILITY", "result": "PASS" },
+        { "check": "BACKGROUND_COMPLEXITY", "result": "PASS" },
+        { "check": "SEMANTIC_RELEVANCE", "result": "PASS" },
+        { "check": "PAGE_INTENT_FIT", "result": "PASS" },
+        { "check": "EDITORIAL_SPATIAL", "result": "PASS" },
+        { "check": "IMAGE_TEXT_INTEGRATION", "result": "PASS" },
+        { "check": "IMAGE_QUALITY", "result": "PASS" },
+        { "check": "ACTUAL_PIXEL_INSPECTION", "result": "PASS" }
+      ],
+      "scores": { "editorial_spatial": 90, "image_text_integration": 91, "image_quality": 92 },
+      "hard_blocks": [],
+      "status": "PASSED"
+    },
+    {
+      "page_number": 3,
+      "page_role": "ANALYSIS",
+      "page_intent": "DIAGNOSTIC_PAGE",
+      "composition_family": "DIAGNOSTIC_COMPOSITION",
+      "visual_intensity": "MEDIUM",
+      "asset_source": "VERIFIED_MASTER_ASSET_CROP",
+      "asset": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-3-full.png",
+        "checksum": "4444444444444444444444444444444444444444444444444444444444444444",
+        "width": 1242,
+        "height": 1660
+      },
+      "thumbnail_310": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-3-310.png",
+        "checksum": "4444444444444444444444444444444444444444444444444444444444444444",
+        "width": 310,
+        "height": 414
+      },
+      "thumbnail_186": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-3-186.png",
+        "checksum": "4444444444444444444444444444444444444444444444444444444444444444",
+        "width": 186,
+        "height": 248
+      },
+      "copy_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+      "single_page_qa": [
+        { "check": "AUTHENTICITY", "result": "PASS" },
+        { "check": "MECHANICAL_QA", "result": "PASS" },
+        { "check": "COPY_FIDELITY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_POLICY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_SPATIAL_INTEGRITY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_BREATHING_ROOM", "result": "PASS" },
+        { "check": "RASTER_TEXT_BACKGROUND_CONTRAST_INTEGRITY", "result": "PASS" },
+        { "check": "CONTRAST_STABILITY", "result": "PASS" },
+        { "check": "BACKGROUND_COMPLEXITY", "result": "PASS" },
+        { "check": "SEMANTIC_RELEVANCE", "result": "PASS" },
+        { "check": "PAGE_INTENT_FIT", "result": "PASS" },
+        { "check": "EDITORIAL_SPATIAL", "result": "PASS" },
+        { "check": "IMAGE_TEXT_INTEGRATION", "result": "PASS" },
+        { "check": "IMAGE_QUALITY", "result": "PASS" },
+        { "check": "ACTUAL_PIXEL_INSPECTION", "result": "PASS" }
+      ],
+      "scores": { "editorial_spatial": 90, "image_text_integration": 91, "image_quality": 92 },
+      "hard_blocks": [],
+      "status": "PASSED"
+    },
+    {
+      "page_number": 4,
+      "page_role": "ANALYSIS",
+      "page_intent": "DIAGNOSTIC_PAGE",
+      "composition_family": "EVIDENCE_DOMINANT",
+      "visual_intensity": "LOW",
+      "asset_source": "VERIFIED_MASTER_ASSET_CROP",
+      "asset": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-4-full.png",
+        "checksum": "5555555555555555555555555555555555555555555555555555555555555555",
+        "width": 1242,
+        "height": 1660
+      },
+      "thumbnail_310": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-4-310.png",
+        "checksum": "5555555555555555555555555555555555555555555555555555555555555555",
+        "width": 310,
+        "height": 414
+      },
+      "thumbnail_186": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-4-186.png",
+        "checksum": "5555555555555555555555555555555555555555555555555555555555555555",
+        "width": 186,
+        "height": 248
+      },
+      "copy_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+      "single_page_qa": [
+        { "check": "AUTHENTICITY", "result": "PASS" },
+        { "check": "MECHANICAL_QA", "result": "PASS" },
+        { "check": "COPY_FIDELITY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_POLICY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_SPATIAL_INTEGRITY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_BREATHING_ROOM", "result": "PASS" },
+        { "check": "RASTER_TEXT_BACKGROUND_CONTRAST_INTEGRITY", "result": "PASS" },
+        { "check": "CONTRAST_STABILITY", "result": "PASS" },
+        { "check": "BACKGROUND_COMPLEXITY", "result": "PASS" },
+        { "check": "SEMANTIC_RELEVANCE", "result": "PASS" },
+        { "check": "PAGE_INTENT_FIT", "result": "PASS" },
+        { "check": "EDITORIAL_SPATIAL", "result": "PASS" },
+        { "check": "IMAGE_TEXT_INTEGRATION", "result": "PASS" },
+        { "check": "IMAGE_QUALITY", "result": "PASS" },
+        { "check": "ACTUAL_PIXEL_INSPECTION", "result": "PASS" }
+      ],
+      "scores": { "editorial_spatial": 90, "image_text_integration": 91, "image_quality": 92 },
+      "hard_blocks": [],
+      "status": "PASSED"
+    },
+    {
+      "page_number": 5,
+      "page_role": "ANALYSIS",
+      "page_intent": "DIAGNOSTIC_PAGE",
+      "composition_family": "IMAGE_DOMINANT",
+      "visual_intensity": "HIGH",
+      "asset_source": "VERIFIED_MASTER_ASSET_CROP",
+      "asset": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-5-full.png",
+        "checksum": "6666666666666666666666666666666666666666666666666666666666666666",
+        "width": 1242,
+        "height": 1660
+      },
+      "thumbnail_310": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-5-310.png",
+        "checksum": "6666666666666666666666666666666666666666666666666666666666666666",
+        "width": 310,
+        "height": 414
+      },
+      "thumbnail_186": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-5-186.png",
+        "checksum": "6666666666666666666666666666666666666666666666666666666666666666",
+        "width": 186,
+        "height": 248
+      },
+      "copy_hash": "4444444444444444444444444444444444444444444444444444444444444444",
+      "single_page_qa": [
+        { "check": "AUTHENTICITY", "result": "PASS" },
+        { "check": "MECHANICAL_QA", "result": "PASS" },
+        { "check": "COPY_FIDELITY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_POLICY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_SPATIAL_INTEGRITY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_BREATHING_ROOM", "result": "PASS" },
+        { "check": "RASTER_TEXT_BACKGROUND_CONTRAST_INTEGRITY", "result": "PASS" },
+        { "check": "CONTRAST_STABILITY", "result": "PASS" },
+        { "check": "BACKGROUND_COMPLEXITY", "result": "PASS" },
+        { "check": "SEMANTIC_RELEVANCE", "result": "PASS" },
+        { "check": "PAGE_INTENT_FIT", "result": "PASS" },
+        { "check": "EDITORIAL_SPATIAL", "result": "PASS" },
+        { "check": "IMAGE_TEXT_INTEGRATION", "result": "PASS" },
+        { "check": "IMAGE_QUALITY", "result": "PASS" },
+        { "check": "ACTUAL_PIXEL_INSPECTION", "result": "PASS" }
+      ],
+      "scores": { "editorial_spatial": 90, "image_text_integration": 91, "image_quality": 92 },
+      "hard_blocks": [],
+      "status": "PASSED"
+    },
+    {
+      "page_number": 6,
+      "page_role": "SUMMARY",
+      "page_intent": "SUMMARY_PAGE",
+      "composition_family": "MULTI_EVIDENCE_EDITORIAL",
+      "visual_intensity": "LOW",
+      "asset_source": "VERIFIED_MASTER_ASSET_CROP",
+      "asset": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-6-full.png",
+        "checksum": "7777777777777777777777777777777777777777777777777777777777777777",
+        "width": 1242,
+        "height": 1660
+      },
+      "thumbnail_310": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-6-310.png",
+        "checksum": "7777777777777777777777777777777777777777777777777777777777777777",
+        "width": 310,
+        "height": 414
+      },
+      "thumbnail_186": {
+        "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-6-186.png",
+        "checksum": "7777777777777777777777777777777777777777777777777777777777777777",
+        "width": 186,
+        "height": 248
+      },
+      "copy_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+      "single_page_qa": [
+        { "check": "AUTHENTICITY", "result": "PASS" },
+        { "check": "MECHANICAL_QA", "result": "PASS" },
+        { "check": "COPY_FIDELITY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_POLICY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_SPATIAL_INTEGRITY", "result": "PASS" },
+        { "check": "TYPOGRAPHY_BREATHING_ROOM", "result": "PASS" },
+        { "check": "RASTER_TEXT_BACKGROUND_CONTRAST_INTEGRITY", "result": "PASS" },
+        { "check": "CONTRAST_STABILITY", "result": "PASS" },
+        { "check": "BACKGROUND_COMPLEXITY", "result": "PASS" },
+        { "check": "SEMANTIC_RELEVANCE", "result": "PASS" },
+        { "check": "PAGE_INTENT_FIT", "result": "PASS" },
+        { "check": "EDITORIAL_SPATIAL", "result": "PASS" },
+        { "check": "IMAGE_TEXT_INTEGRATION", "result": "PASS" },
+        { "check": "IMAGE_QUALITY", "result": "PASS" },
+        { "check": "ACTUAL_PIXEL_INSPECTION", "result": "PASS" }
+      ],
+      "scores": { "editorial_spatial": 90, "image_text_integration": 91, "image_quality": 92 },
+      "hard_blocks": [],
+      "status": "PASSED"
+    }
+  ],
+  "space_identity_continuity": {
+    "status": "PASSED",
+    "basis": ["One master", "Verified crops", "One material system"],
+    "hard_blocks": []
+  },
+  "group_editorial_rhythm": {
+    "status": "PASSED",
+    "visual_intensity_sequence": ["HIGH", "MEDIUM", "MEDIUM", "LOW", "HIGH", "LOW"],
+    "information_density_sequence": ["LOW", "MEDIUM", "MEDIUM", "HIGH", "LOW", "MEDIUM"],
+    "image_dominance_sequence": ["HIGH", "MEDIUM", "MEDIUM", "HIGH", "HIGH", "MEDIUM"],
+    "typography_scale_sequence": [
+      "COVER",
+      "CONTENT_MEDIUM",
+      "CONTENT_MEDIUM",
+      "CONTENT_MEDIUM",
+      "CONTENT_LARGE",
+      "CONTENT_MEDIUM"
+    ],
+    "composition_sequence": [
+      "ASYMMETRIC_NEGATIVE_SPACE",
+      "EDITORIAL_SPLIT",
+      "DIAGNOSTIC_COMPOSITION",
+      "EVIDENCE_DOMINANT",
+      "IMAGE_DOMINANT",
+      "MULTI_EVIDENCE_EDITORIAL"
+    ],
+    "reading_path_sequence": [
+      "TYPE_TO_IMAGE",
+      "IMAGE_TO_TYPE",
+      "TYPE_TO_EVIDENCE",
+      "EVIDENCE_TO_TYPE",
+      "IMAGE_TO_TYPE",
+      "EVIDENCE_TO_SUMMARY"
+    ],
+    "pause_points": ["P4", "P6"],
+    "proof_points": ["P3", "P4", "P5"],
+    "resolution": "P6 resolves the three checks.",
+    "hard_blocks": []
+  },
+  "group_color_rhythm": {
+    "status": "PASSED",
+    "dominant_color_sequence": [
+      "COOL_WHITE",
+      "WARM_IVORY",
+      "CHARCOAL",
+      "WARM_BEIGE",
+      "DEEP_NEUTRAL",
+      "CHARCOAL"
+    ],
+    "value_sequence": ["HIGH", "HIGH", "LOW", "HIGH", "LOW", "LOW"],
+    "saturation_sequence": ["LOW", "LOW", "LOW", "LOW", "LOW", "LOW"],
+    "temperature_sequence": ["COOL", "WARM", "NEUTRAL", "WARM", "NEUTRAL", "NEUTRAL"],
+    "accent_repetition": "Restrained copper repeats on P2-P6.",
+    "accent_spacing": "Accent is separated by composition and scale.",
+    "hard_blocks": []
+  },
+  "group_qa": {
+    "status": "PASSED",
+    "score": 95,
+    "dimensions": [
+      { "dimension": "VISUAL_SYSTEM_COHERENCE", "score": 14, "maximum": 15 },
+      { "dimension": "SPACE_IDENTITY_CONTINUITY", "score": 15, "maximum": 15 },
+      { "dimension": "PAGE_DIFFERENCE", "score": 14, "maximum": 15 },
+      { "dimension": "EDITORIAL_RHYTHM", "score": 14, "maximum": 15 },
+      { "dimension": "TYPOGRAPHY_COHERENCE", "score": 9, "maximum": 10 },
+      { "dimension": "COLOR_RHYTHM", "score": 9, "maximum": 10 },
+      { "dimension": "IMAGE_TREATMENT", "score": 5, "maximum": 5 },
+      { "dimension": "CONTENT_PROGRESSION", "score": 10, "maximum": 10 },
+      { "dimension": "GROUP_COMPLETION", "score": 5, "maximum": 5 }
+    ],
+    "hard_blocks": [],
+    "aesthetic_risks": ["One master asset intentionally limits viewpoint diversity."]
+  },
+  "contact_sheets": [
+    {
+      "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-1-contact-full.png",
+      "checksum": "2222222222222222222222222222222222222222222222222222222222222222",
+      "width": 1242,
+      "height": 1112
+    },
+    {
+      "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-1-contact-310.png",
+      "checksum": "2222222222222222222222222222222222222222222222222222222222222222",
+      "width": 1030,
+      "height": 930
+    },
+    {
+      "asset_ref": "projects/CAL-DEMO-001/runs/RUN-20990101-030405-C4R2/image-production/page-1-contact-186.png",
+      "checksum": "2222222222222222222222222222222222222222222222222222222222222222",
+      "width": 1228,
+      "height": 294
+    }
+  ],
+  "remaining_pages_planned": 5,
+  "remaining_pages_generated": 5,
+  "total_pages": 6,
+  "imagegen_calls": 0,
+  "renderer_calls": 8,
+  "feishu_writes": 0,
+  "production_workspace_write_eligible": false,
+  "status": "G5_READY",
+  "run_id": "RUN-20990101-030405-C4R2",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T03:04:05.000Z"
+}

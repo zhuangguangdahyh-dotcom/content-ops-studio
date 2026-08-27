@@ -1,0 +1,18 @@
+{
+  "report_id": "VAR-C-0001-DEMO",
+  "strategy_plan_id": "DVSP-C-0001-DEMO",
+  "major_ambiguities": [
+    {
+      "code": "COLD_START_AESTHETIC_UNCERTAINTY",
+      "severity": "MEDIUM",
+      "description": "No confirmed project visual direction exists yet.",
+      "affected_decisions": ["PALETTE", "TYPOGRAPHY", "COMPOSITION"]
+    }
+  ],
+  "blocking": false,
+  "recommended_clarification_questions": ["Which direction best represents the project?"],
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "unexpected": true
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-reference-manifest.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual reference manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "visual_reference_manifest_id",
+    "project_id",
+    "content_id",
+    "references",
+    "reference_count",
+    "reference_type_counts",
+    "approved_count",
+    "rejected_count",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "visual_reference_manifest_id": { "type": "string", "pattern": "^VRM-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "references": { "type": "array", "items": { "$ref": "#/$defs/reference" } },
+    "reference_count": { "type": "integer", "minimum": 0 },
+    "reference_type_counts": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/referenceType" },
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "approved_count": { "type": "integer", "minimum": 0 },
+    "rejected_count": { "type": "integer", "minimum": 0 },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "referenceType": {
+      "enum": [
+        "PROJECT_ASSET",
+        "USER_REFERENCE",
+        "HISTORICAL_APPROVED_STYLE",
+        "EVIDENCE_ASSET",
+        "LICENSED_EXTERNAL_REFERENCE",
+        "INTERNAL_DESIGN_TOKEN"
+      ]
+    },
+    "safeRef": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "not": { "pattern": "^(?:/|[A-Za-z]:[\\\\/])" }
+    },
+    "textList": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 1000 },
+      "uniqueItems": true
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_id",
+        "reference_type",
+        "source_type",
+        "asset_ref",
+        "source_location",
+        "evidence_id",
+        "title",
+        "description",
+        "allowed_usage",
+        "prohibited_usage",
+        "copyright_or_permission_status",
+        "style_attributes",
+        "content_relevance",
+        "page_relevance",
+        "approved",
+        "rejection_reason"
+      ],
+      "properties": {
+        "reference_id": { "type": "string", "pattern": "^VREF-[A-Z0-9-]+$" },
+        "reference_type": { "$ref": "#/$defs/referenceType" },
+        "source_type": {
+          "enum": ["PROJECT_HOME", "EVIDENCE_RECORD", "LICENSED_SOURCE", "INTERNAL_TOKEN"]
+        },
+        "asset_ref": { "anyOf": [{ "$ref": "#/$defs/safeRef" }, { "type": "null" }] },
+        "source_location": { "anyOf": [{ "$ref": "#/$defs/safeRef" }, { "type": "null" }] },
+        "evidence_id": { "type": ["string", "null"], "maxLength": 100 },
+        "title": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "allowed_usage": { "$ref": "#/$defs/textList" },
+        "prohibited_usage": { "$ref": "#/$defs/textList" },
+        "copyright_or_permission_status": {
+          "enum": ["AUTHORIZED", "LICENSED", "RESTRICTED", "UNKNOWN"]
+        },
+        "style_attributes": { "$ref": "#/$defs/textList" },
+        "content_relevance": { "type": "string", "maxLength": 1000 },
+        "page_relevance": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 1, "maximum": 20 },
+          "uniqueItems": true
+        },
+        "approved": { "type": "boolean" },
+        "rejection_reason": { "type": ["string", "null"], "maxLength": 1000 }
+      }
+    }
+  }
+}

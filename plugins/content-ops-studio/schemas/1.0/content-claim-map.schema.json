@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/content-claim-map.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Content claim map",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "claim_map_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "claims",
+    "supported_claim_count",
+    "unsupported_claim_count",
+    "judgment_claim_count",
+    "opinion_claim_count",
+    "ready_for_copy_review",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "claim_map_id": { "type": "string", "pattern": "^CLM-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "claims": { "type": "array", "items": { "$ref": "#/$defs/claim" }, "minItems": 1 },
+    "supported_claim_count": { "type": "integer", "minimum": 0 },
+    "unsupported_claim_count": { "type": "integer", "minimum": 0 },
+    "judgment_claim_count": { "type": "integer", "minimum": 0 },
+    "opinion_claim_count": { "type": "integer", "minimum": 0 },
+    "ready_for_copy_review": { "type": "boolean" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "page_number",
+        "claim_type",
+        "claim_text",
+        "evidence_refs",
+        "support_status",
+        "support_rationale",
+        "limitations",
+        "rewrite_requirement"
+      ],
+      "properties": {
+        "claim_id": { "type": "string", "pattern": "^CL-[0-9]{4}$" },
+        "page_number": { "type": "integer", "minimum": 1 },
+        "claim_type": {
+          "enum": [
+            "FACTUAL_EXTERNAL",
+            "PROJECT_FIRST_PARTY",
+            "PROFESSIONAL_JUDGMENT",
+            "OPINION",
+            "EXAMPLE",
+            "CALL_TO_ACTION"
+          ]
+        },
+        "claim_text": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "$ref": "common-definitions.schema.json#/$defs/evidenceId" },
+          "uniqueItems": true
+        },
+        "support_status": {
+          "enum": [
+            "SUPPORTED",
+            "SUPPORTED_WITH_LIMITATIONS",
+            "JUDGMENT_NO_EXTERNAL_EVIDENCE_REQUIRED",
+            "OPINION_NO_EXTERNAL_EVIDENCE_REQUIRED",
+            "UNSUPPORTED",
+            "REWRITE_REQUIRED"
+          ]
+        },
+        "support_rationale": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "limitations": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 500 }
+        },
+        "rewrite_requirement": {
+          "anyOf": [{ "type": "string", "minLength": 1, "maxLength": 1000 }, { "type": "null" }]
+        }
+      }
+    }
+  }
+}

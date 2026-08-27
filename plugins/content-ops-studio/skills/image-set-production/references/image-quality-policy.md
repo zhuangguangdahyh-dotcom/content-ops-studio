@@ -1,0 +1,7 @@
+# Image quality policy
+
+Hard blocks include copy error, fake evidence, wrong identity, malformed subject, low resolution, severe crop, unreadable text, unfinished UI, prohibited direction, authorization failure, nondeterministic output, unsafe text layout and final-raster contrast failure. Score semantic fit 20, composition 15, hierarchy 15, asset integrity 15, project/Audience fit 10, uniqueness 10, mode execution 10 and mobile performance 5. Formal threshold is 85; scores never approve.
+
+The final-raster preflight samples the background under every actual text bounding box after crop, masks, overlays, filters and graphics are resolved. It records minimum, low-percentile and median local contrast, low-contrast area, worst local region, variance and background complexity. Average page contrast cannot override a failing local text layer. Recovery must preserve the current visual-system key and may use only bounded local changes.
+
+A Renderer output is an `ATTEMPT_ONLY` artifact until all required gates report `PASS`: Mechanical, Copy Fidelity, Text Layout, Typography Spatial Integrity, Typography Breathing Room, Raster Contrast, Background Complexity, Determinism, Semantic Relevance, Page Duty Fit, Image–Text Integration, Image Quality and Actual-Pixel Inspection. Any `FAIL`, `NOT_RUN` or hard block prevents the formal path write. G4/G5 remain separate Operator decisions after technical promotion.

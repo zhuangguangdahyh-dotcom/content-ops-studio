@@ -1,0 +1,12 @@
+interface:
+  display_name: "Content Creation"
+  short_description: "Create evidence-grounded copy and stop at G3"
+  default_prompt: "Use $content-creation to plan one confirmed painpoint, retain supported claims, write one Content row, and stop for my version-bound G3 decision."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "content-ops"
+      description: "Bundled local Content Ops MCP server for Content artifacts, Feishu records, duplication, quality and G3"
+      transport: "stdio"
+policy:
+  allow_implicit_invocation: true

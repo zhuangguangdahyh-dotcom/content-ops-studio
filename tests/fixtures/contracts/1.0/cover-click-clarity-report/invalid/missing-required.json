@@ -1,0 +1,48 @@
+{
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "candidate_id": "CCC-C-0001-A",
+  "account_goal": "LEAD_GENERATION",
+  "cover_objective": "PAINPOINT_DIRECT",
+  "dimensions": [
+    {
+      "dimension": "TARGET_CUSTOMER_CLARITY",
+      "weight": 25,
+      "score": 23,
+      "reason": "Store owners recognize the scene."
+    },
+    {
+      "dimension": "PAINPOINT_OR_VALUE_CLARITY",
+      "weight": 25,
+      "score": 24,
+      "reason": "The first-impression painpoint is direct."
+    },
+    {
+      "dimension": "ONE_SECOND_COMPREHENSION",
+      "weight": 20,
+      "score": 18,
+      "reason": "One click message."
+    },
+    {
+      "dimension": "THUMBNAIL_LEGIBILITY",
+      "weight": 20,
+      "score": 18,
+      "reason": "Both true-size thumbnails remain legible."
+    },
+    {
+      "dimension": "CONTENT_PROMISE_ALIGNMENT",
+      "weight": 10,
+      "score": 9,
+      "reason": "The promise is supported by the content."
+    }
+  ],
+  "total_score": 92,
+  "threshold": 85,
+  "hard_blocks": [],
+  "result": "PASS_PENDING_OPERATOR",
+  "operator_approval_required": true,
+  "run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/feedback-record.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Feedback record",
+  "description": "One atomic confirmed or candidate rule derived from Operator feedback.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "rule_id",
+    "project_id",
+    "record_unique_key",
+    "entry_title",
+    "entry_type",
+    "rule_nature",
+    "original_user_wording",
+    "structured_atomic_rule",
+    "applicable_modules",
+    "effective_scope",
+    "priority",
+    "confirmation_status",
+    "long_term_effective",
+    "related_painpoint_ids",
+    "related_content_ids",
+    "effective_version",
+    "effective_date",
+    "expiry_date",
+    "replaces_rule_ids",
+    "handling_notes",
+    "source_run_id",
+    "schema_version",
+    "created_at",
+    "updated_at",
+    "extensions"
+  ],
+  "properties": {
+    "rule_id": {
+      "$ref": "common-definitions.schema.json#/$defs/ruleId"
+    },
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "record_unique_key": {
+      "$ref": "common-definitions.schema.json#/$defs/recordUniqueKey"
+    },
+    "entry_title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entry_type": {
+      "type": "string",
+      "enum": [
+        "USER_FEEDBACK",
+        "PROJECT_LONG_TERM_RULE",
+        "PROJECT_PROHIBITION",
+        "INDUSTRY_RULE_CANDIDATE",
+        "PLATFORM_RULE_CANDIDATE",
+        "PLUGIN_CORE_RULE_CANDIDATE"
+      ]
+    },
+    "rule_nature": {
+      "$ref": "common-definitions.schema.json#/$defs/ruleNature"
+    },
+    "original_user_wording": {
+      "type": "string",
+      "minLength": 1
+    },
+    "structured_atomic_rule": {
+      "type": "string",
+      "minLength": 1
+    },
+    "applicable_modules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "effective_scope": {
+      "$ref": "common-definitions.schema.json#/$defs/ruleScope"
+    },
+    "priority": {
+      "$ref": "common-definitions.schema.json#/$defs/priority"
+    },
+    "confirmation_status": {
+      "$ref": "common-definitions.schema.json#/$defs/ruleStatus"
+    },
+    "long_term_effective": {
+      "type": "boolean"
+    },
+    "related_painpoint_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common-definitions.schema.json#/$defs/painpointId"
+      },
+      "uniqueItems": true
+    },
+    "related_content_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common-definitions.schema.json#/$defs/contentId"
+      },
+      "uniqueItems": true
+    },
+    "effective_version": {
+      "$ref": "common-definitions.schema.json#/$defs/semanticVersion"
+    },
+    "effective_date": {
+      "$ref": "common-definitions.schema.json#/$defs/date"
+    },
+    "expiry_date": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "replaces_rule_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "common-definitions.schema.json#/$defs/ruleId"
+      },
+      "uniqueItems": true
+    },
+    "handling_notes": {
+      "type": "string"
+    },
+    "source_run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    },
+    "created_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "updated_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "extensions": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    }
+  }
+}

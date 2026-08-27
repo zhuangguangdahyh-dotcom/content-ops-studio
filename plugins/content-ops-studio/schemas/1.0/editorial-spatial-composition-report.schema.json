@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/editorial-spatial-composition-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Editorial spatial composition report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "candidate_id",
+    "composition_family",
+    "spatial_relationships",
+    "dimensions",
+    "total_score",
+    "threshold",
+    "hard_blocks",
+    "result",
+    "operator_approval_required",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^ESCR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "candidate_id": { "type": "string", "pattern": "^CCC-[A-Z0-9-]+$" },
+    "composition_family": {
+      "$ref": "universal-visual-default-policy.schema.json#/$defs/compositionFamily"
+    },
+    "spatial_relationships": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "universal-visual-default-policy.schema.json#/$defs/spatialRelationship" },
+      "uniqueItems": true
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": { "$ref": "#/$defs/dimension" }
+    },
+    "total_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "threshold": { "const": 80 },
+    "hard_blocks": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "result": { "type": "string", "enum": ["PASS_PENDING_OPERATOR", "FAIL", "BLOCKED"] },
+    "operator_approval_required": { "const": true },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimension", "weight", "score", "reason"],
+      "properties": {
+        "dimension": {
+          "type": "string",
+          "enum": [
+            "HIERARCHY",
+            "SPATIAL_AXIS",
+            "ASYMMETRY",
+            "PROPORTION",
+            "NEGATIVE_SPACE_PURPOSE",
+            "SUBJECT_CROP",
+            "DEPTH",
+            "IMAGE_TEXT_RELATION",
+            "TENSION",
+            "READING_PATH"
+          ]
+        },
+        "weight": { "const": 10 },
+        "score": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

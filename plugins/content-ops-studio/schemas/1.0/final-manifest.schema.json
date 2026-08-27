@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/final-manifest.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Final manifest",
+  "description": "Immutable approved final-set manifest with current QA, G5, assets, and independent sync status.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "final_manifest_id",
+    "project_id",
+    "project_kind",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "first_page_version",
+    "style_lock_version",
+    "style_lock_id",
+    "g3_approval_id",
+    "g4_approval_id",
+    "final_approval_id",
+    "final_approval_target_version",
+    "final_approval",
+    "qa_report_id",
+    "qa_status",
+    "final_output_directory",
+    "final_assets",
+    "content_package_ref",
+    "visual_system_ref",
+    "style_lock_ref",
+    "generation_manifest_refs",
+    "render_report_refs",
+    "checksums",
+    "file_count",
+    "page_count",
+    "group_evidence",
+    "final_manifest_version",
+    "finalized_by",
+    "origin",
+    "business_status",
+    "image_status",
+    "sync_status",
+    "finalized_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "final_manifest_id": { "type": "string", "pattern": "^FINAL-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "project_kind": { "type": "string", "enum": ["PRODUCTION", "CALIBRATION", "TEST_FIXTURE"] },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "first_page_version": { "type": "string", "pattern": "^FPV-[1-9][0-9]*$" },
+    "style_lock_version": { "$ref": "common-definitions.schema.json#/$defs/styleLockVersion" },
+    "style_lock_id": { "type": "string", "pattern": "^SL-[A-Z0-9-]+$" },
+    "g3_approval_id": { "$ref": "common-definitions.schema.json#/$defs/approvalId" },
+    "g4_approval_id": { "$ref": "common-definitions.schema.json#/$defs/approvalId" },
+    "final_approval_id": { "$ref": "common-definitions.schema.json#/$defs/approvalId" },
+    "final_approval_target_version": { "type": "string", "minLength": 1 },
+    "final_approval": { "$ref": "approval-event.schema.json" },
+    "qa_report_id": { "type": "string", "pattern": "^RPT-QA-[A-Z0-9-]+$" },
+    "qa_status": { "type": "string", "enum": ["QA_PASSED", "QA_PASSED_WITH_WARNINGS"] },
+    "final_output_directory": {
+      "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath"
+    },
+    "final_assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "page_number",
+          "page_role",
+          "page_intent",
+          "asset_channel",
+          "renderer_provenance",
+          "imagegen_provenance",
+          "single_page_qa_ref",
+          "asset"
+        ],
+        "properties": {
+          "page_number": { "type": "integer", "minimum": 1 },
+          "page_role": { "type": "string", "minLength": 1 },
+          "page_intent": { "type": "string", "minLength": 1 },
+          "asset_channel": {
+            "type": "string",
+            "enum": ["AI_GENERATED_VISUAL_RENDERER", "PURE_RENDERER", "OPERATOR_ASSET_RENDERER"]
+          },
+          "renderer_provenance": { "type": "string", "minLength": 1 },
+          "imagegen_provenance": {
+            "anyOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
+          },
+          "single_page_qa_ref": { "type": "string", "minLength": 1 },
+          "asset": { "$ref": "common-definitions.schema.json#/$defs/assetReference" }
+        }
+      }
+    },
+    "content_package_ref": { "type": "string", "minLength": 1 },
+    "visual_system_ref": { "type": "string", "pattern": "^VS-[A-Z0-9-]+$" },
+    "style_lock_ref": { "type": "string", "pattern": "^SL-[A-Z0-9-]+$" },
+    "generation_manifest_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^GEN-[A-Z0-9-]+$" },
+      "uniqueItems": true
+    },
+    "render_report_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^RPT-RENDER-[A-Z0-9-]+$" },
+      "uniqueItems": true
+    },
+    "checksums": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+      "additionalProperties": { "$ref": "common-definitions.schema.json#/$defs/sha256" }
+    },
+    "file_count": { "type": "integer", "minimum": 1 },
+    "page_count": { "type": "integer", "minimum": 1 },
+    "group_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strategy_ref", "continuity_report_ref", "group_qa_ref", "contact_sheet_refs"],
+      "properties": {
+        "strategy_ref": { "type": "string", "minLength": 1 },
+        "continuity_report_ref": { "type": "string", "minLength": 1 },
+        "group_qa_ref": { "type": "string", "minLength": 1 },
+        "contact_sheet_refs": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" }
+        }
+      }
+    },
+    "final_manifest_version": { "type": "string", "pattern": "^FMV-[1-9][0-9]*$" },
+    "finalized_by": { "const": "CONTENT_OPS_RUNTIME" },
+    "origin": { "const": "RUNTIME_FINALIZATION" },
+    "business_status": { "const": "CONTENT_FINALIZED" },
+    "image_status": { "const": "IMAGE_SET_GENERATED" },
+    "sync_status": { "$ref": "common-definitions.schema.json#/$defs/syncStatus" },
+    "finalized_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

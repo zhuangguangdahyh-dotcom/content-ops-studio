@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-plan-revision.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual plan revision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "visual_revision_plan_id",
+    "project_id",
+    "content_id",
+    "from_visual_plan_version",
+    "to_visual_plan_version",
+    "revision_scope",
+    "direction_changes",
+    "mode_changes",
+    "color_changes",
+    "typography_changes",
+    "layout_changes",
+    "page_changes",
+    "asset_strategy_changes",
+    "preserved_elements",
+    "invalidated_artifacts",
+    "requires_content_revision",
+    "requires_new_g3",
+    "requires_first_page_regeneration",
+    "requires_new_g4",
+    "dry_run",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "visual_revision_plan_id": { "type": "string", "pattern": "^VRP-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "from_visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "to_visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "revision_scope": {
+      "enum": [
+        "GLOBAL_DIRECTION",
+        "VISUAL_MODE",
+        "COLOR_SYSTEM",
+        "TYPOGRAPHY_SYSTEM",
+        "LAYOUT_SYSTEM",
+        "PAGE_PLAN",
+        "ASSET_STRATEGY",
+        "TEXT_LAYER_ONLY",
+        "FULL_VISUAL_REPLAN"
+      ]
+    },
+    "direction_changes": { "$ref": "#/$defs/list" },
+    "mode_changes": { "$ref": "#/$defs/list" },
+    "color_changes": { "$ref": "#/$defs/list" },
+    "typography_changes": { "$ref": "#/$defs/list" },
+    "layout_changes": { "$ref": "#/$defs/list" },
+    "page_changes": { "$ref": "#/$defs/list" },
+    "asset_strategy_changes": { "$ref": "#/$defs/list" },
+    "preserved_elements": { "$ref": "#/$defs/list" },
+    "invalidated_artifacts": { "$ref": "#/$defs/list" },
+    "requires_content_revision": { "type": "boolean" },
+    "requires_new_g3": { "type": "boolean" },
+    "requires_first_page_regeneration": { "const": false },
+    "requires_new_g4": { "const": false },
+    "dry_run": { "type": "boolean" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "list": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 1200 },
+      "uniqueItems": true
+    }
+  }
+}

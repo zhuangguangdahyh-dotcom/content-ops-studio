@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/content-record.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Content record",
+  "description": "One content item with one primary painpoint and separate business, visual, approval, and sync states.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "content_id",
+    "project_id",
+    "record_unique_key",
+    "primary_painpoint_id",
+    "content_topic",
+    "content_angle",
+    "content_structure_type",
+    "audience_explicit_need",
+    "audience_deep_anxiety",
+    "single_core_problem",
+    "core_viewpoint",
+    "solution_logic",
+    "content_objective",
+    "page_count",
+    "page_structure_summary",
+    "background_direction",
+    "visual_plan_summary",
+    "direct_message_hook",
+    "publish_title",
+    "title_character_count",
+    "publish_body",
+    "promotion_suitability",
+    "promotion_reason",
+    "duplication_risk",
+    "content_status",
+    "image_status",
+    "first_page_approval_status",
+    "final_approval_status",
+    "sync_status",
+    "output_relative_path",
+    "creation_source",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "style_lock_version",
+    "schema_version",
+    "last_run_id",
+    "finalized_at",
+    "created_at",
+    "updated_at",
+    "extensions"
+  ],
+  "properties": {
+    "content_id": {
+      "$ref": "common-definitions.schema.json#/$defs/contentId"
+    },
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "record_unique_key": {
+      "$ref": "common-definitions.schema.json#/$defs/recordUniqueKey"
+    },
+    "primary_painpoint_id": {
+      "$ref": "common-definitions.schema.json#/$defs/painpointId"
+    },
+    "content_topic": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_angle": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_structure_type": {
+      "$ref": "common-definitions.schema.json#/$defs/contentStructureType"
+    },
+    "audience_explicit_need": {
+      "type": "string",
+      "minLength": 1
+    },
+    "audience_deep_anxiety": {
+      "type": "string",
+      "minLength": 1
+    },
+    "single_core_problem": {
+      "type": "string",
+      "minLength": 1
+    },
+    "core_viewpoint": {
+      "type": "string",
+      "minLength": 1
+    },
+    "solution_logic": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content_objective": {
+      "$ref": "common-definitions.schema.json#/$defs/contentObjective"
+    },
+    "page_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "page_structure_summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "background_direction": {
+      "type": "string"
+    },
+    "visual_plan_summary": {
+      "type": "string"
+    },
+    "direct_message_hook": {
+      "type": "string"
+    },
+    "publish_title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title_character_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "publish_body": {
+      "type": "string",
+      "minLength": 1
+    },
+    "promotion_suitability": {
+      "type": "string",
+      "enum": ["HIGH", "MEDIUM", "LOW", "NOT_RECOMMENDED"]
+    },
+    "promotion_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "duplication_risk": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH"]
+    },
+    "content_status": {
+      "$ref": "common-definitions.schema.json#/$defs/contentStatus"
+    },
+    "image_status": {
+      "$ref": "common-definitions.schema.json#/$defs/imageStatus"
+    },
+    "first_page_approval_status": {
+      "$ref": "common-definitions.schema.json#/$defs/firstPageApprovalStatus"
+    },
+    "final_approval_status": {
+      "$ref": "common-definitions.schema.json#/$defs/finalApprovalStatus"
+    },
+    "sync_status": {
+      "$ref": "common-definitions.schema.json#/$defs/syncStatus"
+    },
+    "output_relative_path": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "creation_source": {
+      "type": "string",
+      "enum": ["OPERATOR", "RESEARCH", "FEEDBACK", "MIGRATION", "MOCK"]
+    },
+    "content_version": {
+      "$ref": "common-definitions.schema.json#/$defs/contentVersion"
+    },
+    "copy_version": {
+      "$ref": "common-definitions.schema.json#/$defs/contentVersion"
+    },
+    "visual_plan_version": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/visualVersion"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "style_lock_version": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/styleLockVersion"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    },
+    "last_run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "finalized_at": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "updated_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "extensions": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    }
+  }
+}

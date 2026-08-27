@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/project-profile.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Project profile",
+  "description": "Confirmed separation of Operator, Subject, and Audience project configuration.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "project_id",
+    "project_name",
+    "project_status",
+    "config_confirmation_status",
+    "subject",
+    "subject_name",
+    "subject_type",
+    "public_identity_and_intro",
+    "industry",
+    "industry_subfields",
+    "core_business_or_products",
+    "service_region",
+    "price_band",
+    "audience_profile",
+    "audience_decision_characteristics",
+    "professional_advantages",
+    "personality_and_expression_advantages",
+    "content_objectives",
+    "core_content_directions",
+    "content_style",
+    "expression_tone",
+    "target_platforms",
+    "primary_platform",
+    "default_page_count",
+    "default_aspect_ratio",
+    "visual_preferences",
+    "direct_message_hook_rules",
+    "title_rules",
+    "prohibited_expressions",
+    "prohibited_visuals",
+    "industry_pack",
+    "platform_pack",
+    "operator_notes",
+    "configuration_version",
+    "schema_version",
+    "last_run_id",
+    "created_at",
+    "updated_at",
+    "data_source",
+    "extensions"
+  ],
+  "properties": {
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "project_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_status": {
+      "$ref": "common-definitions.schema.json#/$defs/projectStatus"
+    },
+    "config_confirmation_status": {
+      "$ref": "common-definitions.schema.json#/$defs/configConfirmationStatus"
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "entity_id", "description"],
+      "properties": {
+        "role": {
+          "const": "SUBJECT"
+        },
+        "entity_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "subject_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_type": {
+      "type": "string",
+      "enum": ["PERSON", "BRAND", "ORGANIZATION", "STORE", "PRODUCT"]
+    },
+    "public_identity_and_intro": {
+      "type": "string",
+      "minLength": 1
+    },
+    "industry": {
+      "type": "string",
+      "minLength": 1
+    },
+    "industry_subfields": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "core_business_or_products": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "service_region": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "price_band": {
+      "type": "string",
+      "minLength": 1
+    },
+    "audience_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "description", "segments"],
+      "properties": {
+        "role": {
+          "const": "AUDIENCE"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "audience_decision_characteristics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "professional_advantages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "personality_and_expression_advantages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "content_objectives": {
+      "type": "array",
+      "items": {
+        "$ref": "common-definitions.schema.json#/$defs/contentObjective"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "core_content_directions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "content_style": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "expression_tone": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "target_platforms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "primary_platform": {
+      "type": "string",
+      "minLength": 1
+    },
+    "default_page_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "default_aspect_ratio": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*:[1-9][0-9]*$"
+    },
+    "visual_preferences": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "direct_message_hook_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "title_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "prohibited_expressions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "prohibited_visuals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "industry_pack": {
+      "type": "string",
+      "minLength": 1
+    },
+    "platform_pack": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operator_notes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "notes"],
+      "properties": {
+        "role": {
+          "const": "OPERATOR"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "configuration_version": {
+      "$ref": "common-definitions.schema.json#/$defs/revisionNumber"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    },
+    "last_run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "created_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "updated_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "data_source": {
+      "type": "string",
+      "enum": ["OPERATOR_INPUT", "CUSTOMER_MATERIAL", "MIGRATED", "MOCK"]
+    },
+    "extensions": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    }
+  }
+}

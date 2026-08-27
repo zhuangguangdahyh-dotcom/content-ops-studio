@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/feishu-workspace-plan.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Feishu Workspace Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "plan_id",
+    "project_id",
+    "run_id",
+    "base_title",
+    "parent_folder_reference",
+    "blueprint_version",
+    "schema_version",
+    "existing_workspace",
+    "reconciliation_mode",
+    "table_operations",
+    "field_operations",
+    "relation_operations",
+    "view_operations",
+    "record_operations",
+    "expected_tables",
+    "expected_fields",
+    "expected_views",
+    "expected_relations",
+    "estimated_api_calls",
+    "batching_plan",
+    "retry_plan",
+    "live_write_required",
+    "live_write_confirmed",
+    "created_at",
+    "extensions"
+  ],
+  "properties": {
+    "plan_id": { "type": "string", "pattern": "^FWP-[A-Z0-9-]+$" },
+    "project_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "base_title": { "type": "string", "minLength": 1 },
+    "parent_folder_reference": { "type": "string", "pattern": "^(env|vault|mcp):" },
+    "blueprint_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "schema_version": { "const": "1.0.0" },
+    "existing_workspace": {
+      "enum": [
+        "NONE",
+        "LOCAL_REFERENCE",
+        "REMOTE_VERIFIED",
+        "ORPHAN_CANDIDATE",
+        "DUPLICATE_CANDIDATES"
+      ]
+    },
+    "reconciliation_mode": {
+      "enum": ["PROVISION", "INSPECT", "VERIFY", "REPAIR_ADD_ONLY", "MIGRATE_APPROVED"]
+    },
+    "table_operations": { "$ref": "#/$defs/ops" },
+    "field_operations": { "$ref": "#/$defs/ops" },
+    "relation_operations": { "$ref": "#/$defs/ops" },
+    "view_operations": { "$ref": "#/$defs/ops" },
+    "record_operations": { "$ref": "#/$defs/ops" },
+    "expected_tables": { "type": "integer", "minimum": 0 },
+    "expected_fields": { "type": "integer", "minimum": 0 },
+    "expected_views": { "type": "integer", "minimum": 0 },
+    "expected_relations": { "type": "integer", "minimum": 0 },
+    "estimated_api_calls": { "type": "integer", "minimum": 0 },
+    "batching_plan": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [{ "type": "integer", "minimum": 1 }, { "type": "string" }]
+      }
+    },
+    "retry_plan": { "type": "object", "additionalProperties": true },
+    "live_write_required": { "type": "boolean" },
+    "live_write_confirmed": { "type": "boolean" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "ops": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["operation", "logical_key", "reason"],
+        "properties": {
+          "operation": {
+            "enum": [
+              "CREATE",
+              "ADOPT",
+              "UPDATE_MAPPING",
+              "SKIP_VERIFIED",
+              "BLOCK_CONFLICT",
+              "REPAIR_ADD_ONLY"
+            ]
+          },
+          "logical_key": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

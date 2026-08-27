@@ -1,0 +1,9 @@
+{
+  "operation": "GET_WORKSPACE",
+  "argv": [],
+  "identity": "user",
+  "dry_run": false,
+  "timeout_ms": 30000,
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

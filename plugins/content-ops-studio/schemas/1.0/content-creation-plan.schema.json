@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/content-creation-plan.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Content creation plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "content_creation_plan_id",
+    "project_id",
+    "painpoint_id",
+    "run_id",
+    "operation",
+    "requested_content_id",
+    "project_profile_version",
+    "painpoint_version",
+    "painpoint_review_status",
+    "platform_pack",
+    "industry_pack",
+    "project_rule_snapshot",
+    "content_objective",
+    "target_audience_segment",
+    "target_decision_stage",
+    "single_core_problem",
+    "desired_value_types",
+    "requested_page_count",
+    "resolved_page_count",
+    "angle_strategy",
+    "structure_strategy",
+    "evidence_strategy",
+    "claim_strategy",
+    "duplication_strategy",
+    "cta_strategy",
+    "historical_content_scope",
+    "constraints",
+    "user_overrides",
+    "expected_artifacts",
+    "capability_requirements",
+    "plan_hash",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "content_creation_plan_id": { "type": "string", "pattern": "^CPL-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "painpoint_id": { "$ref": "common-definitions.schema.json#/$defs/painpointId" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "operation": { "enum": ["CREATE_NEW", "CREATE_ALTERNATE", "REVISE", "AUDIT_DUPLICATION"] },
+    "requested_content_id": {
+      "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/contentId" }, { "type": "null" }]
+    },
+    "project_profile_version": { "$ref": "common-definitions.schema.json#/$defs/revisionNumber" },
+    "painpoint_version": { "$ref": "common-definitions.schema.json#/$defs/revisionNumber" },
+    "painpoint_review_status": { "const": "PAINPOINT_CONFIRMED" },
+    "platform_pack": { "$ref": "#/$defs/versionedPack" },
+    "industry_pack": { "$ref": "#/$defs/versionedPack" },
+    "project_rule_snapshot": { "$ref": "active-project-rules.schema.json" },
+    "content_objective": { "$ref": "common-definitions.schema.json#/$defs/contentObjective" },
+    "target_audience_segment": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "target_decision_stage": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "single_core_problem": { "type": "string", "minLength": 1, "maxLength": 1000 },
+    "desired_value_types": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "EMOTIONAL_VALUE",
+          "MONEY_VALUE",
+          "TIME_VALUE",
+          "RISK_REDUCTION",
+          "DECISION_VALUE",
+          "PROFESSIONAL_INSIGHT"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "requested_page_count": {
+      "anyOf": [{ "type": "integer", "minimum": 1, "maximum": 20 }, { "type": "null" }]
+    },
+    "resolved_page_count": { "type": "integer", "minimum": 4, "maximum": 8 },
+    "angle_strategy": { "$ref": "#/$defs/nonEmptyText" },
+    "structure_strategy": { "$ref": "#/$defs/nonEmptyText" },
+    "evidence_strategy": { "$ref": "#/$defs/nonEmptyText" },
+    "claim_strategy": { "$ref": "#/$defs/nonEmptyText" },
+    "duplication_strategy": { "$ref": "#/$defs/nonEmptyText" },
+    "cta_strategy": { "type": "string", "maxLength": 1000 },
+    "historical_content_scope": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+      "uniqueItems": true
+    },
+    "constraints": { "$ref": "#/$defs/nonEmptyStrings" },
+    "user_overrides": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 1000 },
+      "uniqueItems": true
+    },
+    "expected_artifacts": { "$ref": "#/$defs/nonEmptyStrings" },
+    "capability_requirements": { "$ref": "#/$defs/nonEmptyStrings" },
+    "plan_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "versionedPack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "version": { "$ref": "common-definitions.schema.json#/$defs/semanticVersion" }
+      }
+    },
+    "nonEmptyText": { "type": "string", "minLength": 1, "maxLength": 1000 },
+    "nonEmptyStrings": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 1000 },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  }
+}

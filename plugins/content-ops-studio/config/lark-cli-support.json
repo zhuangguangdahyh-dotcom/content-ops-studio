@@ -1,0 +1,53 @@
+{
+  "binary": "lark-cli",
+  "package": "@larksuite/cli",
+  "version": "1.0.63",
+  "version_policy": {
+    "tested": "1.0.63",
+    "minimum": "1.0.63",
+    "maximum_exclusive": "1.0.64",
+    "install_spec": "@larksuite/cli@1.0.63"
+  },
+  "identity": "user",
+  "output_format": "json",
+  "allowed_commands": [
+    "config init",
+    "auth login",
+    "auth logout",
+    "auth status",
+    "auth check",
+    "auth scopes",
+    "schema",
+    "base +base-create",
+    "base +base-get",
+    "base +base-block-list",
+    "base +table-list",
+    "base +table-create",
+    "base +table-get",
+    "base +table-update",
+    "base +field-list",
+    "base +field-get",
+    "base +field-create",
+    "base +field-update",
+    "base +record-list",
+    "base +record-search",
+    "base +record-get",
+    "base +record-upsert",
+    "base +record-batch-create",
+    "base +record-batch-update",
+    "base +view-list",
+    "base +view-create",
+    "base +view-rename"
+  ],
+  "raw_api_policy": "DISABLED",
+  "auth_status": "NOT_CHECKED",
+  "credential_storage": "SYSTEM_KEYCHAIN_OWNED_BY_OFFICIAL_CLI",
+  "risk_control_status": "OFFICIAL_DEFAULT_ENFORCED",
+  "schema_version": "1.0.0",
+  "extensions": {
+    "current_stable_observed": "1.0.89",
+    "current_stable_observed_at": "2026-08-24",
+    "install_command": "npx @larksuite/cli@1.0.63 install",
+    "skills": ["lark-shared@1.0.0", "lark-base@1.2.2"]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "copy_review_id": "CCR-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "decision": "INVALID_ENUM_VALUE",
+  "overall_comment": "Approved fictional copy.",
+  "title_feedback": "Clear.",
+  "body_feedback": "Grounded.",
+  "cta_feedback": "Relevant.",
+  "page_feedback": [],
+  "requested_changes": [],
+  "reviewer_role": "OPERATOR",
+  "source_run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

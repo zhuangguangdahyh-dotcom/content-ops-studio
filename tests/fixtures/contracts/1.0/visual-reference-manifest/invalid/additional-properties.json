@@ -1,0 +1,15 @@
+{
+  "visual_reference_manifest_id": "VRM-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "references": [],
+  "reference_count": 0,
+  "reference_type_counts": {},
+  "approved_count": 0,
+  "rejected_count": 0,
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "extensions": {},
+  "undeclared_phase_4a_field": true
+}

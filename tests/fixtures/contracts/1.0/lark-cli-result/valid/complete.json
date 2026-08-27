@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "exit_code": 0,
+  "operation": "AUTH_STATUS",
+  "duration_ms": 3,
+  "stdout_present": true,
+  "stderr_present": false,
+  "error": null,
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

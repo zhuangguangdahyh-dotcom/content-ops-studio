@@ -1,0 +1,12 @@
+interface:
+  display_name: "Painpoint Research"
+  short_description: "Research and review evidence-backed audience painpoints"
+  default_prompt: "Use $painpoint-research to plan current-source research, retain citations, write only pending painpoints, and stop for my item-level G2 decisions."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "content-ops"
+      description: "Bundled local Content Ops MCP server for research artifacts, Feishu painpoint records, and G2 workflow"
+      transport: "stdio"
+policy:
+  allow_implicit_invocation: true

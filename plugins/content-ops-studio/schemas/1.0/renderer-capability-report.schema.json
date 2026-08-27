@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/renderer-capability-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Renderer capability report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "capability_report_id",
+    "renderer_id",
+    "node_version",
+    "platform",
+    "architecture",
+    "playwright_core_version",
+    "playwright_setup_version",
+    "browser_installation_status",
+    "browser_family",
+    "browser_version",
+    "browser_executable_hash_or_version",
+    "browser_path_policy",
+    "browser_launch_status",
+    "font_availability",
+    "font_fallback_status",
+    "supported_visual_modes",
+    "supported_asset_strategies",
+    "unsupported_asset_strategies",
+    "network_blocking_status",
+    "plugin_root_write_status",
+    "plugin_data_write_status",
+    "warnings",
+    "blocking_errors",
+    "overall_status",
+    "checked_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "capability_report_id": { "type": "string", "pattern": "^RCAP-[A-Z0-9-]+$" },
+    "renderer_id": { "const": "PLAYWRIGHT_HTML_CSS" },
+    "node_version": { "type": "string", "pattern": "^v24\\." },
+    "platform": { "enum": ["darwin", "linux", "win32"] },
+    "architecture": { "enum": ["arm64", "x64"] },
+    "playwright_core_version": { "const": "1.62.1" },
+    "playwright_setup_version": { "const": "1.62.1" },
+    "browser_installation_status": { "enum": ["INSTALLED", "NOT_INSTALLED", "VERSION_MISMATCH"] },
+    "browser_family": { "const": "CHROMIUM" },
+    "browser_version": { "anyOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }] },
+    "browser_executable_hash_or_version": {
+      "anyOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
+    },
+    "browser_path_policy": { "enum": ["PLUGIN_DATA", "EXTERNAL_CACHE"] },
+    "browser_launch_status": { "enum": ["PASSED", "FAILED", "NOT_RUN"] },
+    "font_availability": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "font_fallback_status": { "enum": ["PRIMARY", "FALLBACK_READABLE", "UNAVAILABLE"] },
+    "supported_visual_modes": {
+      "type": "array",
+      "items": { "const": "EDITORIAL_SERIES" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "supported_asset_strategies": {
+      "type": "array",
+      "items": {
+        "enum": ["PROGRAMMATIC_GRAPHIC", "NO_BACKGROUND_ASSET", "PROJECT_ASSET", "EVIDENCE_ASSET"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "unsupported_asset_strategies": {
+      "type": "array",
+      "items": { "enum": ["GENERATED_BACKGROUND", "REMOTE_URL", "WEB_SCREENSHOT"] },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "network_blocking_status": { "enum": ["PASSED", "FAILED", "NOT_RUN"] },
+    "plugin_root_write_status": { "const": "READ_ONLY" },
+    "plugin_data_write_status": { "enum": ["WRITABLE", "NOT_WRITABLE"] },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "blocking_errors": { "type": "array", "items": { "type": "string" } },
+    "overall_status": { "enum": ["READY", "READY_WITH_WARNINGS", "BLOCKED"] },
+    "checked_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

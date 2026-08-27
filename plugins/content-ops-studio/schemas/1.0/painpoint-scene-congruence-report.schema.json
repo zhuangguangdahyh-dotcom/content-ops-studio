@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/painpoint-scene-congruence-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Painpoint scene congruence report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "candidate_id",
+    "conversion_strategy",
+    "relation",
+    "painpoint_statement",
+    "visible_scene_evidence",
+    "diagnostic_markers",
+    "dimensions",
+    "total_score",
+    "threshold",
+    "hard_blocks",
+    "result",
+    "operator_approval_required",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^PSCR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "candidate_id": { "type": "string", "pattern": "^CCC-[A-Z0-9-]+$" },
+    "conversion_strategy": {
+      "$ref": "cover-conversion-plan.schema.json#/$defs/conversionStrategy"
+    },
+    "relation": { "$ref": "#/$defs/relation" },
+    "painpoint_statement": { "type": "string", "minLength": 1 },
+    "visible_scene_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "diagnostic_markers": { "type": "array", "items": { "$ref": "#/$defs/marker" } },
+    "dimensions": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "$ref": "#/$defs/dimension" }
+    },
+    "total_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "threshold": { "const": 85 },
+    "hard_blocks": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "result": { "type": "string", "enum": ["PASS_PENDING_OPERATOR", "FAIL", "BLOCKED"] },
+    "operator_approval_required": { "const": true },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "relation": {
+      "type": "string",
+      "enum": [
+        "DIRECTLY_SUPPORTS_PAINPOINT",
+        "DIRECTLY_SUPPORTS_VALUE",
+        "SUPPORTS_CONTRAST",
+        "NEUTRAL_CATEGORY_RELEVANCE",
+        "CONTRADICTS_PAINPOINT",
+        "DECORATIVE_ONLY"
+      ]
+    },
+    "marker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["marker", "target_region", "evidence_meaning", "explained"],
+      "properties": {
+        "marker": { "type": "string", "minLength": 1 },
+        "target_region": { "type": "string", "minLength": 1 },
+        "evidence_meaning": { "type": "string", "minLength": 1 },
+        "explained": { "const": true }
+      }
+    },
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimension", "weight", "score", "reason"],
+      "properties": {
+        "dimension": {
+          "type": "string",
+          "enum": [
+            "VISIBLE_PAINPOINT_EVIDENCE",
+            "COPY_SCENE_RELATION",
+            "BUSINESS_SCENE_RECOGNITION",
+            "CONTRAST_OR_DIAGNOSTIC_VALIDITY"
+          ]
+        },
+        "weight": { "type": "integer", "enum": [20, 25, 30] },
+        "score": { "type": "integer", "minimum": 0, "maximum": 30 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

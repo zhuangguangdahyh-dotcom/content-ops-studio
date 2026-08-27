@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/content-angle-decision.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Content angle decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "angle_decision_id",
+    "content_creation_plan_id",
+    "candidates",
+    "selected_candidate_id",
+    "selection_rationale",
+    "historical_angles",
+    "recent_structure_usage",
+    "user_fixed_angle",
+    "user_rejected_angles",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "angle_decision_id": { "type": "string", "pattern": "^CAD-[A-Z0-9-]+$" },
+    "content_creation_plan_id": { "type": "string", "pattern": "^CPL-[A-Z0-9-]+$" },
+    "candidates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/candidate" },
+      "minItems": 1,
+      "maxItems": 20
+    },
+    "selected_candidate_id": { "type": "string", "pattern": "^AC-[A-Z0-9-]+$" },
+    "selection_rationale": { "type": "string", "minLength": 1, "maxLength": 1500 },
+    "historical_angles": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 500 },
+      "uniqueItems": true
+    },
+    "recent_structure_usage": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 100 },
+      "uniqueItems": true
+    },
+    "user_fixed_angle": {
+      "anyOf": [{ "type": "string", "minLength": 1, "maxLength": 500 }, { "type": "null" }]
+    },
+    "user_rejected_angles": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 500 },
+      "uniqueItems": true
+    },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "angle_name",
+        "angle_code",
+        "premise",
+        "target_emotion_or_decision",
+        "subject_advantage_fit",
+        "evidence_coverage",
+        "content_value",
+        "expected_structure",
+        "duplication_risk",
+        "strengths",
+        "limitations"
+      ],
+      "properties": {
+        "candidate_id": { "type": "string", "pattern": "^AC-[A-Z0-9-]+$" },
+        "angle_name": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "angle_code": {
+          "enum": [
+            "RISK",
+            "COST",
+            "DECISION",
+            "MISCONCEPTION",
+            "DIAGNOSIS",
+            "COMPARISON",
+            "PROCESS",
+            "CASE",
+            "EMOTIONAL",
+            "PROFESSIONAL_JUDGMENT"
+          ]
+        },
+        "premise": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "target_emotion_or_decision": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "subject_advantage_fit": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "evidence_coverage": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "content_value": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "expected_structure": {
+          "$ref": "common-definitions.schema.json#/$defs/contentStructureType"
+        },
+        "duplication_risk": { "enum": ["LOW", "MEDIUM", "HIGH"] },
+        "strengths": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        },
+        "limitations": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "status": "scaffold",
+  "structures": [
+    "problem-analysis",
+    "checklist",
+    "misconception",
+    "case",
+    "steps",
+    "viewpoint",
+    "comparison",
+    "diagnosis",
+    "decision-advice",
+    "story"
+  ]
+}

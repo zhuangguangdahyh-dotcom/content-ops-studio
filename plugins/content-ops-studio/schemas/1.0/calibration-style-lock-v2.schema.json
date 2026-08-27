@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/calibration-style-lock-v2.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Calibration Style Lock V2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "style_lock_id",
+    "style_lock_version",
+    "status",
+    "project_ref",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "first_page_version",
+    "source_asset_id",
+    "source_asset_checksum",
+    "source_g4_approval_id",
+    "source_g4_approval_ref",
+    "source_g4_approval_hash",
+    "inherited_calibration_status",
+    "validated_systems",
+    "cover_locked_rules",
+    "group_shared_rules",
+    "content_page_allowed_variations",
+    "prohibited_deviations",
+    "historical_style_lock",
+    "universal_template_created",
+    "remaining_page_production_eligibility",
+    "remaining_pages_created",
+    "feishu_writes",
+    "production_workspace_write_eligible",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "style_lock_id": { "type": "string", "pattern": "^CSL2-[A-Z0-9-]+$" },
+    "style_lock_version": { "type": "string", "pattern": "^SLV-[1-9][0-9]*$" },
+    "status": { "const": "ACTIVE" },
+    "project_ref": { "$ref": "project-reference.schema.json" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "first_page_version": { "type": "string", "pattern": "^FPV-[1-9][0-9]*$" },
+    "source_asset_id": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+    "source_asset_checksum": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "source_g4_approval_id": { "type": "string", "pattern": "^APR-[A-Z0-9-]+$" },
+    "source_g4_approval_ref": {
+      "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath"
+    },
+    "source_g4_approval_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "inherited_calibration_status": { "const": "CALIBRATION_VALIDATED_V1" },
+    "validated_systems": {
+      "type": "array",
+      "minItems": 6,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "cover_locked_rules": { "$ref": "#/$defs/rules" },
+    "group_shared_rules": { "$ref": "#/$defs/rules" },
+    "content_page_allowed_variations": { "$ref": "#/$defs/rules" },
+    "prohibited_deviations": { "$ref": "#/$defs/rules" },
+    "historical_style_lock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["style_lock_version", "status"],
+      "properties": {
+        "style_lock_version": { "const": "SLV-1" },
+        "status": { "const": "HISTORICAL_VALID_FOR_CV1_ONLY" }
+      }
+    },
+    "universal_template_created": { "const": false },
+    "remaining_page_production_eligibility": { "const": "ELIGIBLE" },
+    "remaining_pages_created": { "const": 0 },
+    "feishu_writes": { "const": 0 },
+    "production_workspace_write_eligible": { "const": false },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "rules": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

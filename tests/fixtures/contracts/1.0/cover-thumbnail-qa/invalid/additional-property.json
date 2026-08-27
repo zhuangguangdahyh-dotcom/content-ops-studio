@@ -1,0 +1,45 @@
+{
+  "report_id": "CTQA-C-0001-A",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "candidate_id": "CCC-C-0001-A",
+  "source_asset_checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "thumbnails": [
+    {
+      "size": "310x414",
+      "width": 310,
+      "height": 414,
+      "relative_path": "projects/demo/thumbnails/a-310.png",
+      "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "primary_effective_font_px": 31,
+      "secondary_effective_font_px": 15,
+      "readable": true
+    },
+    {
+      "size": "186x248",
+      "width": 186,
+      "height": 248,
+      "relative_path": "projects/demo/thumbnails/a-186.png",
+      "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "primary_effective_font_px": 19,
+      "secondary_effective_font_px": 9,
+      "readable": true
+    }
+  ],
+  "primary_hook_lines": 2,
+  "primary_hook_first_focus": true,
+  "single_click_message": true,
+  "audience_or_painpoint_or_value_clear": true,
+  "background_competes": false,
+  "small_paragraph_present": false,
+  "text_background_contrast": 7.2,
+  "text_visual_share": 0.42,
+  "business_scene_recognizable": true,
+  "hard_blocks": [],
+  "result": "PASS",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {},
+  "unexpected": true
+}

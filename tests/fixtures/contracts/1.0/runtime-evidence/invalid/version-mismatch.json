@@ -1,0 +1,70 @@
+{
+  "evidence_id": "RTE-NODE24-FIXTURE-001",
+  "runtime_name": "node",
+  "runtime_version": "v24.19.0",
+  "runtime_major": 24,
+  "runtime_range": ">=24 <25",
+  "support_policy_status": "SUPPORTED",
+  "policy_reason_code": "PROJECT_SUPPORTED_RUNTIME",
+  "execution_status": "PASSED",
+  "commands": [
+    "pnpm contracts:check-generated",
+    "pnpm contracts:validate",
+    "pnpm runtime-policy:validate",
+    "pnpm state:validate",
+    "pnpm runtime:test",
+    "pnpm recovery:test",
+    "pnpm scan:secrets"
+  ],
+  "command_results": [
+    {
+      "command": "pnpm contracts:check-generated",
+      "status": "PASSED",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm contracts:validate",
+      "status": "PASSED",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm runtime-policy:validate",
+      "status": "PASSED",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm state:validate",
+      "status": "PASSED",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm runtime:test",
+      "status": "PASSED",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm recovery:test",
+      "status": "PASSED",
+      "exit_code": 0
+    },
+    {
+      "command": "pnpm scan:secrets",
+      "status": "PASSED",
+      "exit_code": 0
+    }
+  ],
+  "environment": {
+    "package_manager": "pnpm",
+    "package_manager_version": "11.19.0",
+    "ci": false
+  },
+  "platform": "fixture-os",
+  "architecture": "fixture-arch",
+  "started_at": "2099-01-01T01:02:03.000Z",
+  "completed_at": "2099-01-01T01:02:03.000Z",
+  "evidence_source": "TEST",
+  "report_path": "reports/verification/runtime-evidence-node24.json",
+  "limitations": ["Fictional contract fixture only."],
+  "schema_version": "9.9.9",
+  "extensions": {}
+}

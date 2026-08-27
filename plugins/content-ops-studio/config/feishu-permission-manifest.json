@@ -1,0 +1,134 @@
+{
+  "manifest_version": "1.0.0",
+  "provider": "FEISHU",
+  "auth_mode": "SELF_BUILT_TENANT_APP",
+  "permissions": [
+    {
+      "scope_key": "base:app:create",
+      "display_name": "创建多维表格",
+      "purpose": "Create the project Base in an authorized folder.",
+      "required": true,
+      "operations": ["CREATE_WORKSPACE"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app/create"
+    },
+    {
+      "scope_key": "base:app:read",
+      "display_name": "查看多维表格",
+      "purpose": "Read Base metadata and verify access.",
+      "required": true,
+      "operations": ["GET_WORKSPACE", "VERIFY_WORKSPACE"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app/get"
+    },
+    {
+      "scope_key": "base:table:create",
+      "display_name": "创建数据表",
+      "purpose": "Create the four Blueprint tables.",
+      "required": true,
+      "operations": ["CREATE_TABLE"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app-table/create"
+    },
+    {
+      "scope_key": "base:table:read",
+      "display_name": "查看数据表",
+      "purpose": "Inspect and reconcile tables.",
+      "required": true,
+      "operations": ["LIST_TABLES"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app-table/list"
+    },
+    {
+      "scope_key": "base:table:update",
+      "display_name": "更新数据表",
+      "purpose": "Safely adopt the one blank default table as the project configuration table.",
+      "required": true,
+      "operations": ["ADOPT_DEFAULT_TABLE"],
+      "official_source": "https://open.feishu.cn/api-explorer?project=bitable&resource=app.table&apiName=patch&version=v1"
+    },
+    {
+      "scope_key": "base:field:create",
+      "display_name": "创建字段",
+      "purpose": "Create Blueprint fields and relations.",
+      "required": true,
+      "operations": ["CREATE_FIELD"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app-table-field/create"
+    },
+    {
+      "scope_key": "base:field:read",
+      "display_name": "查看字段",
+      "purpose": "Maintain field identity and detect drift.",
+      "required": true,
+      "operations": ["LIST_FIELDS"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app-table-field/list"
+    },
+    {
+      "scope_key": "base:field:update",
+      "display_name": "更新字段",
+      "purpose": "Reserved for explicitly approved migrations; ordinary repair never changes conflicting types.",
+      "required": true,
+      "operations": ["UPDATE_FIELD"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app-table-field/update"
+    },
+    {
+      "scope_key": "base:view:read",
+      "display_name": "查看视图",
+      "purpose": "Inspect and verify views.",
+      "required": true,
+      "operations": ["LIST_VIEWS"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app-table-view/list"
+    },
+    {
+      "scope_key": "base:view:write_only",
+      "display_name": "创建和更新视图",
+      "purpose": "Create missing default views.",
+      "required": true,
+      "operations": ["CREATE_VIEW"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app-table-view/create"
+    },
+    {
+      "scope_key": "base:record:create",
+      "display_name": "新增记录",
+      "purpose": "Create the project configuration draft and future owned records.",
+      "required": true,
+      "operations": ["CREATE_RECORD", "BATCH_CREATE_RECORDS"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app-table-record/create"
+    },
+    {
+      "scope_key": "base:record:read",
+      "display_name": "查看记录",
+      "purpose": "Unique-key lookup and read-after-write verification.",
+      "required": true,
+      "operations": ["SEARCH_RECORDS", "READ_RECORD"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app-table-record/search"
+    },
+    {
+      "scope_key": "base:record:update",
+      "display_name": "更新记录",
+      "purpose": "Incrementally update Plugin-owned, unconfirmed fields.",
+      "required": true,
+      "operations": ["UPDATE_RECORD", "BATCH_UPDATE_RECORDS"],
+      "official_source": "https://open.feishu.cn/document/server-docs/docs/bitable-v1/app-table-record/update"
+    }
+  ],
+  "required_for_read": [
+    "base:app:read",
+    "base:table:read",
+    "base:field:read",
+    "base:view:read",
+    "base:record:read"
+  ],
+  "required_for_workspace_create": ["base:app:create"],
+  "required_for_schema_write": [
+    "base:table:create",
+    "base:table:update",
+    "base:field:create",
+    "base:field:update"
+  ],
+  "required_for_record_read": ["base:record:read"],
+  "required_for_record_write": ["base:record:create", "base:record:update"],
+  "required_for_view_write": ["base:view:write_only"],
+  "optional_permissions": [],
+  "deferred_permissions": ["drive:file:upload"],
+  "source_snapshot_date": "2026-08-24",
+  "source_references": ["docs/research/feishu-openapi-snapshot-2026-08-24.md"],
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

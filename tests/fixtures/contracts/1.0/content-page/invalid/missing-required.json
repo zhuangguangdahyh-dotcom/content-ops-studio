@@ -1,0 +1,15 @@
+{
+  "page_role": "COVER",
+  "copy_version": "CV-1",
+  "headline": "A fictional decision guide",
+  "body": "Use evidence before choosing.",
+  "supporting_text": "Sanitized fixture copy.",
+  "content_purpose": "Create a clear click reason.",
+  "background_direction": "Abstract neutral geometry.",
+  "visual_evidence_requirement": "No factual photo claim.",
+  "layout_notes": "One clear reading anchor.",
+  "negative_constraints": ["No real people"],
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "updated_at": "2099-01-01T01:02:03.000Z",
+  "extensions": {}
+}

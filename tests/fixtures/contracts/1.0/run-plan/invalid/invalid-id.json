@@ -1,0 +1,64 @@
+{
+  "run_id": "INVALID-ID",
+  "project_id": "PRJ-20990101-DEMO",
+  "workflow_id": "PROJECT_INITIALIZATION_LOCAL_V1",
+  "workflow_version": "1.0.0",
+  "task_envelope": {
+    "contract_version": "1.0.0",
+    "schema_version": "1.0.0",
+    "run_id": "RUN-20990101-010203-DEMO",
+    "project_id": "PRJ-20990101-DEMO",
+    "task_type": "PROJECT_INITIALIZATION",
+    "operation": "CREATE_NEW",
+    "source": "mock",
+    "raw_instruction": "Initialize a fictional local project.",
+    "targets": {
+      "painpoint_ids": [],
+      "content_ids": [],
+      "page_numbers": []
+    },
+    "overrides": {},
+    "approval_event": null,
+    "resume": {
+      "from_run_id": null,
+      "from_step": null
+    },
+    "dry_run": false
+  },
+  "runtime_mode": "MOCK",
+  "project_snapshot_id": "SNAP-DEMO-001",
+  "pack_resolution_id": "PRES-DEMO-001",
+  "steps": [
+    {
+      "step_id": "PREFLIGHT",
+      "sequence": 1,
+      "status": "PENDING",
+      "attempts": 0
+    },
+    {
+      "step_id": "AWAIT_G1_PROJECT_PROFILE",
+      "sequence": 2,
+      "status": "PENDING",
+      "attempts": 0
+    }
+  ],
+  "current_step_id": "PREFLIGHT",
+  "completed_step_ids": [],
+  "failed_step_ids": [],
+  "skipped_step_ids": [],
+  "pending_approval": null,
+  "capability_report": [
+    {
+      "capability": "workspace.write",
+      "status": "MOCK_ONLY"
+    }
+  ],
+  "idempotency_key": "idem-run-demo-0001",
+  "parent_run_id": null,
+  "resume_from_run_id": null,
+  "plan_status": "RUN_CREATED",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "updated_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

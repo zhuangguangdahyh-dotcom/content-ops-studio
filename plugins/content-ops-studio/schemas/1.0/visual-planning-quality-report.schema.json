@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-planning-quality-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual planning quality report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "visual_quality_report_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "hard_checks",
+    "dimension_scores",
+    "weighted_score",
+    "blocking_failure_count",
+    "warning_count",
+    "passed_count",
+    "ready_for_first_page",
+    "limitations",
+    "recommended_changes",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "visual_quality_report_id": { "type": "string", "pattern": "^VQR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "hard_checks": { "type": "array", "minItems": 18, "items": { "$ref": "#/$defs/check" } },
+    "dimension_scores": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": { "$ref": "#/$defs/score" }
+    },
+    "weighted_score": { "type": "number", "minimum": 0, "maximum": 100 },
+    "blocking_failure_count": { "type": "integer", "minimum": 0 },
+    "warning_count": { "type": "integer", "minimum": 0 },
+    "passed_count": { "type": "integer", "minimum": 0 },
+    "ready_for_first_page": { "type": "boolean" },
+    "limitations": { "$ref": "#/$defs/textList" },
+    "recommended_changes": { "$ref": "#/$defs/textList" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "dimension": {
+      "enum": [
+        "CONTENT_FIDELITY",
+        "VISUAL_MODE_FIT",
+        "GROUP_CONSISTENCY",
+        "PAGE_SPECIFIC_RELEVANCE",
+        "READABILITY_FEASIBILITY",
+        "ASSET_FEASIBILITY",
+        "PROJECT_FIT",
+        "PLATFORM_FIT"
+      ]
+    },
+    "textList": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 1000 },
+      "uniqueItems": true
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check_code", "status", "blocking", "details"],
+      "properties": {
+        "check_code": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
+        "status": { "enum": ["PASS", "WARNING", "FAIL"] },
+        "blocking": { "type": "boolean" },
+        "details": { "type": "string", "minLength": 1, "maxLength": 1000 }
+      }
+    },
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimension", "score", "weight", "rationale"],
+      "properties": {
+        "dimension": { "$ref": "#/$defs/dimension" },
+        "score": { "type": "number", "minimum": 0, "maximum": 5 },
+        "weight": { "type": "integer", "minimum": 1, "maximum": 100 },
+        "rationale": { "type": "string", "minLength": 1, "maxLength": 1000 }
+      }
+    }
+  }
+}

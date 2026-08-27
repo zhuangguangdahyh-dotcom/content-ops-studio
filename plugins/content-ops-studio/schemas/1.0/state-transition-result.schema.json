@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/state-transition-result.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "State transition result",
+  "description": "Stable pure result for a state transition evaluation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "allowed",
+    "machine",
+    "from_state",
+    "to_state",
+    "next_state",
+    "error_code",
+    "reasons",
+    "required_gate",
+    "invalidated_approvals",
+    "invalidated_artifacts",
+    "required_actions",
+    "evaluated_at",
+    "run_id",
+    "schema_version"
+  ],
+  "properties": {
+    "allowed": {
+      "type": "boolean"
+    },
+    "machine": {
+      "$ref": "common-definitions.schema.json#/$defs/machineName"
+    },
+    "from_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "to_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "next_state": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "error_code": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "INVALID_TRANSITION",
+            "APPROVAL_REQUIRED",
+            "APPROVAL_MISMATCH",
+            "APPROVAL_STALE",
+            "INVARIANT_VIOLATION",
+            "OWNER_SKILL_MISMATCH",
+            "TERMINAL_STATE"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_gate": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/approvalGate"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "invalidated_approvals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "invalidated_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evaluated_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    }
+  }
+}

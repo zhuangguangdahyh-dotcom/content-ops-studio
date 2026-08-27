@@ -1,0 +1,20 @@
+{
+  "binary": "lark-cli",
+  "package": "@larksuite/cli",
+  "version": "1.0.63",
+  "version_policy": {
+    "tested": "1.0.63",
+    "minimum": "1.0.63",
+    "maximum_exclusive": "1.0.64",
+    "install_spec": "@larksuite/cli@1.0.63"
+  },
+  "identity": "user",
+  "output_format": "json",
+  "allowed_commands": ["auth status"],
+  "raw_api_policy": "DISABLED",
+  "auth_status": "NOT_CHECKED",
+  "credential_storage": "SYSTEM_KEYCHAIN_OWNED_BY_OFFICIAL_CLI",
+  "risk_control_status": "OFFICIAL_DEFAULT_ENFORCED",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

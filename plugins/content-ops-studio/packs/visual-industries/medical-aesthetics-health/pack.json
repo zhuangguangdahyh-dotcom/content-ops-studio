@@ -1,0 +1,41 @@
+{
+  "pack_id": "MEDICAL_AESTHETICS_HEALTH",
+  "pack_version": "1.0.0",
+  "display_name": "Medical Aesthetics and Health",
+  "supported_industries": ["Medical aesthetics", "Healthcare", "Wellness"],
+  "default_visual_mode_ranking": ["EVIDENCE_LED", "EDITORIAL_SERIES", "CHARACTER_SERIES"],
+  "asset_source_priority": [
+    "EVIDENCE_ASSET",
+    "PROJECT_ASSET",
+    "PROGRAMMATIC_GRAPHIC",
+    "PURE_TYPOGRAPHY",
+    "AI_GENERATED_VISUAL"
+  ],
+  "identity_invariants": [
+    "Preserve patient or professional identity only with authorization and accurate context."
+  ],
+  "specialized_hard_blocks": [
+    "Fabricated clinical result",
+    "Misleading before-after",
+    "Unverified regulated claim"
+  ],
+  "specialized_quality_checks": [
+    "Clinical context",
+    "Before-after integrity",
+    "Claim-evidence fit"
+  ],
+  "consistency_requirements": ["Stable subject and comparable before-after conditions"],
+  "fallback_strategies": ["Use educational diagrams or text when patient evidence is unavailable."],
+  "recommended_questions": ["Is the claim supported and legally usable?"],
+  "prohibited_claims_or_representations": ["Guaranteed cure or result"],
+  "allowed_overlays": [
+    "PERSON_CONTINUITY",
+    "EVIDENCE_AUTHENTICITY",
+    "REGULATED_CLAIMS",
+    "BEFORE_AFTER_INTEGRITY",
+    "BRAND_ASSET_INTEGRITY"
+  ],
+  "known_limitations": ["The Pack does not perform medical or legal approval."],
+  "contains_customer_assets": false,
+  "schema_version": "1.0.0"
+}

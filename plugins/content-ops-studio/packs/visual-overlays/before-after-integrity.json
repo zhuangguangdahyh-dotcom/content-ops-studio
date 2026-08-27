@@ -1,0 +1,8 @@
+{
+  "overlay_id": "BEFORE_AFTER_INTEGRITY",
+  "overlay_version": "1.0.0",
+  "display_name": "Before-after integrity",
+  "hard_blocks": ["Misleading comparison conditions"],
+  "quality_checks": ["Identity, pose, lens, light, time and label comparability"],
+  "schema_version": "1.0.0"
+}

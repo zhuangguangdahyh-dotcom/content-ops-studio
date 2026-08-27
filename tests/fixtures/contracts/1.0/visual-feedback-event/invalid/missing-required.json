@@ -1,0 +1,16 @@
+{
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "feedback_class": "VISUAL_PREFERENCE",
+  "scope": "CURRENT_SET",
+  "target_type": "SET",
+  "target_id": "VDCS-C-0001-R1",
+  "statement": "Prefer the quieter editorial direction for this set.",
+  "is_tool_or_system_defect": false,
+  "long_term_rule_candidate": false,
+  "creates_long_term_rule": false,
+  "source": "OPERATOR_FEEDBACK",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z"
+}

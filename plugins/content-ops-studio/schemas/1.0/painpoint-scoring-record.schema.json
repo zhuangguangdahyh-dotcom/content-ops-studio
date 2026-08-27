@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/painpoint-scoring-record.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Painpoint scoring record",
+  "description": "Deterministic weighted scoring and priority classification for one candidate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scoring_id",
+    "painpoint_candidate_id",
+    "audience_relevance",
+    "frequency",
+    "urgency",
+    "decision_impact",
+    "real_cost",
+    "subject_advantage_fit",
+    "evidence_strength",
+    "content_potential",
+    "promotion_fit",
+    "weights",
+    "weighted_score",
+    "evidence_confidence",
+    "painpoint_priority",
+    "promotion_priority",
+    "score_explanations",
+    "score_limitations",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "scoring_id": { "type": "string", "pattern": "^SCR-[A-Z0-9-]+$" },
+    "painpoint_candidate_id": { "$ref": "common-definitions.schema.json#/$defs/painpointId" },
+    "audience_relevance": { "$ref": "#/$defs/score" },
+    "frequency": { "$ref": "#/$defs/score" },
+    "urgency": { "$ref": "#/$defs/score" },
+    "decision_impact": { "$ref": "#/$defs/score" },
+    "real_cost": { "$ref": "#/$defs/score" },
+    "subject_advantage_fit": { "$ref": "#/$defs/score" },
+    "evidence_strength": { "$ref": "#/$defs/score" },
+    "content_potential": { "$ref": "#/$defs/score" },
+    "promotion_fit": { "$ref": "#/$defs/score" },
+    "weights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "audience_relevance",
+        "frequency",
+        "urgency",
+        "decision_impact",
+        "real_cost",
+        "subject_advantage_fit",
+        "evidence_strength",
+        "content_potential",
+        "promotion_fit"
+      ],
+      "properties": {
+        "audience_relevance": { "const": 15 },
+        "frequency": { "const": 10 },
+        "urgency": { "const": 10 },
+        "decision_impact": { "const": 15 },
+        "real_cost": { "const": 10 },
+        "subject_advantage_fit": { "const": 10 },
+        "evidence_strength": { "const": 15 },
+        "content_potential": { "const": 10 },
+        "promotion_fit": { "const": 5 }
+      }
+    },
+    "weighted_score": { "type": "number", "minimum": 0, "maximum": 100 },
+    "evidence_confidence": { "$ref": "common-definitions.schema.json#/$defs/evidenceConfidence" },
+    "painpoint_priority": { "enum": ["CORE", "IMPORTANT", "SUPPLEMENTARY"] },
+    "promotion_priority": { "$ref": "common-definitions.schema.json#/$defs/priority" },
+    "score_explanations": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 500 },
+      "minItems": 1
+    },
+    "score_limitations": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 500 }
+    },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": { "score": { "type": "integer", "minimum": 0, "maximum": 5 } },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "evidence_confidence": { "const": "D_HYPOTHESIS" } },
+        "required": ["evidence_confidence"]
+      },
+      "then": {
+        "properties": {
+          "painpoint_priority": { "const": "SUPPLEMENTARY" },
+          "promotion_priority": { "enum": ["LOW", "MEDIUM"] },
+          "score_limitations": { "type": "array", "minItems": 1 }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "machine": "painpoint-review",
+  "version": "1.0.0",
+  "states": [
+    "PAINPOINT_PENDING",
+    "PAINPOINT_CONFIRMED",
+    "PAINPOINT_REVISION_REQUIRED",
+    "PAINPOINT_REJECTED"
+  ],
+  "initialStates": ["PAINPOINT_PENDING"],
+  "terminalStates": ["PAINPOINT_REJECTED"],
+  "transitions": [
+    {
+      "from": "PAINPOINT_PENDING",
+      "to": "PAINPOINT_CONFIRMED",
+      "trigger": "CONFIRM_PAINPOINTS",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": "PAINPOINTS",
+      "requiredContext": ["painpoint_version"],
+      "invalidates": [],
+      "description": "PAINPOINT_PENDING to PAINPOINT_CONFIRMED"
+    },
+    {
+      "from": "PAINPOINT_PENDING",
+      "to": "PAINPOINT_REVISION_REQUIRED",
+      "trigger": "REQUEST_PAINPOINT_REVISION",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PAINPOINT_PENDING to PAINPOINT_REVISION_REQUIRED"
+    },
+    {
+      "from": "PAINPOINT_PENDING",
+      "to": "PAINPOINT_REJECTED",
+      "trigger": "REJECT_PAINPOINTS",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PAINPOINT_PENDING to PAINPOINT_REJECTED"
+    },
+    {
+      "from": "PAINPOINT_REVISION_REQUIRED",
+      "to": "PAINPOINT_CONFIRMED",
+      "trigger": "CONFIRM_PAINPOINTS",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": "PAINPOINTS",
+      "requiredContext": ["painpoint_version"],
+      "invalidates": [],
+      "description": "PAINPOINT_REVISION_REQUIRED to PAINPOINT_CONFIRMED"
+    },
+    {
+      "from": "PAINPOINT_REVISION_REQUIRED",
+      "to": "PAINPOINT_REJECTED",
+      "trigger": "REJECT_PAINPOINTS",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PAINPOINT_REVISION_REQUIRED to PAINPOINT_REJECTED"
+    },
+    {
+      "from": "PAINPOINT_CONFIRMED",
+      "to": "PAINPOINT_REVISION_REQUIRED",
+      "trigger": "INVALIDATE_CONFIRMED_PAINPOINT",
+      "ownerSkill": "project-learning",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": ["UNFINALIZED_CONTENT_REVIEW"],
+      "description": "PAINPOINT_CONFIRMED to PAINPOINT_REVISION_REQUIRED"
+    }
+  ]
+}

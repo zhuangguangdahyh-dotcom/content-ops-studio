@@ -1,0 +1,11 @@
+{
+  "name": "@content-ops/test-support",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@content-ops/contracts": "workspace:*"
+  }
+}

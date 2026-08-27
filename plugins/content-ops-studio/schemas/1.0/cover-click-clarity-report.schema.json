@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/cover-click-clarity-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Cover click clarity report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "candidate_id",
+    "account_goal",
+    "cover_objective",
+    "dimensions",
+    "total_score",
+    "threshold",
+    "hard_blocks",
+    "result",
+    "operator_approval_required",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^CCCR-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "cover-conversion-plan.schema.json#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "candidate_id": { "type": "string", "pattern": "^CCC-[A-Z0-9-]+$" },
+    "account_goal": { "$ref": "cover-conversion-plan.schema.json#/$defs/accountGoal" },
+    "cover_objective": { "$ref": "cover-conversion-plan.schema.json#/$defs/coverObjective" },
+    "dimensions": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/dimension" }
+    },
+    "total_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "threshold": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "hard_blocks": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "result": { "type": "string", "enum": ["PASS_PENDING_OPERATOR", "FAIL", "BLOCKED"] },
+    "operator_approval_required": { "const": true },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimension", "weight", "score", "reason"],
+      "properties": {
+        "dimension": {
+          "type": "string",
+          "enum": [
+            "TARGET_CUSTOMER_CLARITY",
+            "PAINPOINT_OR_VALUE_CLARITY",
+            "ONE_SECOND_COMPREHENSION",
+            "THUMBNAIL_LEGIBILITY",
+            "CONTENT_PROMISE_ALIGNMENT"
+          ]
+        },
+        "weight": { "type": "integer", "enum": [10, 20, 25] },
+        "score": { "type": "integer", "minimum": 0, "maximum": 25 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "report_id": "TBRR-CAL-SPACE-001-G",
+  "project_id": "CAL-COMMERCIAL-SPACE-001",
+  "content_id": "C-9001",
+  "candidate_id": "CCC-CAL-SPACE-001-G",
+  "title_to_secondary_distance_px": 76,
+  "title_to_secondary_ratio": 0.679,
+  "reference_soft_range": {
+    "minimum": 0.5,
+    "maximum": 1,
+    "fixed_pixel_rule": false
+  },
+  "minimum_container_padding_px": null,
+  "minimum_text_to_image_distance_px": 58,
+  "text_to_image_distance_ratio": 0.518,
+  "information_groups_visually_distinct": true,
+  "visual_pressure_detected": false,
+  "score": 96,
+  "hard_blocks": [],
+  "result": "PASS",
+  "run_id": "RUN-20990101-010203-R021",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {},
+  "forbidden_extra": true
+}

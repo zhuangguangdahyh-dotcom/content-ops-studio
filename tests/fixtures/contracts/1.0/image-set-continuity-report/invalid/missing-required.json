@@ -1,0 +1,21 @@
+{
+  "report_id": "ISCR-C-0001-V1",
+  "strategy_id": "ISPS-C-0001-V1",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "continuity_anchors": ["SUBJECT-WORLD", "PALETTE-A", "TYPE-SYSTEM-A"],
+  "pages": [],
+  "page_duty_fulfillment": "PASS",
+  "background_asset_diversity": "PASS",
+  "shot_and_composition_diversity": "PASS",
+  "narrative_progression": "PASS",
+  "mobile_readability": "PASS",
+  "duplicate_background_pairs": [],
+  "duplicate_shot_pairs": [],
+  "hard_blocks": [],
+  "operator_approval_required": true,
+  "result": "PASS_PENDING_OPERATOR",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z"
+}

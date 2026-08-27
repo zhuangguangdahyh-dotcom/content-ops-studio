@@ -1,0 +1,86 @@
+{
+  "approval_evidence_id": "CG4A-CAL-SPACE-001-FPV2",
+  "project_id": "CAL-COMMERCIAL-SPACE-001",
+  "content_id": "C-9001",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "visual_plan_version": "VV-1",
+  "first_page_version": "FPV-2",
+  "asset_id": "AST-CAL-SPACE-001-FPV2",
+  "asset_checksum": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "attention_mode": "TYPE_DOMINANT",
+  "formal_run_id": "RUN-20990101-010203-DEMO",
+  "decision": "APPROVE",
+  "status": "PASSED",
+  "approval_event": {
+    "approval_id": "APR-20990101-CG42",
+    "gate": "FIRST_PAGE",
+    "target_type": "FIRST_PAGE_ASSET",
+    "target_id": "AST-CAL-SPACE-001-FPV2",
+    "target_version": "CV-1:CV-1:VV-1:FPV-2:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "decision": "APPROVE",
+    "comment": "Explicit Operator Calibration G4 approval.",
+    "source_run_id": "RUN-20990101-010203-DEMO",
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "deprecated_at": null,
+    "schema_version": "1.0.0"
+  },
+  "qa_evidence": [
+    {
+      "evidence_type": "FORMAL_COVER",
+      "artifact_ref": "projects/CAL-COMMERCIAL-SPACE-001/evidence/formal_cover.json",
+      "checksum": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "result": "PASS"
+    },
+    {
+      "evidence_type": "RASTER_CONTRAST",
+      "artifact_ref": "projects/CAL-COMMERCIAL-SPACE-001/evidence/raster_contrast.json",
+      "checksum": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "result": "PASS"
+    },
+    {
+      "evidence_type": "FULL_PNG",
+      "artifact_ref": "projects/CAL-COMMERCIAL-SPACE-001/evidence/full_png.json",
+      "checksum": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "result": "PASS"
+    },
+    {
+      "evidence_type": "DETERMINISTIC_REPLAY",
+      "artifact_ref": "projects/CAL-COMMERCIAL-SPACE-001/evidence/deterministic_replay.json",
+      "checksum": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "result": "PASS"
+    },
+    {
+      "evidence_type": "THUMBNAIL_310",
+      "artifact_ref": "projects/CAL-COMMERCIAL-SPACE-001/evidence/thumbnail_310.json",
+      "checksum": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "result": "PASS"
+    },
+    {
+      "evidence_type": "THUMBNAIL_186",
+      "artifact_ref": "projects/CAL-COMMERCIAL-SPACE-001/evidence/thumbnail_186.json",
+      "checksum": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "result": "PASS"
+    },
+    {
+      "evidence_type": "BACKGROUND_ANALYSIS",
+      "artifact_ref": "projects/CAL-COMMERCIAL-SPACE-001/evidence/background_analysis.json",
+      "checksum": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "result": "PASS"
+    }
+  ],
+  "hard_blocks": [],
+  "requested_changes": [],
+  "accepted_non_blocking_risks": [
+    "Premium-retail association remains possible before copy is read.",
+    "Restrained local value correction remains visible in the upper-right region."
+  ],
+  "style_lock_authorized": true,
+  "remaining_page_production_eligibility": "ELIGIBLE",
+  "remaining_pages_created": 0,
+  "image_generation_calls": 0,
+  "feishu_writes": 0,
+  "idempotency_key": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z"
+}

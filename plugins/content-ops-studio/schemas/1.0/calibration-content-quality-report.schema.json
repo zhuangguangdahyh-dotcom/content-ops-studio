@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/calibration-content-quality-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Calibration Content Quality Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "quality_report_id",
+    "project_ref",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "page_count",
+    "checks",
+    "weighted_score",
+    "blocking_failures",
+    "ready_for_g3",
+    "revision_suggestions",
+    "production_workspace_write_eligible",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "quality_report_id": { "type": "string", "pattern": "^CCQR-[A-Z0-9-]+$" },
+    "project_ref": { "$ref": "project-reference.schema.json" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "page_count": { "type": "integer", "minimum": 1 },
+    "checks": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "items": { "$ref": "#/$defs/check" }
+    },
+    "weighted_score": { "type": "number", "minimum": 0, "maximum": 100 },
+    "blocking_failures": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "ready_for_g3": { "type": "boolean" },
+    "revision_suggestions": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "production_workspace_write_eligible": { "const": false },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check", "score", "passed", "blocking", "rationale"],
+      "properties": {
+        "check": {
+          "enum": [
+            "COVER_PROMISE_ALIGNMENT",
+            "AUDIENCE_FIT",
+            "PAINPOINT_CONSISTENCY",
+            "PAGE_ROLE_DISTINCTION",
+            "PAGE_INTENT_FIT",
+            "ONE_PRIMARY_JUDGMENT_PER_PAGE",
+            "NARRATIVE_PROGRESSION",
+            "VALUE_DELIVERY",
+            "CLAIM_SAFETY",
+            "UNSUPPORTED_CLAIM",
+            "COPY_DENSITY",
+            "REPETITION",
+            "SUMMARY_CONSISTENCY"
+          ]
+        },
+        "score": { "type": "number", "minimum": 0, "maximum": 5 },
+        "passed": { "type": "boolean" },
+        "blocking": { "type": "boolean" },
+        "rationale": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

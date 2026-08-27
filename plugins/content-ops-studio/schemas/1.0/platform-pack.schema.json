@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/platform-pack.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Platform pack",
+  "description": "Normalized versioned platform rules; scaffold status is explicit.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "display_name",
+    "status",
+    "supported_formats",
+    "default_aspect_ratio",
+    "default_page_range",
+    "default_page_count",
+    "title_visible_character_limit",
+    "rules",
+    "prohibited_patterns",
+    "extensions"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "version": { "$ref": "common-definitions.schema.json#/$defs/semanticVersion" },
+    "display_name": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["SCAFFOLD", "ACTIVE", "DEPRECATED"] },
+    "supported_formats": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "default_aspect_ratio": { "type": "string", "pattern": "^[1-9][0-9]*:[1-9][0-9]*$" },
+    "default_page_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": "integer", "minimum": 1 },
+        "max": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "default_page_count": { "type": "integer", "minimum": 1 },
+    "title_visible_character_limit": { "type": "integer", "minimum": 1 },
+    "rules": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "prohibited_patterns": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

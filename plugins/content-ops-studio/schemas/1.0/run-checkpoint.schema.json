@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/run-checkpoint.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Run checkpoint",
+  "description": "Atomic recovery cache bound to the verified Journal head.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "checkpoint_id",
+    "run_id",
+    "project_id",
+    "workflow_id",
+    "workflow_version",
+    "journal_head_sequence",
+    "journal_head_hash",
+    "current_step_id",
+    "run_status",
+    "completed_steps",
+    "failed_steps",
+    "pending_approval",
+    "artifact_index",
+    "write_log_head",
+    "idempotency_snapshot",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "checkpoint_id": { "type": "string", "pattern": "^CHK-[A-Z0-9-]+$" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "workflow_id": { "type": "string", "minLength": 1 },
+    "workflow_version": { "$ref": "common-definitions.schema.json#/$defs/semanticVersion" },
+    "journal_head_sequence": { "type": "integer", "minimum": 1 },
+    "journal_head_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "current_step_id": { "type": ["string", "null"] },
+    "run_status": {
+      "type": "string",
+      "enum": [
+        "RUN_CREATED",
+        "RUN_PREFLIGHT",
+        "RUNNING",
+        "AWAITING_APPROVAL",
+        "RUN_PARTIAL",
+        "RUN_BLOCKED",
+        "RUN_CONFLICT",
+        "RUN_FAILED",
+        "RUN_CANCELLED",
+        "RUN_SUCCEEDED",
+        "RUN_RESUMING"
+      ]
+    },
+    "completed_steps": { "$ref": "#/$defs/stepIds" },
+    "failed_steps": { "$ref": "#/$defs/stepIds" },
+    "pending_approval": { "type": ["object", "null"], "additionalProperties": true },
+    "artifact_index": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath"
+      }
+    },
+    "write_log_head": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entry_count", "last_write_id"],
+      "properties": {
+        "entry_count": { "type": "integer", "minimum": 0 },
+        "last_write_id": { "type": ["string", "null"] }
+      }
+    },
+    "idempotency_snapshot": { "type": "object", "additionalProperties": { "type": "string" } },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "stepIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

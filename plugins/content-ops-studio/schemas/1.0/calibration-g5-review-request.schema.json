@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/calibration-g5-review-request.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Calibration G5 review request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "review_request_id",
+    "project_ref",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "first_page_version",
+    "g4_approval_id",
+    "style_lock_id",
+    "style_lock_version",
+    "production_report_ref",
+    "production_report_hash",
+    "group_qa_score",
+    "hard_blocks",
+    "feedback_classes",
+    "status",
+    "decision",
+    "approval_event_created",
+    "final_manifest_created",
+    "feishu_writes",
+    "production_workspace_write_eligible",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "review_request_id": { "type": "string", "pattern": "^CG5R-[A-Z0-9-]+$" },
+    "project_ref": { "$ref": "project-reference.schema.json" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "first_page_version": { "type": "string", "pattern": "^FPV-[1-9][0-9]*$" },
+    "g4_approval_id": { "type": "string", "pattern": "^APR-[A-Z0-9-]+$" },
+    "style_lock_id": { "type": "string", "pattern": "^CSL2-[A-Z0-9-]+$" },
+    "style_lock_version": { "type": "string", "pattern": "^SLV-[1-9][0-9]*$" },
+    "production_report_ref": {
+      "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath"
+    },
+    "production_report_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "group_qa_score": { "type": "integer", "minimum": 85, "maximum": 100 },
+    "hard_blocks": { "type": "array", "maxItems": 0 },
+    "feedback_classes": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "SINGLE_PAGE_REVISION",
+          "GROUP_VISUAL_REVISION",
+          "CONTENT_REVISION",
+          "STYLE_LOCK_REVISION"
+        ]
+      }
+    },
+    "status": { "const": "AWAITING_USER_APPROVAL" },
+    "decision": { "const": "PENDING_OPERATOR" },
+    "approval_event_created": { "const": false },
+    "final_manifest_created": { "const": false },
+    "feishu_writes": { "const": 0 },
+    "production_workspace_write_eligible": { "const": false },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  }
+}

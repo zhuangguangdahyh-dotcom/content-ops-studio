@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/render-template-manifest.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Render template manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "template_id",
+    "template_version",
+    "template_name",
+    "supported_visual_modes",
+    "supported_page_roles",
+    "supported_asset_strategies",
+    "html_template_hash",
+    "css_template_hash",
+    "component_library_version",
+    "allowed_components",
+    "allowed_css_properties",
+    "allowed_layout_primitives",
+    "required_typography_roles",
+    "required_color_roles",
+    "network_allowed",
+    "javascript_allowed",
+    "arbitrary_html_allowed",
+    "arbitrary_css_allowed",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "template_id": { "const": "TPL-EDITORIAL-COVER" },
+    "template_version": { "const": "1.0.0" },
+    "template_name": { "type": "string", "minLength": 1 },
+    "supported_visual_modes": {
+      "type": "array",
+      "items": { "const": "EDITORIAL_SERIES" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "supported_page_roles": {
+      "type": "array",
+      "items": { "const": "COVER" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "supported_asset_strategies": {
+      "type": "array",
+      "items": { "const": "PROGRAMMATIC_GRAPHIC" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "html_template_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "css_template_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "component_library_version": { "const": "1.0.0" },
+    "allowed_components": {
+      "type": "array",
+      "items": { "enum": ["CANVAS", "GRAPHIC_LAYER", "TEXT_LAYER"] },
+      "minItems": 3,
+      "uniqueItems": true
+    },
+    "allowed_css_properties": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "position",
+          "left",
+          "top",
+          "width",
+          "height",
+          "font-family",
+          "font-size",
+          "font-weight",
+          "line-height",
+          "letter-spacing",
+          "color",
+          "background",
+          "border",
+          "border-radius",
+          "opacity",
+          "z-index",
+          "display",
+          "align-items",
+          "justify-content",
+          "overflow",
+          "box-sizing"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "allowed_layout_primitives": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "RECTANGLE",
+          "ROUNDED_CARD",
+          "LINE",
+          "DIVIDER",
+          "CIRCLE",
+          "NUMBER_MARKER",
+          "BRACKET",
+          "CONNECTOR",
+          "GRID",
+          "FRAME",
+          "ACCENT_BLOCK"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "required_typography_roles": {
+      "type": "array",
+      "items": { "enum": ["TITLE", "BODY", "PAGE_NUMBER"] },
+      "minItems": 3,
+      "uniqueItems": true
+    },
+    "required_color_roles": {
+      "type": "array",
+      "items": { "enum": ["BACKGROUND", "PRIMARY_TEXT", "ACCENT", "SECONDARY_TEXT"] },
+      "minItems": 4,
+      "uniqueItems": true
+    },
+    "network_allowed": { "const": false },
+    "javascript_allowed": { "const": "INTERNAL_MEASUREMENT_ONLY" },
+    "arbitrary_html_allowed": { "const": false },
+    "arbitrary_css_allowed": { "const": false },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

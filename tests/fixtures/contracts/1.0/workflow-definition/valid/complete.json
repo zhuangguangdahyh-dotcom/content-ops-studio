@@ -1,0 +1,62 @@
+{
+  "workflow_id": "PROJECT_INITIALIZATION_LOCAL_V1",
+  "workflow_version": "1.0.0",
+  "display_name": "Fictional local project initialization",
+  "description": "A MOCK-only deterministic reference workflow.",
+  "supported_runtime_modes": ["MOCK"],
+  "task_types": ["PROJECT_INITIALIZATION"],
+  "input_schema_id": "https://content-ops-studio.local/schemas/1.0/task-envelope.schema.json",
+  "output_schema_id": "https://content-ops-studio.local/schemas/1.0/task-result.schema.json",
+  "steps": [
+    {
+      "step_id": "PREFLIGHT",
+      "sequence": 1,
+      "owner_skill": "project-initialization",
+      "handler": "preflightProject",
+      "depends_on": [],
+      "required_capabilities": ["workspace.write"],
+      "input_artifacts": ["TASK_ENVELOPE"],
+      "output_artifacts": ["CAPABILITY_REPORT"],
+      "state_transition": "RUN_CREATED->RUN_PREFLIGHT",
+      "idempotency_scope": "RUN",
+      "retry_policy": {
+        "max_attempts": 1,
+        "retry_failed_only": true
+      },
+      "checkpoint_after": false,
+      "approval_gate": null,
+      "failure_policy": "BLOCK"
+    },
+    {
+      "step_id": "AWAIT_G1_PROJECT_PROFILE",
+      "sequence": 2,
+      "owner_skill": "content-studio-router",
+      "handler": "awaitProjectApproval",
+      "depends_on": ["PREFLIGHT"],
+      "required_capabilities": [],
+      "input_artifacts": ["PROJECT_PROFILE"],
+      "output_artifacts": ["APPROVAL_REQUEST"],
+      "state_transition": "RUNNING->AWAITING_APPROVAL",
+      "idempotency_scope": "APPROVAL",
+      "retry_policy": {
+        "max_attempts": 1,
+        "retry_failed_only": true
+      },
+      "checkpoint_after": true,
+      "approval_gate": "PROJECT_PROFILE",
+      "failure_policy": "AWAIT_APPROVAL"
+    }
+  ],
+  "approval_gates": ["PROJECT_PROFILE"],
+  "capability_requirements": ["workspace.write"],
+  "terminal_conditions": ["RUN_SUCCEEDED", "RUN_BLOCKED", "RUN_FAILED"],
+  "recovery_policy": {
+    "resume_verified_steps": false,
+    "retry_failed_steps": true,
+    "block_on_journal_corruption": true
+  },
+  "schema_version": "1.0.0",
+  "extensions": {
+    "mock_only": true
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/cover-attention-dominance-report.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Cover attention dominance report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "project_id",
+    "content_id",
+    "candidate_id",
+    "mode",
+    "page_design_intent",
+    "primary_attention",
+    "secondary_attention",
+    "one_second_inspection",
+    "thumbnail_inspection",
+    "dimensions",
+    "total_score",
+    "threshold",
+    "hard_blocks",
+    "result",
+    "operator_selection_required",
+    "run_id",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "report_id": { "type": "string", "pattern": "^CADR-[A-Z0-9-]+$" },
+    "project_id": { "type": "string", "pattern": "^(PRJ-[0-9]{8}-[A-Z0-9]{4}|CAL-[A-Z0-9-]+)$" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "candidate_id": { "type": "string", "minLength": 1 },
+    "mode": { "$ref": "cover-attention-plan.schema.json#/$defs/mode" },
+    "page_design_intent": { "const": "COVER_ENTRY" },
+    "primary_attention": { "type": "string", "minLength": 1 },
+    "secondary_attention": { "type": "string", "minLength": 1 },
+    "one_second_inspection": { "type": "string", "minLength": 1 },
+    "thumbnail_inspection": { "const": "ACTUAL_186x248_ONE_SECOND" },
+    "dimensions": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["dimension", "score", "maximum"],
+        "properties": {
+          "dimension": {
+            "type": "string",
+            "enum": [
+              "PRIMARY_HOOK_DOMINANCE",
+              "ONE_SECOND_RECOGNITION",
+              "THUMBNAIL_IMPACT",
+              "VISUAL_MASS_HIERARCHY",
+              "INFORMATION_COMPRESSION",
+              "DISTINCTIVE_SILHOUETTE",
+              "SCROLL_STOPPING_CONTRAST",
+              "EDITORIAL_TENSION",
+              "CONTENT_PROMISE_ALIGNMENT",
+              "TARGET_AUDIENCE_SIGNAL"
+            ]
+          },
+          "score": { "type": "integer", "minimum": 0, "maximum": 10 },
+          "maximum": { "const": 10 }
+        }
+      }
+    },
+    "total_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "threshold": { "const": 85 },
+    "hard_blocks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/errorCode" },
+      "uniqueItems": true
+    },
+    "result": { "type": "string", "enum": ["PASS_PENDING_OPERATOR", "FAIL", "BLOCKED"] },
+    "operator_selection_required": { "const": true },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+  },
+  "$defs": {
+    "errorCode": {
+      "type": "string",
+      "enum": [
+        "COVER_ATTENTION_DOMINANCE_BLOCKED",
+        "PRIMARY_HOOK_TOO_WEAK",
+        "MULTIPLE_PRIMARY_FOCI",
+        "ONE_SECOND_RECOGNITION_FAILED",
+        "THUMBNAIL_IMPACT_WEAK",
+        "VISUAL_MASS_HIERARCHY_WEAK",
+        "COVER_INFORMATION_OVERLOADED",
+        "COVER_SILHOUETTE_GENERIC",
+        "SCROLL_STOPPING_CONTRAST_WEAK",
+        "EDITORIAL_TENSION_WEAK",
+        "COLOR_RESCUES_WEAK_STRUCTURE",
+        "COLOR_HIERARCHY_CONFLICT",
+        "COVER_INNER_PAGE_UNDIFFERENTIATED"
+      ]
+    }
+  }
+}

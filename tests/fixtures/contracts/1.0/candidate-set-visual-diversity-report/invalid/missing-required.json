@@ -1,0 +1,83 @@
+{
+  "report_id": "CSVDR-CAL-SPACE-001-R2",
+  "project_id": "CAL-COMMERCIAL-SPACE-001",
+  "content_id": "C-9001",
+  "candidate_set_id": "CCCS-CAL-SPACE-001-R2",
+  "candidate_ids": ["CCC-CAL-SPACE-001-D", "CCC-CAL-SPACE-001-E", "CCC-CAL-SPACE-001-F"],
+  "composition_families": [
+    "IMAGE_TEXT_INTERLOCK",
+    "DIAGNOSTIC_COMPOSITION",
+    "MULTI_EVIDENCE_EDITORIAL"
+  ],
+  "text_regions": ["RIGHT_EDGE", "LOWER_LEFT", "TOP_BAND"],
+  "shot_scales": ["WHOLE_STOREFRONT", "APPROACH_VIEW", "MASTER_PLUS_CROPS"],
+  "camera_viewpoints": ["FRONTAL_STREET", "OBLIQUE_APPROACH", "EDITORIAL_CROPS"],
+  "asset_structures": ["SINGLE_PAINPOINT", "DIAGNOSTIC_MARKERS", "MASTER_PLUS_THREE_CROPS"],
+  "semantic_roles": ["DIRECT_PAINPOINT_SCENE", "DIRECT_BUSINESS_SCENE", "EVIDENCE_ASSET"],
+  "reading_paths": ["EVIDENCE_TO_TITLE", "TITLE_TO_MARKERS", "MASTER_TO_CROPS_TO_COPY"],
+  "dimensions": [
+    {
+      "dimension": "COMPOSITION_FAMILY_DIVERSITY",
+      "weight": 15,
+      "score": 14,
+      "reason": "COMPOSITION_FAMILY_DIVERSITY is materially distinct."
+    },
+    {
+      "dimension": "TEXT_REGION_DIVERSITY",
+      "weight": 10,
+      "score": 9,
+      "reason": "TEXT_REGION_DIVERSITY is materially distinct."
+    },
+    {
+      "dimension": "SHOT_SCALE_DIVERSITY",
+      "weight": 10,
+      "score": 9,
+      "reason": "SHOT_SCALE_DIVERSITY is materially distinct."
+    },
+    {
+      "dimension": "CAMERA_VIEWPOINT_DIVERSITY",
+      "weight": 10,
+      "score": 9,
+      "reason": "CAMERA_VIEWPOINT_DIVERSITY is materially distinct."
+    },
+    {
+      "dimension": "ASSET_STRUCTURE_DIVERSITY",
+      "weight": 15,
+      "score": 14,
+      "reason": "ASSET_STRUCTURE_DIVERSITY is materially distinct."
+    },
+    {
+      "dimension": "SEMANTIC_ROLE_DIVERSITY",
+      "weight": 10,
+      "score": 9,
+      "reason": "SEMANTIC_ROLE_DIVERSITY is materially distinct."
+    },
+    {
+      "dimension": "VISUAL_READING_PATH_DIVERSITY",
+      "weight": 10,
+      "score": 9,
+      "reason": "VISUAL_READING_PATH_DIVERSITY is materially distinct."
+    },
+    {
+      "dimension": "IMAGE_TEXT_INTEGRATION_DIVERSITY",
+      "weight": 10,
+      "score": 9,
+      "reason": "IMAGE_TEXT_INTEGRATION_DIVERSITY is materially distinct."
+    },
+    {
+      "dimension": "NEAR_TEMPLATE_DUPLICATE_RISK",
+      "weight": 10,
+      "score": 9,
+      "reason": "NEAR_TEMPLATE_DUPLICATE_RISK is materially distinct."
+    }
+  ],
+  "near_template_duplicate_risk": "LOW",
+  "total_score": 88,
+  "threshold": 85,
+  "hard_blocks": [],
+  "result": "PASS_PENDING_OPERATOR",
+  "operator_approval_required": true,
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

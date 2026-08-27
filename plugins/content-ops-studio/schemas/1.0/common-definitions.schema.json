@@ -1,0 +1,637 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/common-definitions.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Content Ops common definitions",
+  "description": "Central identifiers, versions, metadata, and enums.",
+  "$ref": "#/$defs/commonContractProbe",
+  "$defs": {
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "revisionNumber": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "contentVersion": {
+      "type": "string",
+      "pattern": "^CV-[1-9][0-9]*$"
+    },
+    "visualVersion": {
+      "type": "string",
+      "pattern": "^VV-[1-9][0-9]*$"
+    },
+    "styleLockVersion": {
+      "type": "string",
+      "pattern": "^SLV-[1-9][0-9]*$"
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^PRJ-[0-9]{8}-[A-Z0-9]{4}$"
+    },
+    "painpointId": {
+      "type": "string",
+      "pattern": "^P-[0-9]{4}$"
+    },
+    "contentId": {
+      "type": "string",
+      "pattern": "^C-[0-9]{4}$"
+    },
+    "ruleId": {
+      "type": "string",
+      "pattern": "^R-[0-9]{4}$"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^RUN-[0-9]{8}-[0-9]{6}-[A-Z0-9]{4}$"
+    },
+    "approvalId": {
+      "type": "string",
+      "pattern": "^APR-[0-9]{8}-[A-Z0-9]{4}$"
+    },
+    "evidenceId": {
+      "type": "string",
+      "pattern": "^E-[0-9]{4}$"
+    },
+    "recordUniqueKey": {
+      "type": "string",
+      "pattern": "^PRJ-[0-9]{8}-[A-Z0-9]{4}::(?:painpoint::P-[0-9]{4}|content::C-[0-9]{4}|rule::R-[0-9]{4})$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "relativeProjectPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:[\\\\/])(?!file:)(?!.*(?:^|[\\\\/])\\.\\.(?:[\\\\/]|$))[^\\u0000]+$"
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "creationMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["created_at", "created_by_run_id"],
+      "properties": {
+        "created_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "created_by_run_id": {
+          "$ref": "#/$defs/runId"
+        }
+      }
+    },
+    "updateMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["updated_at", "updated_by_run_id"],
+      "properties": {
+        "updated_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "updated_by_run_id": {
+          "$ref": "#/$defs/runId"
+        }
+      }
+    },
+    "runMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run_id", "schema_version"],
+      "properties": {
+        "run_id": {
+          "$ref": "#/$defs/runId"
+        },
+        "schema_version": {
+          "$ref": "#/$defs/schemaVersion"
+        }
+      }
+    },
+    "resultStatus": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "PARTIAL",
+        "AWAITING_APPROVAL",
+        "BLOCKED",
+        "CONFLICT",
+        "FAILED",
+        "CANCELLED"
+      ]
+    },
+    "approvalDecision": {
+      "type": "string",
+      "enum": ["APPROVE", "REVISE", "REJECT", "PAUSE"]
+    },
+    "approvalGate": {
+      "type": "string",
+      "enum": ["PROJECT_PROFILE", "PAINPOINTS", "CONTENT_COPY", "FIRST_PAGE", "FINAL_SET"]
+    },
+    "evidenceConfidence": {
+      "type": "string",
+      "enum": ["A_DIRECT_STRONG", "B_MULTI_SOURCE", "C_SINGLE_OR_INDIRECT", "D_HYPOTHESIS"]
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    },
+    "contentStructureType": {
+      "type": "string",
+      "enum": [
+        "PROBLEM_DECONSTRUCTION",
+        "CHECKLIST",
+        "MISCONCEPTION",
+        "CASE",
+        "STEPS",
+        "VIEWPOINT",
+        "COMPARISON",
+        "DIAGNOSIS",
+        "DECISION_GUIDANCE",
+        "STORY"
+      ]
+    },
+    "contentObjective": {
+      "type": "string",
+      "enum": [
+        "AWARENESS",
+        "TRUST",
+        "EDUCATION",
+        "LEAD_GENERATION",
+        "CONSULTATION",
+        "CONVERSION",
+        "RETENTION"
+      ]
+    },
+    "ruleNature": {
+      "type": "string",
+      "enum": ["PREFERENCE", "HARD_REQUIREMENT", "PROHIBITION", "CORRECTION", "WORKFLOW_RULE"]
+    },
+    "ruleScope": {
+      "type": "string",
+      "enum": [
+        "THIS_TASK",
+        "CURRENT_PROJECT",
+        "INDUSTRY_PACK_CANDIDATE",
+        "PLATFORM_PACK_CANDIDATE",
+        "PLUGIN_CORE_CANDIDATE"
+      ]
+    },
+    "ruleStatus": {
+      "type": "string",
+      "enum": [
+        "RULE_UNCLASSIFIED",
+        "RULE_PENDING_APPROVAL",
+        "RULE_ACTIVE",
+        "RULE_REJECTED",
+        "RULE_DEPRECATED"
+      ]
+    },
+    "syncStatus": {
+      "type": "string",
+      "enum": [
+        "SYNC_NOT_STARTED",
+        "SYNC_IN_PROGRESS",
+        "SYNC_COMPLETED",
+        "SYNC_PARTIAL",
+        "SYNC_FAILED"
+      ]
+    },
+    "projectStatus": {
+      "type": "string",
+      "enum": [
+        "PROJECT_INITIALIZING",
+        "PROJECT_PENDING_CONFIRMATION",
+        "PROJECT_ACTIVE",
+        "PROJECT_PAUSED",
+        "PROJECT_ARCHIVED"
+      ]
+    },
+    "configConfirmationStatus": {
+      "type": "string",
+      "enum": ["CONFIG_PENDING", "CONFIG_CONFIRMED", "CONFIG_UPDATE_REQUIRED"]
+    },
+    "painpointReviewStatus": {
+      "type": "string",
+      "enum": [
+        "PAINPOINT_PENDING",
+        "PAINPOINT_CONFIRMED",
+        "PAINPOINT_REVISION_REQUIRED",
+        "PAINPOINT_REJECTED",
+        "PAINPOINT_PAUSED"
+      ]
+    },
+    "painpointContentizationStatus": {
+      "type": "string",
+      "enum": [
+        "PAINPOINT_NOT_CONTENTIZED",
+        "PAINPOINT_CONTENT_IN_PROGRESS",
+        "PAINPOINT_CONTENT_AVAILABLE",
+        "PAINPOINT_COVERED",
+        "PAINPOINT_PAUSED"
+      ]
+    },
+    "contentStatus": {
+      "type": "string",
+      "enum": [
+        "CONTENT_ANALYSIS_PENDING",
+        "CONTENT_PLANNING",
+        "COPY_PENDING_APPROVAL",
+        "COPY_REVISION_REQUIRED",
+        "COPY_APPROVED",
+        "VISUAL_PLANNING",
+        "FINAL_REVIEW_PENDING",
+        "CONTENT_FINALIZED",
+        "CONTENT_PUBLISHED",
+        "CONTENT_PAUSED",
+        "CONTENT_DISCARDED"
+      ]
+    },
+    "imageStatus": {
+      "type": "string",
+      "enum": [
+        "IMAGE_NOT_GENERATED",
+        "FIRST_PAGE_GENERATING",
+        "FIRST_PAGE_PENDING_APPROVAL",
+        "FIRST_PAGE_APPROVED",
+        "IMAGE_SET_GENERATING",
+        "IMAGE_SET_GENERATED",
+        "IMAGE_GENERATION_FAILED"
+      ]
+    },
+    "firstPageApprovalStatus": {
+      "type": "string",
+      "enum": [
+        "FIRST_PAGE_NOT_SUBMITTED",
+        "FIRST_PAGE_APPROVAL_PENDING",
+        "FIRST_PAGE_REVISION_REQUIRED",
+        "FIRST_PAGE_APPROVAL_APPROVED",
+        "FIRST_PAGE_APPROVAL_REJECTED"
+      ]
+    },
+    "finalApprovalStatus": {
+      "type": "string",
+      "enum": [
+        "FINAL_NOT_SUBMITTED",
+        "FINAL_APPROVAL_PENDING",
+        "FINAL_REVISION_REQUIRED",
+        "FINAL_APPROVAL_APPROVED"
+      ]
+    },
+    "runStatus": {
+      "type": "string",
+      "enum": [
+        "RUN_CREATED",
+        "RUN_PREFLIGHT",
+        "RUNNING",
+        "AWAITING_APPROVAL",
+        "RUN_PARTIAL",
+        "RUN_BLOCKED",
+        "RUN_CONFLICT",
+        "RUN_FAILED",
+        "RUN_CANCELLED",
+        "RUN_SUCCEEDED",
+        "RUN_RESUMING"
+      ]
+    },
+    "machineName": {
+      "type": "string",
+      "enum": [
+        "project-status",
+        "config-confirmation",
+        "painpoint-review",
+        "painpoint-contentization",
+        "content-status",
+        "image-status",
+        "first-page-approval",
+        "final-approval",
+        "sync-status",
+        "rule-status",
+        "run-status"
+      ]
+    },
+    "assetId": {
+      "type": "string",
+      "pattern": "^AST-[A-Z0-9][A-Z0-9-]{2,63}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "visualMode": {
+      "type": "string",
+      "enum": [
+        "SCENE_SERIES",
+        "EDITORIAL_SERIES",
+        "PRODUCT_LIFESTYLE",
+        "EVIDENCE_LED",
+        "MIXED",
+        "CHARACTER_SERIES",
+        "PURE_TYPOGRAPHY"
+      ]
+    },
+    "pageRole": {
+      "type": "string",
+      "enum": [
+        "COVER",
+        "PROBLEM",
+        "SCENARIO",
+        "MISCONCEPTION",
+        "ANALYSIS",
+        "EVIDENCE",
+        "SOLUTION",
+        "STEP",
+        "COMPARISON",
+        "CASE",
+        "SUMMARY",
+        "CTA"
+      ]
+    },
+    "canvas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "aspect_ratio", "orientation", "resolution_unit"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "aspect_ratio": { "type": "string", "pattern": "^[1-9][0-9]*:[1-9][0-9]*$" },
+        "orientation": { "type": "string", "enum": ["PORTRAIT", "LANDSCAPE", "SQUARE"] },
+        "resolution_unit": { "type": "string", "enum": ["PX"] }
+      }
+    },
+    "safeArea": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["top", "right", "bottom", "left", "unit"],
+      "properties": {
+        "top": { "type": "number", "minimum": 0 },
+        "right": { "type": "number", "minimum": 0 },
+        "bottom": { "type": "number", "minimum": 0 },
+        "left": { "type": "number", "minimum": 0 },
+        "unit": { "type": "string", "enum": ["PX", "PERCENT"] }
+      }
+    },
+    "boundingBox": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "width", "height", "unit"],
+      "properties": {
+        "x": { "type": "number", "minimum": 0 },
+        "y": { "type": "number", "minimum": 0 },
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 },
+        "unit": { "type": "string", "enum": ["PX", "PERCENT"] }
+      }
+    },
+    "typographyToken": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "token_id",
+        "role",
+        "font_family",
+        "font_weight",
+        "font_size",
+        "line_height",
+        "letter_spacing",
+        "alignment",
+        "max_lines",
+        "overflow_strategy"
+      ],
+      "properties": {
+        "token_id": { "type": "string", "pattern": "^TYPO-[A-Z0-9-]+$" },
+        "role": {
+          "type": "string",
+          "enum": ["TITLE", "BODY", "SUPPORTING", "PAGE_NUMBER", "BRAND"]
+        },
+        "font_family": { "type": "string", "minLength": 1 },
+        "font_weight": { "type": "integer", "minimum": 100, "maximum": 900, "multipleOf": 100 },
+        "font_size": { "type": "number", "exclusiveMinimum": 0 },
+        "line_height": { "type": "number", "exclusiveMinimum": 0 },
+        "letter_spacing": { "type": "number" },
+        "alignment": { "type": "string", "enum": ["LEFT", "CENTER", "RIGHT", "JUSTIFY"] },
+        "max_lines": { "type": "integer", "minimum": 1 },
+        "overflow_strategy": {
+          "type": "string",
+          "enum": [
+            "REFLOW",
+            "MOVE_TO_NEXT_PAGE",
+            "REVISE_COPY",
+            "CHANGE_LAYOUT",
+            "BLOCK_AND_RETURN"
+          ]
+        }
+      }
+    },
+    "colorToken": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["token_id", "role", "value", "color_space", "opacity"],
+      "properties": {
+        "token_id": { "type": "string", "pattern": "^COLOR-[A-Z0-9-]+$" },
+        "role": {
+          "type": "string",
+          "enum": ["BACKGROUND", "PRIMARY_TEXT", "SECONDARY_TEXT", "ACCENT", "OVERLAY", "BRAND"]
+        },
+        "value": { "type": "string", "minLength": 1 },
+        "color_space": { "type": "string", "enum": ["SRGB", "DISPLAY_P3", "HEX", "RGBA"] },
+        "opacity": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "textLayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "layer_id",
+        "role",
+        "content_source",
+        "content_snapshot",
+        "bbox",
+        "typography_token_id",
+        "color_token_id",
+        "z_index",
+        "required"
+      ],
+      "properties": {
+        "layer_id": { "type": "string", "pattern": "^LAYER-[A-Z0-9-]+$" },
+        "role": {
+          "type": "string",
+          "enum": ["TITLE", "BODY", "SUPPORTING", "PAGE_NUMBER", "BRAND"]
+        },
+        "content_source": { "type": "string", "minLength": 1 },
+        "content_snapshot": { "type": "string" },
+        "bbox": { "$ref": "#/$defs/boundingBox" },
+        "typography_token_id": { "type": "string", "pattern": "^TYPO-[A-Z0-9-]+$" },
+        "color_token_id": { "type": "string", "pattern": "^COLOR-[A-Z0-9-]+$" },
+        "z_index": { "type": "integer", "minimum": 0 },
+        "required": { "type": "boolean" }
+      }
+    },
+    "imageTreatment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "brightness",
+        "contrast",
+        "saturation",
+        "blur",
+        "overlay",
+        "gradient",
+        "mask",
+        "crop_strategy"
+      ],
+      "properties": {
+        "brightness": { "type": "number", "minimum": -1, "maximum": 1 },
+        "contrast": { "type": "number", "minimum": -1, "maximum": 1 },
+        "saturation": { "type": "number", "minimum": -1, "maximum": 1 },
+        "blur": { "type": "number", "minimum": 0 },
+        "overlay": { "type": "string" },
+        "gradient": { "type": "string" },
+        "mask": { "type": "string" },
+        "crop_strategy": { "type": "string", "enum": ["COVER", "CONTAIN", "FOCAL_POINT", "NONE"] }
+      }
+    },
+    "assetReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_id",
+        "asset_role",
+        "asset_type",
+        "mime_type",
+        "relative_path",
+        "source_type",
+        "source_adapter",
+        "source_run_id",
+        "source_generation_id",
+        "version",
+        "width",
+        "height",
+        "file_size",
+        "checksum",
+        "created_at",
+        "extensions"
+      ],
+      "properties": {
+        "asset_id": { "$ref": "#/$defs/assetId" },
+        "asset_role": {
+          "type": "string",
+          "enum": [
+            "BACKGROUND",
+            "REFERENCE",
+            "RENDERED_PAGE",
+            "FINAL_PAGE",
+            "EVIDENCE",
+            "PROMPT_ARTIFACT",
+            "DIRECTION_CANDIDATE"
+          ]
+        },
+        "asset_type": { "type": "string", "enum": ["IMAGE", "TEXT", "JSON", "DOCUMENT"] },
+        "mime_type": { "type": "string", "pattern": "^[a-z0-9.+-]+/[a-z0-9.+-]+$" },
+        "relative_path": { "$ref": "#/$defs/relativeProjectPath" },
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "MOCK",
+            "PROMPT_ONLY",
+            "PROGRAMMATIC",
+            "GENERATED",
+            "RENDERED",
+            "OPERATOR_SUPPLIED",
+            "LOCAL_EDIT",
+            "HOST_NATIVE_IMAGEGEN"
+          ]
+        },
+        "source_adapter": { "type": "string", "minLength": 1 },
+        "source_run_id": { "$ref": "#/$defs/runId" },
+        "source_generation_id": { "anyOf": [{ "type": "string" }, { "type": "null" }] },
+        "version": { "type": "integer", "minimum": 1 },
+        "width": { "anyOf": [{ "type": "integer", "minimum": 1 }, { "type": "null" }] },
+        "height": { "anyOf": [{ "type": "integer", "minimum": 1 }, { "type": "null" }] },
+        "file_size": { "type": "integer", "minimum": 0 },
+        "checksum": { "$ref": "#/$defs/sha256" },
+        "created_at": { "$ref": "#/$defs/timestamp" },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      }
+    },
+    "checkResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "check_id",
+        "category",
+        "target",
+        "status",
+        "severity",
+        "blocking",
+        "message",
+        "expected_summary",
+        "actual_summary",
+        "evidence_refs",
+        "recommended_action"
+      ],
+      "properties": {
+        "check_id": { "type": "string", "pattern": "^CHK-[A-Z0-9-]+$" },
+        "category": { "type": "string", "enum": ["CONTENT", "VISUAL", "FILE", "DATA"] },
+        "target": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "enum": ["PASS", "FAIL", "SKIP"] },
+        "severity": { "type": "string", "enum": ["INFO", "WARNING", "ERROR", "BLOCKING"] },
+        "blocking": { "type": "boolean" },
+        "message": { "type": "string" },
+        "expected_summary": { "type": "string" },
+        "actual_summary": { "type": "string" },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "recommended_action": { "type": "string" }
+      }
+    },
+    "versionBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "content_version",
+        "copy_version",
+        "visual_plan_version",
+        "style_lock_version",
+        "asset_version"
+      ],
+      "properties": {
+        "content_version": { "$ref": "#/$defs/contentVersion" },
+        "copy_version": { "$ref": "#/$defs/contentVersion" },
+        "visual_plan_version": { "$ref": "#/$defs/visualVersion" },
+        "style_lock_version": {
+          "anyOf": [{ "$ref": "#/$defs/styleLockVersion" }, { "type": "null" }]
+        },
+        "asset_version": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "commonContractProbe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "result_status"],
+      "properties": {
+        "schema_version": {
+          "$ref": "#/$defs/schemaVersion"
+        },
+        "result_status": {
+          "$ref": "#/$defs/resultStatus"
+        }
+      }
+    }
+  }
+}

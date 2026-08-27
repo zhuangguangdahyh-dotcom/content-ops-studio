@@ -1,0 +1,14 @@
+{
+  "project_id": "PRJ-20990101-DEMO",
+  "rule_snapshot_version": "1.0.0",
+  "compiled_at": "2099-01-01T01:02:03.000Z",
+  "source_rule_ids": ["R-0001"],
+  "hard_requirements": ["Use fictional examples."],
+  "preferences": ["Prefer concise explanations."],
+  "prohibitions": ["Do not invent tool success."],
+  "corrections": [],
+  "workflow_rules": ["Keep approvals version-bound."],
+  "compilation_status": "CONFIRMED_SNAPSHOT",
+  "schema_version": "9.9.9",
+  "extensions": {}
+}

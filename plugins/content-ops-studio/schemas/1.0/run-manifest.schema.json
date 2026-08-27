@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/run-manifest.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Run manifest",
+  "description": "Durable local record of versions, checkpoints, artifacts, and outcome.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "schema_version",
+    "run_id",
+    "project_id",
+    "task_type",
+    "run_state",
+    "started_at",
+    "updated_at",
+    "checkpoints",
+    "artifacts",
+    "warnings",
+    "errors"
+  ],
+  "properties": {
+    "contract_version": {
+      "$ref": "common-definitions.schema.json#/$defs/contractVersion"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    },
+    "run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "task_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_state": {
+      "$ref": "common-definitions.schema.json#/$defs/runStatus"
+    },
+    "started_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "updated_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "checkpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status", "recorded_at"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": ["PENDING", "COMPLETE", "FAILED"]
+          },
+          "recorded_at": {
+            "$ref": "common-definitions.schema.json#/$defs/timestamp"
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact_type", "relative_path", "version"],
+        "properties": {
+          "artifact_type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relative_path": {
+            "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath"
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "error.schema.json"
+      }
+    }
+  }
+}

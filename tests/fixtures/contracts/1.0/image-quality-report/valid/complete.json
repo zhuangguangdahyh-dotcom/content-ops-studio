@@ -1,0 +1,73 @@
+{
+  "report_id": "IQR-C-0001-A",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "asset_id": "AST-CANDIDATE-A",
+  "asset_role": "DIRECTION_CANDIDATE",
+  "layers": {
+    "authenticity_and_integrity": "PASS",
+    "mechanical": "PASS",
+    "visual": "PASS",
+    "mode_and_project_fit": "PASS",
+    "operator_aesthetic": "PENDING"
+  },
+  "dimensions": [
+    {
+      "dimension": "CONTENT_SEMANTIC_FIT",
+      "weight": 20,
+      "rating": 4,
+      "weighted_score": 16
+    },
+    {
+      "dimension": "COMPOSITION_FOCUS",
+      "weight": 15,
+      "rating": 4,
+      "weighted_score": 12
+    },
+    {
+      "dimension": "HIERARCHY_READABILITY",
+      "weight": 15,
+      "rating": 4,
+      "weighted_score": 12
+    },
+    {
+      "dimension": "ASSET_QUALITY_INTEGRITY",
+      "weight": 15,
+      "rating": 4,
+      "weighted_score": 12
+    },
+    {
+      "dimension": "PROJECT_AUDIENCE_FIT",
+      "weight": 10,
+      "rating": 4,
+      "weighted_score": 8
+    },
+    {
+      "dimension": "UNIQUENESS_ANTI_TEMPLATE",
+      "weight": 10,
+      "rating": 4,
+      "weighted_score": 8
+    },
+    {
+      "dimension": "VISUAL_MODE_EXECUTION",
+      "weight": 10,
+      "rating": 4,
+      "weighted_score": 8
+    },
+    {
+      "dimension": "PLATFORM_MOBILE_PERFORMANCE",
+      "weight": 5,
+      "rating": 4,
+      "weighted_score": 4
+    }
+  ],
+  "total_score": 80,
+  "threshold": 75,
+  "hard_blocks": [],
+  "core_dimension_floor_met": true,
+  "operator_approval_required": true,
+  "result": "PASS_PENDING_OPERATOR",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z"
+}

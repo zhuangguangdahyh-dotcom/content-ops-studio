@@ -1,0 +1,52 @@
+{
+  "project_name": "Fictional Content Lab",
+  "project_status": "PROJECT_ACTIVE",
+  "config_confirmation_status": "CONFIG_CONFIRMED",
+  "subject": {
+    "role": "SUBJECT",
+    "entity_id": "SUBJECT-DEMO",
+    "description": "A fictional expert brand."
+  },
+  "subject_name": "Fictional Expert",
+  "subject_type": "BRAND",
+  "public_identity_and_intro": "A fictional subject used only in tests.",
+  "industry": "Fictional professional services",
+  "industry_subfields": ["Decision education"],
+  "core_business_or_products": ["Fictional advisory service"],
+  "service_region": ["Fictional Region"],
+  "price_band": "Fictional premium band",
+  "audience_profile": {
+    "role": "AUDIENCE",
+    "description": "Fictional buyers.",
+    "segments": ["Careful decision makers"]
+  },
+  "audience_decision_characteristics": ["Evidence-oriented"],
+  "professional_advantages": ["Transparent process"],
+  "personality_and_expression_advantages": ["Calm and direct"],
+  "content_objectives": ["TRUST"],
+  "core_content_directions": ["Decision guidance"],
+  "content_style": ["Clear"],
+  "expression_tone": ["Direct"],
+  "target_platforms": ["FICTIONAL_PLATFORM"],
+  "primary_platform": "FICTIONAL_PLATFORM",
+  "default_page_count": 6,
+  "default_aspect_ratio": "3:4",
+  "visual_preferences": ["Editorial clarity"],
+  "direct_message_hook_rules": ["Offer a concrete resource."],
+  "title_rules": ["State one buyer benefit."],
+  "prohibited_expressions": ["Fake guarantee"],
+  "prohibited_visuals": ["Real customer imagery"],
+  "industry_pack": "industry-demo",
+  "platform_pack": "platform-demo",
+  "operator_notes": {
+    "role": "OPERATOR",
+    "notes": "Fixture Operator note."
+  },
+  "configuration_version": 1,
+  "schema_version": "1.0.0",
+  "last_run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "updated_at": "2099-01-01T01:02:03.000Z",
+  "data_source": "MOCK",
+  "extensions": {}
+}

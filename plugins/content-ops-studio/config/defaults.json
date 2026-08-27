@@ -1,0 +1,13 @@
+{
+  "contractVersion": "1.0.0",
+  "schemaVersion": "1.0.0",
+  "pluginVersion": "0.1.0",
+  "defaultPlatformPack": "xiaohongshu",
+  "defaultIndustryPack": "generic",
+  "defaultPageCount": 6,
+  "minPageCount": 4,
+  "maxPageCount": 8,
+  "defaultAspectRatio": "3:4",
+  "xiaohongshuTitleVisibleCharacterLimit": 20,
+  "projectHomeEnvironmentVariable": "CONTENT_OPS_HOME"
+}

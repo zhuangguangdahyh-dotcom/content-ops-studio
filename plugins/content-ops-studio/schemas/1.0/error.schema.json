@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/error.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Structured error",
+  "description": "Traceable safe error with retry guidance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["code", "message", "retryable", "scope", "recommended_action", "extensions"],
+  "properties": {
+    "code": {
+      "type": "string",
+      "enum": [
+        "INPUT_MISSING",
+        "PROJECT_NOT_RESOLVED",
+        "PROJECT_NOT_CONFIRMED",
+        "WORKSPACE_NOT_READY",
+        "SCHEMA_MISMATCH",
+        "INVALID_STATE",
+        "LOCKED_FIELD",
+        "CONFLICT_DETECTED",
+        "TOOL_UNAVAILABLE",
+        "PERMISSION_DENIED",
+        "INSUFFICIENT_EVIDENCE",
+        "DUPLICATE_RISK",
+        "UNSUPPORTED_CLAIM",
+        "GENERATION_FAILED",
+        "RENDER_FAILED",
+        "QA_FAILED",
+        "SYNC_PARTIAL",
+        "USER_APPROVAL_REQUIRED",
+        "UNSUPPORTED_REQUEST",
+        "APPROVAL_REQUIRED",
+        "APPROVAL_MISMATCH",
+        "APPROVAL_STALE",
+        "INVARIANT_VIOLATION",
+        "OWNER_SKILL_MISMATCH",
+        "MIGRATION_PATH_MISSING"
+      ]
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retryable": {
+      "type": "boolean"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recommended_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "extensions": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    }
+  }
+}

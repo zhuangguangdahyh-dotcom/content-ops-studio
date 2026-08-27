@@ -1,0 +1,12 @@
+interface:
+  display_name: "Project Initialization"
+  short_description: "Plan and initialize a gated Content Ops workspace"
+  default_prompt: "Use $project-initialization to plan this project, wait for my confirmation, and stop at G1."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "content-ops"
+      description: "Bundled local Content Ops MCP server for project and Feishu Workspace operations"
+      transport: "stdio"
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,85 @@
+{
+  "machine": "project-status",
+  "version": "1.0.0",
+  "states": [
+    "PROJECT_INITIALIZING",
+    "PROJECT_PENDING_CONFIRMATION",
+    "PROJECT_ACTIVE",
+    "PROJECT_PAUSED",
+    "PROJECT_ARCHIVED"
+  ],
+  "initialStates": ["PROJECT_INITIALIZING"],
+  "terminalStates": ["PROJECT_ARCHIVED"],
+  "transitions": [
+    {
+      "from": "PROJECT_INITIALIZING",
+      "to": "PROJECT_PENDING_CONFIRMATION",
+      "trigger": "COMPLETE_PROJECT_INITIALIZATION",
+      "ownerSkill": "project-initialization",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PROJECT_INITIALIZING to PROJECT_PENDING_CONFIRMATION"
+    },
+    {
+      "from": "PROJECT_PENDING_CONFIRMATION",
+      "to": "PROJECT_ACTIVE",
+      "trigger": "CONFIRM_PROJECT_PROFILE",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": "PROJECT_PROFILE",
+      "requiredContext": ["configuration_version"],
+      "invalidates": [],
+      "description": "PROJECT_PENDING_CONFIRMATION to PROJECT_ACTIVE"
+    },
+    {
+      "from": "PROJECT_PENDING_CONFIRMATION",
+      "to": "PROJECT_PAUSED",
+      "trigger": "PAUSE_PROJECT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PROJECT_PENDING_CONFIRMATION to PROJECT_PAUSED"
+    },
+    {
+      "from": "PROJECT_ACTIVE",
+      "to": "PROJECT_PAUSED",
+      "trigger": "PAUSE_PROJECT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PROJECT_ACTIVE to PROJECT_PAUSED"
+    },
+    {
+      "from": "PROJECT_PAUSED",
+      "to": "PROJECT_ACTIVE",
+      "trigger": "RESUME_PROJECT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": ["config_confirmation_status"],
+      "invalidates": [],
+      "description": "PROJECT_PAUSED to PROJECT_ACTIVE"
+    },
+    {
+      "from": "PROJECT_ACTIVE",
+      "to": "PROJECT_ARCHIVED",
+      "trigger": "ARCHIVE_PROJECT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PROJECT_ACTIVE to PROJECT_ARCHIVED"
+    },
+    {
+      "from": "PROJECT_PAUSED",
+      "to": "PROJECT_ARCHIVED",
+      "trigger": "ARCHIVE_PROJECT",
+      "ownerSkill": "content-studio-router",
+      "requiresApprovalGate": null,
+      "requiredContext": [],
+      "invalidates": [],
+      "description": "PROJECT_PAUSED to PROJECT_ARCHIVED"
+    }
+  ]
+}

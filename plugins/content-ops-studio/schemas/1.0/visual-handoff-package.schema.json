@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/visual-handoff-package.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Visual handoff package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "visual_handoff_package_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "visual_context_ref",
+    "visual_direction_decision",
+    "visual_reference_manifest",
+    "visual_system",
+    "page_visual_plans",
+    "asset_requirements_plan",
+    "layout_feasibility_report",
+    "visual_quality_report",
+    "first_page_handoff",
+    "platform_pack_version",
+    "industry_pack_version",
+    "project_rule_snapshot",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "visual_handoff_package_id": { "type": "string", "pattern": "^VHP-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "visual_context_ref": { "type": "string", "pattern": "^VCTX-[A-Z0-9-]+$" },
+    "visual_direction_decision": { "$ref": "visual-direction-decision.schema.json" },
+    "visual_reference_manifest": { "$ref": "visual-reference-manifest.schema.json" },
+    "visual_system": { "$ref": "visual-system.schema.json" },
+    "page_visual_plans": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "page-visual-plan.schema.json" }
+    },
+    "asset_requirements_plan": { "$ref": "asset-requirements-plan.schema.json" },
+    "layout_feasibility_report": { "$ref": "layout-feasibility-report.schema.json" },
+    "visual_quality_report": { "$ref": "visual-planning-quality-report.schema.json" },
+    "first_page_handoff": { "$ref": "#/$defs/firstPage" },
+    "platform_pack_version": { "$ref": "common-definitions.schema.json#/$defs/semanticVersion" },
+    "industry_pack_version": { "$ref": "common-definitions.schema.json#/$defs/semanticVersion" },
+    "project_rule_snapshot": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "copySnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["headline", "body", "supporting_text"],
+      "properties": {
+        "headline": { "type": "string" },
+        "body": { "type": "string" },
+        "supporting_text": { "type": "string" }
+      }
+    },
+    "firstPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "page_number",
+        "page_role",
+        "page_visual_plan_id",
+        "content_version",
+        "copy_version",
+        "visual_plan_version",
+        "copy_snapshot",
+        "copy_snapshot_hash",
+        "canvas",
+        "safe_area",
+        "typography_tokens",
+        "color_tokens",
+        "grid_system",
+        "asset_requirement",
+        "background_strategy",
+        "text_layers",
+        "image_treatment",
+        "negative_constraints",
+        "required_capabilities",
+        "generation_required",
+        "programmatic_render_required",
+        "ready",
+        "blocking_reasons"
+      ],
+      "properties": {
+        "page_number": { "const": 1 },
+        "page_role": { "const": "COVER" },
+        "page_visual_plan_id": { "type": "string", "pattern": "^PVP-[A-Z0-9-]+$" },
+        "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+        "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+        "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+        "copy_snapshot": { "$ref": "#/$defs/copySnapshot" },
+        "copy_snapshot_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+        "canvas": { "$ref": "common-definitions.schema.json#/$defs/canvas" },
+        "safe_area": { "$ref": "common-definitions.schema.json#/$defs/safeArea" },
+        "typography_tokens": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common-definitions.schema.json#/$defs/typographyToken" }
+        },
+        "color_tokens": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common-definitions.schema.json#/$defs/colorToken" }
+        },
+        "grid_system": { "$ref": "visual-system.schema.json#/$defs/rulesObject" },
+        "asset_requirement": { "$ref": "asset-requirements-plan.schema.json#/$defs/page" },
+        "background_strategy": { "type": "string", "minLength": 1 },
+        "text_layers": {
+          "type": "array",
+          "items": { "$ref": "common-definitions.schema.json#/$defs/textLayer" }
+        },
+        "image_treatment": { "$ref": "common-definitions.schema.json#/$defs/imageTreatment" },
+        "negative_constraints": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "required_capabilities": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "generation_required": { "type": "boolean" },
+        "programmatic_render_required": { "type": "boolean" },
+        "ready": { "type": "boolean" },
+        "blocking_reasons": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

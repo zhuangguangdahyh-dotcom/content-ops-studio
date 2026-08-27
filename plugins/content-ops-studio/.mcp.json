@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "content-ops": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["${PLUGIN_ROOT}/runtime/dist/content-ops-mcp.mjs"],
+      "cwd": "${PLUGIN_ROOT}",
+      "env": {
+        "CONTENT_OPS_HOME": "${PLUGIN_DATA}/content-ops-home",
+        "CONTENT_OPS_RUNTIME_MODE": "PRODUCTION",
+        "CONTENT_OPS_WORKSPACE_ADAPTER": "lark-cli",
+        "CONTENT_OPS_RENDERER": "playwright-html-css",
+        "CONTENT_OPS_PLAYWRIGHT_BROWSERS_PATH": "${PLUGIN_DATA}/playwright-browsers",
+        "PLAYWRIGHT_BROWSERS_PATH": "${PLUGIN_DATA}/playwright-browsers"
+      }
+    }
+  }
+}

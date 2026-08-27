@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/content-package.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Content package",
+  "description": "Local structured content package and its exact rule/evidence/version snapshot.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "content_record",
+    "pages",
+    "evidence_refs",
+    "project_rule_snapshot",
+    "platform_pack_id",
+    "platform_pack_version",
+    "industry_pack_id",
+    "industry_pack_version",
+    "content_fingerprint",
+    "approval_request",
+    "generated_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "content_record": {
+      "$ref": "content-record.schema.json"
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "$ref": "content-page.schema.json"
+      },
+      "minItems": 1
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "common-definitions.schema.json#/$defs/evidenceId"
+      },
+      "uniqueItems": true
+    },
+    "project_rule_snapshot": {
+      "$ref": "active-project-rules.schema.json"
+    },
+    "platform_pack_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "platform_pack_version": {
+      "$ref": "common-definitions.schema.json#/$defs/semanticVersion"
+    },
+    "industry_pack_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "industry_pack_version": {
+      "$ref": "common-definitions.schema.json#/$defs/semanticVersion"
+    },
+    "content_fingerprint": {
+      "$ref": "content-fingerprint.schema.json"
+    },
+    "approval_request": {
+      "anyOf": [
+        {
+          "$ref": "approval-event.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "generated_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "schema_version": {
+      "$ref": "common-definitions.schema.json#/$defs/schemaVersion"
+    },
+    "extensions": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/write-log.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Write log",
+  "description": "Traceable idempotent external-write audit record with redacted summaries.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "write_id",
+    "run_id",
+    "project_id",
+    "owner_skill",
+    "provider",
+    "operation",
+    "target_type",
+    "target_id",
+    "idempotency_key",
+    "state_before",
+    "state_after",
+    "request_summary",
+    "response_summary",
+    "verification_status",
+    "verification_details",
+    "attempt_number",
+    "retryable",
+    "error",
+    "started_at",
+    "completed_at"
+  ],
+  "properties": {
+    "write_id": {
+      "type": "string",
+      "pattern": "^W-[A-Z0-9-]+$"
+    },
+    "run_id": {
+      "$ref": "common-definitions.schema.json#/$defs/runId"
+    },
+    "project_id": {
+      "$ref": "common-definitions.schema.json#/$defs/projectId"
+    },
+    "owner_skill": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provider": {
+      "type": "string",
+      "enum": ["FEISHU", "FILESYSTEM", "MOCK"]
+    },
+    "operation": {
+      "type": "string",
+      "enum": ["CREATE", "UPDATE", "UPSERT", "VERIFY"]
+    },
+    "target_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state_before": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    },
+    "state_after": {
+      "$ref": "common-definitions.schema.json#/$defs/extensions"
+    },
+    "request_summary": {
+      "type": "string"
+    },
+    "response_summary": {
+      "type": "string"
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": ["NOT_RUN", "VERIFIED", "FAILED", "PARTIAL"]
+    },
+    "verification_details": {
+      "type": "string"
+    },
+    "attempt_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "retryable": {
+      "type": "boolean"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "error.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "started_at": {
+      "$ref": "common-definitions.schema.json#/$defs/timestamp"
+    },
+    "completed_at": {
+      "anyOf": [
+        {
+          "$ref": "common-definitions.schema.json#/$defs/timestamp"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

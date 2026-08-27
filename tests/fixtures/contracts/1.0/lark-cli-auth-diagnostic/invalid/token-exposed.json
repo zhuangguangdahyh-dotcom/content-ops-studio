@@ -1,0 +1,15 @@
+{
+  "diagnostic_id": "LCD-PHASE-2B2",
+  "state": "AUTHENTICATED",
+  "identity": "user",
+  "configured": true,
+  "authenticated": true,
+  "required_scope_count": 2,
+  "granted_scope_count": 2,
+  "missing_scopes": [],
+  "authorization_url_present": false,
+  "token_exposed": true,
+  "checked_at": "2026-08-24T00:00:00.000Z",
+  "schema_version": "1.0.0",
+  "extensions": {}
+}

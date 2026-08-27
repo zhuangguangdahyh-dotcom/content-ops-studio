@@ -1,0 +1,98 @@
+{
+  "report_id": "DIR-DEMO-001",
+  "delivery_package_id": "DP-DEMO-001",
+  "final_manifest_id": "FINAL-DEMO-001",
+  "checks": [
+    {
+      "code": "MANIFEST_MATCH",
+      "status": "PASS",
+      "blocking": false,
+      "message": "MANIFEST_MATCH passed."
+    },
+    {
+      "code": "PAGE_COUNT",
+      "status": "PASS",
+      "blocking": false,
+      "message": "PAGE_COUNT passed."
+    },
+    {
+      "code": "ORDERED_ASSETS",
+      "status": "PASS",
+      "blocking": false,
+      "message": "ORDERED_ASSETS passed."
+    },
+    {
+      "code": "CHECKSUM_MATCH",
+      "status": "PASS",
+      "blocking": false,
+      "message": "CHECKSUM_MATCH passed."
+    },
+    {
+      "code": "CANVAS_MATCH",
+      "status": "PASS",
+      "blocking": false,
+      "message": "CANVAS_MATCH passed."
+    },
+    {
+      "code": "NO_MISSING_FILE",
+      "status": "PASS",
+      "blocking": false,
+      "message": "NO_MISSING_FILE passed."
+    },
+    {
+      "code": "NO_EXTRA_FORMAL_FILE",
+      "status": "PASS",
+      "blocking": false,
+      "message": "NO_EXTRA_FORMAL_FILE passed."
+    },
+    {
+      "code": "NO_TEMPORARY_ASSET",
+      "status": "PASS",
+      "blocking": false,
+      "message": "NO_TEMPORARY_ASSET passed."
+    },
+    {
+      "code": "NO_REJECTED_ASSET",
+      "status": "PASS",
+      "blocking": false,
+      "message": "NO_REJECTED_ASSET passed."
+    },
+    {
+      "code": "NO_SECRET",
+      "status": "PASS",
+      "blocking": false,
+      "message": "NO_SECRET passed."
+    },
+    {
+      "code": "NO_ABSOLUTE_USER_PATH",
+      "status": "PASS",
+      "blocking": false,
+      "message": "NO_ABSOLUTE_USER_PATH passed."
+    },
+    {
+      "code": "NO_INTERNAL_RUNTIME_LEAK",
+      "status": "PASS",
+      "blocking": false,
+      "message": "NO_INTERNAL_RUNTIME_LEAK passed."
+    },
+    {
+      "code": "PREVIEW_MATCH",
+      "status": "PASS",
+      "blocking": false,
+      "message": "PREVIEW_MATCH passed."
+    },
+    {
+      "code": "APPROVAL_CHAIN_MATCH",
+      "status": "PASS",
+      "blocking": false,
+      "message": "APPROVAL_CHAIN_MATCH passed."
+    }
+  ],
+  "passed_count": 14,
+  "failed_count": 0,
+  "hard_block_count": 0,
+  "overall_status": "PASSED",
+  "verified_at": "2099-01-01T01:02:03.000Z",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "9.9.9"
+}

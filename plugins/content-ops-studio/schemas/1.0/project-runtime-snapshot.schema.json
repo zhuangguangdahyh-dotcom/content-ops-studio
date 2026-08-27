@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/project-runtime-snapshot.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Project runtime snapshot",
+  "description": "Immutable non-secret project and capability state read by one run.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "snapshot_id",
+    "project_id",
+    "project_profile",
+    "project_profile_version",
+    "platform_pack_resolution",
+    "industry_pack_resolution",
+    "active_project_rules",
+    "rejected_directions",
+    "workspace_connection_snapshot",
+    "capability_snapshot",
+    "source_record_versions",
+    "created_at",
+    "run_id",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "snapshot_id": { "type": "string", "pattern": "^SNAP-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "project_profile": { "type": "object", "minProperties": 1, "additionalProperties": true },
+    "project_profile_version": { "type": "integer", "minimum": 1 },
+    "platform_pack_resolution": { "$ref": "#/$defs/packSnapshot" },
+    "industry_pack_resolution": { "$ref": "#/$defs/packSnapshot" },
+    "active_project_rules": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "rejected_directions": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "workspace_connection_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "status", "workspace_label"],
+      "properties": {
+        "provider": { "type": "string", "enum": ["MOCK", "FEISHU", "NONE"] },
+        "status": {
+          "type": "string",
+          "enum": ["MOCK_ONLY", "NOT_CONFIGURED", "VERIFIED", "FAILED"]
+        },
+        "workspace_label": { "type": ["string", "null"] }
+      }
+    },
+    "capability_snapshot": { "type": "array", "items": { "$ref": "#/$defs/capabilitySnapshot" } },
+    "source_record_versions": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 1 }
+    },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "packSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "sha256"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "version": { "$ref": "common-definitions.schema.json#/$defs/semanticVersion" },
+        "sha256": { "$ref": "common-definitions.schema.json#/$defs/sha256" }
+      }
+    },
+    "capabilitySnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["capability", "provider", "status", "checked_at"],
+      "properties": {
+        "capability": { "type": "string", "minLength": 1 },
+        "provider": { "type": "string", "minLength": 1 },
+        "status": {
+          "type": "string",
+          "enum": ["AVAILABLE", "MOCK_ONLY", "NOT_IMPLEMENTED", "UNAVAILABLE", "BLOCKED", "UNKNOWN"]
+        },
+        "checked_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" }
+      }
+    }
+  }
+}

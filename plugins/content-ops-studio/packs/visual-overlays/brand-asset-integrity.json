@@ -1,0 +1,8 @@
+{
+  "overlay_id": "BRAND_ASSET_INTEGRITY",
+  "overlay_version": "1.0.0",
+  "display_name": "Brand asset integrity",
+  "hard_blocks": ["Unapproved or altered brand asset"],
+  "quality_checks": ["Logo, color and usage-rule fidelity"],
+  "schema_version": "1.0.0"
+}

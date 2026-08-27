@@ -1,0 +1,144 @@
+{
+  "style_lock_id": "SL-DEMO-001",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "C-0001",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "visual_plan_version": "VV-1",
+  "first_page_version": "FPV-1",
+  "source_first_page_checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "renderer_environment_ref": "projects/demo/runs/run/outputs/first-page/renderer-environment-evidence.json",
+  "style_lock_version": "SLV-1",
+  "source_first_page_plan_id": "PVP-DEMO-01",
+  "source_first_page_asset": {
+    "asset_id": "AST-RENDERED-01",
+    "asset_role": "RENDERED_PAGE",
+    "asset_type": "IMAGE",
+    "mime_type": "image/png",
+    "relative_path": "projects/demo/renders/01-cover_v001.png",
+    "source_type": "RENDERED",
+    "source_adapter": "mock-renderer",
+    "source_run_id": "RUN-20990101-010203-DEMO",
+    "source_generation_id": "GEN-DEMO-01",
+    "version": 1,
+    "width": 1242,
+    "height": 1660,
+    "file_size": 4096,
+    "checksum": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "extensions": {}
+  },
+  "first_page_approval_id": "APR-20990101-G4AA",
+  "first_page_approval_version": "VV-1",
+  "first_page_approval": {
+    "approval_id": "APR-20990101-G4AA",
+    "gate": "FIRST_PAGE",
+    "target_type": "CONTENT",
+    "target_id": "C-0001",
+    "target_version": "VV-1",
+    "decision": "APPROVE",
+    "comment": "Approved fictional first page.",
+    "source_run_id": "RUN-20990101-010203-DEMO",
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "deprecated_at": null,
+    "schema_version": "1.0.0"
+  },
+  "locked_canvas": {
+    "width": 1242,
+    "height": 1660,
+    "aspect_ratio": "3:4",
+    "orientation": "PORTRAIT",
+    "resolution_unit": "PX"
+  },
+  "locked_safe_area": {
+    "top": 80,
+    "right": 72,
+    "bottom": 80,
+    "left": 72,
+    "unit": "PX"
+  },
+  "locked_typography_tokens": [
+    {
+      "token_id": "TYPO-TITLE",
+      "role": "TITLE",
+      "font_family": "Fictional Sans",
+      "font_weight": 700,
+      "font_size": 72,
+      "line_height": 1.15,
+      "letter_spacing": 0,
+      "alignment": "LEFT",
+      "max_lines": 3,
+      "overflow_strategy": "REFLOW"
+    },
+    {
+      "token_id": "TYPO-BODY",
+      "role": "BODY",
+      "font_family": "Fictional Sans",
+      "font_weight": 400,
+      "font_size": 40,
+      "line_height": 1.4,
+      "letter_spacing": 0,
+      "alignment": "LEFT",
+      "max_lines": 8,
+      "overflow_strategy": "BLOCK_AND_RETURN"
+    }
+  ],
+  "locked_color_tokens": [
+    {
+      "token_id": "COLOR-TEXT",
+      "role": "PRIMARY_TEXT",
+      "value": "#2A241F",
+      "color_space": "HEX",
+      "opacity": 1
+    },
+    {
+      "token_id": "COLOR-BACKGROUND",
+      "role": "BACKGROUND",
+      "value": "#F4EEE6",
+      "color_space": "HEX",
+      "opacity": 1
+    }
+  ],
+  "locked_grid": {
+    "columns": 12,
+    "gutter": 24
+  },
+  "locked_image_treatment": {
+    "brightness": 0,
+    "contrast": 0.05,
+    "saturation": -0.1,
+    "blur": 0,
+    "overlay": "warm-neutral-10",
+    "gradient": "bottom-soft",
+    "mask": "none",
+    "crop_strategy": "COVER"
+  },
+  "locked_layout_logic": ["Preserve one reading anchor"],
+  "locked_brand_rules": ["No unapproved logo"],
+  "locked_page_number_rules": ["Two-digit page number"],
+  "locked_visual_mode": "EDITORIAL_SERIES",
+  "locked_rules": [
+    "Lock the visual mode, canvas, safe area, typography system, palette and image treatment."
+  ],
+  "allowed_variations": [
+    "Vary the subject, crop, text placement, whitespace distribution and local emphasis."
+  ],
+  "allowed_page_variations": ["Local supporting geometry"],
+  "prohibited_deviations": [
+    "CHANGE_TYPOGRAPHY_SYSTEM",
+    "CHANGE_GLOBAL_COLOR_SYSTEM",
+    "CHANGE_VISUAL_MODE",
+    "CHANGE_GLOBAL_IMAGE_TREATMENT",
+    "CHANGE_PRIMARY_LAYOUT_LOGIC",
+    "CHANGE_SAFE_AREA_SYSTEM",
+    "CHANGE_BRAND_MARK_RULES",
+    "CHANGE_PAGE_NUMBER_RULES"
+  ],
+  "created_by_skill": "image-set-production",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "invalidated_at": null,
+  "extensions": {},
+  "absolute_source_path": "/home/fixture/private.png"
+}

@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/generation-manifest.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Generation manifest",
+  "description": "Immutable attempt history for a requested visual asset; success is never implied.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "generation_id",
+    "project_id",
+    "content_id",
+    "page_number",
+    "content_version",
+    "copy_version",
+    "visual_plan_version",
+    "style_lock_version",
+    "generation_type",
+    "adapter",
+    "provider",
+    "model_descriptor",
+    "input_assets",
+    "reference_assets",
+    "prompt_snapshot",
+    "negative_constraints",
+    "requested_output",
+    "attempts",
+    "output_assets",
+    "generation_status",
+    "failure_summary",
+    "warnings",
+    "run_id",
+    "schema_version",
+    "started_at",
+    "completed_at",
+    "extensions"
+  ],
+  "properties": {
+    "generation_id": { "type": "string", "pattern": "^GEN-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "common-definitions.schema.json#/$defs/projectId" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "page_number": { "type": "integer", "minimum": 1 },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "visual_plan_version": { "$ref": "common-definitions.schema.json#/$defs/visualVersion" },
+    "style_lock_version": {
+      "anyOf": [
+        { "$ref": "common-definitions.schema.json#/$defs/styleLockVersion" },
+        { "type": "null" }
+      ]
+    },
+    "generation_type": {
+      "type": "string",
+      "enum": [
+        "PROGRAMMATIC_GRAPHIC",
+        "FIRST_PAGE_BACKGROUND",
+        "PAGE_BACKGROUND",
+        "ILLUSTRATION",
+        "PRODUCT_IMAGE",
+        "EVIDENCE_ASSET",
+        "HOST_NATIVE_IMAGEGEN",
+        "DIRECTION_CANDIDATE",
+        "REGENERATION",
+        "LOCAL_EDIT"
+      ]
+    },
+    "adapter": { "type": "string", "minLength": 1 },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider_name", "request_identifier"],
+      "properties": {
+        "provider_name": { "type": "string", "minLength": 1 },
+        "request_identifier": { "anyOf": [{ "type": "string" }, { "type": "null" }] }
+      }
+    },
+    "model_descriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model_name", "model_version"],
+      "properties": {
+        "model_name": { "type": "string", "minLength": 1 },
+        "model_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "input_assets": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/assetReference" }
+    },
+    "reference_assets": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/assetReference" }
+    },
+    "prompt_snapshot": { "type": "string" },
+    "negative_constraints": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "requested_output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["asset_role", "mime_type", "canvas", "relative_path"],
+      "properties": {
+        "asset_role": {
+          "type": "string",
+          "enum": [
+            "BACKGROUND",
+            "REFERENCE",
+            "EVIDENCE",
+            "PROMPT_ARTIFACT",
+            "DIRECTION_CANDIDATE",
+            "FORMAL_ASSET"
+          ]
+        },
+        "mime_type": { "type": "string", "pattern": "^[a-z0-9.+-]+/[a-z0-9.+-]+$" },
+        "canvas": { "$ref": "common-definitions.schema.json#/$defs/canvas" },
+        "relative_path": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" }
+      }
+    },
+    "attempts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "attempt_number",
+          "status",
+          "version_binding",
+          "request_summary",
+          "output_asset_refs",
+          "failure_code",
+          "failure_message",
+          "started_at",
+          "completed_at"
+        ],
+        "properties": {
+          "attempt_number": { "type": "integer", "minimum": 1 },
+          "status": {
+            "type": "string",
+            "enum": ["PENDING", "RUNNING", "SUCCESS", "FAILED", "CANCELLED"]
+          },
+          "version_binding": { "$ref": "common-definitions.schema.json#/$defs/versionBinding" },
+          "request_summary": { "type": "string" },
+          "output_asset_refs": {
+            "type": "array",
+            "items": { "$ref": "common-definitions.schema.json#/$defs/assetId" },
+            "uniqueItems": true
+          },
+          "failure_code": { "anyOf": [{ "type": "string" }, { "type": "null" }] },
+          "failure_message": { "anyOf": [{ "type": "string" }, { "type": "null" }] },
+          "started_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+          "completed_at": {
+            "anyOf": [
+              { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+              { "type": "null" }
+            ]
+          }
+        }
+      }
+    },
+    "output_assets": {
+      "type": "array",
+      "items": { "$ref": "common-definitions.schema.json#/$defs/assetReference" }
+    },
+    "generation_status": {
+      "type": "string",
+      "enum": [
+        "GENERATION_PENDING",
+        "GENERATION_RUNNING",
+        "GENERATION_SUCCESS",
+        "GENERATION_PARTIAL",
+        "GENERATION_FAILED",
+        "GENERATION_CANCELLED"
+      ]
+    },
+    "failure_summary": { "anyOf": [{ "type": "string" }, { "type": "null" }] },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "started_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "completed_at": {
+      "anyOf": [{ "$ref": "common-definitions.schema.json#/$defs/timestamp" }, { "type": "null" }]
+    },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  }
+}

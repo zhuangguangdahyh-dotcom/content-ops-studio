@@ -1,0 +1,102 @@
+{
+  "render_report_id": "RPT-RENDER-DEMO-01",
+  "generation_id": "GEN-DEMO-01",
+  "project_id": "PRJ-20990101-DEMO",
+  "content_id": "INVALID-ID",
+  "page_number": 1,
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "visual_plan_version": "VV-1",
+  "style_lock_version": "SLV-1",
+  "renderer": "mock-renderer",
+  "renderer_version": "0.1.0",
+  "render_mode": "MOCK",
+  "input_assets": [
+    {
+      "asset_id": "AST-BACKGROUND-01",
+      "asset_role": "BACKGROUND",
+      "asset_type": "IMAGE",
+      "mime_type": "image/png",
+      "relative_path": "projects/demo/assets/backgrounds/01_v001.png",
+      "source_type": "MOCK",
+      "source_adapter": "mock-image-generation",
+      "source_run_id": "RUN-20990101-010203-DEMO",
+      "source_generation_id": "GEN-DEMO-01",
+      "version": 1,
+      "width": 1242,
+      "height": 1660,
+      "file_size": 4096,
+      "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    }
+  ],
+  "output_asset": {
+    "asset_id": "AST-FINAL-01",
+    "asset_role": "FINAL_PAGE",
+    "asset_type": "IMAGE",
+    "mime_type": "image/png",
+    "relative_path": "projects/demo/final/v1/01-cover.png",
+    "source_type": "RENDERED",
+    "source_adapter": "mock-renderer",
+    "source_run_id": "RUN-20990101-010203-DEMO",
+    "source_generation_id": "GEN-DEMO-01",
+    "version": 1,
+    "width": 1242,
+    "height": 1660,
+    "file_size": 4096,
+    "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "extensions": {}
+  },
+  "canvas": {
+    "width": 1242,
+    "height": 1660,
+    "aspect_ratio": "3:4",
+    "orientation": "PORTRAIT",
+    "resolution_unit": "PX"
+  },
+  "safe_area": {
+    "top": 80,
+    "right": 72,
+    "bottom": 80,
+    "left": 72,
+    "unit": "PX"
+  },
+  "font_resolution": [
+    {
+      "role": "TITLE",
+      "requested_font": "Fictional Sans",
+      "actual_font": "Fictional Sans",
+      "substitution_reason": null,
+      "impact": "NONE",
+      "blocking": false
+    }
+  ],
+  "layout_measurements": [
+    {
+      "layer_id": "LAYER-TITLE-1",
+      "measured_bbox": {
+        "x": 8,
+        "y": 8,
+        "width": 84,
+        "height": 30,
+        "unit": "PERCENT"
+      },
+      "line_count": 2
+    }
+  ],
+  "overflow_detected": false,
+  "missing_assets": [],
+  "font_fallbacks": [],
+  "clipping_detected": false,
+  "unsafe_regions": [],
+  "warnings": [],
+  "errors": [],
+  "render_status": "RENDER_SUCCESS",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "schema_version": "1.0.0",
+  "started_at": "2099-01-01T01:02:03.000Z",
+  "completed_at": "2099-01-01T01:02:03.000Z",
+  "extensions": {}
+}

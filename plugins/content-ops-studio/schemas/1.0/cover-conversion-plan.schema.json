@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/cover-conversion-plan.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Cover conversion plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "cover_conversion_plan_id",
+    "project_id",
+    "content_id",
+    "content_version",
+    "copy_version",
+    "platform",
+    "account_goal",
+    "cover_objective",
+    "subject",
+    "audience",
+    "painpoint",
+    "content_value",
+    "decision_stage",
+    "publish_title",
+    "page_1_content_copy",
+    "strategy_candidates",
+    "selected_strategy",
+    "primary_hook_constraints",
+    "secondary_line_constraints",
+    "thumbnail_constraints",
+    "project_visual_profile_version",
+    "global_visual_preference_version",
+    "industry_pack_version",
+    "platform_pack_version",
+    "ambiguities",
+    "blocking_questions",
+    "ready",
+    "plan_hash",
+    "run_id",
+    "created_at",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "cover_conversion_plan_id": { "type": "string", "pattern": "^CCP-[A-Z0-9-]+$" },
+    "project_id": { "$ref": "#/$defs/projectRef" },
+    "content_id": { "$ref": "common-definitions.schema.json#/$defs/contentId" },
+    "content_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "copy_version": { "$ref": "common-definitions.schema.json#/$defs/contentVersion" },
+    "platform": { "type": "string", "enum": ["XIAOHONGSHU"] },
+    "account_goal": { "$ref": "#/$defs/accountGoal" },
+    "cover_objective": { "$ref": "#/$defs/coverObjective" },
+    "subject": { "type": "string", "minLength": 1 },
+    "audience": { "type": "string", "minLength": 1 },
+    "painpoint": { "type": "string", "minLength": 1 },
+    "content_value": { "type": "string", "minLength": 1 },
+    "decision_stage": { "type": "string", "minLength": 1 },
+    "publish_title": { "type": "string", "minLength": 1 },
+    "page_1_content_copy": { "type": "string", "minLength": 1 },
+    "strategy_candidates": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/conversionStrategy" }
+    },
+    "selected_strategy": { "$ref": "#/$defs/conversionStrategy" },
+    "primary_hook_constraints": { "$ref": "#/$defs/textConstraints" },
+    "secondary_line_constraints": { "$ref": "#/$defs/textConstraints" },
+    "thumbnail_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "targets",
+        "primary_min_effective_font_px",
+        "secondary_min_effective_font_px",
+        "primary_max_lines"
+      ],
+      "properties": {
+        "targets": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "enum": ["310x414", "186x248"] }
+        },
+        "primary_min_effective_font_px": { "type": "number", "minimum": 1 },
+        "secondary_min_effective_font_px": { "type": "number", "minimum": 1 },
+        "primary_max_lines": { "type": "integer", "minimum": 1, "maximum": 3 }
+      }
+    },
+    "project_visual_profile_version": {
+      "anyOf": [{ "type": "string", "pattern": "^PVPFV-[1-9][0-9]*$" }, { "type": "null" }]
+    },
+    "global_visual_preference_version": { "type": "string", "pattern": "^GUVPV-[1-9][0-9]*$" },
+    "industry_pack_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "platform_pack_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "ambiguities": { "$ref": "#/$defs/stringList" },
+    "blocking_questions": {
+      "type": "array",
+      "maxItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "ready": { "type": "boolean" },
+    "plan_hash": { "$ref": "common-definitions.schema.json#/$defs/sha256" },
+    "run_id": { "$ref": "common-definitions.schema.json#/$defs/runId" },
+    "created_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": {
+    "projectRef": { "type": "string", "pattern": "^(PRJ|CAL)-[A-Z0-9][A-Z0-9-]{2,63}$" },
+    "accountGoal": {
+      "type": "string",
+      "enum": [
+        "LEAD_GENERATION",
+        "BRAND_BUILDING",
+        "KNOWLEDGE_EDUCATION",
+        "PRODUCT_SALES",
+        "COMMUNITY",
+        "PORTFOLIO_SHOWCASE"
+      ]
+    },
+    "coverObjective": {
+      "type": "string",
+      "enum": [
+        "AUDIENCE_FILTER",
+        "PAINPOINT_DIRECT",
+        "VALUE_DIRECT",
+        "RISK_WARNING",
+        "DECISION_CHECKLIST",
+        "RESULT_EVIDENCE",
+        "BRAND_STATEMENT"
+      ]
+    },
+    "conversionStrategy": {
+      "type": "string",
+      "enum": [
+        "TARGET_AUDIENCE_FIRST",
+        "PAINPOINT_FIRST",
+        "VALUE_FIRST",
+        "RISK_FIRST",
+        "DECISION_FIRST",
+        "RESULT_FIRST",
+        "CONTRAST_FIRST",
+        "QUESTION_FIRST"
+      ]
+    },
+    "textConstraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommended_min_visible_characters",
+        "recommended_max_visible_characters",
+        "hard_max_visible_characters",
+        "max_lines"
+      ],
+      "properties": {
+        "recommended_min_visible_characters": { "type": "integer", "minimum": 0 },
+        "recommended_max_visible_characters": { "type": "integer", "minimum": 0 },
+        "hard_max_visible_characters": { "type": "integer", "minimum": 0 },
+        "max_lines": { "type": "integer", "minimum": 0, "maximum": 3 }
+      }
+    },
+    "stringList": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    }
+  }
+}

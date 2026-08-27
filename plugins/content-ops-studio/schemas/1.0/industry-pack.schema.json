@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/industry-pack.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Industry pack",
+  "description": "Normalized versioned industry scaffold or knowledge pack without customer-specific rules.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "display_name",
+    "status",
+    "industry_context",
+    "audience_taxonomy",
+    "decision_chain",
+    "painpoint_taxonomy",
+    "content_angle_library",
+    "visual_evidence_library",
+    "claim_boundaries",
+    "prohibited_patterns",
+    "extensions"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "version": { "$ref": "common-definitions.schema.json#/$defs/semanticVersion" },
+    "display_name": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["SCAFFOLD", "ACTIVE", "DEPRECATED"] },
+    "industry_context": { "type": "string" },
+    "audience_taxonomy": { "$ref": "#/$defs/stringList" },
+    "decision_chain": { "$ref": "#/$defs/stringList" },
+    "painpoint_taxonomy": { "$ref": "#/$defs/stringList" },
+    "content_angle_library": { "$ref": "#/$defs/stringList" },
+    "visual_evidence_library": { "$ref": "#/$defs/stringList" },
+    "claim_boundaries": { "$ref": "#/$defs/stringList" },
+    "prohibited_patterns": { "$ref": "#/$defs/stringList" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "$defs": { "stringList": { "type": "array", "items": { "type": "string", "minLength": 1 } } }
+}

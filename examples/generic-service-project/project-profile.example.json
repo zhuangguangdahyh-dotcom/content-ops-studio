@@ -1,0 +1,13 @@
+{
+  "example": true,
+  "projectId": "PRJ-20990101-DEMO",
+  "projectName": "澄明顾问示例项目",
+  "subject": {
+    "name": "澄明服务顾问",
+    "type": "fictional-service-brand",
+    "region": "示例城市"
+  },
+  "audience": "需要评估专业服务方案的虚构经营者",
+  "platformPack": "xiaohongshu",
+  "industryPack": "generic"
+}

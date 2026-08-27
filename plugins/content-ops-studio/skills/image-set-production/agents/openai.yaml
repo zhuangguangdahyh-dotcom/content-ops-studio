@@ -1,0 +1,12 @@
+interface:
+  display_name: "Image Set Production"
+  short_description: "Route assets, compare directions, then produce gated image sets"
+  default_prompt: "Use $image-set-production to load the current project context, route lawful assets, generate materially different visual direction candidates with Host ImageGen when available, show the real previews, and stop for my selection."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "content-ops"
+      description: "Bundled local Content Ops MCP for image-production context, routing, persistence, quality, feedback and approvals"
+      transport: "stdio"
+policy:
+  allow_implicit_invocation: true

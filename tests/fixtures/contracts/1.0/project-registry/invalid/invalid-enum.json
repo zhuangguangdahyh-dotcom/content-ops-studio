@@ -1,0 +1,13 @@
+{
+  "project_id": "PRJ-20990101-DEMO",
+  "display_name": "Fictional Content Lab",
+  "subject_name": "Fictional Expert",
+  "project_root": "projects/demo",
+  "project_status": "INVALID_ENUM_VALUE",
+  "last_active_at": "2099-01-01T01:02:03.000Z",
+  "schema_version": "1.0.0",
+  "connection_status": "VERIFIED",
+  "latest_run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z",
+  "updated_at": "2099-01-01T01:02:03.000Z"
+}

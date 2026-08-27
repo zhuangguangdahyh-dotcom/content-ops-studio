@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/runtime-evidence.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Runtime evidence",
+  "description": "Version-agnostic execution evidence with support policy status kept separate from execution status.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "runtime_name",
+    "runtime_version",
+    "runtime_major",
+    "runtime_range",
+    "support_policy_status",
+    "policy_reason_code",
+    "execution_status",
+    "commands",
+    "command_results",
+    "environment",
+    "platform",
+    "architecture",
+    "started_at",
+    "completed_at",
+    "evidence_source",
+    "report_path",
+    "limitations",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "evidence_id": { "type": "string", "pattern": "^RTE-[A-Z0-9-]+$" },
+    "runtime_name": { "type": "string", "enum": ["node"] },
+    "runtime_version": {
+      "type": "string",
+      "pattern": "^v?(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "runtime_major": { "type": "integer", "minimum": 0 },
+    "runtime_range": { "type": "string", "minLength": 1 },
+    "support_policy_status": {
+      "type": "string",
+      "enum": ["SUPPORTED", "UNSUPPORTED", "UNCLAIMED", "DEPRECATED", "UPSTREAM_EOL"]
+    },
+    "policy_reason_code": {
+      "type": "string",
+      "enum": [
+        "PROJECT_SUPPORTED_RUNTIME",
+        "OUTSIDE_PROJECT_SUPPORT_POLICY",
+        "NOT_VALIDATED_BY_THIS_PROJECT",
+        "PROJECT_DEPRECATED_RUNTIME",
+        "UPSTREAM_EOL"
+      ]
+    },
+    "execution_status": {
+      "type": "string",
+      "enum": ["NOT_RUN", "PASSED", "FAILED", "NOT_AVAILABLE", "NOT_REQUIRED"]
+    },
+    "commands": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "command_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["command", "status", "exit_code"],
+        "properties": {
+          "command": { "type": "string", "minLength": 1 },
+          "status": { "type": "string", "enum": ["PASSED", "FAILED"] },
+          "exit_code": { "type": "integer", "minimum": 0, "maximum": 255 }
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["package_manager", "package_manager_version", "ci"],
+      "properties": {
+        "package_manager": { "const": "pnpm" },
+        "package_manager_version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        },
+        "ci": { "type": "boolean" }
+      }
+    },
+    "platform": { "type": "string", "minLength": 1 },
+    "architecture": { "type": "string", "minLength": 1 },
+    "started_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "completed_at": { "$ref": "common-definitions.schema.json#/$defs/timestamp" },
+    "evidence_source": {
+      "type": "string",
+      "enum": ["LOCAL", "CI", "HISTORICAL", "POLICY", "TEST"]
+    },
+    "report_path": { "$ref": "common-definitions.schema.json#/$defs/relativeProjectPath" },
+    "limitations": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "schema_version": { "$ref": "common-definitions.schema.json#/$defs/schemaVersion" },
+    "extensions": { "$ref": "common-definitions.schema.json#/$defs/extensions" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "support_policy_status": { "const": "SUPPORTED" } } },
+      "then": { "properties": { "policy_reason_code": { "const": "PROJECT_SUPPORTED_RUNTIME" } } }
+    },
+    {
+      "if": { "properties": { "support_policy_status": { "const": "UPSTREAM_EOL" } } },
+      "then": { "properties": { "policy_reason_code": { "const": "UPSTREAM_EOL" } } }
+    },
+    {
+      "if": { "properties": { "support_policy_status": { "const": "UNCLAIMED" } } },
+      "then": {
+        "properties": { "policy_reason_code": { "const": "NOT_VALIDATED_BY_THIS_PROJECT" } }
+      }
+    },
+    {
+      "if": { "properties": { "execution_status": { "const": "PASSED" } } },
+      "then": {
+        "properties": {
+          "commands": { "type": "array", "minItems": 1 },
+          "command_results": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["command", "status", "exit_code"],
+              "properties": {
+                "command": { "type": "string", "minLength": 1 },
+                "status": { "const": "PASSED" },
+                "exit_code": { "const": 0 }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "execution_status": { "enum": ["NOT_RUN", "NOT_AVAILABLE", "NOT_REQUIRED"] }
+        }
+      },
+      "then": {
+        "properties": {
+          "commands": { "type": "array", "maxItems": 0 },
+          "command_results": { "type": "array", "maxItems": 0 }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "execution_status": { "const": "FAILED" } } },
+      "then": {
+        "properties": {
+          "commands": { "type": "array", "minItems": 1 },
+          "command_results": {
+            "type": "array",
+            "minItems": 1,
+            "contains": {
+              "type": "object",
+              "properties": {
+                "status": { "const": "FAILED" },
+                "exit_code": { "type": "integer", "minimum": 1 }
+              },
+              "required": ["status", "exit_code"]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-ops-studio.local/schemas/1.0/feishu-integration-config.schema.json",
+  "$comment": "contract-version: 1.0.0; schema-version: 1.0.0",
+  "title": "Feishu Integration Config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provider",
+    "region",
+    "auth_mode",
+    "app_id_reference",
+    "secret_provider",
+    "parent_folder_token_reference",
+    "test_parent_folder_token_reference",
+    "base_url",
+    "request_timeout_ms",
+    "retry_policy",
+    "rate_limit_policy",
+    "token_refresh_policy",
+    "live_write_enabled",
+    "live_test_enabled",
+    "schema_version",
+    "extensions"
+  ],
+  "properties": {
+    "provider": { "const": "FEISHU" },
+    "region": { "const": "CHINA" },
+    "auth_mode": { "const": "SELF_BUILT_TENANT_APP" },
+    "app_id_reference": { "type": "string", "pattern": "^(env|vault|mcp):[A-Z0-9_./-]+$" },
+    "secret_provider": { "enum": ["ENVIRONMENT", "OS_SECURE_STORE", "MCP_SECURE_CONNECTION"] },
+    "parent_folder_token_reference": {
+      "type": ["string", "null"],
+      "pattern": "^(env|vault|mcp):[A-Z0-9_./-]+$"
+    },
+    "test_parent_folder_token_reference": {
+      "type": ["string", "null"],
+      "pattern": "^(env|vault|mcp):[A-Z0-9_./-]+$"
+    },
+    "base_url": { "const": "https://open.feishu.cn" },
+    "request_timeout_ms": { "type": "integer", "minimum": 1000, "maximum": 120000 },
+    "retry_policy": { "$ref": "#/$defs/retry" },
+    "rate_limit_policy": { "$ref": "#/$defs/rate" },
+    "token_refresh_policy": { "$ref": "#/$defs/token" },
+    "live_write_enabled": { "type": "boolean", "default": false },
+    "live_test_enabled": { "type": "boolean", "default": false },
+    "schema_version": { "const": "1.0.0" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "retry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_attempts", "base_delay_ms", "max_delay_ms", "jitter"],
+      "properties": {
+        "max_attempts": { "type": "integer", "minimum": 1, "maximum": 6 },
+        "base_delay_ms": { "type": "integer", "minimum": 0, "maximum": 60000 },
+        "max_delay_ms": { "type": "integer", "minimum": 0, "maximum": 300000 },
+        "jitter": { "type": "boolean" }
+      }
+    },
+    "rate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strategy", "respect_retry_after"],
+      "properties": {
+        "strategy": { "const": "SERVER_DIRECTED_BOUNDED" },
+        "respect_retry_after": { "const": true }
+      }
+    },
+    "token": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["refresh_window_seconds", "single_flight"],
+      "properties": {
+        "refresh_window_seconds": { "type": "integer", "minimum": 1, "maximum": 900 },
+        "single_flight": { "const": true }
+      }
+    }
+  }
+}

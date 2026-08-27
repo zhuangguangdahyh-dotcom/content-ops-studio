@@ -1,0 +1,97 @@
+{
+  "report_id": "TBCR-CAL-SPACE-001-FPV2",
+  "project_id": "CAL-COMMERCIAL-SPACE-001",
+  "content_id": "C-9001",
+  "content_version": "CV-1",
+  "copy_version": "CV-1",
+  "visual_plan_version": "VV-1",
+  "calibration_cover_version": "FPV-2",
+  "asset_id": "AST-CAL-SPACE-001-FPV2",
+  "asset_checksum": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "canvas": {
+    "width": 1242,
+    "height": 1660,
+    "aspect_ratio": "3:4",
+    "orientation": "PORTRAIT",
+    "resolution_unit": "PX"
+  },
+  "heuristic_scope": "CONTENT_OPS_INTERNAL_RELATIVE_LUMINANCE_HEURISTIC_NOT_WCAG_CERTIFICATION",
+  "gate_after": "TYPOGRAPHY_SPATIAL_INTEGRITY",
+  "gate_before": "COVER_ATTENTION_DOMINANCE",
+  "text_layers": [
+    {
+      "text_layer_id": "PRIMARY_HOOK",
+      "role": "PRIMARY_HOOK",
+      "foreground_color": "#151515",
+      "foreground_opacity": 1,
+      "text_bbox": {
+        "x": 70,
+        "y": 70,
+        "width": 800,
+        "height": 430
+      },
+      "resolved_font": "Songti SC",
+      "resolved_weight": 700,
+      "background_region": {
+        "x": 70,
+        "y": 70,
+        "width": 800,
+        "height": 430
+      },
+      "background_luminance_distribution": {
+        "minimum": 0.7,
+        "percentile_10": 0.75,
+        "median": 0.8,
+        "percentile_90": 0.85,
+        "maximum": 0.9
+      },
+      "local_contrast_distribution": {
+        "minimum": 12,
+        "percentile_10": 13,
+        "median": 14,
+        "percentile_90": 15,
+        "maximum": 16
+      },
+      "minimum_local_contrast": 12,
+      "low_percentile_local_contrast": 13,
+      "median_local_contrast": 14,
+      "low_contrast_area_ratio": 0,
+      "contrast_variance": 0.5,
+      "background_complexity": 0.002,
+      "foreground_background_edge_conflict": 0.002,
+      "worst_local_region": {
+        "x": 70,
+        "y": 70,
+        "width": 24,
+        "height": 24,
+        "median_contrast": 12
+      },
+      "actual_pixel_result": "PASS",
+      "errors": []
+    }
+  ],
+  "primary_hook_contrast": {
+    "result": "PASS",
+    "observation": "All title glyphs remain stable."
+  },
+  "supporting_signal_contrast": {
+    "result": "PASS",
+    "observation": "Supporting signal remains independently legible."
+  },
+  "contrast_stability": {
+    "result": "PASS",
+    "observation": "No unstable local region."
+  },
+  "background_complexity": {
+    "result": "PASS",
+    "observation": "No high-frequency conflict."
+  },
+  "actual_pixel_visual_qa": {
+    "result": "PASS",
+    "observation": "Full and thumbnails inspected."
+  },
+  "hard_blocks": [],
+  "result": "PASS",
+  "run_id": "RUN-20990101-010203-DEMO",
+  "created_at": "2099-01-01T01:02:03.000Z"
+}

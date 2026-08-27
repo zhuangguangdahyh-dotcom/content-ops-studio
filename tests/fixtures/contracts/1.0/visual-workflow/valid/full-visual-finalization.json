@@ -1,0 +1,2354 @@
+{
+  "content_package": {
+    "content_record": {
+      "content_id": "C-0001",
+      "project_id": "PRJ-20990101-DEMO",
+      "record_unique_key": "PRJ-20990101-DEMO::content::C-0001",
+      "primary_painpoint_id": "P-0001",
+      "content_topic": "Fictional evidence checklist",
+      "content_angle": "Decision checklist",
+      "content_structure_type": "CHECKLIST",
+      "audience_explicit_need": "Compare practical tradeoffs.",
+      "audience_deep_anxiety": "Avoid a costly mismatch.",
+      "single_core_problem": "Evidence is hard to compare.",
+      "core_viewpoint": "A stable checklist improves decisions.",
+      "solution_logic": "Define criteria, compare evidence, then decide.",
+      "content_objective": "TRUST",
+      "page_count": 1,
+      "page_structure_summary": "Cover only for the fixture.",
+      "background_direction": "Abstract neutral geometry.",
+      "visual_plan_summary": "One text-safe abstract composition.",
+      "direct_message_hook": "Ask for the fictional checklist.",
+      "publish_title": "Evidence checklist",
+      "title_character_count": 18,
+      "publish_body": "A fictional body used only for contract tests.",
+      "promotion_suitability": "MEDIUM",
+      "promotion_reason": "Clear practical value.",
+      "duplication_risk": "LOW",
+      "content_status": "COPY_APPROVED",
+      "image_status": "IMAGE_NOT_GENERATED",
+      "first_page_approval_status": "FIRST_PAGE_NOT_SUBMITTED",
+      "final_approval_status": "FINAL_NOT_SUBMITTED",
+      "sync_status": "SYNC_NOT_STARTED",
+      "output_relative_path": "projects/demo/content/C-0001",
+      "creation_source": "MOCK",
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "style_lock_version": null,
+      "schema_version": "1.0.0",
+      "last_run_id": "RUN-20990101-010203-DEMO",
+      "finalized_at": null,
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "updated_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_role": "COVER",
+        "copy_version": "CV-1",
+        "headline": "A fictional decision guide",
+        "body": "Use evidence before choosing.",
+        "supporting_text": "Sanitized fixture copy.",
+        "content_purpose": "Create a clear click reason.",
+        "background_direction": "Abstract neutral geometry.",
+        "visual_evidence_requirement": "No factual photo claim.",
+        "layout_notes": "One clear reading anchor.",
+        "negative_constraints": ["No real people"],
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "updated_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      }
+    ],
+    "evidence_refs": ["E-0001"],
+    "project_rule_snapshot": {
+      "project_id": "PRJ-20990101-DEMO",
+      "rule_snapshot_version": "1.0.0",
+      "compiled_at": "2099-01-01T01:02:03.000Z",
+      "source_rule_ids": ["R-0001"],
+      "hard_requirements": ["Use fictional examples."],
+      "preferences": ["Prefer concise explanations."],
+      "prohibitions": ["Do not invent tool success."],
+      "corrections": [],
+      "workflow_rules": ["Keep approvals version-bound."],
+      "compilation_status": "CONFIRMED_SNAPSHOT",
+      "schema_version": "1.0.0",
+      "extensions": {}
+    },
+    "platform_pack_id": "platform-demo",
+    "platform_pack_version": "1.0.0",
+    "industry_pack_id": "industry-demo",
+    "industry_pack_version": "1.0.0",
+    "content_fingerprint": {
+      "algorithm": "SHA-256",
+      "algorithm_version": "1.0.0",
+      "normalized_inputs": {
+        "painpoint_id": "P-0001",
+        "content_angle": "decision checklist",
+        "core_viewpoint": "evidence reduces uncertainty",
+        "cover_hook": "choose with evidence",
+        "content_structure_type": "checklist",
+        "main_conclusion": "compare tradeoffs before purchase"
+      },
+      "hash": "70aa4e7fec4b5a8a6908a2de4a097592c0e040e82bf33653a6daa05df055d0b6",
+      "semantic_embedding_ref": null,
+      "similarity_threshold": null,
+      "created_at": "2099-01-01T01:02:03.000Z"
+    },
+    "approval_request": {
+      "approval_id": "APR-20990101-DEMO",
+      "gate": "CONTENT_COPY",
+      "target_type": "CONTENT",
+      "target_id": "C-0001",
+      "target_version": "CV-1",
+      "decision": "APPROVE",
+      "comment": "Approved fictional copy.",
+      "source_run_id": "RUN-20990101-010203-DEMO",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "deprecated_at": null,
+      "schema_version": "1.0.0"
+    },
+    "generated_at": "2099-01-01T01:02:03.000Z",
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "extensions": {}
+  },
+  "visual_system": {
+    "visual_system_id": "VS-DEMO-001",
+    "project_id": "PRJ-20990101-DEMO",
+    "content_id": "C-0001",
+    "content_version": "CV-1",
+    "copy_version": "CV-1",
+    "visual_plan_version": "VV-1",
+    "visual_mode": "EDITORIAL_SERIES",
+    "visual_status": "VISUAL_VALIDATED",
+    "canvas": {
+      "width": 1242,
+      "height": 1660,
+      "aspect_ratio": "3:4",
+      "orientation": "PORTRAIT",
+      "resolution_unit": "PX"
+    },
+    "safe_area": {
+      "top": 80,
+      "right": 72,
+      "bottom": 80,
+      "left": 72,
+      "unit": "PX"
+    },
+    "grid_system": {
+      "rules": ["12-column flexible grid"]
+    },
+    "typography_tokens": [
+      {
+        "token_id": "TYPO-TITLE",
+        "role": "TITLE",
+        "font_family": "Fictional Sans",
+        "font_weight": 700,
+        "font_size": 72,
+        "line_height": 1.15,
+        "letter_spacing": 0,
+        "alignment": "LEFT",
+        "max_lines": 3,
+        "overflow_strategy": "REFLOW"
+      },
+      {
+        "token_id": "TYPO-BODY",
+        "role": "BODY",
+        "font_family": "Fictional Sans",
+        "font_weight": 400,
+        "font_size": 40,
+        "line_height": 1.4,
+        "letter_spacing": 0,
+        "alignment": "LEFT",
+        "max_lines": 8,
+        "overflow_strategy": "BLOCK_AND_RETURN"
+      }
+    ],
+    "color_tokens": [
+      {
+        "token_id": "COLOR-TEXT",
+        "role": "PRIMARY_TEXT",
+        "value": "#2A241F",
+        "color_space": "HEX",
+        "opacity": 1
+      },
+      {
+        "token_id": "COLOR-BACKGROUND",
+        "role": "BACKGROUND",
+        "value": "#F4EEE6",
+        "color_space": "HEX",
+        "opacity": 1
+      }
+    ],
+    "global_image_treatment": {
+      "brightness": 0,
+      "contrast": 0.05,
+      "saturation": -0.1,
+      "blur": 0,
+      "overlay": "warm-neutral-10",
+      "gradient": "bottom-soft",
+      "mask": "none",
+      "crop_strategy": "COVER"
+    },
+    "global_layout_rules": {
+      "rules": ["Keep one reading anchor"]
+    },
+    "brand_mark_rules": {
+      "rules": ["No unapproved logo"]
+    },
+    "page_number_rules": {
+      "rules": ["Two-digit page number"]
+    },
+    "global_visual_direction": "Calm fictional editorial system.",
+    "global_background_strategy": "Text-free geometry with page-specific variation.",
+    "global_negative_constraints": ["No real customer material"],
+    "project_rule_snapshot_id": "RULE-SNAPSHOT-DEMO",
+    "platform_pack_id": "platform-demo",
+    "platform_pack_version": "1.0.0",
+    "industry_pack_id": "industry-demo",
+    "industry_pack_version": "1.0.0",
+    "pages": [
+      {
+        "page_visual_plan_id": "PVP-DEMO-01",
+        "project_id": "PRJ-20990101-DEMO",
+        "content_id": "C-0001",
+        "page_number": 1,
+        "page_role": "COVER",
+        "content_version": "CV-1",
+        "copy_version": "CV-1",
+        "visual_plan_version": "VV-1",
+        "visual_mode": "EDITORIAL_SERIES",
+        "visual_purpose": "Establish the decision promise.",
+        "copy_snapshot": {
+          "copy_version": "CV-1",
+          "headline": "A fictional decision guide",
+          "body": "Use evidence before choosing.",
+          "supporting_text": "Sanitized fixture copy."
+        },
+        "background_direction": "Text-free editorial geometry with clear negative space.",
+        "visual_evidence_requirement": "No factual photo claim.",
+        "asset_requirements": ["text-free-background"],
+        "composition": "Stable left reading anchor with one visual counterweight.",
+        "camera_and_lens_direction": null,
+        "lighting_direction": null,
+        "material_and_texture_direction": "Subtle paper texture.",
+        "character_or_subject_direction": null,
+        "layout_regions": [
+          {
+            "region_id": "REGION-TEXT",
+            "role": "TEXT",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "z_index": 2
+          }
+        ],
+        "text_layers": [
+          {
+            "layer_id": "LAYER-TITLE-1",
+            "role": "TITLE",
+            "content_source": "copy_snapshot.headline",
+            "content_snapshot": "A fictional decision guide",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "typography_token_id": "TYPO-TITLE",
+            "color_token_id": "COLOR-TEXT",
+            "z_index": 3,
+            "required": true
+          }
+        ],
+        "image_treatment": {
+          "brightness": 0,
+          "contrast": 0.05,
+          "saturation": -0.1,
+          "blur": 0,
+          "overlay": "warm-neutral-10",
+          "gradient": "bottom-soft",
+          "mask": "none",
+          "crop_strategy": "COVER"
+        },
+        "safe_area": {
+          "top": 80,
+          "right": 72,
+          "bottom": 80,
+          "left": 72,
+          "unit": "PX"
+        },
+        "estimated_text_density": 0.25,
+        "max_text_density": 0.45,
+        "overflow_strategy": "REFLOW",
+        "negative_constraints": ["No generated informational Chinese text"],
+        "allowed_variations": ["Change local supporting geometry"],
+        "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+        "approval_dependency": "COPY_APPROVED",
+        "run_id": "RUN-20990101-010203-DEMO",
+        "schema_version": "1.0.0",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "updated_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      {
+        "page_visual_plan_id": "PVP-DEMO-02",
+        "project_id": "PRJ-20990101-DEMO",
+        "content_id": "C-0001",
+        "page_number": 2,
+        "page_role": "ANALYSIS",
+        "content_version": "CV-1",
+        "copy_version": "CV-1",
+        "visual_plan_version": "VV-1",
+        "visual_mode": "EDITORIAL_SERIES",
+        "visual_purpose": "Explain one fictional decision step.",
+        "copy_snapshot": {
+          "copy_version": "CV-1",
+          "headline": "Fictional step 2",
+          "body": "Compare one criterion at a time.",
+          "supporting_text": "Sanitized fixture copy."
+        },
+        "background_direction": "Text-free editorial geometry with clear negative space.",
+        "visual_evidence_requirement": "No factual photo claim.",
+        "asset_requirements": ["text-free-background"],
+        "composition": "Stable left reading anchor with one visual counterweight.",
+        "camera_and_lens_direction": null,
+        "lighting_direction": null,
+        "material_and_texture_direction": "Subtle paper texture.",
+        "character_or_subject_direction": null,
+        "layout_regions": [
+          {
+            "region_id": "REGION-TEXT",
+            "role": "TEXT",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "z_index": 2
+          }
+        ],
+        "text_layers": [
+          {
+            "layer_id": "LAYER-TITLE-2",
+            "role": "TITLE",
+            "content_source": "copy_snapshot.headline",
+            "content_snapshot": "Fictional step 2",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "typography_token_id": "TYPO-TITLE",
+            "color_token_id": "COLOR-TEXT",
+            "z_index": 3,
+            "required": true
+          }
+        ],
+        "image_treatment": {
+          "brightness": 0,
+          "contrast": 0.05,
+          "saturation": -0.1,
+          "blur": 0,
+          "overlay": "warm-neutral-10",
+          "gradient": "bottom-soft",
+          "mask": "none",
+          "crop_strategy": "COVER"
+        },
+        "safe_area": {
+          "top": 80,
+          "right": 72,
+          "bottom": 80,
+          "left": 72,
+          "unit": "PX"
+        },
+        "estimated_text_density": 0.25,
+        "max_text_density": 0.45,
+        "overflow_strategy": "REFLOW",
+        "negative_constraints": ["No generated informational Chinese text"],
+        "allowed_variations": ["Change local supporting geometry"],
+        "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+        "approval_dependency": "FIRST_PAGE_APPROVED",
+        "run_id": "RUN-20990101-010203-DEMO",
+        "schema_version": "1.0.0",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "updated_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      {
+        "page_visual_plan_id": "PVP-DEMO-03",
+        "project_id": "PRJ-20990101-DEMO",
+        "content_id": "C-0001",
+        "page_number": 3,
+        "page_role": "ANALYSIS",
+        "content_version": "CV-1",
+        "copy_version": "CV-1",
+        "visual_plan_version": "VV-1",
+        "visual_mode": "EDITORIAL_SERIES",
+        "visual_purpose": "Explain one fictional decision step.",
+        "copy_snapshot": {
+          "copy_version": "CV-1",
+          "headline": "Fictional step 3",
+          "body": "Compare one criterion at a time.",
+          "supporting_text": "Sanitized fixture copy."
+        },
+        "background_direction": "Text-free editorial geometry with clear negative space.",
+        "visual_evidence_requirement": "No factual photo claim.",
+        "asset_requirements": ["text-free-background"],
+        "composition": "Stable left reading anchor with one visual counterweight.",
+        "camera_and_lens_direction": null,
+        "lighting_direction": null,
+        "material_and_texture_direction": "Subtle paper texture.",
+        "character_or_subject_direction": null,
+        "layout_regions": [
+          {
+            "region_id": "REGION-TEXT",
+            "role": "TEXT",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "z_index": 2
+          }
+        ],
+        "text_layers": [
+          {
+            "layer_id": "LAYER-TITLE-3",
+            "role": "TITLE",
+            "content_source": "copy_snapshot.headline",
+            "content_snapshot": "Fictional step 3",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "typography_token_id": "TYPO-TITLE",
+            "color_token_id": "COLOR-TEXT",
+            "z_index": 3,
+            "required": true
+          }
+        ],
+        "image_treatment": {
+          "brightness": 0,
+          "contrast": 0.05,
+          "saturation": -0.1,
+          "blur": 0,
+          "overlay": "warm-neutral-10",
+          "gradient": "bottom-soft",
+          "mask": "none",
+          "crop_strategy": "COVER"
+        },
+        "safe_area": {
+          "top": 80,
+          "right": 72,
+          "bottom": 80,
+          "left": 72,
+          "unit": "PX"
+        },
+        "estimated_text_density": 0.25,
+        "max_text_density": 0.45,
+        "overflow_strategy": "REFLOW",
+        "negative_constraints": ["No generated informational Chinese text"],
+        "allowed_variations": ["Change local supporting geometry"],
+        "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+        "approval_dependency": "FIRST_PAGE_APPROVED",
+        "run_id": "RUN-20990101-010203-DEMO",
+        "schema_version": "1.0.0",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "updated_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      {
+        "page_visual_plan_id": "PVP-DEMO-04",
+        "project_id": "PRJ-20990101-DEMO",
+        "content_id": "C-0001",
+        "page_number": 4,
+        "page_role": "CTA",
+        "content_version": "CV-1",
+        "copy_version": "CV-1",
+        "visual_plan_version": "VV-1",
+        "visual_mode": "EDITORIAL_SERIES",
+        "visual_purpose": "Explain one fictional decision step.",
+        "copy_snapshot": {
+          "copy_version": "CV-1",
+          "headline": "Fictional step 4",
+          "body": "Compare one criterion at a time.",
+          "supporting_text": "Sanitized fixture copy."
+        },
+        "background_direction": "Text-free editorial geometry with clear negative space.",
+        "visual_evidence_requirement": "No factual photo claim.",
+        "asset_requirements": ["text-free-background"],
+        "composition": "Stable left reading anchor with one visual counterweight.",
+        "camera_and_lens_direction": null,
+        "lighting_direction": null,
+        "material_and_texture_direction": "Subtle paper texture.",
+        "character_or_subject_direction": null,
+        "layout_regions": [
+          {
+            "region_id": "REGION-TEXT",
+            "role": "TEXT",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "z_index": 2
+          }
+        ],
+        "text_layers": [
+          {
+            "layer_id": "LAYER-TITLE-4",
+            "role": "TITLE",
+            "content_source": "copy_snapshot.headline",
+            "content_snapshot": "Fictional step 4",
+            "bbox": {
+              "x": 8,
+              "y": 8,
+              "width": 84,
+              "height": 30,
+              "unit": "PERCENT"
+            },
+            "typography_token_id": "TYPO-TITLE",
+            "color_token_id": "COLOR-TEXT",
+            "z_index": 3,
+            "required": true
+          }
+        ],
+        "image_treatment": {
+          "brightness": 0,
+          "contrast": 0.05,
+          "saturation": -0.1,
+          "blur": 0,
+          "overlay": "warm-neutral-10",
+          "gradient": "bottom-soft",
+          "mask": "none",
+          "crop_strategy": "COVER"
+        },
+        "safe_area": {
+          "top": 80,
+          "right": 72,
+          "bottom": 80,
+          "left": 72,
+          "unit": "PX"
+        },
+        "estimated_text_density": 0.25,
+        "max_text_density": 0.45,
+        "overflow_strategy": "REFLOW",
+        "negative_constraints": ["No generated informational Chinese text"],
+        "allowed_variations": ["Change local supporting geometry"],
+        "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+        "approval_dependency": "FIRST_PAGE_APPROVED",
+        "run_id": "RUN-20990101-010203-DEMO",
+        "schema_version": "1.0.0",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "updated_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      }
+    ],
+    "created_by_skill": "visual-planning",
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "updated_at": "2099-01-01T01:02:03.000Z",
+    "extensions": {}
+  },
+  "page_visual_plans": [
+    {
+      "page_visual_plan_id": "PVP-DEMO-01",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 1,
+      "page_role": "COVER",
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "visual_mode": "EDITORIAL_SERIES",
+      "visual_purpose": "Establish the decision promise.",
+      "copy_snapshot": {
+        "copy_version": "CV-1",
+        "headline": "A fictional decision guide",
+        "body": "Use evidence before choosing.",
+        "supporting_text": "Sanitized fixture copy."
+      },
+      "background_direction": "Text-free editorial geometry with clear negative space.",
+      "visual_evidence_requirement": "No factual photo claim.",
+      "asset_requirements": ["text-free-background"],
+      "composition": "Stable left reading anchor with one visual counterweight.",
+      "camera_and_lens_direction": null,
+      "lighting_direction": null,
+      "material_and_texture_direction": "Subtle paper texture.",
+      "character_or_subject_direction": null,
+      "layout_regions": [
+        {
+          "region_id": "REGION-TEXT",
+          "role": "TEXT",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "z_index": 2
+        }
+      ],
+      "text_layers": [
+        {
+          "layer_id": "LAYER-TITLE-1",
+          "role": "TITLE",
+          "content_source": "copy_snapshot.headline",
+          "content_snapshot": "A fictional decision guide",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "typography_token_id": "TYPO-TITLE",
+          "color_token_id": "COLOR-TEXT",
+          "z_index": 3,
+          "required": true
+        }
+      ],
+      "image_treatment": {
+        "brightness": 0,
+        "contrast": 0.05,
+        "saturation": -0.1,
+        "blur": 0,
+        "overlay": "warm-neutral-10",
+        "gradient": "bottom-soft",
+        "mask": "none",
+        "crop_strategy": "COVER"
+      },
+      "safe_area": {
+        "top": 80,
+        "right": 72,
+        "bottom": 80,
+        "left": 72,
+        "unit": "PX"
+      },
+      "estimated_text_density": 0.25,
+      "max_text_density": 0.45,
+      "overflow_strategy": "REFLOW",
+      "negative_constraints": ["No generated informational Chinese text"],
+      "allowed_variations": ["Change local supporting geometry"],
+      "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+      "approval_dependency": "COPY_APPROVED",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "updated_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    {
+      "page_visual_plan_id": "PVP-DEMO-02",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 2,
+      "page_role": "ANALYSIS",
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "visual_mode": "EDITORIAL_SERIES",
+      "visual_purpose": "Explain one fictional decision step.",
+      "copy_snapshot": {
+        "copy_version": "CV-1",
+        "headline": "Fictional step 2",
+        "body": "Compare one criterion at a time.",
+        "supporting_text": "Sanitized fixture copy."
+      },
+      "background_direction": "Text-free editorial geometry with clear negative space.",
+      "visual_evidence_requirement": "No factual photo claim.",
+      "asset_requirements": ["text-free-background"],
+      "composition": "Stable left reading anchor with one visual counterweight.",
+      "camera_and_lens_direction": null,
+      "lighting_direction": null,
+      "material_and_texture_direction": "Subtle paper texture.",
+      "character_or_subject_direction": null,
+      "layout_regions": [
+        {
+          "region_id": "REGION-TEXT",
+          "role": "TEXT",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "z_index": 2
+        }
+      ],
+      "text_layers": [
+        {
+          "layer_id": "LAYER-TITLE-2",
+          "role": "TITLE",
+          "content_source": "copy_snapshot.headline",
+          "content_snapshot": "Fictional step 2",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "typography_token_id": "TYPO-TITLE",
+          "color_token_id": "COLOR-TEXT",
+          "z_index": 3,
+          "required": true
+        }
+      ],
+      "image_treatment": {
+        "brightness": 0,
+        "contrast": 0.05,
+        "saturation": -0.1,
+        "blur": 0,
+        "overlay": "warm-neutral-10",
+        "gradient": "bottom-soft",
+        "mask": "none",
+        "crop_strategy": "COVER"
+      },
+      "safe_area": {
+        "top": 80,
+        "right": 72,
+        "bottom": 80,
+        "left": 72,
+        "unit": "PX"
+      },
+      "estimated_text_density": 0.25,
+      "max_text_density": 0.45,
+      "overflow_strategy": "REFLOW",
+      "negative_constraints": ["No generated informational Chinese text"],
+      "allowed_variations": ["Change local supporting geometry"],
+      "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+      "approval_dependency": "FIRST_PAGE_APPROVED",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "updated_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    {
+      "page_visual_plan_id": "PVP-DEMO-03",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 3,
+      "page_role": "ANALYSIS",
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "visual_mode": "EDITORIAL_SERIES",
+      "visual_purpose": "Explain one fictional decision step.",
+      "copy_snapshot": {
+        "copy_version": "CV-1",
+        "headline": "Fictional step 3",
+        "body": "Compare one criterion at a time.",
+        "supporting_text": "Sanitized fixture copy."
+      },
+      "background_direction": "Text-free editorial geometry with clear negative space.",
+      "visual_evidence_requirement": "No factual photo claim.",
+      "asset_requirements": ["text-free-background"],
+      "composition": "Stable left reading anchor with one visual counterweight.",
+      "camera_and_lens_direction": null,
+      "lighting_direction": null,
+      "material_and_texture_direction": "Subtle paper texture.",
+      "character_or_subject_direction": null,
+      "layout_regions": [
+        {
+          "region_id": "REGION-TEXT",
+          "role": "TEXT",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "z_index": 2
+        }
+      ],
+      "text_layers": [
+        {
+          "layer_id": "LAYER-TITLE-3",
+          "role": "TITLE",
+          "content_source": "copy_snapshot.headline",
+          "content_snapshot": "Fictional step 3",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "typography_token_id": "TYPO-TITLE",
+          "color_token_id": "COLOR-TEXT",
+          "z_index": 3,
+          "required": true
+        }
+      ],
+      "image_treatment": {
+        "brightness": 0,
+        "contrast": 0.05,
+        "saturation": -0.1,
+        "blur": 0,
+        "overlay": "warm-neutral-10",
+        "gradient": "bottom-soft",
+        "mask": "none",
+        "crop_strategy": "COVER"
+      },
+      "safe_area": {
+        "top": 80,
+        "right": 72,
+        "bottom": 80,
+        "left": 72,
+        "unit": "PX"
+      },
+      "estimated_text_density": 0.25,
+      "max_text_density": 0.45,
+      "overflow_strategy": "REFLOW",
+      "negative_constraints": ["No generated informational Chinese text"],
+      "allowed_variations": ["Change local supporting geometry"],
+      "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+      "approval_dependency": "FIRST_PAGE_APPROVED",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "updated_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    {
+      "page_visual_plan_id": "PVP-DEMO-04",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 4,
+      "page_role": "CTA",
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "visual_mode": "EDITORIAL_SERIES",
+      "visual_purpose": "Explain one fictional decision step.",
+      "copy_snapshot": {
+        "copy_version": "CV-1",
+        "headline": "Fictional step 4",
+        "body": "Compare one criterion at a time.",
+        "supporting_text": "Sanitized fixture copy."
+      },
+      "background_direction": "Text-free editorial geometry with clear negative space.",
+      "visual_evidence_requirement": "No factual photo claim.",
+      "asset_requirements": ["text-free-background"],
+      "composition": "Stable left reading anchor with one visual counterweight.",
+      "camera_and_lens_direction": null,
+      "lighting_direction": null,
+      "material_and_texture_direction": "Subtle paper texture.",
+      "character_or_subject_direction": null,
+      "layout_regions": [
+        {
+          "region_id": "REGION-TEXT",
+          "role": "TEXT",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "z_index": 2
+        }
+      ],
+      "text_layers": [
+        {
+          "layer_id": "LAYER-TITLE-4",
+          "role": "TITLE",
+          "content_source": "copy_snapshot.headline",
+          "content_snapshot": "Fictional step 4",
+          "bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "typography_token_id": "TYPO-TITLE",
+          "color_token_id": "COLOR-TEXT",
+          "z_index": 3,
+          "required": true
+        }
+      ],
+      "image_treatment": {
+        "brightness": 0,
+        "contrast": 0.05,
+        "saturation": -0.1,
+        "blur": 0,
+        "overlay": "warm-neutral-10",
+        "gradient": "bottom-soft",
+        "mask": "none",
+        "crop_strategy": "COVER"
+      },
+      "safe_area": {
+        "top": 80,
+        "right": 72,
+        "bottom": 80,
+        "left": 72,
+        "unit": "PX"
+      },
+      "estimated_text_density": 0.25,
+      "max_text_density": 0.45,
+      "overflow_strategy": "REFLOW",
+      "negative_constraints": ["No generated informational Chinese text"],
+      "allowed_variations": ["Change local supporting geometry"],
+      "fallback_strategy": "Use a solid editorial background and preserve the text system.",
+      "approval_dependency": "FIRST_PAGE_APPROVED",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "updated_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    }
+  ],
+  "first_page_generation_manifest": {
+    "generation_id": "GEN-DEMO-01",
+    "project_id": "PRJ-20990101-DEMO",
+    "content_id": "C-0001",
+    "page_number": 1,
+    "content_version": "CV-1",
+    "copy_version": "CV-1",
+    "visual_plan_version": "VV-1",
+    "style_lock_version": null,
+    "generation_type": "FIRST_PAGE_BACKGROUND",
+    "adapter": "mock-image-generation",
+    "provider": {
+      "provider_name": "MOCK",
+      "request_identifier": "MOCK-REQ-1"
+    },
+    "model_descriptor": {
+      "model_name": "fixture-model",
+      "model_version": "mock-only"
+    },
+    "input_assets": [],
+    "reference_assets": [],
+    "prompt_snapshot": "Fictional text-free editorial background for page 1.",
+    "negative_constraints": ["No informational text"],
+    "requested_output": {
+      "asset_role": "BACKGROUND",
+      "mime_type": "image/png",
+      "canvas": {
+        "width": 1242,
+        "height": 1660,
+        "aspect_ratio": "3:4",
+        "orientation": "PORTRAIT",
+        "resolution_unit": "PX"
+      },
+      "relative_path": "projects/demo/assets/backgrounds/01_v001.png"
+    },
+    "attempts": [
+      {
+        "attempt_number": 1,
+        "status": "FAILED",
+        "version_binding": {
+          "content_version": "CV-1",
+          "copy_version": "CV-1",
+          "visual_plan_version": "VV-1",
+          "style_lock_version": null,
+          "asset_version": 1
+        },
+        "request_summary": "Fictional first attempt.",
+        "output_asset_refs": [],
+        "failure_code": "MOCK_RETRY",
+        "failure_message": "Injected fictional retry.",
+        "started_at": "2099-01-01T01:02:03.000Z",
+        "completed_at": "2099-01-01T01:02:03.000Z"
+      },
+      {
+        "attempt_number": 2,
+        "status": "SUCCESS",
+        "version_binding": {
+          "content_version": "CV-1",
+          "copy_version": "CV-1",
+          "visual_plan_version": "VV-1",
+          "style_lock_version": null,
+          "asset_version": 1
+        },
+        "request_summary": "Fictional second attempt.",
+        "output_asset_refs": ["AST-BACKGROUND-01"],
+        "failure_code": null,
+        "failure_message": null,
+        "started_at": "2099-01-01T01:02:03.000Z",
+        "completed_at": "2099-01-01T01:02:03.000Z"
+      }
+    ],
+    "output_assets": [
+      {
+        "asset_id": "AST-BACKGROUND-01",
+        "asset_role": "BACKGROUND",
+        "asset_type": "IMAGE",
+        "mime_type": "image/png",
+        "relative_path": "projects/demo/assets/backgrounds/01_v001.png",
+        "source_type": "MOCK",
+        "source_adapter": "mock-image-generation",
+        "source_run_id": "RUN-20990101-010203-DEMO",
+        "source_generation_id": "GEN-DEMO-01",
+        "version": 1,
+        "width": 1242,
+        "height": 1660,
+        "file_size": 4096,
+        "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      }
+    ],
+    "generation_status": "GENERATION_SUCCESS",
+    "failure_summary": null,
+    "warnings": [],
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "started_at": "2099-01-01T01:02:03.000Z",
+    "completed_at": "2099-01-01T01:02:03.000Z",
+    "extensions": {}
+  },
+  "first_page_approval": {
+    "approval_id": "APR-20990101-G4AA",
+    "gate": "FIRST_PAGE",
+    "target_type": "CONTENT",
+    "target_id": "C-0001",
+    "target_version": "VV-1",
+    "decision": "APPROVE",
+    "comment": "Approved fictional first page.",
+    "source_run_id": "RUN-20990101-010203-DEMO",
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "deprecated_at": null,
+    "schema_version": "1.0.0"
+  },
+  "style_lock": {
+    "style_lock_id": "SL-DEMO-001",
+    "project_id": "PRJ-20990101-DEMO",
+    "content_id": "C-0001",
+    "content_version": "CV-1",
+    "copy_version": "CV-1",
+    "visual_plan_version": "VV-1",
+    "first_page_version": "FPV-1",
+    "source_first_page_checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "renderer_environment_ref": "projects/demo/runs/run/outputs/first-page/renderer-environment-evidence.json",
+    "style_lock_version": "SLV-1",
+    "source_first_page_plan_id": "PVP-DEMO-01",
+    "source_first_page_asset": {
+      "asset_id": "AST-RENDERED-01",
+      "asset_role": "RENDERED_PAGE",
+      "asset_type": "IMAGE",
+      "mime_type": "image/png",
+      "relative_path": "projects/demo/renders/01-cover_v001.png",
+      "source_type": "RENDERED",
+      "source_adapter": "mock-renderer",
+      "source_run_id": "RUN-20990101-010203-DEMO",
+      "source_generation_id": "GEN-DEMO-01",
+      "version": 1,
+      "width": 1242,
+      "height": 1660,
+      "file_size": 4096,
+      "checksum": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    "first_page_approval_id": "APR-20990101-G4AA",
+    "first_page_approval_version": "VV-1",
+    "first_page_approval": {
+      "approval_id": "APR-20990101-G4AA",
+      "gate": "FIRST_PAGE",
+      "target_type": "CONTENT",
+      "target_id": "C-0001",
+      "target_version": "VV-1",
+      "decision": "APPROVE",
+      "comment": "Approved fictional first page.",
+      "source_run_id": "RUN-20990101-010203-DEMO",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "deprecated_at": null,
+      "schema_version": "1.0.0"
+    },
+    "locked_canvas": {
+      "width": 1242,
+      "height": 1660,
+      "aspect_ratio": "3:4",
+      "orientation": "PORTRAIT",
+      "resolution_unit": "PX"
+    },
+    "locked_safe_area": {
+      "top": 80,
+      "right": 72,
+      "bottom": 80,
+      "left": 72,
+      "unit": "PX"
+    },
+    "locked_typography_tokens": [
+      {
+        "token_id": "TYPO-TITLE",
+        "role": "TITLE",
+        "font_family": "Fictional Sans",
+        "font_weight": 700,
+        "font_size": 72,
+        "line_height": 1.15,
+        "letter_spacing": 0,
+        "alignment": "LEFT",
+        "max_lines": 3,
+        "overflow_strategy": "REFLOW"
+      },
+      {
+        "token_id": "TYPO-BODY",
+        "role": "BODY",
+        "font_family": "Fictional Sans",
+        "font_weight": 400,
+        "font_size": 40,
+        "line_height": 1.4,
+        "letter_spacing": 0,
+        "alignment": "LEFT",
+        "max_lines": 8,
+        "overflow_strategy": "BLOCK_AND_RETURN"
+      }
+    ],
+    "locked_color_tokens": [
+      {
+        "token_id": "COLOR-TEXT",
+        "role": "PRIMARY_TEXT",
+        "value": "#2A241F",
+        "color_space": "HEX",
+        "opacity": 1
+      },
+      {
+        "token_id": "COLOR-BACKGROUND",
+        "role": "BACKGROUND",
+        "value": "#F4EEE6",
+        "color_space": "HEX",
+        "opacity": 1
+      }
+    ],
+    "locked_grid": {
+      "columns": 12,
+      "gutter": 24
+    },
+    "locked_image_treatment": {
+      "brightness": 0,
+      "contrast": 0.05,
+      "saturation": -0.1,
+      "blur": 0,
+      "overlay": "warm-neutral-10",
+      "gradient": "bottom-soft",
+      "mask": "none",
+      "crop_strategy": "COVER"
+    },
+    "locked_layout_logic": ["Preserve one reading anchor"],
+    "locked_brand_rules": ["No unapproved logo"],
+    "locked_page_number_rules": ["Two-digit page number"],
+    "locked_visual_mode": "EDITORIAL_SERIES",
+    "locked_rules": [
+      "Lock the visual mode, canvas, safe area, typography system, palette and image treatment."
+    ],
+    "allowed_variations": [
+      "Vary the subject, crop, text placement, whitespace distribution and local emphasis."
+    ],
+    "allowed_page_variations": ["Local supporting geometry"],
+    "prohibited_deviations": [
+      "CHANGE_TYPOGRAPHY_SYSTEM",
+      "CHANGE_GLOBAL_COLOR_SYSTEM",
+      "CHANGE_VISUAL_MODE",
+      "CHANGE_GLOBAL_IMAGE_TREATMENT",
+      "CHANGE_PRIMARY_LAYOUT_LOGIC",
+      "CHANGE_SAFE_AREA_SYSTEM",
+      "CHANGE_BRAND_MARK_RULES",
+      "CHANGE_PAGE_NUMBER_RULES"
+    ],
+    "created_by_skill": "image-set-production",
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "invalidated_at": null,
+    "extensions": {}
+  },
+  "remaining_generation_manifests": [
+    {
+      "generation_id": "GEN-DEMO-02",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 2,
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "style_lock_version": "SLV-1",
+      "generation_type": "PAGE_BACKGROUND",
+      "adapter": "mock-image-generation",
+      "provider": {
+        "provider_name": "MOCK",
+        "request_identifier": "MOCK-REQ-2"
+      },
+      "model_descriptor": {
+        "model_name": "fixture-model",
+        "model_version": "mock-only"
+      },
+      "input_assets": [],
+      "reference_assets": [
+        {
+          "asset_id": "AST-BACKGROUND-01",
+          "asset_role": "BACKGROUND",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/assets/backgrounds/01_v001.png",
+          "source_type": "MOCK",
+          "source_adapter": "mock-image-generation",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      ],
+      "prompt_snapshot": "Fictional text-free editorial background for page 2.",
+      "negative_constraints": ["No informational text"],
+      "requested_output": {
+        "asset_role": "BACKGROUND",
+        "mime_type": "image/png",
+        "canvas": {
+          "width": 1242,
+          "height": 1660,
+          "aspect_ratio": "3:4",
+          "orientation": "PORTRAIT",
+          "resolution_unit": "PX"
+        },
+        "relative_path": "projects/demo/assets/backgrounds/02_v001.png"
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "FAILED",
+          "version_binding": {
+            "content_version": "CV-1",
+            "copy_version": "CV-1",
+            "visual_plan_version": "VV-1",
+            "style_lock_version": "SLV-1",
+            "asset_version": 1
+          },
+          "request_summary": "Fictional first attempt.",
+          "output_asset_refs": [],
+          "failure_code": "MOCK_RETRY",
+          "failure_message": "Injected fictional retry.",
+          "started_at": "2099-01-01T01:02:03.000Z",
+          "completed_at": "2099-01-01T01:02:03.000Z"
+        },
+        {
+          "attempt_number": 2,
+          "status": "SUCCESS",
+          "version_binding": {
+            "content_version": "CV-1",
+            "copy_version": "CV-1",
+            "visual_plan_version": "VV-1",
+            "style_lock_version": "SLV-1",
+            "asset_version": 1
+          },
+          "request_summary": "Fictional second attempt.",
+          "output_asset_refs": ["AST-BACKGROUND-02"],
+          "failure_code": null,
+          "failure_message": null,
+          "started_at": "2099-01-01T01:02:03.000Z",
+          "completed_at": "2099-01-01T01:02:03.000Z"
+        }
+      ],
+      "output_assets": [
+        {
+          "asset_id": "AST-BACKGROUND-02",
+          "asset_role": "BACKGROUND",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/assets/backgrounds/02_v001.png",
+          "source_type": "MOCK",
+          "source_adapter": "mock-image-generation",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      ],
+      "generation_status": "GENERATION_SUCCESS",
+      "failure_summary": null,
+      "warnings": [],
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "started_at": "2099-01-01T01:02:03.000Z",
+      "completed_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    {
+      "generation_id": "GEN-DEMO-03",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 3,
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "style_lock_version": "SLV-1",
+      "generation_type": "PAGE_BACKGROUND",
+      "adapter": "mock-image-generation",
+      "provider": {
+        "provider_name": "MOCK",
+        "request_identifier": "MOCK-REQ-3"
+      },
+      "model_descriptor": {
+        "model_name": "fixture-model",
+        "model_version": "mock-only"
+      },
+      "input_assets": [],
+      "reference_assets": [
+        {
+          "asset_id": "AST-BACKGROUND-01",
+          "asset_role": "BACKGROUND",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/assets/backgrounds/01_v001.png",
+          "source_type": "MOCK",
+          "source_adapter": "mock-image-generation",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      ],
+      "prompt_snapshot": "Fictional text-free editorial background for page 3.",
+      "negative_constraints": ["No informational text"],
+      "requested_output": {
+        "asset_role": "BACKGROUND",
+        "mime_type": "image/png",
+        "canvas": {
+          "width": 1242,
+          "height": 1660,
+          "aspect_ratio": "3:4",
+          "orientation": "PORTRAIT",
+          "resolution_unit": "PX"
+        },
+        "relative_path": "projects/demo/assets/backgrounds/03_v001.png"
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "FAILED",
+          "version_binding": {
+            "content_version": "CV-1",
+            "copy_version": "CV-1",
+            "visual_plan_version": "VV-1",
+            "style_lock_version": "SLV-1",
+            "asset_version": 1
+          },
+          "request_summary": "Fictional first attempt.",
+          "output_asset_refs": [],
+          "failure_code": "MOCK_RETRY",
+          "failure_message": "Injected fictional retry.",
+          "started_at": "2099-01-01T01:02:03.000Z",
+          "completed_at": "2099-01-01T01:02:03.000Z"
+        },
+        {
+          "attempt_number": 2,
+          "status": "SUCCESS",
+          "version_binding": {
+            "content_version": "CV-1",
+            "copy_version": "CV-1",
+            "visual_plan_version": "VV-1",
+            "style_lock_version": "SLV-1",
+            "asset_version": 1
+          },
+          "request_summary": "Fictional second attempt.",
+          "output_asset_refs": ["AST-BACKGROUND-03"],
+          "failure_code": null,
+          "failure_message": null,
+          "started_at": "2099-01-01T01:02:03.000Z",
+          "completed_at": "2099-01-01T01:02:03.000Z"
+        }
+      ],
+      "output_assets": [
+        {
+          "asset_id": "AST-BACKGROUND-03",
+          "asset_role": "BACKGROUND",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/assets/backgrounds/03_v001.png",
+          "source_type": "MOCK",
+          "source_adapter": "mock-image-generation",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      ],
+      "generation_status": "GENERATION_SUCCESS",
+      "failure_summary": null,
+      "warnings": [],
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "started_at": "2099-01-01T01:02:03.000Z",
+      "completed_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    {
+      "generation_id": "GEN-DEMO-04",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 4,
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "style_lock_version": "SLV-1",
+      "generation_type": "PAGE_BACKGROUND",
+      "adapter": "mock-image-generation",
+      "provider": {
+        "provider_name": "MOCK",
+        "request_identifier": "MOCK-REQ-4"
+      },
+      "model_descriptor": {
+        "model_name": "fixture-model",
+        "model_version": "mock-only"
+      },
+      "input_assets": [],
+      "reference_assets": [
+        {
+          "asset_id": "AST-BACKGROUND-01",
+          "asset_role": "BACKGROUND",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/assets/backgrounds/01_v001.png",
+          "source_type": "MOCK",
+          "source_adapter": "mock-image-generation",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      ],
+      "prompt_snapshot": "Fictional text-free editorial background for page 4.",
+      "negative_constraints": ["No informational text"],
+      "requested_output": {
+        "asset_role": "BACKGROUND",
+        "mime_type": "image/png",
+        "canvas": {
+          "width": 1242,
+          "height": 1660,
+          "aspect_ratio": "3:4",
+          "orientation": "PORTRAIT",
+          "resolution_unit": "PX"
+        },
+        "relative_path": "projects/demo/assets/backgrounds/04_v001.png"
+      },
+      "attempts": [
+        {
+          "attempt_number": 1,
+          "status": "FAILED",
+          "version_binding": {
+            "content_version": "CV-1",
+            "copy_version": "CV-1",
+            "visual_plan_version": "VV-1",
+            "style_lock_version": "SLV-1",
+            "asset_version": 1
+          },
+          "request_summary": "Fictional first attempt.",
+          "output_asset_refs": [],
+          "failure_code": "MOCK_RETRY",
+          "failure_message": "Injected fictional retry.",
+          "started_at": "2099-01-01T01:02:03.000Z",
+          "completed_at": "2099-01-01T01:02:03.000Z"
+        },
+        {
+          "attempt_number": 2,
+          "status": "SUCCESS",
+          "version_binding": {
+            "content_version": "CV-1",
+            "copy_version": "CV-1",
+            "visual_plan_version": "VV-1",
+            "style_lock_version": "SLV-1",
+            "asset_version": 1
+          },
+          "request_summary": "Fictional second attempt.",
+          "output_asset_refs": ["AST-BACKGROUND-04"],
+          "failure_code": null,
+          "failure_message": null,
+          "started_at": "2099-01-01T01:02:03.000Z",
+          "completed_at": "2099-01-01T01:02:03.000Z"
+        }
+      ],
+      "output_assets": [
+        {
+          "asset_id": "AST-BACKGROUND-04",
+          "asset_role": "BACKGROUND",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/assets/backgrounds/04_v001.png",
+          "source_type": "MOCK",
+          "source_adapter": "mock-image-generation",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      ],
+      "generation_status": "GENERATION_SUCCESS",
+      "failure_summary": null,
+      "warnings": [],
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "started_at": "2099-01-01T01:02:03.000Z",
+      "completed_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    }
+  ],
+  "render_reports": [
+    {
+      "render_report_id": "RPT-RENDER-DEMO-01",
+      "generation_id": "GEN-DEMO-01",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 1,
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "style_lock_version": "SLV-1",
+      "renderer": "mock-renderer",
+      "renderer_version": "0.1.0",
+      "render_mode": "MOCK",
+      "input_assets": [
+        {
+          "asset_id": "AST-BACKGROUND-01",
+          "asset_role": "BACKGROUND",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/assets/backgrounds/01_v001.png",
+          "source_type": "MOCK",
+          "source_adapter": "mock-image-generation",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      ],
+      "output_asset": {
+        "asset_id": "AST-FINAL-01",
+        "asset_role": "FINAL_PAGE",
+        "asset_type": "IMAGE",
+        "mime_type": "image/png",
+        "relative_path": "projects/demo/final/v1/01-cover.png",
+        "source_type": "RENDERED",
+        "source_adapter": "mock-renderer",
+        "source_run_id": "RUN-20990101-010203-DEMO",
+        "source_generation_id": "GEN-DEMO-01",
+        "version": 1,
+        "width": 1242,
+        "height": 1660,
+        "file_size": 4096,
+        "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      "canvas": {
+        "width": 1242,
+        "height": 1660,
+        "aspect_ratio": "3:4",
+        "orientation": "PORTRAIT",
+        "resolution_unit": "PX"
+      },
+      "safe_area": {
+        "top": 80,
+        "right": 72,
+        "bottom": 80,
+        "left": 72,
+        "unit": "PX"
+      },
+      "font_resolution": [
+        {
+          "role": "TITLE",
+          "requested_font": "Fictional Sans",
+          "actual_font": "Fictional Sans",
+          "substitution_reason": null,
+          "impact": "NONE",
+          "blocking": false
+        }
+      ],
+      "layout_measurements": [
+        {
+          "layer_id": "LAYER-TITLE-1",
+          "measured_bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "line_count": 2
+        }
+      ],
+      "overflow_detected": false,
+      "missing_assets": [],
+      "font_fallbacks": [],
+      "clipping_detected": false,
+      "unsafe_regions": [],
+      "warnings": [],
+      "errors": [],
+      "render_status": "RENDER_SUCCESS",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "started_at": "2099-01-01T01:02:03.000Z",
+      "completed_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    {
+      "render_report_id": "RPT-RENDER-DEMO-02",
+      "generation_id": "GEN-DEMO-02",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 2,
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "style_lock_version": "SLV-1",
+      "renderer": "mock-renderer",
+      "renderer_version": "0.1.0",
+      "render_mode": "MOCK",
+      "input_assets": [
+        {
+          "asset_id": "AST-BACKGROUND-02",
+          "asset_role": "BACKGROUND",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/assets/backgrounds/02_v001.png",
+          "source_type": "MOCK",
+          "source_adapter": "mock-image-generation",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      ],
+      "output_asset": {
+        "asset_id": "AST-FINAL-02",
+        "asset_role": "FINAL_PAGE",
+        "asset_type": "IMAGE",
+        "mime_type": "image/png",
+        "relative_path": "projects/demo/final/v1/02.png",
+        "source_type": "RENDERED",
+        "source_adapter": "mock-renderer",
+        "source_run_id": "RUN-20990101-010203-DEMO",
+        "source_generation_id": "GEN-DEMO-01",
+        "version": 1,
+        "width": 1242,
+        "height": 1660,
+        "file_size": 4096,
+        "checksum": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      "canvas": {
+        "width": 1242,
+        "height": 1660,
+        "aspect_ratio": "3:4",
+        "orientation": "PORTRAIT",
+        "resolution_unit": "PX"
+      },
+      "safe_area": {
+        "top": 80,
+        "right": 72,
+        "bottom": 80,
+        "left": 72,
+        "unit": "PX"
+      },
+      "font_resolution": [
+        {
+          "role": "TITLE",
+          "requested_font": "Fictional Sans",
+          "actual_font": "Fictional Sans",
+          "substitution_reason": null,
+          "impact": "NONE",
+          "blocking": false
+        }
+      ],
+      "layout_measurements": [
+        {
+          "layer_id": "LAYER-TITLE-2",
+          "measured_bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "line_count": 2
+        }
+      ],
+      "overflow_detected": false,
+      "missing_assets": [],
+      "font_fallbacks": [],
+      "clipping_detected": false,
+      "unsafe_regions": [],
+      "warnings": [],
+      "errors": [],
+      "render_status": "RENDER_SUCCESS",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "started_at": "2099-01-01T01:02:03.000Z",
+      "completed_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    {
+      "render_report_id": "RPT-RENDER-DEMO-03",
+      "generation_id": "GEN-DEMO-03",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 3,
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "style_lock_version": "SLV-1",
+      "renderer": "mock-renderer",
+      "renderer_version": "0.1.0",
+      "render_mode": "MOCK",
+      "input_assets": [
+        {
+          "asset_id": "AST-BACKGROUND-03",
+          "asset_role": "BACKGROUND",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/assets/backgrounds/03_v001.png",
+          "source_type": "MOCK",
+          "source_adapter": "mock-image-generation",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      ],
+      "output_asset": {
+        "asset_id": "AST-FINAL-03",
+        "asset_role": "FINAL_PAGE",
+        "asset_type": "IMAGE",
+        "mime_type": "image/png",
+        "relative_path": "projects/demo/final/v1/03.png",
+        "source_type": "RENDERED",
+        "source_adapter": "mock-renderer",
+        "source_run_id": "RUN-20990101-010203-DEMO",
+        "source_generation_id": "GEN-DEMO-01",
+        "version": 1,
+        "width": 1242,
+        "height": 1660,
+        "file_size": 4096,
+        "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      "canvas": {
+        "width": 1242,
+        "height": 1660,
+        "aspect_ratio": "3:4",
+        "orientation": "PORTRAIT",
+        "resolution_unit": "PX"
+      },
+      "safe_area": {
+        "top": 80,
+        "right": 72,
+        "bottom": 80,
+        "left": 72,
+        "unit": "PX"
+      },
+      "font_resolution": [
+        {
+          "role": "TITLE",
+          "requested_font": "Fictional Sans",
+          "actual_font": "Fictional Sans",
+          "substitution_reason": null,
+          "impact": "NONE",
+          "blocking": false
+        }
+      ],
+      "layout_measurements": [
+        {
+          "layer_id": "LAYER-TITLE-3",
+          "measured_bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "line_count": 2
+        }
+      ],
+      "overflow_detected": false,
+      "missing_assets": [],
+      "font_fallbacks": [],
+      "clipping_detected": false,
+      "unsafe_regions": [],
+      "warnings": [],
+      "errors": [],
+      "render_status": "RENDER_SUCCESS",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "started_at": "2099-01-01T01:02:03.000Z",
+      "completed_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    },
+    {
+      "render_report_id": "RPT-RENDER-DEMO-04",
+      "generation_id": "GEN-DEMO-04",
+      "project_id": "PRJ-20990101-DEMO",
+      "content_id": "C-0001",
+      "page_number": 4,
+      "content_version": "CV-1",
+      "copy_version": "CV-1",
+      "visual_plan_version": "VV-1",
+      "style_lock_version": "SLV-1",
+      "renderer": "mock-renderer",
+      "renderer_version": "0.1.0",
+      "render_mode": "MOCK",
+      "input_assets": [
+        {
+          "asset_id": "AST-BACKGROUND-04",
+          "asset_role": "BACKGROUND",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/assets/backgrounds/04_v001.png",
+          "source_type": "MOCK",
+          "source_adapter": "mock-image-generation",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      ],
+      "output_asset": {
+        "asset_id": "AST-FINAL-04",
+        "asset_role": "FINAL_PAGE",
+        "asset_type": "IMAGE",
+        "mime_type": "image/png",
+        "relative_path": "projects/demo/final/v1/04.png",
+        "source_type": "RENDERED",
+        "source_adapter": "mock-renderer",
+        "source_run_id": "RUN-20990101-010203-DEMO",
+        "source_generation_id": "GEN-DEMO-01",
+        "version": 1,
+        "width": 1242,
+        "height": 1660,
+        "file_size": 4096,
+        "checksum": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      "canvas": {
+        "width": 1242,
+        "height": 1660,
+        "aspect_ratio": "3:4",
+        "orientation": "PORTRAIT",
+        "resolution_unit": "PX"
+      },
+      "safe_area": {
+        "top": 80,
+        "right": 72,
+        "bottom": 80,
+        "left": 72,
+        "unit": "PX"
+      },
+      "font_resolution": [
+        {
+          "role": "TITLE",
+          "requested_font": "Fictional Sans",
+          "actual_font": "Fictional Sans",
+          "substitution_reason": null,
+          "impact": "NONE",
+          "blocking": false
+        }
+      ],
+      "layout_measurements": [
+        {
+          "layer_id": "LAYER-TITLE-4",
+          "measured_bbox": {
+            "x": 8,
+            "y": 8,
+            "width": 84,
+            "height": 30,
+            "unit": "PERCENT"
+          },
+          "line_count": 2
+        }
+      ],
+      "overflow_detected": false,
+      "missing_assets": [],
+      "font_fallbacks": [],
+      "clipping_detected": false,
+      "unsafe_regions": [],
+      "warnings": [],
+      "errors": [],
+      "render_status": "RENDER_SUCCESS",
+      "run_id": "RUN-20990101-010203-DEMO",
+      "schema_version": "1.0.0",
+      "started_at": "2099-01-01T01:02:03.000Z",
+      "completed_at": "2099-01-01T01:02:03.000Z",
+      "extensions": {}
+    }
+  ],
+  "qa_report": {
+    "qa_report_id": "RPT-QA-DEMO-001",
+    "project_id": "PRJ-20990101-DEMO",
+    "content_id": "C-0001",
+    "content_version": "CV-1",
+    "copy_version": "CV-1",
+    "visual_plan_version": "VV-1",
+    "style_lock_version": "SLV-1",
+    "qa_scope": "FINAL_SET",
+    "checks": [
+      {
+        "check_id": "CHK-CONTENT-DEMO",
+        "category": "CONTENT",
+        "target": "C-0001",
+        "status": "PASS",
+        "severity": "INFO",
+        "blocking": false,
+        "message": "CONTENT fixture check passed.",
+        "expected_summary": "Current fictional artifact.",
+        "actual_summary": "Current fictional artifact.",
+        "evidence_refs": [],
+        "recommended_action": "None."
+      },
+      {
+        "check_id": "CHK-VISUAL-DEMO",
+        "category": "VISUAL",
+        "target": "C-0001",
+        "status": "PASS",
+        "severity": "INFO",
+        "blocking": false,
+        "message": "VISUAL fixture check passed.",
+        "expected_summary": "Current fictional artifact.",
+        "actual_summary": "Current fictional artifact.",
+        "evidence_refs": [],
+        "recommended_action": "None."
+      },
+      {
+        "check_id": "CHK-FILE-DEMO",
+        "category": "FILE",
+        "target": "C-0001",
+        "status": "PASS",
+        "severity": "INFO",
+        "blocking": false,
+        "message": "FILE fixture check passed.",
+        "expected_summary": "Current fictional artifact.",
+        "actual_summary": "Current fictional artifact.",
+        "evidence_refs": [],
+        "recommended_action": "None."
+      },
+      {
+        "check_id": "CHK-DATA-DEMO",
+        "category": "DATA",
+        "target": "C-0001",
+        "status": "PASS",
+        "severity": "INFO",
+        "blocking": false,
+        "message": "DATA fixture check passed.",
+        "expected_summary": "Current fictional artifact.",
+        "actual_summary": "Current fictional artifact.",
+        "evidence_refs": [],
+        "recommended_action": "None."
+      }
+    ],
+    "content_checks": [
+      {
+        "check_id": "CHK-CONTENT-DEMO",
+        "category": "CONTENT",
+        "target": "C-0001",
+        "status": "PASS",
+        "severity": "INFO",
+        "blocking": false,
+        "message": "CONTENT fixture check passed.",
+        "expected_summary": "Current fictional artifact.",
+        "actual_summary": "Current fictional artifact.",
+        "evidence_refs": [],
+        "recommended_action": "None."
+      }
+    ],
+    "visual_checks": [
+      {
+        "check_id": "CHK-VISUAL-DEMO",
+        "category": "VISUAL",
+        "target": "C-0001",
+        "status": "PASS",
+        "severity": "INFO",
+        "blocking": false,
+        "message": "VISUAL fixture check passed.",
+        "expected_summary": "Current fictional artifact.",
+        "actual_summary": "Current fictional artifact.",
+        "evidence_refs": [],
+        "recommended_action": "None."
+      }
+    ],
+    "file_checks": [
+      {
+        "check_id": "CHK-FILE-DEMO",
+        "category": "FILE",
+        "target": "C-0001",
+        "status": "PASS",
+        "severity": "INFO",
+        "blocking": false,
+        "message": "FILE fixture check passed.",
+        "expected_summary": "Current fictional artifact.",
+        "actual_summary": "Current fictional artifact.",
+        "evidence_refs": [],
+        "recommended_action": "None."
+      }
+    ],
+    "data_checks": [
+      {
+        "check_id": "CHK-DATA-DEMO",
+        "category": "DATA",
+        "target": "C-0001",
+        "status": "PASS",
+        "severity": "INFO",
+        "blocking": false,
+        "message": "DATA fixture check passed.",
+        "expected_summary": "Current fictional artifact.",
+        "actual_summary": "Current fictional artifact.",
+        "evidence_refs": [],
+        "recommended_action": "None."
+      }
+    ],
+    "blocking_failure_count": 0,
+    "warning_count": 0,
+    "passed_count": 4,
+    "overall_status": "QA_PASSED",
+    "ready_for_final_approval": true,
+    "checked_assets": [
+      {
+        "asset_id": "AST-FINAL-01",
+        "asset_role": "FINAL_PAGE",
+        "asset_type": "IMAGE",
+        "mime_type": "image/png",
+        "relative_path": "projects/demo/final/v1/01-cover.png",
+        "source_type": "RENDERED",
+        "source_adapter": "mock-renderer",
+        "source_run_id": "RUN-20990101-010203-DEMO",
+        "source_generation_id": "GEN-DEMO-01",
+        "version": 1,
+        "width": 1242,
+        "height": 1660,
+        "file_size": 4096,
+        "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      {
+        "asset_id": "AST-FINAL-02",
+        "asset_role": "FINAL_PAGE",
+        "asset_type": "IMAGE",
+        "mime_type": "image/png",
+        "relative_path": "projects/demo/final/v1/02.png",
+        "source_type": "RENDERED",
+        "source_adapter": "mock-renderer",
+        "source_run_id": "RUN-20990101-010203-DEMO",
+        "source_generation_id": "GEN-DEMO-01",
+        "version": 1,
+        "width": 1242,
+        "height": 1660,
+        "file_size": 4096,
+        "checksum": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      {
+        "asset_id": "AST-FINAL-03",
+        "asset_role": "FINAL_PAGE",
+        "asset_type": "IMAGE",
+        "mime_type": "image/png",
+        "relative_path": "projects/demo/final/v1/03.png",
+        "source_type": "RENDERED",
+        "source_adapter": "mock-renderer",
+        "source_run_id": "RUN-20990101-010203-DEMO",
+        "source_generation_id": "GEN-DEMO-01",
+        "version": 1,
+        "width": 1242,
+        "height": 1660,
+        "file_size": 4096,
+        "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      },
+      {
+        "asset_id": "AST-FINAL-04",
+        "asset_role": "FINAL_PAGE",
+        "asset_type": "IMAGE",
+        "mime_type": "image/png",
+        "relative_path": "projects/demo/final/v1/04.png",
+        "source_type": "RENDERED",
+        "source_adapter": "mock-renderer",
+        "source_run_id": "RUN-20990101-010203-DEMO",
+        "source_generation_id": "GEN-DEMO-01",
+        "version": 1,
+        "width": 1242,
+        "height": 1660,
+        "file_size": 4096,
+        "checksum": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "created_at": "2099-01-01T01:02:03.000Z",
+        "extensions": {}
+      }
+    ],
+    "checked_manifests": ["GEN-DEMO-01", "GEN-DEMO-02", "GEN-DEMO-03", "GEN-DEMO-04"],
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "started_at": "2099-01-01T01:02:03.000Z",
+    "completed_at": "2099-01-01T01:02:03.000Z",
+    "extensions": {}
+  },
+  "final_approval": {
+    "approval_id": "APR-20990101-G5AA",
+    "gate": "FINAL_SET",
+    "target_type": "IMAGE_SET",
+    "target_id": "C-0001",
+    "target_version": "FINAL-CV-1-VV-1-SLV-1",
+    "decision": "APPROVE",
+    "comment": "Approved fictional final set.",
+    "source_run_id": "RUN-20990101-010203-DEMO",
+    "created_at": "2099-01-01T01:02:03.000Z",
+    "deprecated_at": null,
+    "schema_version": "1.0.0"
+  },
+  "final_manifest": {
+    "final_manifest_id": "FINAL-DEMO-001",
+    "project_id": "PRJ-20990101-DEMO",
+    "project_kind": "TEST_FIXTURE",
+    "content_id": "C-0001",
+    "content_version": "CV-1",
+    "copy_version": "CV-1",
+    "visual_plan_version": "VV-1",
+    "first_page_version": "FPV-1",
+    "style_lock_version": "SLV-1",
+    "style_lock_id": "SL-DEMO-001",
+    "g3_approval_id": "APR-20990101-DEMO",
+    "g4_approval_id": "APR-20990101-G4AA",
+    "final_approval_id": "APR-20990101-G5AA",
+    "final_approval_target_version": "FINAL-CV-1-VV-1-SLV-1",
+    "final_approval": {
+      "approval_id": "APR-20990101-G5AA",
+      "gate": "FINAL_SET",
+      "target_type": "IMAGE_SET",
+      "target_id": "C-0001",
+      "target_version": "FINAL-CV-1-VV-1-SLV-1",
+      "decision": "APPROVE",
+      "comment": "Approved fictional final set.",
+      "source_run_id": "RUN-20990101-010203-DEMO",
+      "created_at": "2099-01-01T01:02:03.000Z",
+      "deprecated_at": null,
+      "schema_version": "1.0.0"
+    },
+    "qa_report_id": "RPT-QA-DEMO-001",
+    "qa_status": "QA_PASSED",
+    "final_output_directory": "projects/demo/final/v1",
+    "final_assets": [
+      {
+        "page_number": 1,
+        "page_role": "COVER",
+        "page_intent": "Fictional page 1 intent.",
+        "asset_channel": "PURE_RENDERER",
+        "renderer_provenance": "fixture-renderer@1.0.0",
+        "imagegen_provenance": null,
+        "single_page_qa_ref": "RPT-QA-PAGE-1",
+        "asset": {
+          "asset_id": "AST-FINAL-01",
+          "asset_role": "FINAL_PAGE",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/final/v1/01-cover.png",
+          "source_type": "RENDERED",
+          "source_adapter": "mock-renderer",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      },
+      {
+        "page_number": 2,
+        "page_role": "CONTENT",
+        "page_intent": "Fictional page 2 intent.",
+        "asset_channel": "PURE_RENDERER",
+        "renderer_provenance": "fixture-renderer@1.0.0",
+        "imagegen_provenance": null,
+        "single_page_qa_ref": "RPT-QA-PAGE-2",
+        "asset": {
+          "asset_id": "AST-FINAL-02",
+          "asset_role": "FINAL_PAGE",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/final/v1/02.png",
+          "source_type": "RENDERED",
+          "source_adapter": "mock-renderer",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      },
+      {
+        "page_number": 3,
+        "page_role": "CONTENT",
+        "page_intent": "Fictional page 3 intent.",
+        "asset_channel": "PURE_RENDERER",
+        "renderer_provenance": "fixture-renderer@1.0.0",
+        "imagegen_provenance": null,
+        "single_page_qa_ref": "RPT-QA-PAGE-3",
+        "asset": {
+          "asset_id": "AST-FINAL-03",
+          "asset_role": "FINAL_PAGE",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/final/v1/03.png",
+          "source_type": "RENDERED",
+          "source_adapter": "mock-renderer",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      },
+      {
+        "page_number": 4,
+        "page_role": "SUMMARY",
+        "page_intent": "Fictional page 4 intent.",
+        "asset_channel": "PURE_RENDERER",
+        "renderer_provenance": "fixture-renderer@1.0.0",
+        "imagegen_provenance": null,
+        "single_page_qa_ref": "RPT-QA-PAGE-4",
+        "asset": {
+          "asset_id": "AST-FINAL-04",
+          "asset_role": "FINAL_PAGE",
+          "asset_type": "IMAGE",
+          "mime_type": "image/png",
+          "relative_path": "projects/demo/final/v1/04.png",
+          "source_type": "RENDERED",
+          "source_adapter": "mock-renderer",
+          "source_run_id": "RUN-20990101-010203-DEMO",
+          "source_generation_id": "GEN-DEMO-01",
+          "version": 1,
+          "width": 1242,
+          "height": 1660,
+          "file_size": 4096,
+          "checksum": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "created_at": "2099-01-01T01:02:03.000Z",
+          "extensions": {}
+        }
+      }
+    ],
+    "content_package_ref": "CONTENT-PACKAGE-DEMO-001",
+    "visual_system_ref": "VS-DEMO-001",
+    "style_lock_ref": "SL-DEMO-001",
+    "generation_manifest_refs": ["GEN-DEMO-01", "GEN-DEMO-02", "GEN-DEMO-03", "GEN-DEMO-04"],
+    "render_report_refs": [
+      "RPT-RENDER-DEMO-01",
+      "RPT-RENDER-DEMO-02",
+      "RPT-RENDER-DEMO-03",
+      "RPT-RENDER-DEMO-04"
+    ],
+    "checksums": {
+      "projects/demo/final/v1/01-cover.png": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "projects/demo/final/v1/02.png": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "projects/demo/final/v1/03.png": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "projects/demo/final/v1/04.png": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "file_count": 4,
+    "page_count": 4,
+    "group_evidence": {
+      "strategy_ref": "STRATEGY-DEMO-001",
+      "continuity_report_ref": "RPT-CONTINUITY-DEMO-001",
+      "group_qa_ref": "RPT-GROUP-QA-DEMO-001",
+      "contact_sheet_refs": [
+        "projects/demo/previews/contact-sheet-full.png",
+        "projects/demo/previews/contact-sheet-310.png",
+        "projects/demo/previews/contact-sheet-186.png"
+      ]
+    },
+    "final_manifest_version": "FMV-1",
+    "finalized_by": "CONTENT_OPS_RUNTIME",
+    "origin": "RUNTIME_FINALIZATION",
+    "business_status": "CONTENT_FINALIZED",
+    "image_status": "IMAGE_SET_GENERATED",
+    "sync_status": "SYNC_FAILED",
+    "finalized_at": "2099-01-01T01:02:03.000Z",
+    "run_id": "RUN-20990101-010203-DEMO",
+    "schema_version": "1.0.0",
+    "extensions": {}
+  }
+}
